@@ -1,5 +1,4 @@
 using Ulysses.Core;
-using Ulysses.Core.ImageProcessing;
 using Ulysses.Core.Models;
 using Ulysses.NUC.NonUniformityModels;
 
@@ -9,7 +8,7 @@ namespace Ulysses.NUC.Algorithms
     {
         public NonUniformityModel NonUniformityModel { get; private set; }
 
-        protected BaseNonUnifromityCorrectionAlgorithm(NonUniformityModel nonUniformityModel)
+        protected internal BaseNonUnifromityCorrectionAlgorithm(NonUniformityModel nonUniformityModel)
         {
             NonUniformityModel = nonUniformityModel;
         }

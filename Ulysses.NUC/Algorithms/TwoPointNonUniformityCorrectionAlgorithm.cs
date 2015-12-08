@@ -1,12 +1,13 @@
 ﻿using Ulysses.Core.ImageProcessing;
 using Ulysses.Core.Models;
+using Ulysses.NUC.Factories.Templates;
 using Ulysses.NUC.NonUniformityModels;
 
 namespace Ulysses.NUC.Algorithms
 {
-    public class TwoPointNonUniformityCorrectionCorrectionAlgorithm : BaseNonUnifromityCorrectionAlgorithm
+    public class TwoPointNonUniformityCorrectionAlgorithm : BaseNonUnifromityCorrectionAlgorithm
     {
-        public TwoPointNonUniformityCorrectionCorrectionAlgorithm(NonUniformityModel nonUniformityModel) : base(nonUniformityModel)
+        internal TwoPointNonUniformityCorrectionAlgorithm(TwoPointNonUniformityCorrectionAlgorithmTemplate correctionAlgorithmTemplate) : base(correctionAlgorithmTemplate.NonUniformityModel)
         {
         }
 

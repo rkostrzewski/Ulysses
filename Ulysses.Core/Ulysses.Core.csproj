@@ -47,9 +47,6 @@
     <Compile Include="Exceptions\ImageModelMismatchException.cs" />
     <Compile Include="Exceptions\NotSupportedBitDepthException.cs" />
     <Compile Include="Exceptions\NotSupportedImageException.cs" />
-    <Compile Include="IImageProcessingChain.cs" />
-    <Compile Include="ImageProcessing\ImageProcessingChainBuilder.cs" />
-    <Compile Include="ImageProcessing\ImageProcessingChain.cs" />
     <Compile Include="Models\CoefficientMatrix.cs" />
     <Compile Include="Models\Image.cs" />
     <Compile Include="Models\ImageBitDepth.cs" />

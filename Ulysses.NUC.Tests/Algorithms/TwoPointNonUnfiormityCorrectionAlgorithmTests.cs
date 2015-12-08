@@ -3,6 +3,8 @@ using Ulysses.Core.Exceptions;
 using Ulysses.Core.ImageProcessing;
 using Ulysses.Core.Models;
 using Ulysses.NUC.Algorithms;
+using Ulysses.NUC.Factories;
+using Ulysses.NUC.Factories.Templates;
 using Ulysses.NUC.NonUniformityModels;
 
 namespace Ulysses.NUC.Tests.Algorithms
@@ -15,7 +17,12 @@ namespace Ulysses.NUC.Tests.Algorithms
         {
             // Given
             var nonUniformityModel = new DefaultNonUniformityModel(new ImageModel(2, 2, ImageBitDepth.Bpp8));
-            var correctionAlgorithm = new TwoPointNonUniformityCorrectionCorrectionAlgorithm(nonUniformityModel);
+            var correctionAlgorithm = new NonUniformityAlgorithmFactory().Create(new TwoPointNonUniformityTemplate
+                {
+                    Algorithm = Algorithm.TwoPointNonUniformityAlgorithm,
+                    NonUniformityModel = nonUniformityModel
+                });
+
             var imageModel = new ImageModel(2, 2, ImageBitDepth.Bpp8);
             var image = new Image(new ushort[] { 1, 2, 3, 4 }, imageModel);
 
@@ -35,7 +42,11 @@ namespace Ulysses.NUC.Tests.Algorithms
                                                             ImageBitDepth.Bpp8);
             var imageModel = new ImageModel(2, 2, ImageBitDepth.Bpp8);
             var inputImage = new Image(new ushort[] { 5, 0, 2, 8 }, imageModel);
-            var correctionAlgorithm = new TwoPointNonUniformityCorrectionCorrectionAlgorithm(nonUniformityModel);
+            var correctionAlgorithm = new NonUniformityAlgorithmFactory().Create(new TwoPointNonUniformityTemplate
+            {
+                Algorithm = Algorithm.TwoPointNonUniformityAlgorithm,
+                NonUniformityModel = nonUniformityModel
+            });
 
             // When
             var correctedImage = correctionAlgorithm.ProcessImage(inputImage);
@@ -54,7 +65,11 @@ namespace Ulysses.NUC.Tests.Algorithms
                                                             ImageBitDepth.Bpp8);
             var imageModel = new ImageModel(2, 2, ImageBitDepth.Bpp8);
             var inputImage = new Image(new ushort[] { 5, 0, 2, 8 }, imageModel);
-            var correctionAlgorithm = new TwoPointNonUniformityCorrectionCorrectionAlgorithm(nonUniformityModel);
+            var correctionAlgorithm = new NonUniformityAlgorithmFactory().Create(new TwoPointNonUniformityTemplate
+            {
+                Algorithm = Algorithm.TwoPointNonUniformityAlgorithm,
+                NonUniformityModel = nonUniformityModel
+            });
 
             // When
             var correctedImage = correctionAlgorithm.ProcessImage(inputImage);
@@ -74,7 +89,12 @@ namespace Ulysses.NUC.Tests.Algorithms
                                                             new[,] { { 5.0, 0 }, { -4, 5 } },
                                                             ImageBitDepth.Bpp8);
 
-            var correctionAlgorithm = new TwoPointNonUniformityCorrectionCorrectionAlgorithm(nonUniformityModel);
+            var correctionAlgorithm = new NonUniformityAlgorithmFactory().Create(new TwoPointNonUniformityTemplate
+            {
+                Algorithm = Algorithm.TwoPointNonUniformityAlgorithm,
+                NonUniformityModel = nonUniformityModel
+            });
+
             // When
             // Then
             Assert.Throws<ImageModelMismatchException>(() => { correctionAlgorithm.ProcessImage(inputImage); });

@@ -1,6 +1,7 @@
 using System.Collections.Generic;
+using Ulysses.Core;
 
-namespace Ulysses.Core.ImageProcessing
+namespace Ulysses.ProcessingEngine.ImageProcessing
 {
     public class ImageProcessingChainBuilder
     {

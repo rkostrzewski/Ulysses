@@ -41,6 +41,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Algorithms\BaseNonUnifromityAlgorithm.cs" />
+    <Compile Include="Factories\NonUniformityAlgorithmFactory.cs" />
+    <Compile Include="Factories\Templates\Algorithm.cs" />
+    <Compile Include="Factories\Templates\BaseNonUniformityTemplate.cs" />
+    <Compile Include="Factories\Templates\TwoPointNonUniformityTemplate.cs" />
     <Compile Include="NonUniformityModels\DefaultNonUniformityModel.cs" />
     <Compile Include="NonUniformityModels\NonUniformityModel.cs" />
     <Compile Include="Algorithms\TwoPointNonUniformityCorrectionAlgorithm.cs" />
