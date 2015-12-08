@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using Ulysses.Core;
 using Ulysses.Core.Models;
 using Ulysses.ImageAcquisition;
+using Ulysses.ProcessingEngine.Exceptions;
 
 namespace Ulysses.ProcessingEngine.ProcessingEngineStrategies
 {
@@ -12,8 +13,8 @@ namespace Ulysses.ProcessingEngine.ProcessingEngineStrategies
         private readonly IImageAcquisitorStrategy _imageAcquisitor;
         private readonly IImageProcessingChain _imageProcessingChain;
         private readonly ISetOutputImageCommand _imageOutputNotifier;
-        private CancellationTokenSource _cancellationTokenSource;
-        private volatile bool _shouldWork;
+        private volatile CancellationTokenSource _cancellationTokenSource;
+        private Task _task;
 
         public SyncProcessingStrategy(IImageAcquisitorStrategy imageAcquisitor, IImageProcessingChain imageProcessingChain, ISetOutputImageCommand imageOutputNotifier)
         {
@@ -24,20 +25,30 @@ namespace Ulysses.ProcessingEngine.ProcessingEngineStrategies
         
         public Task Start()
         {
+            if (_task != null && _task.IsCompleted)
+            {
+                throw new ConcurrencyException();
+            }
+
             _cancellationTokenSource = new CancellationTokenSource();
-            _shouldWork = true;
-            return Task.Factory.StartNew(DoWork, _cancellationTokenSource.Token, TaskCreationOptions.LongRunning, TaskScheduler.Current);
+            _task = Task.Factory.StartNew(DoWork, _cancellationTokenSource.Token, TaskCreationOptions.LongRunning, TaskScheduler.Current);
+            return _task;
         }
 
-        public void Stop()
+        public async Task Stop()
         {
-            _shouldWork = false;
+            if (_cancellationTokenSource == null || _task == null)
+            {
+                return;
+            }
+
             _cancellationTokenSource.Cancel();
+            await _task;
         }
 
         private void DoWork()
         {
-            while (_shouldWork)
+            while (!_cancellationTokenSource.IsCancellationRequested)
             {
                 Image image;
                 if (!_imageAcquisitor.TryToObtainImage(out image))
@@ -45,7 +56,7 @@ namespace Ulysses.ProcessingEngine.ProcessingEngineStrategies
                     return;
                 }
 
-                if (!_shouldWork)
+                if (_cancellationTokenSource.IsCancellationRequested)
                 {
                     return;
                 }

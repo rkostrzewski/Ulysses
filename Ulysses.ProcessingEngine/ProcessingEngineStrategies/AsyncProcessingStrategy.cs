@@ -11,52 +11,50 @@ namespace Ulysses.ProcessingEngine.ProcessingEngineStrategies
     {
         private readonly IImageAcquisitorStrategy _imageAcquisitor;
         private readonly IImageProcessingChain _imageProcessingChain;
+        private readonly AsyncProcessingMediator _mediator;
         private readonly ISetOutputImageCommand _setOutputImageCommand;
-        private CancellationTokenSource _cancellationTokenSource;
-        private static readonly AsyncProcessingMediator Mediator = new AsyncProcessingMediator();
+        private volatile CancellationTokenSource _cancellationTokenSource;
+        private Task _task;
 
-        private volatile bool _shouldWork;
-
-        public AsyncProcessingStrategy(IImageAcquisitorStrategy imageAcquisitor,
-                                       IImageProcessingChain imageProcessingChain,
-                                       ISetOutputImageCommand setOutputImageCommand)
+        public AsyncProcessingStrategy(IImageAcquisitorStrategy imageAcquisitor, IImageProcessingChain imageProcessingChain, ISetOutputImageCommand setOutputImageCommand)
         {
             _imageAcquisitor = imageAcquisitor;
             _imageProcessingChain = imageProcessingChain;
             _setOutputImageCommand = setOutputImageCommand;
+            _mediator = new AsyncProcessingMediator();
         }
 
         public Task Start()
         {
             _cancellationTokenSource = new CancellationTokenSource();
-            _shouldWork = true;
-            Mediator.Reset();
+            _mediator.Reset();
 
-            var imageAcquireTask = Task.Factory.StartNew(AcquireImageWork,
-                _cancellationTokenSource.Token,
-                                                         TaskCreationOptions.LongRunning,
-                                                         TaskScheduler.Default);
-            var imageProcessingTask = Task.Factory.StartNew(ProcessImageWork,
-                _cancellationTokenSource.Token,
-                                                            TaskCreationOptions.LongRunning,
-                                                            TaskScheduler.Default);
+            var imageAcquireTask = Task.Factory.StartNew(AcquireImageWork, _cancellationTokenSource.Token, TaskCreationOptions.LongRunning, TaskScheduler.Default);
+            var imageProcessingTask = Task.Factory.StartNew(ProcessImageWork, _cancellationTokenSource.Token, TaskCreationOptions.LongRunning, TaskScheduler.Default);
 
-            return Task.WhenAll(imageAcquireTask, imageProcessingTask);
+            _task = Task.WhenAll(imageAcquireTask, imageProcessingTask);
+
+            return _task;
         }
 
-        public void Stop()
+        public async Task Stop()
         {
+            if (_cancellationTokenSource == null || _task == null)
+            {
+                return;
+            }
 
-            _shouldWork = false;
             _cancellationTokenSource.Cancel();
-            Mediator.Reset();
+            _mediator.Reset();
+
+            await _task;
         }
 
         private void ProcessImageWork()
         {
-            while (_shouldWork)
+            while (!_cancellationTokenSource.IsCancellationRequested)
             {
-                var imageProcessingStatus = Mediator.GetImageProcessingStatus();
+                var imageProcessingStatus = _mediator.GetImageProcessingStatus();
                 if (imageProcessingStatus == ImageProcessingStatus.ImageAcquisitionStopped)
                 {
                     break;
@@ -64,7 +62,7 @@ namespace Ulysses.ProcessingEngine.ProcessingEngineStrategies
 
                 if (imageProcessingStatus == ImageProcessingStatus.ImagePendingToBeProcessed)
                 {
-                    GetAcquiredImageAndProcessIt(Mediator);
+                    GetAcquiredImageAndProcessIt(_mediator);
                 }
 
                 Thread.SpinWait(1);
@@ -73,7 +71,7 @@ namespace Ulysses.ProcessingEngine.ProcessingEngineStrategies
 
         private void AcquireImageWork()
         {
-            while (_shouldWork)
+            while (!_cancellationTokenSource.IsCancellationRequested)
             {
                 Image image;
                 if (!_imageAcquisitor.TryToObtainImage(out image))
@@ -81,15 +79,15 @@ namespace Ulysses.ProcessingEngine.ProcessingEngineStrategies
                     break;
                 }
 
-                SetAcquiredImage(Mediator, image);
+                SetAcquiredImage(_mediator, image);
 
                 Thread.SpinWait(1);
             }
 
-            Mediator.SetImageProcessingStatus(ImageProcessingStatus.ImageAcquisitionStopped);
+            _mediator.SetImageProcessingStatus(ImageProcessingStatus.ImageAcquisitionStopped);
         }
 
-        private void SetAcquiredImage(AsyncProcessingMediator mediator, Image image)
+        private static void SetAcquiredImage(AsyncProcessingMediator mediator, Image image)
         {
             var processingStatus = mediator.GetImageProcessingStatus();
 
@@ -115,4 +113,3 @@ namespace Ulysses.ProcessingEngine.ProcessingEngineStrategies
         }
     }
 }
-

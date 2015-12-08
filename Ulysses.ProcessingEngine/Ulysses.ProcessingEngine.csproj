@@ -40,6 +40,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Exceptions\ConcurrencyException.cs" />
+    <Compile Include="IImageProcessingChain.cs" />
+    <Compile Include="ImageProcessing\ImageProcessingChain.cs" />
+    <Compile Include="ImageProcessing\ImageProcessingChainBuilder.cs" />
     <Compile Include="IProcessingStrategy.cs" />
     <Compile Include="ProcessingEngineStrategies\AsyncProcessingStrategy.cs" />
     <Compile Include="ProcessingEngineStrategies\Synchronization\AsyncProcessingMediator.cs" />

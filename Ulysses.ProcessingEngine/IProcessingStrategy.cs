@@ -6,6 +6,6 @@ namespace Ulysses.ProcessingEngine
     {
         Task Start();
 
-        void Stop();
+        Task Stop();
     }
 }
