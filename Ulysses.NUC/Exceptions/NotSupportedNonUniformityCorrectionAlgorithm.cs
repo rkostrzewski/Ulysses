@@ -2,7 +2,7 @@
 
 namespace Ulysses.NUC.Exceptions
 {
-    public class NotSupportedNonUniformityCorrectionAlgorithm : Exception
+    public class NotSupportedNUCAlgorithm : Exception
     {
     }
 }

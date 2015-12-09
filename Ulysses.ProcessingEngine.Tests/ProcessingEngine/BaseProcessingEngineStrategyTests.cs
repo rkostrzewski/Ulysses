@@ -67,12 +67,11 @@ namespace Ulysses.ProcessingEngine.Tests.ProcessingEngine
             }
         }
 
-        protected static Task StartProcessingWaitForSpecifiedTimeAndWaitForEnd(IProcessingStrategy engine, int milliseconds)
+        protected static async Task StartProcessingWaitForSpecifiedTimeAndWaitForEnd(IProcessingStrategy engine, int milliseconds)
         {
             var task = engine.Start();
             Thread.Sleep(milliseconds);
-            engine.Stop();
-            return task;
+            await engine.Stop();
         }
 
         protected void ImageProcessingChainMockWork()

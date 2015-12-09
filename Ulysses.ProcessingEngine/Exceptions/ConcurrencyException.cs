@@ -2,7 +2,7 @@
 
 namespace Ulysses.ProcessingEngine.Exceptions
 {
-    public class ConcurrencyException : Exception
+    public class InvalidEngineStateException : Exception
     {
     }
 }

@@ -25,9 +25,9 @@ namespace Ulysses.ProcessingEngine.ProcessingEngineStrategies
         
         public Task Start()
         {
-            if (_task != null && _task.IsCompleted)
+            if (_task != null && !_task.IsCompleted)
             {
-                throw new ConcurrencyException();
+                throw new InvalidEngineStateException();
             }
 
             _cancellationTokenSource = new CancellationTokenSource();
@@ -39,7 +39,7 @@ namespace Ulysses.ProcessingEngine.ProcessingEngineStrategies
         {
             if (_cancellationTokenSource == null || _task == null)
             {
-                return;
+                throw new InvalidEngineStateException();
             }
 
             _cancellationTokenSource.Cancel();

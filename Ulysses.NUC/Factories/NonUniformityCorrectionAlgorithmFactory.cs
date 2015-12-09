@@ -6,16 +6,16 @@ using Ulysses.NUC.Factories.Templates;
 
 namespace Ulysses.NUC.Factories
 {
-    public class NonUniformityCorrectionAlgorithmFactory
+    public class NUCAlgorithmFactory
     {
-        public IImageProcessingAlgorithm CreateAlgorithmImplementation(BaseNonUniformityCorrectionAlgorithmTemplate correctionAlgorithmTemplate)
+        public IImageProcessingAlgorithm CreateAlgorithmImplementation(BaseNUCAlgorithmTemplate correctionAlgorithmTemplate)
         {
             switch (correctionAlgorithmTemplate.Algorithm)
             {
-                case NonUniformityCorrectionAlgorithm.TwoPointNonUniformityAlgorithm:
-                    return new TwoPointNonUniformityCorrectionCorrectionAlgorithm(correctionAlgorithmTemplate as TwoPointNonUniformityCorrectionAlgorithmTemplate);
+                case NUCAlgorithm.TwoPointNonUniformityAlgorithm:
+                    return new TwoPointNUCAlgorithm(correctionAlgorithmTemplate as TwoPointNUCAlgorithmTemplate);
                 default:
-                    throw new NotSupportedNonUniformityCorrectionAlgorithm();
+                    throw new NotSupportedNUCAlgorithm();
             }
         }
     }

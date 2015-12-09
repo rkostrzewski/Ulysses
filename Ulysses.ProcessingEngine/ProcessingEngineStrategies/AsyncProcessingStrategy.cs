@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using Ulysses.Core;
 using Ulysses.Core.Models;
 using Ulysses.ImageAcquisition;
+using Ulysses.ProcessingEngine.Exceptions;
 using Ulysses.ProcessingEngine.ProcessingEngineStrategies.Synchronization;
 
 namespace Ulysses.ProcessingEngine.ProcessingEngineStrategies
@@ -26,6 +27,11 @@ namespace Ulysses.ProcessingEngine.ProcessingEngineStrategies
 
         public Task Start()
         {
+            if (_task != null && !_task.IsCompleted)
+            {
+                throw new InvalidEngineStateException();
+            }
+
             _cancellationTokenSource = new CancellationTokenSource();
             _mediator.Reset();
 
@@ -41,7 +47,7 @@ namespace Ulysses.ProcessingEngine.ProcessingEngineStrategies
         {
             if (_cancellationTokenSource == null || _task == null)
             {
-                return;
+                throw new InvalidEngineStateException();
             }
 
             _cancellationTokenSource.Cancel();

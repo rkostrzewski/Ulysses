@@ -1,7 +1,7 @@
 namespace Ulysses.NUC.Factories.Templates
 {
-    public abstract class BaseNonUniformityCorrectionAlgorithmTemplate
+    public abstract class BaseNUCAlgorithmTemplate
     {
-        public NonUniformityCorrectionAlgorithm Algorithm { get; set; }
+        public NUCAlgorithm Algorithm { get; set; }
     }
 }

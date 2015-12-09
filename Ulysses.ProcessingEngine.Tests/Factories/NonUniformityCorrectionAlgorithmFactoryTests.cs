@@ -10,39 +10,41 @@ using Ulysses.NUC.NonUniformityModels;
 namespace Ulysses.ProcessingEngine.Tests.Factories
 {
     [TestFixture]
-    public class NonUniformityCorrectionAlgorithmFactoryTests
+    public class NUCAlgorithmFactoryTests
     {
+        [Test]
         public void ShouldThrownExceptionWhenProvidedUnsupportedAlgorithm()
         {
             // Given
-            var template = new TwoPointNonUniformityCorrectionAlgorithmTemplate
+            var template = new TwoPointNUCAlgorithmTemplate
             {
                 Algorithm = 0
             };
 
-            var factory = new NonUniformityCorrectionAlgorithmFactory();
+            var factory = new NUCAlgorithmFactory();
 
             // When
             // Then
-            Assert.Throws<NotSupportedNonUniformityCorrectionAlgorithm>(() => factory.CreateAlgorithmImplementation(template));
+            Assert.Throws<NotSupportedNUCAlgorithm>(() => factory.CreateAlgorithmImplementation(template));
         }
 
+        [Test]
         public void ShouldCreateInstanceOfAlgorithmProvidedCorrectTemplate()
         {
             // Given
-            var template = new TwoPointNonUniformityCorrectionAlgorithmTemplate
+            var template = new TwoPointNUCAlgorithmTemplate
             {
-                Algorithm = NonUniformityCorrectionAlgorithm.TwoPointNonUniformityAlgorithm,
+                Algorithm = NUCAlgorithm.TwoPointNonUniformityAlgorithm,
                 NonUniformityModel = new NonUniformityModel(new ImageModel(2, 2, ImageBitDepth.Bpp8))
             };
 
-            var factory = new NonUniformityCorrectionAlgorithmFactory();
+            var factory = new NUCAlgorithmFactory();
 
             // When
             var algorithm = factory.CreateAlgorithmImplementation(template);
 
             // Then
-            Assert.IsInstanceOf<TwoPointNonUniformityCorrectionCorrectionAlgorithm>(algorithm);
+            Assert.IsInstanceOf<TwoPointNUCAlgorithm>(algorithm);
         }
     }
 }

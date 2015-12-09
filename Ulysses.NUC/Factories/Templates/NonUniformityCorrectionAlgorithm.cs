@@ -1,6 +1,6 @@
 ﻿namespace Ulysses.NUC.Factories.Templates
 {
-    public enum NonUniformityCorrectionAlgorithm
+    public enum NUCAlgorithm
     {
         TwoPointNonUniformityAlgorithm = 1
     }

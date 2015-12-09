@@ -2,7 +2,7 @@
 
 namespace Ulysses.NUC.Factories.Templates
 {
-    public class TwoPointNonUniformityCorrectionTemplate : BaseNonUniformityCorrectionTemplate
+    public class TwoPointNUCAlgorithmTemplate : BaseNUCAlgorithmTemplate
     {
         public NonUniformityModel NonUniformityModel { get; set; }
     }

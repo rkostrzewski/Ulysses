@@ -1,8 +1,8 @@
 using Moq;
 using NUnit.Framework;
-using Ulysses.Core;
 using Ulysses.Core.Models;
 using Ulysses.ImageAcquisition;
+using Ulysses.ProcessingEngine.Exceptions;
 using Ulysses.ProcessingEngine.ProcessingEngineStrategies;
 using Ulysses.Tests.Core;
 
@@ -96,6 +96,50 @@ namespace Ulysses.ProcessingEngine.Tests.ProcessingEngine
             // Then
             Assert.That(1 >= TimesImageProcessingChainCalled);
             Assert.AreEqual(1, TimesSetOutputImageCommandCalled);
+        }
+
+        [Test]
+        public void ShouldNotAllowToStopNotStartedEngine()
+        {
+            // Given
+            var imageAcquisitor = new Mock<IImageAcquisitorStrategy>();
+            Image image;
+            imageAcquisitor.Setup(ia => ia.TryToObtainImage(out image))
+                           .Callback(ImageAcquistiorMockWork)
+                           .ReturnsInOrder(true, false);
+
+
+            var engine = new AsyncProcessingStrategy(imageAcquisitor.Object,
+                                                     ImageProcessingChain.Object,
+                                                     SetOutputImageCommand.Object);
+
+            // When
+            // Then
+            Assert.Throws<InvalidEngineStateException>(async () => await engine.Stop());
+        }
+
+        [Test]
+        public async void ShouldNotAllowToStartAlreadyStartedEngine()
+        {
+            // Given
+            var imageAcquisitor = new Mock<IImageAcquisitorStrategy>();
+            Image image;
+            imageAcquisitor.Setup(ia => ia.TryToObtainImage(out image))
+                           .Callback(ImageAcquistiorMockWork)
+                           .ReturnsInOrder(true, false);
+
+
+            var engine = new AsyncProcessingStrategy(imageAcquisitor.Object,
+                                                     ImageProcessingChain.Object,
+                                                     SetOutputImageCommand.Object);
+
+            // When
+            var task = engine.Start();
+
+            // Then
+            Assert.Throws<InvalidEngineStateException>(() => { engine.Start(); });
+
+            await engine.Stop();
         }
     }
 }

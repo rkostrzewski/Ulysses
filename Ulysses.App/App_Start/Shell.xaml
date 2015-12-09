@@ -1,0 +1,20 @@
+﻿<Window x:Class="Ulysses.App.Views.Shell"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:prism="http://www.codeplex.com/prism"
+        mc:Ignorable="d"
+        Title="Shell" Height="520" Width="740">
+    <Grid>
+        <DockPanel>
+            <StackPanel Name="ControlPanelRegion" Orientation="Vertical" DockPanel.Dock="Left" 
+                          MinWidth="150" VerticalAlignment="Stretch" HorizontalAlignment="Left" CanHorizontallyScroll="True" ScrollViewer.VerticalScrollBarVisibility="Hidden" ScrollViewer.HorizontalScrollBarVisibility="Hidden" Background="Black">
+                <ContentControl prism:RegionManager.RegionName="ControlPanelRegion"></ContentControl>
+            </StackPanel>
+            <StackPanel Name="ContentRegion" DockPanel.Dock="Right" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="#FF1D642D">
+                <ContentControl prism:RegionManager.RegionName="ContentRegion" ></ContentControl>
+            </StackPanel>
+        </DockPanel>
+    </Grid>
+</Window>

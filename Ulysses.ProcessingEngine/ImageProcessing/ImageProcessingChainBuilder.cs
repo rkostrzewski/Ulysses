@@ -19,13 +19,6 @@ namespace Ulysses.ProcessingEngine.ImageProcessing
             return this;
         }
 
-        public ImageProcessingChainBuilder Reset()
-        {
-            _chainSteps.Clear();
-
-            return this;
-        }
-
         public ImageProcessingChain Build()
         {
             return new ImageProcessingChain(_chainSteps);

@@ -1,7 +1,6 @@
 ﻿using NUnit.Framework;
 using Ulysses.Core.ImageProcessing;
 using Ulysses.Core.Models;
-using Ulysses.NUC.Algorithms;
 using Ulysses.NUC.Factories;
 using Ulysses.NUC.Factories.Templates;
 using Ulysses.NUC.NonUniformityModels;
@@ -37,9 +36,9 @@ namespace Ulysses.ProcessingEngine.Tests.NonUniformityCorrectionChaining
 
             var nonUniformityModel =
                 new NonUniformityModel(new[,] { { 1, 0 }, { 0.5, 0.25 } }, new[,] { { 5.0, 0 }, { -4, 5 } }, ImageBitDepth.Bpp8);
-            var algorithm = new NonUniformityAlgorithmFactory().Create(new TwoPointNonUniformityTemplate
+            var algorithm = new NUCAlgorithmFactory().CreateAlgorithmImplementation(new TwoPointNUCAlgorithmTemplate
             {
-                Algorithm = Algorithm.TwoPointNonUniformityAlgorithm,
+                Algorithm = NUCAlgorithm.TwoPointNonUniformityAlgorithm,
                 NonUniformityModel = nonUniformityModel
             });
 
@@ -64,9 +63,9 @@ namespace Ulysses.ProcessingEngine.Tests.NonUniformityCorrectionChaining
 
             var nonUniformityModel =
                 new NonUniformityModel(new[,] { { 1.0, 0 }, { 1.0, 0 } } , new[,] { { 0, 6.0 }, { 0, 6.0 } }, ImageBitDepth.Bpp8);
-            var algorithm = new NonUniformityAlgorithmFactory().Create(new TwoPointNonUniformityTemplate
+            var algorithm = new NUCAlgorithmFactory().CreateAlgorithmImplementation(new TwoPointNUCAlgorithmTemplate
             {
-                Algorithm = Algorithm.TwoPointNonUniformityAlgorithm,
+                Algorithm = NUCAlgorithm.TwoPointNonUniformityAlgorithm,
                 NonUniformityModel = nonUniformityModel
             });
 
@@ -74,9 +73,9 @@ namespace Ulysses.ProcessingEngine.Tests.NonUniformityCorrectionChaining
                                 .AddStepToChain(algorithm);
 
             nonUniformityModel = new NonUniformityModel(new[,] { { 0.2, 1.0 }, { 0.2, 1.0 } }, new[,] { { 0, -5.0 }, { 0, -5.0 } }, ImageBitDepth.Bpp8);
-            algorithm = new NonUniformityAlgorithmFactory().Create(new TwoPointNonUniformityTemplate
+            algorithm = new NUCAlgorithmFactory().CreateAlgorithmImplementation(new TwoPointNUCAlgorithmTemplate
             {
-                Algorithm = Algorithm.TwoPointNonUniformityAlgorithm,
+                Algorithm = NUCAlgorithm.TwoPointNonUniformityAlgorithm,
                 NonUniformityModel = nonUniformityModel
             });
 

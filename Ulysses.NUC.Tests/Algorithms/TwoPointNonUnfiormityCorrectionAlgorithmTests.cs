@@ -17,9 +17,9 @@ namespace Ulysses.NUC.Tests.Algorithms
         {
             // Given
             var nonUniformityModel = new DefaultNonUniformityModel(new ImageModel(2, 2, ImageBitDepth.Bpp8));
-            var correctionAlgorithm = new NonUniformityAlgorithmFactory().Create(new TwoPointNonUniformityTemplate
+            var correctionAlgorithm = new NUCAlgorithmFactory().CreateAlgorithmImplementation(new TwoPointNUCAlgorithmTemplate
                 {
-                    Algorithm = Algorithm.TwoPointNonUniformityAlgorithm,
+                    Algorithm = NUCAlgorithm.TwoPointNonUniformityAlgorithm,
                     NonUniformityModel = nonUniformityModel
                 });
 
@@ -42,9 +42,9 @@ namespace Ulysses.NUC.Tests.Algorithms
                                                             ImageBitDepth.Bpp8);
             var imageModel = new ImageModel(2, 2, ImageBitDepth.Bpp8);
             var inputImage = new Image(new ushort[] { 5, 0, 2, 8 }, imageModel);
-            var correctionAlgorithm = new NonUniformityAlgorithmFactory().Create(new TwoPointNonUniformityTemplate
+            var correctionAlgorithm = new NUCAlgorithmFactory().CreateAlgorithmImplementation(new TwoPointNUCAlgorithmTemplate
             {
-                Algorithm = Algorithm.TwoPointNonUniformityAlgorithm,
+                Algorithm = NUCAlgorithm.TwoPointNonUniformityAlgorithm,
                 NonUniformityModel = nonUniformityModel
             });
 
@@ -65,9 +65,9 @@ namespace Ulysses.NUC.Tests.Algorithms
                                                             ImageBitDepth.Bpp8);
             var imageModel = new ImageModel(2, 2, ImageBitDepth.Bpp8);
             var inputImage = new Image(new ushort[] { 5, 0, 2, 8 }, imageModel);
-            var correctionAlgorithm = new NonUniformityAlgorithmFactory().Create(new TwoPointNonUniformityTemplate
+            var correctionAlgorithm = new NUCAlgorithmFactory().CreateAlgorithmImplementation(new TwoPointNUCAlgorithmTemplate
             {
-                Algorithm = Algorithm.TwoPointNonUniformityAlgorithm,
+                Algorithm = NUCAlgorithm.TwoPointNonUniformityAlgorithm,
                 NonUniformityModel = nonUniformityModel
             });
 
@@ -89,9 +89,9 @@ namespace Ulysses.NUC.Tests.Algorithms
                                                             new[,] { { 5.0, 0 }, { -4, 5 } },
                                                             ImageBitDepth.Bpp8);
 
-            var correctionAlgorithm = new NonUniformityAlgorithmFactory().Create(new TwoPointNonUniformityTemplate
+            var correctionAlgorithm = new NUCAlgorithmFactory().CreateAlgorithmImplementation(new TwoPointNUCAlgorithmTemplate
             {
-                Algorithm = Algorithm.TwoPointNonUniformityAlgorithm,
+                Algorithm = NUCAlgorithm.TwoPointNonUniformityAlgorithm,
                 NonUniformityModel = nonUniformityModel
             });
 
