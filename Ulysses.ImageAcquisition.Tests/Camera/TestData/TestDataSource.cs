@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using Ulysses.Core.ImageProcessing;
 using Ulysses.Core.Models;
-using Ulysses.ImageAcquisition.Camera;
+using Ulysses.ImageAcquisition.Remote.Camera;
 
 namespace Ulysses.ImageAcquisition.Tests.Camera.TestData
 {

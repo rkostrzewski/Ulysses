@@ -1,16 +1,17 @@
 ﻿using System.Net;
 using Ulysses.Core.Models;
-using Ulysses.ImageAcquisition.Camera;
+using Ulysses.ImageAcquisition.Remote;
+using Ulysses.ImageAcquisition.Remote.Udp;
 
 namespace Ulysses.ImageAcquisition.Factories
 {
-    public static class CameraAcquisitionStrategyFactory
+    public static class CameraAcquisitionFactory
     {
-        public static CameraAcquisitionStrategy CreateInstance(IPEndPoint ipEndPoint, int timeout, ImageModel imageModel)
+        public static RemoteAcquisition CreateInstance(IPEndPoint ipEndPoint, int timeout, ImageModel imageModel)
         {
             var udpClient = new UdpClient(ipEndPoint, timeout);
-            
-            return new CameraAcquisitionStrategy(imageModel, udpClient);
+
+            return new RemoteAcquisition(imageModel, udpClient);
         }
     }
 }

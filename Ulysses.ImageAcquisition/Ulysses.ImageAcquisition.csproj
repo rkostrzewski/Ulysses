@@ -42,15 +42,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Camera\CameraAcquisitionBuffer.cs" />
-    <Compile Include="Camera\CameraAcquisitionStrategy.cs" />
-    <Compile Include="Camera\CameraStreamConfiguration.cs" />
-    <Compile Include="Camera\CameraStreamToImageConverter.cs" />
-    <Compile Include="Camera\UdpClient.cs" />
+    <Compile Include="Remote\Camera\CameraAcquisitionBuffer.cs" />
+    <Compile Include="Remote\RemoteAcquisitionStrategy.cs" />
+    <Compile Include="Remote\Camera\CameraStreamConfiguration.cs" />
+    <Compile Include="Remote\Camera\CameraStreamToImageConverter.cs" />
+    <Compile Include="Remote\Udp\UdpClient.cs" />
     <Compile Include="Factories\CameraAcquisitionStrategyFactory.cs" />
     <Compile Include="FileSystem\FileSystemAcquisitionStrategy.cs" />
-    <Compile Include="Camera\IUdpClient.cs" />
-    <Compile Include="IImageAcquisitorStrategy.cs" />
+    <Compile Include="Remote\Udp\IUdpClient.cs" />
+    <Compile Include="IImageAcquisitionStrategy.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

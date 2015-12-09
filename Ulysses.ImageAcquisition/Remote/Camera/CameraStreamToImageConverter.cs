@@ -2,7 +2,7 @@ using System.Linq;
 using Ulysses.Core.ImageProcessing;
 using Ulysses.Core.Models;
 
-namespace Ulysses.ImageAcquisition.Camera
+namespace Ulysses.ImageAcquisition.Remote.Camera
 {
     internal sealed class CameraStreamToImageConverter
     {
@@ -31,8 +31,8 @@ namespace Ulysses.ImageAcquisition.Camera
 
             for (int x = 0, k = 0; x < imageHeight * imageWidth; x = x + 2, k = k + 3)
             {
-                    outputPixels[x] = (ushort)(receivedPixels[k] * 16 + receivedPixels[k + 1] / 16);
-                    outputPixels[x + 1] = (ushort)((15 & receivedPixels[k + 1]) * 256 + receivedPixels[k + 2]);
+                outputPixels[x] = (ushort)(receivedPixels[k] * 16 + receivedPixels[k + 1] / 16);
+                outputPixels[x + 1] = (ushort)((15 & receivedPixels[k + 1]) * 256 + receivedPixels[k + 2]);
             }
 
             return new Image(outputPixels, _imageModel);

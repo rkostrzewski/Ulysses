@@ -4,13 +4,14 @@ using NUnit.Framework;
 using Ulysses.Core.Exceptions;
 using Ulysses.Core.ImageProcessing;
 using Ulysses.Core.Models;
-using Ulysses.ImageAcquisition.Camera;
+using Ulysses.ImageAcquisition.Remote;
+using Ulysses.ImageAcquisition.Remote.Udp;
 using Ulysses.ImageAcquisition.Tests.Camera.TestData;
 
 namespace Ulysses.ImageAcquisition.Tests.Camera
 {
     [TestFixture]
-    public class CameraAcquisitionStrategyTests
+    public class CameraAcquisitionTests
     {
         [Test]
         public void ShouldReturnEmptyImageWhenNoPixelsWhereSent()
@@ -20,11 +21,11 @@ namespace Ulysses.ImageAcquisition.Tests.Camera
             var imageModel = new ImageModel(1024, 768, ImageBitDepth.Bpp8);
 
             udpClientMock.Setup(uc => uc.Receive()).Returns(Encoding.ASCII.GetBytes("START"));
-            var acquisitionStrategy = new CameraAcquisitionStrategy(imageModel, udpClientMock.Object);
+            var acquisition = new RemoteAcquisition(imageModel, udpClientMock.Object);
 
             // When
             Image actualImage;
-            acquisitionStrategy.TryToObtainImage(out actualImage);
+            acquisition.TryToObtainImage(out actualImage);
 
             // Then
             var expectedImage = new Image(imageModel);
@@ -40,11 +41,11 @@ namespace Ulysses.ImageAcquisition.Tests.Camera
             var imageModel = new ImageModel(1024, 768, ImageBitDepth.Bpp8);
             var udpClient = PrepareUdpClientMock(imageModel);
 
-            var acquisitionStrategy = new CameraAcquisitionStrategy(imageModel, udpClient);
+            var acquisition = new RemoteAcquisition(imageModel, udpClient);
 
             // When
             Image actualImage;
-            acquisitionStrategy.TryToObtainImage(out actualImage);
+            acquisition.TryToObtainImage(out actualImage);
 
             // Then
             var expectedImage = TestDataSource.GetExpectedDummyImage(imageModel);
@@ -60,11 +61,11 @@ namespace Ulysses.ImageAcquisition.Tests.Camera
 
             var udpClient = PrepareUdpClientMock(imageModel);
 
-            var acquisitionStrategy = new CameraAcquisitionStrategy(imageModel, udpClient);
+            var acquisition = new RemoteAcquisition(imageModel, udpClient);
 
             // When
             Image actualImage;
-            acquisitionStrategy.TryToObtainImage(out actualImage);
+            acquisition.TryToObtainImage(out actualImage);
 
             // Then
             var expectedImage = TestDataSource.GetExpectedDummyImage(imageModel);
@@ -80,12 +81,12 @@ namespace Ulysses.ImageAcquisition.Tests.Camera
 
             var udpClient = PrepareUdpClientMock(imageModel);
 
-            var acquisitionStrategy = new CameraAcquisitionStrategy(imageModel, udpClient);
+            var acquisition = new RemoteAcquisition(imageModel, udpClient);
 
             // When
             // Then
             Image actualImage;
-            acquisitionStrategy.TryToObtainImage(out actualImage);
+            acquisition.TryToObtainImage(out actualImage);
         }
 
         [Test, ExpectedException(typeof (ImageModelMismatchException))]
@@ -97,12 +98,12 @@ namespace Ulysses.ImageAcquisition.Tests.Camera
 
             var udpClient = PrepareUdpClientMock(actualImageModel);
 
-            var acquisitionStrategy = new CameraAcquisitionStrategy(requestedImageModel, udpClient);
+            var acquisition = new RemoteAcquisition(requestedImageModel, udpClient);
 
             // When
             // Then
             Image actualImage;
-            acquisitionStrategy.TryToObtainImage(out actualImage);
+            acquisition.TryToObtainImage(out actualImage);
         }
 
         [Test]
@@ -119,11 +120,11 @@ namespace Ulysses.ImageAcquisition.Tests.Camera
                 return packetSimulationEnumerator.Current;
             });
 
-            var acquisitionStrategy = new CameraAcquisitionStrategy(imageModel, udpClientMock.Object);
+            var acquisition = new RemoteAcquisition(imageModel, udpClientMock.Object);
 
             // When
             Image actualImage;
-            acquisitionStrategy.TryToObtainImage(out actualImage);
+            acquisition.TryToObtainImage(out actualImage);
 
             // Then
             var expectedImage = TestDataSource.GetExpectedDummyImage(imageModel);

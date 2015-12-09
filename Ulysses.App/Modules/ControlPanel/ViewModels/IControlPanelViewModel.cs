@@ -4,6 +4,6 @@ namespace Ulysses.App.Modules.ControlPanel.ViewModels
 {
     public interface IControlPanelViewModel
     {
-        IChangeContentRegionCommand ChangeContentRegionCommand { get; }
+        IChangeContentRegionCommand ChangeContentRegionViewCommand { get; }
     }
 }

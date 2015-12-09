@@ -11,7 +11,7 @@ using Ulysses.ImageAcquisition.Tests.Camera.TestData;
 namespace Ulysses.ImageAcquisition.Tests.IntegrationTests
 {
     [TestFixture]
-    public class CameraAcquisitionStrategyIntegrationTests
+    public class CameraAcquisitionIntegrationTests
     {
         [Test]
         [ExpectedException(typeof (SocketException))]
@@ -20,12 +20,12 @@ namespace Ulysses.ImageAcquisition.Tests.IntegrationTests
             // Given
             var imageModel = new ImageModel(1024, 768, ImageBitDepth.Bpp8);
 
-            var cameraAcquisitionStrategy = CameraAcquisitionStrategyFactory.CreateInstance(new IPEndPoint(IPAddress.Any, 0), 100, imageModel);
+            var cameraAcquisition = CameraAcquisitionFactory.CreateInstance(new IPEndPoint(IPAddress.Any, 0), 100, imageModel);
             Image image;
 
             // When
             // Then
-            cameraAcquisitionStrategy.TryToObtainImage(out image);
+            cameraAcquisition.TryToObtainImage(out image);
         }
 
         [Test]
@@ -36,7 +36,7 @@ namespace Ulysses.ImageAcquisition.Tests.IntegrationTests
             var udpSender = new UdpClient();
             var imageModel = new ImageModel(1024, 768, ImageBitDepth.Bpp8);
 
-            var cameraAcquisitionStrategy = CameraAcquisitionStrategyFactory.CreateInstance(ipEndpoint, 10000, imageModel);
+            var cameraAcquisition = CameraAcquisitionFactory.CreateInstance(ipEndpoint, 10000, imageModel);
 
             Image image;
             // When
@@ -48,7 +48,7 @@ namespace Ulysses.ImageAcquisition.Tests.IntegrationTests
                 }
             });
 
-            cameraAcquisitionStrategy.TryToObtainImage(out image);
+            cameraAcquisition.TryToObtainImage(out image);
             udpSender.Close();
             // Then
 
@@ -64,7 +64,7 @@ namespace Ulysses.ImageAcquisition.Tests.IntegrationTests
             var udpSender = new UdpClient();
             var imageModel = new ImageModel(1024, 768, ImageBitDepth.Bpp8);
             
-            var cameraAcquisitionStrategy = CameraAcquisitionStrategyFactory.CreateInstance(ipEndpoint, 10000, imageModel);
+            var cameraAcquisition = CameraAcquisitionFactory.CreateInstance(ipEndpoint, 10000, imageModel);
 
             Image image;
             // When
@@ -79,7 +79,7 @@ namespace Ulysses.ImageAcquisition.Tests.IntegrationTests
                 }
             });
 
-            cameraAcquisitionStrategy.TryToObtainImage(out image);
+            cameraAcquisition.TryToObtainImage(out image);
             udpSender.Close();
 
             // Then

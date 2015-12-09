@@ -2,23 +2,20 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Ulysses.Core.Models;
+using Ulysses.ImageAcquisition.Remote.Camera;
+using Ulysses.ImageAcquisition.Remote.Udp;
 
-namespace Ulysses.ImageAcquisition.Camera
+namespace Ulysses.ImageAcquisition.Remote
 {
-    public class CameraAcquisitionStrategy : IImageAcquisitorStrategy
+    public class RemoteAcquisition : IImageAcquisition
     {
         private readonly ImageModel _imageModel;
         private readonly IUdpClient _udpClient;
 
-        public CameraAcquisitionStrategy(ImageModel imageModel, IUdpClient udpClient)
+        public RemoteAcquisition(ImageModel imageModel, IUdpClient udpClient)
         {
             _imageModel = imageModel;
             _udpClient = udpClient;
-        }
-
-        ~CameraAcquisitionStrategy()
-        {
-            _udpClient.Close();
         }
 
         public bool TryToObtainImage(out Image image)
@@ -35,6 +32,11 @@ namespace Ulysses.ImageAcquisition.Camera
                 image = ObtainImage();
                 return true;
             }
+        }
+
+        ~RemoteAcquisition()
+        {
+            _udpClient.Close();
         }
 
         private Image ObtainImage()

@@ -2,7 +2,7 @@ using Ulysses.Core.Models;
 
 namespace Ulysses.ImageAcquisition
 {
-    public interface IImageAcquisitorStrategy
+    public interface IImageAcquisition
     {
         bool TryToObtainImage(out Image image);
     }

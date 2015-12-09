@@ -2,7 +2,7 @@ using System;
 using Ulysses.Core.Exceptions;
 using Ulysses.Core.Models;
 
-namespace Ulysses.ImageAcquisition.Camera
+namespace Ulysses.ImageAcquisition.Remote.Camera
 {
     internal class CameraAcquisitionBuffer
     {

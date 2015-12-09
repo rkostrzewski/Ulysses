@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Imaging;
-using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
 using Ulysses.Core.Exceptions;
@@ -11,12 +10,12 @@ using Image = Ulysses.Core.Models.Image;
 
 namespace Ulysses.ImageAcquisition.FileSystem
 {
-    public class FileSystemAcquisitionStrategy : IImageAcquisitorStrategy
+    public class FileSystemAcquisition : IImageAcquisition
     {
         private readonly IEnumerator<string> _filesEnumerator;
         private readonly ImageModel _imageModel;
 
-        public FileSystemAcquisitionStrategy(ImageModel imageModel, IEnumerable<string> filePaths)
+        public FileSystemAcquisition(ImageModel imageModel, IEnumerable<string> filePaths)
         {
             _imageModel = imageModel;
             _filesEnumerator = filePaths.GetEnumerator();
@@ -30,7 +29,7 @@ namespace Ulysses.ImageAcquisition.FileSystem
                 return false;
             }
             var inputImage = new Bitmap(DrawingImage.FromFile(_filesEnumerator.Current));
-            
+
             if (inputImage.Width != _imageModel.Width || inputImage.Height != _imageModel.Height)
             {
                 throw new ImageModelMismatchException();
@@ -69,9 +68,9 @@ namespace Ulysses.ImageAcquisition.FileSystem
             var pixelCount = rgbaPixels.Count / 4;
             var convertedPixels = new byte[pixelCount];
 
-            return Enumerable
-                .Range(0, pixelCount)
-                .Select(i => ConvertRgbaPixelToGrayscale(rgbaPixels[i * 4], rgbaPixels[i * 4 + 1], rgbaPixels[i * 4 + 2], rgbaPixels[i * 4 + 3]));
+            return
+                Enumerable.Range(0, pixelCount)
+                          .Select(i => ConvertRgbaPixelToGrayscale(rgbaPixels[i * 4], rgbaPixels[i * 4 + 1], rgbaPixels[i * 4 + 2], rgbaPixels[i * 4 + 3]));
         }
 
         private static byte ConvertRgbaPixelToGrayscale(byte red, byte green, byte blue, byte alpha)

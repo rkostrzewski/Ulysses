@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using System.Net;
 using System.Net.Sockets;
 
-namespace Ulysses.ImageAcquisition.Camera
+namespace Ulysses.ImageAcquisition.Remote.Udp
 {
     internal sealed class UdpClient : System.Net.Sockets.UdpClient, IUdpClient
     {

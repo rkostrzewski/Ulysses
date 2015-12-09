@@ -1,4 +1,3 @@
-using System;
 using System.Threading;
 using System.Threading.Tasks;
 using Ulysses.Core;
@@ -8,21 +7,21 @@ using Ulysses.ProcessingEngine.Exceptions;
 
 namespace Ulysses.ProcessingEngine.ProcessingEngineStrategies
 {
-    public class SyncProcessingStrategy : IProcessingStrategy
+    public class SyncProcessingEngine : IProcessingEngine
     {
-        private readonly IImageAcquisitorStrategy _imageAcquisitor;
-        private readonly IImageProcessingChain _imageProcessingChain;
+        private readonly IImageAcquisition _imageAcquisition;
         private readonly ISetOutputImageCommand _imageOutputNotifier;
+        private readonly IImageProcessingChain _imageProcessingChain;
         private volatile CancellationTokenSource _cancellationTokenSource;
         private Task _task;
 
-        public SyncProcessingStrategy(IImageAcquisitorStrategy imageAcquisitor, IImageProcessingChain imageProcessingChain, ISetOutputImageCommand imageOutputNotifier)
+        public SyncProcessingEngine(IImageAcquisition imageAcquisition, IImageProcessingChain imageProcessingChain, ISetOutputImageCommand imageOutputNotifier)
         {
-            _imageAcquisitor = imageAcquisitor;
+            _imageAcquisition = imageAcquisition;
             _imageProcessingChain = imageProcessingChain;
             _imageOutputNotifier = imageOutputNotifier;
         }
-        
+
         public Task Start()
         {
             if (_task != null && !_task.IsCompleted)
@@ -33,6 +32,11 @@ namespace Ulysses.ProcessingEngine.ProcessingEngineStrategies
             _cancellationTokenSource = new CancellationTokenSource();
             _task = Task.Factory.StartNew(DoWork, _cancellationTokenSource.Token, TaskCreationOptions.LongRunning, TaskScheduler.Current);
             return _task;
+        }
+
+        public bool IsWorking()
+        {
+            return _task != null && !_task.IsCompleted;
         }
 
         public async Task Stop()
@@ -51,7 +55,7 @@ namespace Ulysses.ProcessingEngine.ProcessingEngineStrategies
             while (!_cancellationTokenSource.IsCancellationRequested)
             {
                 Image image;
-                if (!_imageAcquisitor.TryToObtainImage(out image))
+                if (!_imageAcquisition.TryToObtainImage(out image))
                 {
                     return;
                 }
@@ -62,7 +66,7 @@ namespace Ulysses.ProcessingEngine.ProcessingEngineStrategies
                 }
 
                 image = _imageProcessingChain.ProcessImage(image);
-                _imageOutputNotifier.SetOuputImageAsync(image);
+                _imageOutputNotifier.Execute(image);
             }
         }
     }

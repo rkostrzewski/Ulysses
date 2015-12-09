@@ -2,7 +2,7 @@ using Ulysses.Core.Exceptions;
 using Ulysses.Core.ImageProcessing;
 using Ulysses.Core.Models;
 
-namespace Ulysses.ImageAcquisition.Camera
+namespace Ulysses.ImageAcquisition.Remote.Camera
 {
     public sealed class CameraStreamConfiguration
     {

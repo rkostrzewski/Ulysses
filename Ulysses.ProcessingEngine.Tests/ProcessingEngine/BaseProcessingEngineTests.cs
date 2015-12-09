@@ -8,22 +8,22 @@ using Ulysses.ImageAcquisition;
 
 namespace Ulysses.ProcessingEngine.Tests.ProcessingEngine
 {
-    public class BaseProcessingEngineStrategyTests
+    public class BaseProcessingEngineTests
     {
-        protected int TimesImageAcquisitorCalled;
+        protected int TimesImageAcquisitionCalled;
         protected int TimesImageProcessingChainCalled;
         protected int TimesSetOutputImageCommandCalled;
 
-        protected Mock<IImageAcquisitorStrategy> ImageAcquisitor
+        protected Mock<IImageAcquisition> ImageAcquisition
         {
             get
             {
-                var imageAcquisitor = new Mock<IImageAcquisitorStrategy>();
+                var imageAcquisitionMock = new Mock<IImageAcquisition>();
                 Image image;
-                imageAcquisitor.Setup(ia => ia.TryToObtainImage(out image))
-                               .Callback(ImageAcquistiorMockWork)
+                imageAcquisitionMock.Setup(ia => ia.TryToObtainImage(out image))
+                               .Callback(ImageAcquisitionMockWork)
                                .Returns(true);
-                return imageAcquisitor;
+                return imageAcquisitionMock;
             }
         }
 
@@ -43,7 +43,7 @@ namespace Ulysses.ProcessingEngine.Tests.ProcessingEngine
         [TearDown]
         public void TestTearDown()
         {
-            TimesImageAcquisitorCalled = 0;
+            TimesImageAcquisitionCalled = 0;
             TimesImageProcessingChainCalled = 0;
             TimesSetOutputImageCommandCalled = 0;
         }
@@ -51,7 +51,7 @@ namespace Ulysses.ProcessingEngine.Tests.ProcessingEngine
         [SetUp]
         public void TestSetUp()
         {
-            TimesImageAcquisitorCalled = 0;
+            TimesImageAcquisitionCalled = 0;
             TimesImageProcessingChainCalled = 0;
             TimesSetOutputImageCommandCalled = 0;
         }
@@ -61,13 +61,13 @@ namespace Ulysses.ProcessingEngine.Tests.ProcessingEngine
             get
             {
                 var setOutputImageCommand = new Mock<ISetOutputImageCommand>();
-                setOutputImageCommand.Setup(ia => ia.SetOuputImageAsync(It.IsAny<Image>()))
+                setOutputImageCommand.Setup(ia => ia.Execute(It.IsAny<Image>()))
                                      .Callback(SetOutputImageCommandMockWork);
                 return setOutputImageCommand;
             }
         }
 
-        protected static async Task StartProcessingWaitForSpecifiedTimeAndWaitForEnd(IProcessingStrategy engine, int milliseconds)
+        protected static async Task StartProcessingWaitForSpecifiedTimeAndWaitForEnd(IProcessingEngine engine, int milliseconds)
         {
             var task = engine.Start();
             Thread.Sleep(milliseconds);
@@ -80,9 +80,9 @@ namespace Ulysses.ProcessingEngine.Tests.ProcessingEngine
             Thread.Sleep(1000);
         }
 
-        protected void ImageAcquistiorMockWork()
+        protected void ImageAcquisitionMockWork()
         {
-            TimesImageAcquisitorCalled++;
+            TimesImageAcquisitionCalled++;
             Thread.Sleep(500);
         }
 

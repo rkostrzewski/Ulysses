@@ -8,18 +8,18 @@ using Ulysses.ProcessingEngine.ProcessingEngineStrategies.Synchronization;
 
 namespace Ulysses.ProcessingEngine.ProcessingEngineStrategies
 {
-    public class AsyncProcessingStrategy : IProcessingStrategy
+    public class AsyncProcessingEngine : IProcessingEngine
     {
-        private readonly IImageAcquisitorStrategy _imageAcquisitor;
+        private readonly IImageAcquisition _imageAcquisition;
         private readonly IImageProcessingChain _imageProcessingChain;
         private readonly AsyncProcessingMediator _mediator;
         private readonly ISetOutputImageCommand _setOutputImageCommand;
         private volatile CancellationTokenSource _cancellationTokenSource;
         private Task _task;
 
-        public AsyncProcessingStrategy(IImageAcquisitorStrategy imageAcquisitor, IImageProcessingChain imageProcessingChain, ISetOutputImageCommand setOutputImageCommand)
+        public AsyncProcessingEngine(IImageAcquisition imageAcquisition, IImageProcessingChain imageProcessingChain, ISetOutputImageCommand setOutputImageCommand)
         {
-            _imageAcquisitor = imageAcquisitor;
+            _imageAcquisition = imageAcquisition;
             _imageProcessingChain = imageProcessingChain;
             _setOutputImageCommand = setOutputImageCommand;
             _mediator = new AsyncProcessingMediator();
@@ -56,6 +56,11 @@ namespace Ulysses.ProcessingEngine.ProcessingEngineStrategies
             await _task;
         }
 
+        public bool IsWorking()
+        {
+            return _task != null && !_task.IsCompleted;
+        }
+
         private void ProcessImageWork()
         {
             while (!_cancellationTokenSource.IsCancellationRequested)
@@ -80,7 +85,7 @@ namespace Ulysses.ProcessingEngine.ProcessingEngineStrategies
             while (!_cancellationTokenSource.IsCancellationRequested)
             {
                 Image image;
-                if (!_imageAcquisitor.TryToObtainImage(out image))
+                if (!_imageAcquisition.TryToObtainImage(out image))
                 {
                     break;
                 }
@@ -110,7 +115,7 @@ namespace Ulysses.ProcessingEngine.ProcessingEngineStrategies
             try
             {
                 var processedImage = _imageProcessingChain.ProcessImage(image);
-                _setOutputImageCommand.SetOuputImageAsync(processedImage);
+                _setOutputImageCommand.Execute(processedImage);
             }
             finally
             {

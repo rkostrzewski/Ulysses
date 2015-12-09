@@ -5,6 +5,6 @@ namespace Ulysses.ProcessingEngine
 {
     public interface ISetOutputImageCommand
     {
-        Task SetOuputImageAsync(Image image);
+        void Execute(Image image);
     }
 }

@@ -4,29 +4,32 @@ using Ulysses.App.Modules.Content;
 using Ulysses.App.Modules.Content.ImageDisplay.Views;
 using Ulysses.App.Modules.Content.ImageProcessingCustomization.Views;
 using Ulysses.App.Regions;
+using Ulysses.App.Utils;
 
 namespace Ulysses.App.Modules.ControlPanel.Commands
 {
-    public class ChangeContentRegionCommand : IChangeContentRegionCommand
+    public class ChangeContentRegionViewCommand : Command<ContentViews>, IChangeContentRegionCommand
     {
         private readonly IRegionManager _regionManager;
         private readonly string _contentRegionName = ApplicationRegions.ContentRegion.ToString();
 
-        public ChangeContentRegionCommand(IRegionManager regionManager)
+        public ChangeContentRegionViewCommand(IRegionManager regionManager)
         {
             _regionManager = regionManager;
         }
 
-        public bool CanExecute(object parameter)
+        public override event EventHandler CanExecuteChanged;
+
+        public override bool CanExecute(ContentViews parameter)
         {
-            return true;
+            return _regionManager.Regions.ContainsRegionWithName(_contentRegionName);
         }
 
-        public void Execute(object viewToChangeTo)
+        public override void Execute(ContentViews viewToChangeTo)
         {
             var region = _regionManager.Regions[_contentRegionName];
 
-            switch ((ContentViews)viewToChangeTo)
+            switch (viewToChangeTo)
             {
                 case ContentViews.ImageDisplay:
                     region.RequestNavigate(nameof(ImageDisplayView));
@@ -38,7 +41,5 @@ namespace Ulysses.App.Modules.ControlPanel.Commands
                     throw new ArgumentOutOfRangeException();
             }
         }
-
-        public event EventHandler CanExecuteChanged;
     }
 }

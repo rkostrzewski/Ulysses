@@ -90,7 +90,12 @@
     </Compile>
     <Compile Include="App_Start\ContainerBootstrapper.cs" />
     <Compile Include="Modules\Content\ContentViews.cs" />
+    <Compile Include="Modules\Content\ImageDisplay\Commands\StartImageProcessingCommand.cs" />
     <Compile Include="Modules\Content\ImageDisplay\ImageDisplayModule.cs" />
+    <Compile Include="Modules\Content\ImageDisplay\ViewModels\IImageDisplayViewModel.cs" />
+    <Compile Include="Modules\Content\ImageDisplay\ViewModels\ImageDisplayViewModel.cs" />
+    <Compile Include="Modules\Content\ImageDisplay\Commands\IStartImageProcessingCommand.cs" />
+    <Compile Include="Modules\Content\ImageDisplay\Commands\IStopImageProcessingCommand.cs" />
     <Compile Include="Modules\Content\ImageDisplay\Views\ImageDisplayView.xaml.cs">
       <DependentUpon>ImageDisplayView.xaml</DependentUpon>
     </Compile>
@@ -98,8 +103,10 @@
     <Compile Include="Modules\Content\ImageProcessingCustomization\Views\ImageProcessingCustomizationView.xaml.cs">
       <DependentUpon>ImageProcessingCustomizationView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Modules\ControlPanel\Commands\ChangeContentRegionCommand.cs" />
+    <Compile Include="Modules\ControlPanel\Commands\ChangeRegionViewCommand.cs" />
     <Compile Include="Modules\ControlPanel\Commands\IChangeContentRegionCommand.cs" />
+    <Compile Include="Utils\Command.cs" />
+    <Compile Include="Utils\ICommand.cs" />
     <Compile Include="Modules\ControlPanel\ControlPanelModule.cs" />
     <Compile Include="Modules\ControlPanel\ViewModels\ControlPanelViewModel.cs" />
     <Compile Include="Modules\ControlPanel\ViewModels\IControlPanelViewModel.cs" />
@@ -110,6 +117,8 @@
     <Compile Include="App_Start\Shell.xaml.cs">
       <DependentUpon>Shell.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Utils\INoParameterCommand.cs" />
+    <Compile Include="Utils\NoParameterCommand.cs" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\Bootstrapper.cs" />
@@ -159,8 +168,13 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Modules\Content\ImageDisplay\ViewModels\" />
     <Folder Include="Modules\Content\ImageProcessingCustomization\ViewModels\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Ulysses.ProcessingEngine\Ulysses.ProcessingEngine.csproj">
+      <Project>{c06cd4eb-f9ba-407f-8002-3f20aa6a7951}</Project>
+      <Name>Ulysses.ProcessingEngine</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

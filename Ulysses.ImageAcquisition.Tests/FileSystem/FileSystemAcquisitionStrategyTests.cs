@@ -9,19 +9,19 @@ using Ulysses.ImageAcquisition.Tests.FileSystem.TestData;
 namespace Ulysses.ImageAcquisition.Tests.FileSystem
 {
     [TestFixture]
-    public class FileSystemAcquisitionStrategyTests
+    public class FileSystemAcquisitionTests
     {
         [Test, ExpectedException(typeof (ImageModelMismatchException))]
         public void ShouldThrowExceptionWhenImageModelIsDifferentThanActual()
         {
             // Given
             var imageModel = new ImageModel(1024, 768, ImageBitDepth.Bpp8);
-            var imageAcquisitionStrategy = new FileSystemAcquisitionStrategy(imageModel, new[] { TestDataSource.Bpp1Black512X512ImagePath });
+            var imageAcquisition = new FileSystemAcquisition(imageModel, new[] { TestDataSource.Bpp1Black512X512ImagePath });
 
             // When
             // Then
             Image image;
-            imageAcquisitionStrategy.TryToObtainImage(out image);
+            imageAcquisition.TryToObtainImage(out image);
         }
 
         [Test]
@@ -29,11 +29,11 @@ namespace Ulysses.ImageAcquisition.Tests.FileSystem
         {
             // Given
             var imageModel = new ImageModel(1024, 768, ImageBitDepth.Bpp8);
-            var imageAcquisitionStrategy = new FileSystemAcquisitionStrategy(imageModel, new string[] { });
+            var imageAcquisition = new FileSystemAcquisition(imageModel, new string[] { });
 
             // When
             Image image;
-            var result = imageAcquisitionStrategy.TryToObtainImage(out image);
+            var result = imageAcquisition.TryToObtainImage(out image);
 
             // Then
             Assert.IsFalse(result);
@@ -50,11 +50,11 @@ namespace Ulysses.ImageAcquisition.Tests.FileSystem
         {
             // Given
             var imageModel = new ImageModel(imageSize, imageSize, ImageBitDepth.Bpp8);
-            var imageAcquisitionStrategy = new FileSystemAcquisitionStrategy(imageModel, new[] { imagePath });
+            var imageAcquisition = new FileSystemAcquisition(imageModel, new[] { imagePath });
 
             // When
             Image image;
-            imageAcquisitionStrategy.TryToObtainImage(out image);
+            imageAcquisition.TryToObtainImage(out image);
 
             // Then
             var expectedImagePixels = Enumerable.Range(0, imageModel.Width * imageModel.Height).Select(p => (Pixel)pixelValue);

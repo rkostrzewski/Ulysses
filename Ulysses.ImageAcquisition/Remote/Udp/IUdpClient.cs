@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace Ulysses.ImageAcquisition.Camera
+namespace Ulysses.ImageAcquisition.Remote.Udp
 {
     public interface IUdpClient
     {

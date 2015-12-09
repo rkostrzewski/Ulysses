@@ -2,10 +2,12 @@ using System.Threading.Tasks;
 
 namespace Ulysses.ProcessingEngine
 {
-    public interface IProcessingStrategy
+    public interface IProcessingEngine
     {
         Task Start();
 
         Task Stop();
+
+        bool IsWorking();
     }
 }
