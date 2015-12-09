@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Linq;
-using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using NUnit.Framework;
 using Ulysses.App.Modules.Content.ImageDisplay.Commands;
@@ -75,9 +74,9 @@ namespace Ulysses.App.Tests.Modules.Content.ImageDisplay.Commands
             var outputImagePixels = new byte[(int)(outputImage.Width * outputImage.Height)];
             outputImage.CopyPixels(outputImagePixels, (int)outputImage.Width, 0);
 
-            return Math.Abs(outputImage.Width - inputImage.ImageModel.Width) < float.Epsilon 
-                && Math.Abs(outputImage.Height - inputImage.ImageModel.Height) < float.Epsilon
-                && outputImagePixels.SequenceEqual(inputImage.ImagePixels.Select(p => (byte)p));
+            return Math.Abs(outputImage.Width - inputImage.ImageModel.Width) < float.Epsilon &&
+                   Math.Abs(outputImage.Height - inputImage.ImageModel.Height) < float.Epsilon &&
+                   outputImagePixels.SequenceEqual(inputImage.ImagePixels.Select(p => (byte)p));
         }
     }
 }

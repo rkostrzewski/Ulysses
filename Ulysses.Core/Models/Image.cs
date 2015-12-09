@@ -7,14 +7,12 @@ namespace Ulysses.Core.Models
 {
     public class Image : ImageContainer, IEquatable<Image>
     {
-        public Image(IEnumerable<byte> imagePixels, ImageModel imageModel)
-            : base(imageModel)
+        public Image(IEnumerable<byte> imagePixels, ImageModel imageModel) : base(imageModel)
         {
             ImagePixels = new Pixels(imagePixels, imageModel);
         }
 
-        public Image(IEnumerable<ushort> imagePixels, ImageModel imageModel)
-            : base(imageModel)
+        public Image(IEnumerable<ushort> imagePixels, ImageModel imageModel) : base(imageModel)
         {
             ImagePixels = new Pixels(imagePixels, imageModel);
         }
@@ -26,9 +24,9 @@ namespace Ulysses.Core.Models
 
         public Image(ImageModel imageModel) : base(imageModel)
         {
-            ImagePixels = new Pixels(imageModel.Width,imageModel.Height);
+            ImagePixels = new Pixels(imageModel.Width, imageModel.Height);
         }
-        
+
         public Pixels ImagePixels { get; }
 
         public bool Equals(Image other)
@@ -45,7 +43,7 @@ namespace Ulysses.Core.Models
 
             return ImageModel == other.ImageModel && ImagePixels.SequenceEqual(other.ImagePixels);
         }
-        
+
         public override bool Equals(object obj)
         {
             if (ReferenceEquals(null, obj))
