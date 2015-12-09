@@ -6,8 +6,8 @@ namespace Ulysses.UI.WindowObjects.Content
 {
     public class ImageProcessingCustomizationScreenObject : IScreenObject
     {
-        private readonly Window _window;
         private readonly TextBlock _text;
+        private readonly Window _window;
 
         public ImageProcessingCustomizationScreenObject()
         {

@@ -19,6 +19,11 @@ namespace Ulysses.UI.WindowObjects.ControlPanel
             _imageProcessingCustomization = new Button(_window, By.Name("Processing Customization"));
         }
 
+        public bool IsDisplayed()
+        {
+            return _window.Exists && _imageDisplay.Exists && _imageProcessingCustomization.Exists;
+        }
+
         public IScreenObject NavigateTo(ContentRegions contentRegions)
         {
             switch (contentRegions)
@@ -32,11 +37,6 @@ namespace Ulysses.UI.WindowObjects.ControlPanel
                 default:
                     throw new ArgumentOutOfRangeException(nameof(contentRegions), contentRegions, null);
             }
-        }
-
-        public bool IsDisplayed()
-        {
-            return _window.Exists && _imageDisplay.Exists && _imageProcessingCustomization.Exists;
         }
     }
 }

@@ -1,9 +1,8 @@
-﻿using System.Threading;
-using System.Threading.Tasks;
+﻿using System;
 using Moq;
 using NUnit.Framework;
 using Ulysses.App.Modules.Content.ImageDisplay.Commands;
-using Ulysses.ProcessingEngine;
+using Ulysses.ProcessingEngine.ProcessingEngine;
 
 namespace Ulysses.App.Tests.Modules.Content.ImageDisplay.Commands
 {
@@ -29,20 +28,24 @@ namespace Ulysses.App.Tests.Modules.Content.ImageDisplay.Commands
         {
             // Given
             var processingEngineMock = new Mock<IProcessingEngine>();
-            Task task = null;
-            processingEngineMock.Setup(s => s.Start()).Returns(() =>
-            {
-                task = Task.Run(() => Thread.Sleep(int.MaxValue));
-                return task;
-            });
 
-            processingEngineMock.Setup(s => s.IsWorking()).Returns(() => task != null && !task.IsCompleted);
+            processingEngineMock.Setup(s => s.IsWorking()).Returns(true);
 
             var command = new StartImageProcessingCommand(processingEngineMock.Object);
-            
-            // When
-            command.Execute();
 
+            // When         
+            // Then
+            Assert.IsFalse(command.CanExecute());
+            Assert.Throws<InvalidOperationException>(command.Execute);
+        }
+
+        [Test]
+        public void ShouldNotAllowToExecuteIfProcessingEngineIsNull()
+        {
+            // Given
+            var command = new StartImageProcessingCommand(null);
+
+            // When
             // Then
             Assert.IsFalse(command.CanExecute());
         }

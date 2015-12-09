@@ -2,7 +2,6 @@ using System.Text;
 using Moq;
 using NUnit.Framework;
 using Ulysses.Core.Exceptions;
-using Ulysses.Core.ImageProcessing;
 using Ulysses.Core.Models;
 using Ulysses.ImageAcquisition.Remote;
 using Ulysses.ImageAcquisition.Remote.Udp;

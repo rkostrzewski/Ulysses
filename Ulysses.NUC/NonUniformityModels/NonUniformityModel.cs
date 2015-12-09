@@ -1,5 +1,4 @@
-﻿using Ulysses.Core.ImageProcessing;
-using Ulysses.Core.Models;
+﻿using Ulysses.Core.Models;
 
 namespace Ulysses.NUC.NonUniformityModels
 {

@@ -1,4 +1,4 @@
-namespace Ulysses.Core.ImageProcessing
+namespace Ulysses.Core.Models
 {
     public struct Pixel
     {
@@ -34,6 +34,11 @@ namespace Ulysses.Core.ImageProcessing
             return p._value;
         }
 
+        public static implicit operator byte(Pixel p)
+        {
+            return p._value > byte.MaxValue ? byte.MaxValue : (byte)p._value;
+        }
+
         public static implicit operator Pixel(ushort value)
         {
             return new Pixel(value);
@@ -47,7 +52,7 @@ namespace Ulysses.Core.ImageProcessing
         public static Pixel operator +(Pixel p1, Pixel p2)
         {
             var sum = p1._value + p2._value;
-            return new Pixel((ushort)(sum));
+            return new Pixel((ushort)sum);
         }
 
         public static Pixel operator -(Pixel p1, Pixel p2)
@@ -59,13 +64,13 @@ namespace Ulysses.Core.ImageProcessing
         public static Pixel operator *(Pixel p1, Pixel p2)
         {
             var product = p1._value * p2._value;
-            return new Pixel((ushort)(product));
+            return new Pixel((ushort)product);
         }
 
         public static Pixel operator /(Pixel p1, Pixel p2)
         {
             var division = p1._value / p2._value;
-            return new Pixel((ushort)(division));
+            return new Pixel((ushort)division);
         }
 
         public static explicit operator bool(Pixel p)

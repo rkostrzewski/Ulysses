@@ -5,14 +5,16 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:content="clr-namespace:Ulysses.App.Modules.Content"
              mc:Ignorable="d"
-             d:DesignHeight="300" d:DesignWidth="150">
+             d:DesignHeight="300" d:DesignWidth="150"
+             d:DataContext="{d:DesignInstance local:ControlPanelViewModel}"
+             xmlns:local="clr-namespace:Ulysses.App.Modules.ControlPanel.ViewModels">
     <Grid Background="#FF8FB4BF">
         <StackPanel>
-            <Button Command="{Binding ChangeContentRegionCommand }" 
+            <Button Command="{Binding ChangeContentRegionViewCommand }"
                     CommandParameter="{ x:Static content:ContentViews.ImageDisplay  }"
                     Margin="0,10,0,0" Height="30"
                     VerticalAlignment="Top" Content="Image Display" />
-            <Button Command="{Binding ChangeContentRegionCommand }" 
+            <Button Command="{Binding ChangeContentRegionViewCommand }"
                     CommandParameter="{ x:Static content:ContentViews.ImageProcessingCustomization  }"
                     Margin="0,10,0,0" Height="30"
                     VerticalAlignment="Top" Content="Processing Customization" />

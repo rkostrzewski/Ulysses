@@ -1,4 +1,4 @@
-namespace Ulysses.ProcessingEngine.ProcessingEngineStrategies.Synchronization
+namespace Ulysses.ProcessingEngine.ProcessingEngine.Synchronization
 {
     internal enum ImageProcessingStatus
     {

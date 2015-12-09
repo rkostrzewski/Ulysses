@@ -1,5 +1,4 @@
 ﻿using System;
-using Ulysses.Core.ImageProcessing;
 
 namespace Ulysses.Core.Models
 {

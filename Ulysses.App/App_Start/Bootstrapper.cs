@@ -25,7 +25,7 @@ namespace Ulysses.App
         protected override void InitializeModules()
         {
             base.InitializeModules();
-            Application.Current.MainWindow = (Shell)this.Shell;
+            Application.Current.MainWindow = (Shell)Shell;
             Application.Current.MainWindow.Show();
         }
 
@@ -35,9 +35,9 @@ namespace Ulysses.App
 
             var moduleCatalog = (ModuleCatalog)ModuleCatalog;
 
-            moduleCatalog.AddModule(typeof(ImageDisplayModule));
+            moduleCatalog.AddModule(typeof (ImageDisplayModule));
             moduleCatalog.AddModule(typeof (ImageProcessingCustomizationModule));
-            moduleCatalog.AddModule(typeof(ControlPanelModule), nameof(ImageDisplayModule), nameof(ImageProcessingCustomizationModule));
+            moduleCatalog.AddModule(typeof (ControlPanelModule), nameof(ImageDisplayModule), nameof(ImageProcessingCustomizationModule));
         }
     }
 }

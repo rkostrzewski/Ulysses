@@ -1,12 +1,13 @@
 using System.Threading;
 using System.Threading.Tasks;
-using Ulysses.Core;
 using Ulysses.Core.Models;
 using Ulysses.ImageAcquisition;
 using Ulysses.ProcessingEngine.Exceptions;
-using Ulysses.ProcessingEngine.ProcessingEngineStrategies.Synchronization;
+using Ulysses.ProcessingEngine.ImageProcessingChain;
+using Ulysses.ProcessingEngine.Output;
+using Ulysses.ProcessingEngine.ProcessingEngine.Synchronization;
 
-namespace Ulysses.ProcessingEngine.ProcessingEngineStrategies
+namespace Ulysses.ProcessingEngine.ProcessingEngine
 {
     public class AsyncProcessingEngine : IProcessingEngine
     {

@@ -1,5 +1,4 @@
-﻿using System;
-using Ulysses.Core;
+﻿using Ulysses.Core;
 using Ulysses.NUC.Algorithms;
 using Ulysses.NUC.Exceptions;
 using Ulysses.NUC.Factories.Templates;

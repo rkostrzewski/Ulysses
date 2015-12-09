@@ -1,6 +1,5 @@
 ﻿using Prism.Modularity;
 using Prism.Regions;
-using Ulysses.App.Modules.Content.ImageDisplay.Views;
 using Ulysses.App.Modules.ControlPanel.Views;
 using Ulysses.App.Regions;
 
@@ -17,7 +16,7 @@ namespace Ulysses.App.Modules.ControlPanel
 
         public void Initialize()
         {
-            _regionViewRegistry.RegisterViewWithRegion(ApplicationRegions.ControlPanelRegion.ToString(), typeof(ControlPanelView));
+            _regionViewRegistry.RegisterViewWithRegion(ApplicationRegions.ControlPanelRegion.ToString(), typeof (ControlPanelView));
         }
     }
 }

@@ -1,6 +1,6 @@
 using Ulysses.Core.Models;
 
-namespace Ulysses.Core
+namespace Ulysses.ProcessingEngine.ImageProcessingChain
 {
     public interface IImageProcessingChain
     {

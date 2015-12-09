@@ -3,7 +3,7 @@ using NUnit.Framework;
 using Ulysses.Core.Models;
 using Ulysses.ImageAcquisition;
 using Ulysses.ProcessingEngine.Exceptions;
-using Ulysses.ProcessingEngine.ProcessingEngineStrategies;
+using Ulysses.ProcessingEngine.ProcessingEngine;
 using Ulysses.Tests.Core;
 
 [assembly: RequiresMTA]
@@ -17,9 +17,7 @@ namespace Ulysses.ProcessingEngine.Tests.ProcessingEngine
         public async void ShouldSetOutputImageAfterProcessing()
         {
             // Given
-            var engine = new AsyncProcessingEngine(ImageAcquisition.Object,
-                                                     ImageProcessingChain.Object,
-                                                     SetOutputImageCommand.Object);
+            var engine = new AsyncProcessingEngine(ImageAcquisition.Object, ImageProcessingChain.Object, SetOutputImageCommand.Object);
 
             // When
             await StartProcessingWaitForSpecifiedTimeAndWaitForEnd(engine, 1750);
@@ -33,9 +31,7 @@ namespace Ulysses.ProcessingEngine.Tests.ProcessingEngine
         public async void ShouldNotProcessImageBeforeAcquiringIt()
         {
             // Given
-            var engine = new AsyncProcessingEngine(ImageAcquisition.Object,
-                                                     ImageProcessingChain.Object,
-                                                     SetOutputImageCommand.Object);
+            var engine = new AsyncProcessingEngine(ImageAcquisition.Object, ImageProcessingChain.Object, SetOutputImageCommand.Object);
 
             // When
             await StartProcessingWaitForSpecifiedTimeAndWaitForEnd(engine, 400);
@@ -49,9 +45,7 @@ namespace Ulysses.ProcessingEngine.Tests.ProcessingEngine
         public async void ShouldNotWaitWithAcquiringNextImageUntilCurrentIsProcessed()
         {
             // Given
-            var engine = new AsyncProcessingEngine(ImageAcquisition.Object,
-                                                     ImageProcessingChain.Object,
-                                                     SetOutputImageCommand.Object);
+            var engine = new AsyncProcessingEngine(ImageAcquisition.Object, ImageProcessingChain.Object, SetOutputImageCommand.Object);
 
             // When
             await StartProcessingWaitForSpecifiedTimeAndWaitForEnd(engine, 1400);
@@ -64,9 +58,7 @@ namespace Ulysses.ProcessingEngine.Tests.ProcessingEngine
         public async void ShouldProcessNextImageAfterCurrentIsProcessed()
         {
             // Given
-            var engine = new AsyncProcessingEngine(ImageAcquisition.Object,
-                                                     ImageProcessingChain.Object,
-                                                     SetOutputImageCommand.Object);
+            var engine = new AsyncProcessingEngine(ImageAcquisition.Object, ImageProcessingChain.Object, SetOutputImageCommand.Object);
 
             // When
             await StartProcessingWaitForSpecifiedTimeAndWaitForEnd(engine, 2400);
@@ -81,18 +73,14 @@ namespace Ulysses.ProcessingEngine.Tests.ProcessingEngine
             // Given
             var imageAcquisition = new Mock<IImageAcquisition>();
             Image image;
-            imageAcquisition.Setup(ia => ia.TryToObtainImage(out image))
-                           .Callback(ImageAcquisitionMockWork)
-                           .ReturnsInOrder(true, false);
+            imageAcquisition.Setup(ia => ia.TryToObtainImage(out image)).Callback(ImageAcquisitionMockWork).ReturnsInOrder(true, false);
 
 
-            var engine = new AsyncProcessingEngine(imageAcquisition.Object,
-                                                     ImageProcessingChain.Object,
-                                                     SetOutputImageCommand.Object);
+            var engine = new AsyncProcessingEngine(imageAcquisition.Object, ImageProcessingChain.Object, SetOutputImageCommand.Object);
 
             // When
             await StartProcessingWaitForSpecifiedTimeAndWaitForEnd(engine, 2000);
-            
+
             // Then
             Assert.That(1 >= TimesImageProcessingChainCalled);
             Assert.AreEqual(1, TimesSetOutputImageCommandCalled);
@@ -104,14 +92,10 @@ namespace Ulysses.ProcessingEngine.Tests.ProcessingEngine
             // Given
             var imageAcquisition = new Mock<IImageAcquisition>();
             Image image;
-            imageAcquisition.Setup(ia => ia.TryToObtainImage(out image))
-                           .Callback(ImageAcquisitionMockWork)
-                           .ReturnsInOrder(true, false);
+            imageAcquisition.Setup(ia => ia.TryToObtainImage(out image)).Callback(ImageAcquisitionMockWork).ReturnsInOrder(true, false);
 
 
-            var engine = new AsyncProcessingEngine(imageAcquisition.Object,
-                                                     ImageProcessingChain.Object,
-                                                     SetOutputImageCommand.Object);
+            var engine = new AsyncProcessingEngine(imageAcquisition.Object, ImageProcessingChain.Object, SetOutputImageCommand.Object);
 
             // When
             // Then
@@ -124,14 +108,10 @@ namespace Ulysses.ProcessingEngine.Tests.ProcessingEngine
             // Given
             var imageAcquisition = new Mock<IImageAcquisition>();
             Image image;
-            imageAcquisition.Setup(ia => ia.TryToObtainImage(out image))
-                           .Callback(ImageAcquisitionMockWork)
-                           .ReturnsInOrder(true, false);
+            imageAcquisition.Setup(ia => ia.TryToObtainImage(out image)).Callback(ImageAcquisitionMockWork).ReturnsInOrder(true, false);
 
 
-            var engine = new AsyncProcessingEngine(imageAcquisition.Object,
-                                                     ImageProcessingChain.Object,
-                                                     SetOutputImageCommand.Object);
+            var engine = new AsyncProcessingEngine(imageAcquisition.Object, ImageProcessingChain.Object, SetOutputImageCommand.Object);
 
             // When
             var task = engine.Start();
@@ -147,14 +127,10 @@ namespace Ulysses.ProcessingEngine.Tests.ProcessingEngine
             // Given
             var imageAcquisition = new Mock<IImageAcquisition>();
             Image image;
-            imageAcquisition.Setup(ia => ia.TryToObtainImage(out image))
-                           .Callback(ImageAcquisitionMockWork)
-                           .Returns(true);
+            imageAcquisition.Setup(ia => ia.TryToObtainImage(out image)).Callback(ImageAcquisitionMockWork).Returns(true);
 
 
-            var engine = new AsyncProcessingEngine(imageAcquisition.Object,
-                                                     ImageProcessingChain.Object,
-                                                     SetOutputImageCommand.Object);
+            var engine = new AsyncProcessingEngine(imageAcquisition.Object, ImageProcessingChain.Object, SetOutputImageCommand.Object);
 
             // When
             var task = engine.Start();
@@ -170,14 +146,10 @@ namespace Ulysses.ProcessingEngine.Tests.ProcessingEngine
             // Given
             var imageAcquisition = new Mock<IImageAcquisition>();
             Image image;
-            imageAcquisition.Setup(ia => ia.TryToObtainImage(out image))
-                           .Callback(ImageAcquisitionMockWork)
-                           .ReturnsInOrder(true, false);
+            imageAcquisition.Setup(ia => ia.TryToObtainImage(out image)).Callback(ImageAcquisitionMockWork).ReturnsInOrder(true, false);
 
 
-            var engine = new AsyncProcessingEngine(imageAcquisition.Object,
-                                                     ImageProcessingChain.Object,
-                                                     SetOutputImageCommand.Object);
+            var engine = new AsyncProcessingEngine(imageAcquisition.Object, ImageProcessingChain.Object, SetOutputImageCommand.Object);
 
             // When
             await engine.Start();

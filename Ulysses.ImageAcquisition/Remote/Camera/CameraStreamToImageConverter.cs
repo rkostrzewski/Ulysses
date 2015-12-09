@@ -1,5 +1,4 @@
 using System.Linq;
-using Ulysses.Core.ImageProcessing;
 using Ulysses.Core.Models;
 
 namespace Ulysses.ImageAcquisition.Remote.Camera

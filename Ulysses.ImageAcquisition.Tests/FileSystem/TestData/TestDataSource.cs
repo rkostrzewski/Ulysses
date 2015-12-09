@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-namespace Ulysses.ImageAcquisition.Tests.FileSystem.TestData
+﻿namespace Ulysses.ImageAcquisition.Tests.FileSystem.TestData
 {
     public static class TestDataSource
     {

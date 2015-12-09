@@ -8,12 +8,15 @@
         Title="Shell" Height="520" Width="740">
     <Grid>
         <DockPanel>
-            <StackPanel Name="ControlPanelRegion" Orientation="Vertical" DockPanel.Dock="Left" 
-                          MinWidth="150" VerticalAlignment="Stretch" HorizontalAlignment="Left" CanHorizontallyScroll="True" ScrollViewer.VerticalScrollBarVisibility="Hidden" ScrollViewer.HorizontalScrollBarVisibility="Hidden" Background="Black">
-                <ContentControl prism:RegionManager.RegionName="ControlPanelRegion"></ContentControl>
+            <StackPanel Name="ControlPanelRegion" Orientation="Vertical" DockPanel.Dock="Left"
+                        MinWidth="150" VerticalAlignment="Stretch" HorizontalAlignment="Left"
+                        CanHorizontallyScroll="True" ScrollViewer.VerticalScrollBarVisibility="Hidden"
+                        ScrollViewer.HorizontalScrollBarVisibility="Hidden" Background="Black">
+                <ContentControl prism:RegionManager.RegionName="ControlPanelRegion" />
             </StackPanel>
-            <StackPanel Name="ContentRegion" DockPanel.Dock="Right" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="#FF1D642D">
-                <ContentControl prism:RegionManager.RegionName="ContentRegion" ></ContentControl>
+            <StackPanel Name="ContentRegion" DockPanel.Dock="Right" HorizontalAlignment="Stretch"
+                        VerticalAlignment="Stretch" Background="#FF1D642D">
+                <ContentControl prism:RegionManager.RegionName="ContentRegion" />
             </StackPanel>
         </DockPanel>
     </Grid>

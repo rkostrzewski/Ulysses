@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Ulysses.Core.ImageProcessing;
 using Ulysses.Core.Models;
 using Ulysses.ImageAcquisition.Remote.Camera;
 

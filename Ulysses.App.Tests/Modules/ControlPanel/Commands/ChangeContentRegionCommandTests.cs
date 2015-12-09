@@ -21,10 +21,7 @@ namespace Ulysses.App.Tests.Modules.ControlPanel.Commands
             // Given
             var regionMock = new Mock<IRegion>();
             regionMock.SetupGet(r => r.Name).Returns(ApplicationRegions.ContentRegion.ToString());
-            var regionCollection = new TestRegionCollection()
-            {
-                regionMock.Object
-            };
+            var regionCollection = new TestRegionCollection { regionMock.Object };
 
             var regionManagerMock = new Mock<IRegionManager>();
             regionManagerMock.SetupGet(r => r.Regions).Returns(regionCollection);
@@ -46,10 +43,7 @@ namespace Ulysses.App.Tests.Modules.ControlPanel.Commands
             // Given
             var regionMock = new Mock<IRegion>();
             regionMock.SetupGet(r => r.Name).Returns(ApplicationRegions.ContentRegion.ToString());
-            var regionCollection = new TestRegionCollection()
-            {
-                regionMock.Object
-            };
+            var regionCollection = new TestRegionCollection { regionMock.Object };
 
             var regionManagerMock = new Mock<IRegionManager>();
             regionManagerMock.SetupGet(r => r.Regions).Returns(regionCollection);
@@ -67,10 +61,7 @@ namespace Ulysses.App.Tests.Modules.ControlPanel.Commands
             // Given
             var regionMock = new Mock<IRegion>();
             regionMock.SetupGet(r => r.Name).Returns(ApplicationRegions.ContentRegion.ToString());
-            var regionCollection = new TestRegionCollection()
-            {
-                regionMock.Object
-            };
+            var regionCollection = new TestRegionCollection { regionMock.Object };
 
             var regionManagerMock = new Mock<IRegionManager>();
             regionManagerMock.SetupGet(r => r.Regions).Returns(regionCollection);
@@ -90,10 +81,7 @@ namespace Ulysses.App.Tests.Modules.ControlPanel.Commands
             // Given
             var regionMock = new Mock<IRegion>();
             regionMock.SetupGet(r => r.Name).Returns(ApplicationRegions.ControlPanelRegion.ToString());
-            var regionCollection = new TestRegionCollection()
-            {
-                regionMock.Object
-            };
+            var regionCollection = new TestRegionCollection { regionMock.Object };
 
             var regionManagerMock = new Mock<IRegionManager>();
             regionManagerMock.SetupGet(r => r.Regions).Returns(regionCollection);
@@ -101,10 +89,9 @@ namespace Ulysses.App.Tests.Modules.ControlPanel.Commands
             IChangeContentRegionCommand command = new ChangeContentRegionViewCommand(regionManagerMock.Object);
 
             // When
-            var canExecute = command.CanExecute(ContentViews.ImageDisplay);
-
             // Then
-            Assert.IsFalse(canExecute);
+            Assert.IsFalse(command.CanExecute(ContentViews.ImageDisplay));
+            Assert.Throws<InvalidOperationException>(() => command.Execute(ContentViews.ImageDisplay));
         }
     }
 }

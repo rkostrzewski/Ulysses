@@ -43,14 +43,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Remote\Camera\CameraAcquisitionBuffer.cs" />
-    <Compile Include="Remote\RemoteAcquisitionStrategy.cs" />
+    <Compile Include="Remote\RemoteAcquisition.cs" />
     <Compile Include="Remote\Camera\CameraStreamConfiguration.cs" />
     <Compile Include="Remote\Camera\CameraStreamToImageConverter.cs" />
     <Compile Include="Remote\Udp\UdpClient.cs" />
     <Compile Include="Factories\CameraAcquisitionStrategyFactory.cs" />
-    <Compile Include="FileSystem\FileSystemAcquisitionStrategy.cs" />
+    <Compile Include="FileSystem\FileSystemAcquisition.cs" />
     <Compile Include="Remote\Udp\IUdpClient.cs" />
-    <Compile Include="IImageAcquisitionStrategy.cs" />
+    <Compile Include="IImageAcquisition.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

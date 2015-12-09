@@ -10,15 +10,13 @@ namespace Ulysses.App.Modules.ControlPanel.Commands
 {
     public class ChangeContentRegionViewCommand : Command<ContentViews>, IChangeContentRegionCommand
     {
-        private readonly IRegionManager _regionManager;
         private readonly string _contentRegionName = ApplicationRegions.ContentRegion.ToString();
+        private readonly IRegionManager _regionManager;
 
         public ChangeContentRegionViewCommand(IRegionManager regionManager)
         {
             _regionManager = regionManager;
         }
-
-        public override event EventHandler CanExecuteChanged;
 
         public override bool CanExecute(ContentViews parameter)
         {
@@ -27,6 +25,11 @@ namespace Ulysses.App.Modules.ControlPanel.Commands
 
         public override void Execute(ContentViews viewToChangeTo)
         {
+            if (!CanExecute(viewToChangeTo))
+            {
+                throw new InvalidOperationException();
+            }
+
             var region = _regionManager.Regions[_contentRegionName];
 
             switch (viewToChangeTo)
@@ -41,5 +44,7 @@ namespace Ulysses.App.Modules.ControlPanel.Commands
                     throw new ArgumentOutOfRangeException();
             }
         }
+
+        public override event EventHandler CanExecuteChanged;
     }
 }

@@ -7,10 +7,6 @@ namespace Ulysses.App.Utils
     {
         public abstract event EventHandler CanExecuteChanged;
 
-        public abstract bool CanExecute();
-
-        public abstract void Execute();
-
         public bool CanExecute(object parameter)
         {
             return CanExecute();
@@ -20,5 +16,9 @@ namespace Ulysses.App.Utils
         {
             Execute();
         }
+
+        public abstract bool CanExecute();
+
+        public abstract void Execute();
     }
 }

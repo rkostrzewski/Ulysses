@@ -1,5 +1,4 @@
-﻿using System.Threading;
-using Ulysses.UI.Tests.Core;
+﻿using Ulysses.UI.Tests.Core;
 using Ulysses.UI.Tests.Core.Controls;
 using Ulysses.UI.Tests.Core.Windows;
 

@@ -54,10 +54,9 @@
     <Otherwise />
   </Choose>
   <ItemGroup>
-    <Compile Include="Factories\NonUniformityCorrectionAlgorithmFactoryTests.cs" />
-    <Compile Include="NonUniformityCorrectionChaining\NonUniformityCorrectionChaingingTests.cs" />
     <Compile Include="ProcessingEngine\AsyncProcessingStrategyTests.cs" />
-    <Compile Include="ProcessingEngine\BaseProcessingEngineStrategyTests.cs" />
+    <Compile Include="ProcessingEngine\BaseProcessingEngineTests.cs" />
+    <Compile Include="ProcessingEngine\Factories\ProcessingEngineFactoryTests.cs" />
     <Compile Include="ProcessingEngine\SyncProcessingEngineTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

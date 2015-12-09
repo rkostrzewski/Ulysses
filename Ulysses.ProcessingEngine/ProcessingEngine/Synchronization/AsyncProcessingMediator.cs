@@ -1,13 +1,13 @@
 using System.Threading;
 using Ulysses.Core.Models;
 
-namespace Ulysses.ProcessingEngine.ProcessingEngineStrategies.Synchronization
+namespace Ulysses.ProcessingEngine.ProcessingEngine.Synchronization
 {
     internal class AsyncProcessingMediator
     {
-        private ImageProcessingStatus _imageProcessingStatus = ImageProcessingStatus.NoImageProcessed;
-        private Image _acquiredImage;
         private static readonly ReaderWriterLockSlim SlimLock = new ReaderWriterLockSlim();
+        private Image _acquiredImage;
+        private ImageProcessingStatus _imageProcessingStatus = ImageProcessingStatus.NoImageProcessed;
 
         public void SetAquiredImageAndImageAddedStatus(Image image)
         {
@@ -16,7 +16,7 @@ namespace Ulysses.ProcessingEngine.ProcessingEngineStrategies.Synchronization
             _imageProcessingStatus = ImageProcessingStatus.ImagePendingToBeProcessed;
             SlimLock.ExitWriteLock();
         }
-        
+
         public Image GetAcquiredImageAndSetImageProcessedStatus()
         {
             SlimLock.EnterWriteLock();

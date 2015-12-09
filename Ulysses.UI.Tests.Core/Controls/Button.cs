@@ -1,7 +1,4 @@
-﻿using System;
-using System.Drawing;
-using System.Linq;
-using System.Threading;
+﻿using System.Drawing;
 using Microsoft.VisualStudio.TestTools.UITesting;
 using Microsoft.VisualStudio.TestTools.UITesting.WinControls;
 
@@ -16,7 +13,7 @@ namespace Ulysses.UI.Tests.Core.Controls
 
         public void Click()
         {
-            Mouse.Click(this, new Point() { X = - 1, Y = -1 });
+            Mouse.Click(this, new Point { X = -1, Y = -1 });
         }
     }
 }

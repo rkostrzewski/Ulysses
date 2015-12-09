@@ -41,16 +41,17 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Exceptions\ConcurrencyException.cs" />
-    <Compile Include="IImageProcessingChain.cs" />
-    <Compile Include="ImageProcessing\ImageProcessingChain.cs" />
-    <Compile Include="ImageProcessing\ImageProcessingChainBuilder.cs" />
-    <Compile Include="IProcessingStrategy.cs" />
-    <Compile Include="ProcessingEngineStrategies\AsyncProcessingStrategy.cs" />
-    <Compile Include="ProcessingEngineStrategies\Synchronization\AsyncProcessingMediator.cs" />
-    <Compile Include="ProcessingEngineStrategies\Synchronization\ImageProcessingStatus.cs" />
-    <Compile Include="ISetOutputImageCommand.cs" />
+    <Compile Include="ProcessingEngine\Factories\ProcessingEngineFactory.cs" />
+    <Compile Include="ProcessingEngine\Factories\ProcessingStrategies.cs" />
+    <Compile Include="ImageProcessingChain\IImageProcessingChain.cs" />
+    <Compile Include="ProcessingEngine\IProcessingEngine.cs" />
+    <Compile Include="ProcessingEngine\Factories\IProcessingEngineFactory.cs" />
+    <Compile Include="ProcessingEngine\AsyncProcessingEngine.cs" />
+    <Compile Include="ProcessingEngine\Synchronization\AsyncProcessingMediator.cs" />
+    <Compile Include="ProcessingEngine\Synchronization\ImageProcessingStatus.cs" />
+    <Compile Include="Output\ISetOutputImageCommand.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ProcessingEngineStrategies\SyncProcessingStrategy.cs" />
+    <Compile Include="ProcessingEngine\SyncProcessingEngine.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Ulysses.Core\Ulysses.Core.csproj">
@@ -62,6 +63,7 @@
       <Name>Ulysses.ImageAcquisition</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

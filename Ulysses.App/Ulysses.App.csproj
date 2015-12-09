@@ -90,8 +90,11 @@
     </Compile>
     <Compile Include="App_Start\ContainerBootstrapper.cs" />
     <Compile Include="Modules\Content\ContentViews.cs" />
+    <Compile Include="Modules\Content\ImageDisplay\Commands\SetOutputImageCommand.cs" />
     <Compile Include="Modules\Content\ImageDisplay\Commands\StartImageProcessingCommand.cs" />
+    <Compile Include="Modules\Content\ImageDisplay\Commands\StopImageProcessingCommand.cs" />
     <Compile Include="Modules\Content\ImageDisplay\ImageDisplayModule.cs" />
+    <Compile Include="Modules\Content\ImageDisplay\Models\ImageConverter.cs" />
     <Compile Include="Modules\Content\ImageDisplay\ViewModels\IImageDisplayViewModel.cs" />
     <Compile Include="Modules\Content\ImageDisplay\ViewModels\ImageDisplayViewModel.cs" />
     <Compile Include="Modules\Content\ImageDisplay\Commands\IStartImageProcessingCommand.cs" />
@@ -171,6 +174,18 @@
     <Folder Include="Modules\Content\ImageProcessingCustomization\ViewModels\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Ulysses.Core\Ulysses.Core.csproj">
+      <Project>{9a0e8400-20bc-4359-9ac1-dcf6b176da64}</Project>
+      <Name>Ulysses.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Ulysses.ImageAcquisition\Ulysses.ImageAcquisition.csproj">
+      <Project>{1498e5a3-760c-49ec-b09a-fb80fd2ee378}</Project>
+      <Name>Ulysses.ImageAcquisition</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Ulysses.NUC\Ulysses.NUC.csproj">
+      <Project>{a68fcba0-ce6b-4929-b84d-046460bf26be}</Project>
+      <Name>Ulysses.NUC</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Ulysses.ProcessingEngine\Ulysses.ProcessingEngine.csproj">
       <Project>{c06cd4eb-f9ba-407f-8002-3f20aa6a7951}</Project>
       <Name>Ulysses.ProcessingEngine</Name>

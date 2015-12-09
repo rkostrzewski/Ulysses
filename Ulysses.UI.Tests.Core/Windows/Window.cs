@@ -11,10 +11,7 @@ namespace Ulysses.UI.Tests.Core.Windows
 
         public Window(params SearchCriteriaModel[] searchCriteria)
         {
-            this.SetSearchProperties(new[]
-            {
-                By.ClassName(HwndWrapper, true)
-            });
+            this.SetSearchProperties(new[] { By.ClassName(HwndWrapper, true) });
 
             this.SetSearchProperties(searchCriteria);
 

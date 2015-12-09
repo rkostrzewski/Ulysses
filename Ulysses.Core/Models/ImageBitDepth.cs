@@ -1,4 +1,4 @@
-﻿namespace Ulysses.Core.ImageProcessing
+﻿namespace Ulysses.Core.Models
 {
     public enum ImageBitDepth
     {

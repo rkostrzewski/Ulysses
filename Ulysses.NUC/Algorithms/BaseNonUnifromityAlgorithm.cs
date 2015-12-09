@@ -6,12 +6,12 @@ namespace Ulysses.NUC.Algorithms
 {
     public abstract class BaseNonUnifromityCorrectionAlgorithm : IImageProcessingAlgorithm
     {
-        public NonUniformityModel NonUniformityModel { get; private set; }
-
         protected internal BaseNonUnifromityCorrectionAlgorithm(NonUniformityModel nonUniformityModel)
         {
             NonUniformityModel = nonUniformityModel;
         }
+
+        public NonUniformityModel NonUniformityModel { get; private set; }
 
         public abstract Image ProcessImage(Image inputImagePixels);
     }

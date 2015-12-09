@@ -1,7 +1,6 @@
 ﻿using System.Linq;
 using NUnit.Framework;
 using Ulysses.Core.Exceptions;
-using Ulysses.Core.ImageProcessing;
 using Ulysses.Core.Models;
 using Ulysses.ImageAcquisition.FileSystem;
 using Ulysses.ImageAcquisition.Tests.FileSystem.TestData;

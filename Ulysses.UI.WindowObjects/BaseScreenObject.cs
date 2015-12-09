@@ -15,6 +15,11 @@ namespace Ulysses.UI.WindowObjects
 
         private TitleBarScreenObject TitleBar { get; }
 
+        public bool IsDisplayed()
+        {
+            return _window.Exists;
+        }
+
         public void CloseWindow()
         {
             TitleBar.Close.Click();
@@ -28,11 +33,6 @@ namespace Ulysses.UI.WindowObjects
         public void MinimizeWindow()
         {
             TitleBar.Minimize.Click();
-        }
-
-        public bool IsDisplayed()
-        {
-            return _window.Exists;
         }
     }
 }

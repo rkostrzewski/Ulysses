@@ -43,10 +43,10 @@ namespace Ulysses.App.Tests
         {
             // Given
             var mainWindow = new ShellScreenObject();
-            
+
             // When
             mainWindow.MinimizeWindow();
-            
+
             // Then
             Assert.IsTrue(TestedApp.WaitForControlCondition(u => TestedApp.Minimized, 1000));
         }

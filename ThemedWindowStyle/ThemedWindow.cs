@@ -7,37 +7,36 @@ using System.Windows.Interop;
 
 namespace ThemedWindowStyle
 {
-    public class ThemedWindow : System.Windows.Window
+    public class ThemedWindow : Window
     {
-        private Point cursorOffset;
-        private double restoreTop;
-
-        private FrameworkElement borderLeft;
-        private FrameworkElement borderTopLeft;
-        private FrameworkElement borderTop;
-        private FrameworkElement borderTopRight;
-        private FrameworkElement borderRight;
-        private FrameworkElement borderBottomRight;
         private FrameworkElement borderBottom;
         private FrameworkElement borderBottomLeft;
+        private FrameworkElement borderBottomRight;
+
+        private FrameworkElement borderLeft;
+        private FrameworkElement borderRight;
+        private FrameworkElement borderTop;
+        private FrameworkElement borderTopLeft;
+        private FrameworkElement borderTopRight;
         private FrameworkElement caption;
-        private FrameworkElement frame;
-        private Button minimizeButton;
-        private Button maximizeButton;
         private Button closeButton;
+        private Point cursorOffset;
+        private FrameworkElement frame;
         private IntPtr handle;
+        private Button maximizeButton;
+        private Button minimizeButton;
+        private double restoreTop;
 
         public ThemedWindow()
         {
             SourceInitialized += (sender, e) =>
             {
                 handle = new WindowInteropHelper(this).Handle;
-                HwndSource.FromHwnd(handle).AddHook(new HwndSourceHook(WndProc));
+                HwndSource.FromHwnd(handle).AddHook(WndProc);
             };
 
             Style = (Style)TryFindResource("ThemedWindowStyle");
             ;
-
         }
 
         public override void OnApplyTemplate()
@@ -70,13 +69,13 @@ namespace ThemedWindowStyle
             {
                 maximizeButton.Click += (sender, e) =>
                 {
-                    if (WindowState == System.Windows.WindowState.Normal)
+                    if (WindowState == WindowState.Normal)
                     {
-                        WindowState = System.Windows.WindowState.Maximized;
+                        WindowState = WindowState.Maximized;
                     }
                     else
                     {
-                        WindowState = System.Windows.WindowState.Normal;
+                        WindowState = WindowState.Normal;
                     }
                 };
             }
@@ -88,13 +87,12 @@ namespace ThemedWindowStyle
 
             if (minimizeButton != null)
             {
-                minimizeButton.Click += (sender, e) => WindowState = System.Windows.WindowState.Minimized;
+                minimizeButton.Click += (sender, e) => WindowState = WindowState.Minimized;
             }
         }
 
         private void RegisterBorderEvents(WindowBorderEdge borderEdge, FrameworkElement border)
         {
-            
             border.MouseEnter += (sender, e) =>
             {
                 if (WindowState != WindowState.Maximized && ResizeMode == ResizeMode.CanResize)
@@ -129,8 +127,8 @@ namespace ThemedWindowStyle
             {
                 if (WindowState != WindowState.Maximized && ResizeMode == ResizeMode.CanResize)
                 {
-                    Point cursorLocation = e.GetPosition(this);
-                    Point cursorOffset = new Point();
+                    var cursorLocation = e.GetPosition(this);
+                    var cursorOffset = new Point();
 
                     switch (borderEdge)
                     {
@@ -145,22 +143,22 @@ namespace ThemedWindowStyle
                             cursorOffset.Y = cursorLocation.Y;
                             break;
                         case WindowBorderEdge.TopRight:
-                            cursorOffset.X = (Width - cursorLocation.X);
+                            cursorOffset.X = Width - cursorLocation.X;
                             cursorOffset.Y = cursorLocation.Y;
                             break;
                         case WindowBorderEdge.Right:
-                            cursorOffset.X = (Width - cursorLocation.X);
+                            cursorOffset.X = Width - cursorLocation.X;
                             break;
                         case WindowBorderEdge.BottomRight:
-                            cursorOffset.X = (Width - cursorLocation.X);
-                            cursorOffset.Y = (Height - cursorLocation.Y);
+                            cursorOffset.X = Width - cursorLocation.X;
+                            cursorOffset.Y = Height - cursorLocation.Y;
                             break;
                         case WindowBorderEdge.Bottom:
-                            cursorOffset.Y = (Height - cursorLocation.Y);
+                            cursorOffset.Y = Height - cursorLocation.Y;
                             break;
                         case WindowBorderEdge.BottomLeft:
                             cursorOffset.X = cursorLocation.X;
-                            cursorOffset.Y = (Height - cursorLocation.Y);
+                            cursorOffset.Y = Height - cursorLocation.Y;
                             break;
                     }
 
@@ -174,81 +172,102 @@ namespace ThemedWindowStyle
             {
                 if (WindowState != WindowState.Maximized && border.IsMouseCaptured && ResizeMode == ResizeMode.CanResize)
                 {
-                    Point cursorLocation = e.GetPosition(this);
+                    var cursorLocation = e.GetPosition(this);
 
-                    double nHorizontalChange = (cursorLocation.X - cursorOffset.X);
-                    double pHorizontalChange = (cursorLocation.X + cursorOffset.X);
-                    double nVerticalChange = (cursorLocation.Y - cursorOffset.Y);
-                    double pVerticalChange = (cursorLocation.Y + cursorOffset.Y);
+                    var nHorizontalChange = cursorLocation.X - cursorOffset.X;
+                    var pHorizontalChange = cursorLocation.X + cursorOffset.X;
+                    var nVerticalChange = cursorLocation.Y - cursorOffset.Y;
+                    var pVerticalChange = cursorLocation.Y + cursorOffset.Y;
 
                     switch (borderEdge)
                     {
                         case WindowBorderEdge.Left:
                             if (Width - nHorizontalChange <= MinWidth)
+                            {
                                 break;
+                            }
                             Left += nHorizontalChange;
                             Width -= nHorizontalChange;
                             break;
                         case WindowBorderEdge.TopLeft:
                             if (Width - nHorizontalChange <= MinWidth)
+                            {
                                 break;
+                            }
                             Left += nHorizontalChange;
                             Width -= nHorizontalChange;
                             if (Height - nVerticalChange <= MinHeight)
+                            {
                                 break;
+                            }
                             Top += nVerticalChange;
                             Height -= nVerticalChange;
                             break;
                         case WindowBorderEdge.Top:
                             if (Height - nVerticalChange <= MinHeight)
+                            {
                                 break;
+                            }
                             Top += nVerticalChange;
                             Height -= nVerticalChange;
                             break;
                         case WindowBorderEdge.TopRight:
                             if (pHorizontalChange <= MinWidth)
+                            {
                                 break;
+                            }
                             Width = pHorizontalChange;
                             if (Height - nVerticalChange <= MinHeight)
+                            {
                                 break;
+                            }
                             Top += nVerticalChange;
                             Height -= nVerticalChange;
                             break;
                         case WindowBorderEdge.Right:
                             if (pHorizontalChange <= MinWidth)
+                            {
                                 break;
+                            }
                             Width = pHorizontalChange;
                             break;
                         case WindowBorderEdge.BottomRight:
                             if (pHorizontalChange <= MinWidth)
+                            {
                                 break;
+                            }
                             Width = pHorizontalChange;
                             if (pVerticalChange <= MinHeight)
+                            {
                                 break;
+                            }
                             Height = pVerticalChange;
                             break;
                         case WindowBorderEdge.Bottom:
                             if (pVerticalChange <= MinHeight)
+                            {
                                 break;
+                            }
                             Height = pVerticalChange;
                             break;
                         case WindowBorderEdge.BottomLeft:
                             if (Width - nHorizontalChange <= MinWidth)
+                            {
                                 break;
+                            }
                             Left += nHorizontalChange;
                             Width -= nHorizontalChange;
                             if (pVerticalChange <= MinHeight)
+                            {
                                 break;
+                            }
                             Height = pVerticalChange;
                             break;
                     }
                 }
             };
 
-            border.MouseLeftButtonUp += (sender, e) =>
-            {
-                border.ReleaseMouseCapture();
-            };
+            border.MouseLeftButtonUp += (sender, e) => { border.ReleaseMouseCapture(); };
         }
 
         private void RegisterBorders()
@@ -282,15 +301,15 @@ namespace ThemedWindowStyle
                 {
                     restoreTop = e.GetPosition(this).Y;
 
-                    if (e.ClickCount == 2 && e.ChangedButton == System.Windows.Input.MouseButton.Left && (ResizeMode != ResizeMode.CanMinimize && ResizeMode != ResizeMode.NoResize))
+                    if (e.ClickCount == 2 && e.ChangedButton == MouseButton.Left && ResizeMode != ResizeMode.CanMinimize && ResizeMode != ResizeMode.NoResize)
                     {
-                        if (WindowState != System.Windows.WindowState.Maximized)
+                        if (WindowState != WindowState.Maximized)
                         {
-                            WindowState = System.Windows.WindowState.Maximized;
+                            WindowState = WindowState.Maximized;
                         }
                         else
                         {
-                            WindowState = System.Windows.WindowState.Normal;
+                            WindowState = WindowState.Normal;
                         }
 
                         return;
@@ -321,18 +340,18 @@ namespace ThemedWindowStyle
 
         private void WmGetMinMaxInfo(IntPtr hwnd, IntPtr lParam)
         {
-            MINMAXINFO mmi = (MINMAXINFO)Marshal.PtrToStructure(lParam, typeof(MINMAXINFO));
+            var mmi = (MINMAXINFO)Marshal.PtrToStructure(lParam, typeof (MINMAXINFO));
 
-            int MONITOR_DEFAULTTONEAREST = 0x00000002;
-            IntPtr monitor = NativeMethods.MonitorFromWindow(hwnd, MONITOR_DEFAULTTONEAREST);
+            var MONITOR_DEFAULTTONEAREST = 0x00000002;
+            var monitor = NativeMethods.MonitorFromWindow(hwnd, MONITOR_DEFAULTTONEAREST);
 
-            if (monitor != System.IntPtr.Zero)
+            if (monitor != IntPtr.Zero)
             {
-                MONITORINFO monitorInfo = new MONITORINFO();
+                var monitorInfo = new MONITORINFO();
                 NativeMethods.GetMonitorInfo(monitor, monitorInfo);
 
-                RECT rcWorkArea = monitorInfo.rcWork;
-                RECT rcMonitorArea = monitorInfo.rcMonitor;
+                var rcWorkArea = monitorInfo.rcWork;
+                var rcMonitorArea = monitorInfo.rcMonitor;
 
                 mmi.ptMaxPosition.x = Math.Abs(rcWorkArea.left - rcMonitorArea.left);
                 mmi.ptMaxPosition.y = Math.Abs(rcWorkArea.top - rcMonitorArea.top);

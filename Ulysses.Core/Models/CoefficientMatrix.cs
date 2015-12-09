@@ -1,5 +1,4 @@
 using Ulysses.Core.Exceptions;
-using Ulysses.Core.ImageProcessing;
 
 namespace Ulysses.Core.Models
 {

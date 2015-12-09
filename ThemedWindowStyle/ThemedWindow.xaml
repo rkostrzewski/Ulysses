@@ -1,85 +1,92 @@
 ﻿<ResourceDictionary
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="clr-namespace:ThemedWindowStyle"
-    >
-    
+    xmlns:local="clr-namespace:ThemedWindowStyle">
+
     <Style TargetType="{x:Type local:ThemedWindow}" x:Key="ThemedWindowStyle">
         <Style.Resources>
-            <SolidColorBrush x:Key="BorderBrush" Color="#ECECEC"/>
-            <SolidColorBrush x:Key="BorderOutlineBrush" Color="#FF27AFFD"/>
-            <SolidColorBrush x:Key="CaptionBackgroundBrush" Color="#ECECEC"/>
-            <SolidColorBrush x:Key="CaptionForegroundBrush" Color="Black"/>
-            <local:MaximizeVisibilityConverter x:Key="MaximizeVisibilityConverter"/>
-            <local:MinimizeVisibilityConverter x:Key="MinimizeVisibilityConverter"/>
+            <SolidColorBrush x:Key="BorderBrush" Color="#ECECEC" />
+            <SolidColorBrush x:Key="BorderOutlineBrush" Color="#FF27AFFD" />
+            <SolidColorBrush x:Key="CaptionBackgroundBrush" Color="#ECECEC" />
+            <SolidColorBrush x:Key="CaptionForegroundBrush" Color="Black" />
+            <local:MaximizeVisibilityConverter x:Key="MaximizeVisibilityConverter" />
+            <local:MinimizeVisibilityConverter x:Key="MinimizeVisibilityConverter" />
         </Style.Resources>
 
-        <Setter Property="Background" Value="#ECECEC"/>
-        <Setter Property="AllowsTransparency" Value="True"/>
-        <Setter Property="MinWidth" Value="100"/>
-        <Setter Property="MinHeight" Value="100"/>
-        <Setter Property="WindowStyle" Value="None"/>
-        <Setter Property="TextOptions.TextFormattingMode" Value="Display"/>
-        <Setter Property="TextOptions.TextRenderingMode" Value="ClearType"/>
+        <Setter Property="Background" Value="#ECECEC" />
+        <Setter Property="AllowsTransparency" Value="True" />
+        <Setter Property="MinWidth" Value="100" />
+        <Setter Property="MinHeight" Value="100" />
+        <Setter Property="WindowStyle" Value="None" />
+        <Setter Property="TextOptions.TextFormattingMode" Value="Display" />
+        <Setter Property="TextOptions.TextRenderingMode" Value="ClearType" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type local:ThemedWindow}" x:Name="PART_WindowTemplate">
                     <Border BorderBrush="{DynamicResource BorderOutlineBrush}" BorderThickness="1" CornerRadius="7">
                         <Grid x:Name="PART_WindowFrame">
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="6"/>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="6"/>
+                                <ColumnDefinition Width="6" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="6" />
                             </Grid.ColumnDefinitions>
 
                             <Grid.RowDefinitions>
-                                <RowDefinition Height="6"/>
-                                <RowDefinition Height="Auto"/>
-                                <RowDefinition Height="*"/>
-                                <RowDefinition Height="6"/>
+                                <RowDefinition Height="6" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="*" />
+                                <RowDefinition Height="6" />
                             </Grid.RowDefinitions>
 
-                            <Border Background="{DynamicResource BorderBrush}" x:Name="PART_WindowBorderLeft" Grid.Column="0" Grid.Row="1" Grid.RowSpan="2"/>
-                            <Border Background="{DynamicResource BorderBrush}" x:Name="PART_WindowBorderTopLeft" Grid.Column="0" Grid.Row="0"  CornerRadius="50,0,0,0"/>
-                            <Border Background="{DynamicResource BorderBrush}" x:Name="PART_WindowBorderTop" Grid.Column="1" Grid.Row="0"/>
-                            <Border Background="{DynamicResource BorderBrush}" x:Name="PART_WindowBorderTopRight" Grid.Column="2" Grid.Row="0" CornerRadius="0,50,0,0" />
-                            <Border Background="{DynamicResource BorderBrush}" x:Name="PART_WindowBorderRight" Grid.Column="2" Grid.Row="1" Grid.RowSpan="2"/>
-                            <Border Background="{DynamicResource BorderBrush}" x:Name="PART_WindowBorderBottomRight" Grid.Column="2" Grid.Row="3" CornerRadius="0,0,50,0" />
-                            <Border Background="{DynamicResource BorderBrush}" x:Name="PART_WindowBorderBottom" Grid.Column="1" Grid.Row="3"/>
-                            <Border Background="{DynamicResource BorderBrush}" x:Name="PART_WindowBorderBottomLeft" Grid.Column="0" Grid.Row="3" CornerRadius="0,0,0,50" />
+                            <Border Background="{DynamicResource BorderBrush}" x:Name="PART_WindowBorderLeft"
+                                    Grid.Column="0" Grid.Row="1" Grid.RowSpan="2" />
+                            <Border Background="{DynamicResource BorderBrush}" x:Name="PART_WindowBorderTopLeft"
+                                    Grid.Column="0" Grid.Row="0" CornerRadius="50,0,0,0" />
+                            <Border Background="{DynamicResource BorderBrush}" x:Name="PART_WindowBorderTop"
+                                    Grid.Column="1" Grid.Row="0" />
+                            <Border Background="{DynamicResource BorderBrush}" x:Name="PART_WindowBorderTopRight"
+                                    Grid.Column="2" Grid.Row="0" CornerRadius="0,50,0,0" />
+                            <Border Background="{DynamicResource BorderBrush}" x:Name="PART_WindowBorderRight"
+                                    Grid.Column="2" Grid.Row="1" Grid.RowSpan="2" />
+                            <Border Background="{DynamicResource BorderBrush}" x:Name="PART_WindowBorderBottomRight"
+                                    Grid.Column="2" Grid.Row="3" CornerRadius="0,0,50,0" />
+                            <Border Background="{DynamicResource BorderBrush}" x:Name="PART_WindowBorderBottom"
+                                    Grid.Column="1" Grid.Row="3" />
+                            <Border Background="{DynamicResource BorderBrush}" x:Name="PART_WindowBorderBottomLeft"
+                                    Grid.Column="0" Grid.Row="3" CornerRadius="0,0,0,50" />
 
-                            <Border x:Name="PART_WindowCaption" Grid.Column="1" Grid.Row="1" Background="{DynamicResource CaptionBackgroundBrush}">
+                            <Border x:Name="PART_WindowCaption" Grid.Column="1" Grid.Row="1"
+                                    Background="{DynamicResource CaptionBackgroundBrush}">
                                 <DockPanel LastChildFill="True">
-                                    <StackPanel DockPanel.Dock="Right" Orientation="Horizontal" VerticalAlignment="Center">
+                                    <StackPanel DockPanel.Dock="Right" Orientation="Horizontal"
+                                                VerticalAlignment="Center">
                                         <Button x:Name="PART_WindowCaptionMinimizeButton"
-                                            Style="{DynamicResource MinimizeButtonStyle}"
-                                            Visibility="{TemplateBinding ResizeMode, Converter={StaticResource MinimizeVisibilityConverter}}" 
-                                            BorderBrush="{x:Null}" Width="14" Height="14" 
-                                            Foreground="{x:Null}" Margin="0,0,4,16">
-                                        </Button>
+                                                Style="{DynamicResource MinimizeButtonStyle}"
+                                                Visibility="{TemplateBinding ResizeMode, Converter={StaticResource MinimizeVisibilityConverter}}"
+                                                BorderBrush="{x:Null}" Width="14" Height="14"
+                                                Foreground="{x:Null}" Margin="0,0,4,16" />
                                         <Button x:Name="PART_WindowCaptionMaximizeButton"
-                                            Style="{DynamicResource MaximizeButtonStyle}"
-                                            Visibility="{TemplateBinding ResizeMode, Converter={StaticResource MaximizeVisibilityConverter}}"
-                                            BorderBrush="{x:Null}" Width="14" Height="14" 
-                                            Foreground="{x:Null}" Margin="0,0,4,16">
-                                        </Button>
+                                                Style="{DynamicResource MaximizeButtonStyle}"
+                                                Visibility="{TemplateBinding ResizeMode, Converter={StaticResource MaximizeVisibilityConverter}}"
+                                                BorderBrush="{x:Null}" Width="14" Height="14"
+                                                Foreground="{x:Null}" Margin="0,0,4,16" />
                                         <Button x:Name="PART_WindowCaptionCloseButton"
-                                            Style="{DynamicResource CloseButtonStyle}"
-                                            BorderBrush="{x:Null}" Width="14" Height="14"
-                                            Foreground="{x:Null}" Margin="0,0,4,16">
-                                        </Button>
+                                                Style="{DynamicResource CloseButtonStyle}"
+                                                BorderBrush="{x:Null}" Width="14" Height="14"
+                                                Foreground="{x:Null}" Margin="0,0,4,16" />
                                     </StackPanel>
-                                    <TextBlock x:Name="PART_WindowCaptionText" DockPanel.Dock="Left" Margin="6,0,0,0" Padding="0">
-                                    <Image x:Name="PART_WindowCaptionIcon" 
-                                           Width="16" 
-                                           Height="16" 
-                                           Margin="0,0,6,0"
-                                           Source="{TemplateBinding Icon}"
-                                           SnapsToDevicePixels="True"
-                                           RenderOptions.EdgeMode="Aliased" />
-                                    <Run BaselineAlignment="Center" 
-                                         Text="{TemplateBinding Title}"
-                                         Foreground="{DynamicResource CaptionForegroundBrush}"/>
+                                    <TextBlock x:Name="PART_WindowCaptionText" DockPanel.Dock="Left" Margin="6,0,0,0"
+                                               Padding="0">
+                                        <Image x:Name="PART_WindowCaptionIcon"
+                                               Width="16"
+                                               Height="16"
+                                               Margin="0,0,6,0"
+                                               Source="{TemplateBinding Icon}"
+                                               SnapsToDevicePixels="True"
+                                               RenderOptions.EdgeMode="Aliased" />
+                                        <Run BaselineAlignment="Center"
+                                             Text="{TemplateBinding Title}"
+                                             Foreground="{DynamicResource CaptionForegroundBrush}" />
                                     </TextBlock>
                                 </DockPanel>
                             </Border>
@@ -91,8 +98,8 @@
                     </Border>
                     <ControlTemplate.Triggers>
                         <Trigger SourceName="PART_WindowCaptionIcon" Property="Source" Value="{x:Null}">
-                            <Setter TargetName="PART_WindowCaptionIcon" Property="Visibility" Value="Collapsed"/>
-                            <Setter TargetName="PART_WindowCaptionText" Property="Margin" Value="0"/>
+                            <Setter TargetName="PART_WindowCaptionIcon" Property="Visibility" Value="Collapsed" />
+                            <Setter TargetName="PART_WindowCaptionText" Property="Margin" Value="0" />
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
@@ -103,20 +110,21 @@
     <Style x:Key="CloseButtonStyle" TargetType="Button">
         <Setter Property="Background">
             <Setter.Value>
-                <ImageBrush ImageSource="Buttons/Window Bar/Close.png"/>
+                <ImageBrush ImageSource="Buttons/Window Bar/Close.png" />
             </Setter.Value>
         </Setter>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type Button}">
                     <Border Background="{TemplateBinding Background}">
-                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
                     </Border>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="True">
                             <Setter Property="Background">
                                 <Setter.Value>
-                                    <ImageBrush ImageSource="Buttons/Window Bar/Close_active.png" Stretch="UniformToFill"/>
+                                    <ImageBrush ImageSource="Buttons/Window Bar/Close_active.png"
+                                                Stretch="UniformToFill" />
                                 </Setter.Value>
                             </Setter>
                         </Trigger>
@@ -129,20 +137,21 @@
     <Style x:Key="MinimizeButtonStyle" TargetType="Button">
         <Setter Property="Background">
             <Setter.Value>
-                <ImageBrush ImageSource="Buttons/Window Bar/Minimize.png"/>
+                <ImageBrush ImageSource="Buttons/Window Bar/Minimize.png" />
             </Setter.Value>
         </Setter>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type Button}">
                     <Border Background="{TemplateBinding Background}">
-                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
                     </Border>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="True">
                             <Setter Property="Background">
                                 <Setter.Value>
-                                    <ImageBrush ImageSource="Buttons/Window Bar/Minimize_active.png" Stretch="UniformToFill"/>
+                                    <ImageBrush ImageSource="Buttons/Window Bar/Minimize_active.png"
+                                                Stretch="UniformToFill" />
                                 </Setter.Value>
                             </Setter>
                         </Trigger>
@@ -155,20 +164,21 @@
     <Style x:Key="MaximizeButtonStyle" TargetType="Button">
         <Setter Property="Background">
             <Setter.Value>
-                <ImageBrush ImageSource="Buttons/Window Bar/Maximize.png"/>
+                <ImageBrush ImageSource="Buttons/Window Bar/Maximize.png" />
             </Setter.Value>
         </Setter>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type Button}">
                     <Border Background="{TemplateBinding Background}">
-                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
                     </Border>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="True">
                             <Setter Property="Background">
                                 <Setter.Value>
-                                    <ImageBrush ImageSource="Buttons/Window Bar/Maximize_active.png" Stretch="UniformToFill"/>
+                                    <ImageBrush ImageSource="Buttons/Window Bar/Maximize_active.png"
+                                                Stretch="UniformToFill" />
                                 </Setter.Value>
                             </Setter>
                         </Trigger>

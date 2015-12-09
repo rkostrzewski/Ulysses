@@ -3,13 +3,14 @@
 namespace Ulysses.App.Modules.Content.ImageDisplay.Views
 {
     /// <summary>
-    /// Interaction logic for ImageDisplayView.xaml
+    ///     Interaction logic for ImageDisplayView.xaml
     /// </summary>
     public partial class ImageDisplayView
     {
-        public ImageDisplayView()
+        public ImageDisplayView(IImageDisplayViewModel viewModel)
         {
             InitializeComponent();
+            DataContext = viewModel;
         }
     }
 }

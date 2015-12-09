@@ -32,10 +32,10 @@ namespace ThemedWindowStyle
     [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Auto)]
     public class MONITORINFO
     {
-        public int cbSize = Marshal.SizeOf(typeof(MINMAXINFO));
+        public int cbSize = Marshal.SizeOf(typeof (MINMAXINFO));
+        public int dwFlags = 0;
         public RECT rcMonitor = new RECT();
         public RECT rcWork = new RECT();
-        public int dwFlags = 0;
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 0)]

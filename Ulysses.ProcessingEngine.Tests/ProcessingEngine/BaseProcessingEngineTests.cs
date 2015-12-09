@@ -2,9 +2,11 @@ using System.Threading;
 using System.Threading.Tasks;
 using Moq;
 using NUnit.Framework;
-using Ulysses.Core;
 using Ulysses.Core.Models;
 using Ulysses.ImageAcquisition;
+using Ulysses.ProcessingEngine.ImageProcessingChain;
+using Ulysses.ProcessingEngine.Output;
+using Ulysses.ProcessingEngine.ProcessingEngine;
 
 namespace Ulysses.ProcessingEngine.Tests.ProcessingEngine
 {
@@ -20,9 +22,7 @@ namespace Ulysses.ProcessingEngine.Tests.ProcessingEngine
             {
                 var imageAcquisitionMock = new Mock<IImageAcquisition>();
                 Image image;
-                imageAcquisitionMock.Setup(ia => ia.TryToObtainImage(out image))
-                               .Callback(ImageAcquisitionMockWork)
-                               .Returns(true);
+                imageAcquisitionMock.Setup(ia => ia.TryToObtainImage(out image)).Callback(ImageAcquisitionMockWork).Returns(true);
                 return imageAcquisitionMock;
             }
         }
@@ -32,11 +32,18 @@ namespace Ulysses.ProcessingEngine.Tests.ProcessingEngine
             get
             {
                 var imageProcessingChain = new Mock<IImageProcessingChain>();
-                imageProcessingChain
-                    .Setup(ip => ip.ProcessImage(It.IsAny<Image>()))
-                    .Callback(ImageProcessingChainMockWork)
-                    .Returns<Image>(null);
+                imageProcessingChain.Setup(ip => ip.ProcessImage(It.IsAny<Image>())).Callback(ImageProcessingChainMockWork).Returns<Image>(null);
                 return imageProcessingChain;
+            }
+        }
+
+        protected Mock<ISetOutputImageCommand> SetOutputImageCommand
+        {
+            get
+            {
+                var setOutputImageCommand = new Mock<ISetOutputImageCommand>();
+                setOutputImageCommand.Setup(ia => ia.Execute(It.IsAny<Image>())).Callback(SetOutputImageCommandMockWork);
+                return setOutputImageCommand;
             }
         }
 
@@ -54,17 +61,6 @@ namespace Ulysses.ProcessingEngine.Tests.ProcessingEngine
             TimesImageAcquisitionCalled = 0;
             TimesImageProcessingChainCalled = 0;
             TimesSetOutputImageCommandCalled = 0;
-        }
-
-        protected Mock<ISetOutputImageCommand> SetOutputImageCommand
-        {
-            get
-            {
-                var setOutputImageCommand = new Mock<ISetOutputImageCommand>();
-                setOutputImageCommand.Setup(ia => ia.Execute(It.IsAny<Image>()))
-                                     .Callback(SetOutputImageCommandMockWork);
-                return setOutputImageCommand;
-            }
         }
 
         protected static async Task StartProcessingWaitForSpecifiedTimeAndWaitForEnd(IProcessingEngine engine, int milliseconds)

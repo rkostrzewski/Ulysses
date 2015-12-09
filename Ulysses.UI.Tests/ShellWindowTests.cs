@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using Microsoft.VisualStudio.TestTools.UITesting;
+﻿using Microsoft.VisualStudio.TestTools.UITesting;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Ulysses.App.Tests.Base;
 using Ulysses.UI.WindowObjects;
@@ -15,7 +14,7 @@ namespace Ulysses.App.Tests
         {
             // Given
             var shell = new ShellScreenObject();
-            
+
             // When
 
             var contentPage = shell.ControlPanel.NavigateTo(ContentRegions.ImageProcessingCustomization);

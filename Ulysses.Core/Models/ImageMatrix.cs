@@ -1,5 +1,3 @@
-using Ulysses.Core.ImageProcessing;
-
 namespace Ulysses.Core.Models
 {
     public abstract class ImageContainer

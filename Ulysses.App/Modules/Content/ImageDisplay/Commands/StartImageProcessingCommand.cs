@@ -1,7 +1,6 @@
 ﻿using System;
-using System.Threading.Tasks;
 using Ulysses.App.Utils;
-using Ulysses.ProcessingEngine;
+using Ulysses.ProcessingEngine.ProcessingEngine;
 
 namespace Ulysses.App.Modules.Content.ImageDisplay.Commands
 {
@@ -16,12 +15,17 @@ namespace Ulysses.App.Modules.Content.ImageDisplay.Commands
 
         public override void Execute()
         {
+            if (!CanExecute())
+            {
+                throw new InvalidOperationException();
+            }
+
             _processingEngine.Start();
         }
 
         public override bool CanExecute()
         {
-            return !_processingEngine.IsWorking();
+            return _processingEngine != null && !_processingEngine.IsWorking();
         }
 
         public override event EventHandler CanExecuteChanged;
