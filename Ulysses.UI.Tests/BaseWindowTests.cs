@@ -1,14 +1,14 @@
 using Microsoft.VisualStudio.TestTools.UITesting;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Ulysses.App.Tests.Base;
+using Ulysses.UI.Tests.Base;
 using Ulysses.UI.Tests.Core.Utils;
 using Ulysses.UI.WindowObjects;
 using Assert = NUnit.Framework.Assert;
 
-namespace Ulysses.App.Tests
+namespace Ulysses.UI.Tests
 {
     [CodedUITest]
-    public class BaseWindowTests : BaseTest
+    public class ShellWindowTests : BaseTest
     {
         [TestMethod]
         public void ShouldAllowToCloseWindow()

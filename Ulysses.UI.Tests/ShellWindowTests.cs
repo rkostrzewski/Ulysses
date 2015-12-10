@@ -1,13 +1,13 @@
 ﻿using Microsoft.VisualStudio.TestTools.UITesting;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Ulysses.App.Tests.Base;
+using Ulysses.UI.Tests.Base;
 using Ulysses.UI.WindowObjects;
 using Ulysses.UI.WindowObjects.ControlPanel;
 
-namespace Ulysses.App.Tests
+namespace Ulysses.UI.Tests
 {
     [CodedUITest]
-    public class ShellWindowTests : BaseTest
+    public class ControlPanelTests : BaseTest
     {
         [TestMethod]
         public void ShouldAllowToNavigateToImageProcessingCustomization()
@@ -16,7 +16,6 @@ namespace Ulysses.App.Tests
             var shell = new ShellScreenObject();
 
             // When
-
             var contentPage = shell.ControlPanel.NavigateTo(ContentRegions.ImageProcessingCustomization);
 
             // Then

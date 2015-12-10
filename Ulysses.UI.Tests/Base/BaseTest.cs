@@ -1,7 +1,7 @@
 ﻿using Microsoft.VisualStudio.TestTools.UITesting;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace Ulysses.App.Tests.Base
+namespace Ulysses.UI.Tests.Base
 {
     public class BaseTest
     {
