@@ -17,6 +17,7 @@ namespace Ulysses.App.Tests.Modules.Content.ImageDisplay.ViewModels
 
             // When
             // Then
+            Assert.IsNull(viewModel.OutputImage);
             Assert.IsFalse(viewModel.StartImageProcessingCommand.CanExecute());
             Assert.IsFalse(viewModel.StopImageProcessingCommand.CanExecute());
         }

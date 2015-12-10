@@ -89,6 +89,8 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="App_Start\ContainerBootstrapper.cs" />
+    <Compile Include="Controls\WorkFlows\Models\INode.cs" />
+    <Compile Include="Controls\WorkFlows\WorkFlowDesigner.cs" />
     <Compile Include="Modules\Content\ContentViews.cs" />
     <Compile Include="Modules\Content\ImageDisplay\Commands\SetOutputImageCommand.cs" />
     <Compile Include="Modules\Content\ImageDisplay\Commands\StartImageProcessingCommand.cs" />
@@ -168,6 +170,10 @@
     <Page Include="App_Start\Shell.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\WorkFlows\Themes\Generic.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
   <ItemGroup>

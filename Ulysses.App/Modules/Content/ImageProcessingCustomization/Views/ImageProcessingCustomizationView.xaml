@@ -3,10 +3,10 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             xmlns:local="clr-namespace:Ulysses.App.Modules.Content.ImageProcessingCustomization.Views"
+             xmlns:workFlows="clr-namespace:Ulysses.App.Controls.WorkFlows"
              mc:Ignorable="d"
              d:DesignHeight="300" d:DesignWidth="300">
     <Grid>
-        <TextBlock Text="Hello from the other side" Background="Black" Foreground="White" />
+        <workFlows:WorkFlowDesigner />
     </Grid>
 </UserControl>
