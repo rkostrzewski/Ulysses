@@ -1,14 +1,14 @@
-﻿using NUnit.Framework;
+using NUnit.Framework;
 using Ulysses.Core.Exceptions;
 using Ulysses.Core.Models;
-using Ulysses.NUC.Factories;
-using Ulysses.NUC.Factories.Templates;
-using Ulysses.NUC.NonUniformityModels;
+using Ulysses.NonUniformityCorrection.Algorithms;
+using Ulysses.NonUniformityCorrection.Factories.Templates;
+using Ulysses.NonUniformityCorrection.NonUniformityModels;
 
-namespace Ulysses.NUC.Tests.Algorithms
+namespace Ulysses.NonUniformityCorrection.Tests.Algorithms
 {
     [TestFixture]
-    public class TwoPointNonUnfiormityCorrectionAlgorithmTests
+    public class TwoPointNonUniformityCorrectionAlgorithmTests
     {
         [Test]
         public void ShouldReturnSameImageWhenProvidedDefaultNonUniformityModel()
@@ -16,9 +16,9 @@ namespace Ulysses.NUC.Tests.Algorithms
             // Given
             var nonUniformityModel = new DefaultNonUniformityModel(new ImageModel(2, 2, ImageBitDepth.Bpp8));
             var correctionAlgorithm =
-                new NUCAlgorithmFactory().CreateAlgorithmImplementation(new TwoPointNUCAlgorithmTemplate
+                new TwoPointNonUniformityCorrectionAlgorithm(new TwoPointNonUniformityCorrectionAlgorithmTemplate
                 {
-                    Algorithm = NUCAlgorithm.TwoPointNonUniformityAlgorithm,
+                    Algorithm = NonUniformityCorrectionAlgorithm.TwoPointNonUniformityAlgorithm,
                     NonUniformityModel = nonUniformityModel
                 });
 
@@ -40,9 +40,9 @@ namespace Ulysses.NUC.Tests.Algorithms
             var imageModel = new ImageModel(2, 2, ImageBitDepth.Bpp8);
             var inputImage = new Image(new ushort[] { 5, 0, 2, 8 }, imageModel);
             var correctionAlgorithm =
-                new NUCAlgorithmFactory().CreateAlgorithmImplementation(new TwoPointNUCAlgorithmTemplate
+                new TwoPointNonUniformityCorrectionAlgorithm(new TwoPointNonUniformityCorrectionAlgorithmTemplate
                 {
-                    Algorithm = NUCAlgorithm.TwoPointNonUniformityAlgorithm,
+                    Algorithm = NonUniformityCorrectionAlgorithm.TwoPointNonUniformityAlgorithm,
                     NonUniformityModel = nonUniformityModel
                 });
 
@@ -55,16 +55,16 @@ namespace Ulysses.NUC.Tests.Algorithms
         }
 
         [Test]
-        public void ShouldModifyInputImageForNonTrivalNonUniformityModel()
+        public void ShouldModifyInputImageForNonTrivialNonUniformityModel()
         {
             // Given
             var nonUniformityModel = new NonUniformityModel(new[,] { { 1, 0 }, { 0.5, 0.25 } }, new[,] { { 5.0, 0 }, { -4, 5 } }, ImageBitDepth.Bpp8);
             var imageModel = new ImageModel(2, 2, ImageBitDepth.Bpp8);
             var inputImage = new Image(new ushort[] { 5, 0, 2, 8 }, imageModel);
             var correctionAlgorithm =
-                new NUCAlgorithmFactory().CreateAlgorithmImplementation(new TwoPointNUCAlgorithmTemplate
+                new TwoPointNonUniformityCorrectionAlgorithm(new TwoPointNonUniformityCorrectionAlgorithmTemplate
                 {
-                    Algorithm = NUCAlgorithm.TwoPointNonUniformityAlgorithm,
+                    Algorithm = NonUniformityCorrectionAlgorithm.TwoPointNonUniformityAlgorithm,
                     NonUniformityModel = nonUniformityModel
                 });
 
@@ -85,9 +85,9 @@ namespace Ulysses.NUC.Tests.Algorithms
             var nonUniformityModel = new NonUniformityModel(new[,] { { 1, 0 }, { 0.5, 0.25 } }, new[,] { { 5.0, 0 }, { -4, 5 } }, ImageBitDepth.Bpp8);
 
             var correctionAlgorithm =
-                new NUCAlgorithmFactory().CreateAlgorithmImplementation(new TwoPointNUCAlgorithmTemplate
+                new TwoPointNonUniformityCorrectionAlgorithm(new TwoPointNonUniformityCorrectionAlgorithmTemplate
                 {
-                    Algorithm = NUCAlgorithm.TwoPointNonUniformityAlgorithm,
+                    Algorithm = NonUniformityCorrectionAlgorithm.TwoPointNonUniformityAlgorithm,
                     NonUniformityModel = nonUniformityModel
                 });
 

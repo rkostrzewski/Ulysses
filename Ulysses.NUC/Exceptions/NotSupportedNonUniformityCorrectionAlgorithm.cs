@@ -1,9 +1,9 @@
 ﻿using System;
 
-namespace Ulysses.NUC.Exceptions
+namespace Ulysses.NonUniformityCorrection.Exceptions
 {
     [Serializable]
-    public class NotSupportedNUCAlgorithm : Exception
+    public class NotSupportedNonUniformityCorrectionAlgorithm : Exception
     {
     }
 }

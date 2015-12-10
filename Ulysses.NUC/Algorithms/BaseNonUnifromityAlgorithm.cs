@@ -1,8 +1,8 @@
 using Ulysses.Core;
 using Ulysses.Core.Models;
-using Ulysses.NUC.NonUniformityModels;
+using Ulysses.NonUniformityCorrection.NonUniformityModels;
 
-namespace Ulysses.NUC.Algorithms
+namespace Ulysses.NonUniformityCorrection.Algorithms
 {
     public abstract class BaseNonUnifromityCorrectionAlgorithm : IImageProcessingAlgorithm
     {

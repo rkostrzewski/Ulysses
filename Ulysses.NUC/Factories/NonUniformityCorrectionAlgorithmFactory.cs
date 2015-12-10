@@ -1,20 +1,20 @@
 ﻿using Ulysses.Core;
-using Ulysses.NUC.Algorithms;
-using Ulysses.NUC.Exceptions;
-using Ulysses.NUC.Factories.Templates;
+using Ulysses.NonUniformityCorrection.Algorithms;
+using Ulysses.NonUniformityCorrection.Exceptions;
+using Ulysses.NonUniformityCorrection.Factories.Templates;
 
-namespace Ulysses.NUC.Factories
+namespace Ulysses.NonUniformityCorrection.Factories
 {
-    public class NUCAlgorithmFactory
+    public class NonUniformityCorrectionAlgorithmFactory
     {
-        public IImageProcessingAlgorithm CreateAlgorithmImplementation(BaseNUCAlgorithmTemplate correctionAlgorithmTemplate)
+        public IImageProcessingAlgorithm CreateAlgorithmImplementation(BaseNonUniformityCorrectionAlgorithmTemplate correctionAlgorithmTemplate)
         {
             switch (correctionAlgorithmTemplate.Algorithm)
             {
-                case NUCAlgorithm.TwoPointNonUniformityAlgorithm:
-                    return new TwoPointNUCAlgorithm(correctionAlgorithmTemplate as TwoPointNUCAlgorithmTemplate);
+                case NonUniformityCorrectionAlgorithm.TwoPointNonUniformityAlgorithm:
+                    return new TwoPointNonUniformityCorrectionAlgorithm(correctionAlgorithmTemplate as TwoPointNonUniformityCorrectionAlgorithmTemplate);
                 default:
-                    throw new NotSupportedNUCAlgorithm();
+                    throw new NotSupportedNonUniformityCorrectionAlgorithm();
             }
         }
     }

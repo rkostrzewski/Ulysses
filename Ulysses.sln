@@ -5,11 +5,11 @@ VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ThemedWindowStyle", "ThemedWindowStyle\ThemedWindowStyle.csproj", "{DE2DC0CD-73D6-42FF-B1B4-BAA03B71FF29}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ulysses.NUC", "Ulysses.NUC\Ulysses.NUC.csproj", "{A68FCBA0-CE6B-4929-B84D-046460BF26BE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ulysses.NonUniformityCorrection", "Ulysses.NUC\Ulysses.NonUniformityCorrection.csproj", "{A68FCBA0-CE6B-4929-B84D-046460BF26BE}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{64C2AE44-B55D-49DA-95AB-D83857472496}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ulysses.NUC.Tests", "Ulysses.NUC.Tests\Ulysses.NUC.Tests.csproj", "{5E27E58D-4EFF-4B39-82A8-42B79F528191}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ulysses.NonUniformityCorrection.Tests", "Ulysses.NUC.Tests\Ulysses.NonUniformityCorrection.Tests.csproj", "{5E27E58D-4EFF-4B39-82A8-42B79F528191}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ulysses.Core", "Ulysses.Core\Ulysses.Core.csproj", "{9A0E8400-20BC-4359-9AC1-DCF6B176DA64}"
 EndProject

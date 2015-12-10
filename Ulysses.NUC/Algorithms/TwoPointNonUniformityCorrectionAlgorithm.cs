@@ -1,11 +1,11 @@
 ﻿using Ulysses.Core.Models;
-using Ulysses.NUC.Factories.Templates;
+using Ulysses.NonUniformityCorrection.Factories.Templates;
 
-namespace Ulysses.NUC.Algorithms
+namespace Ulysses.NonUniformityCorrection.Algorithms
 {
-    public class TwoPointNUCAlgorithm : BaseNonUnifromityCorrectionAlgorithm
+    public class TwoPointNonUniformityCorrectionAlgorithm : BaseNonUnifromityCorrectionAlgorithm
     {
-        internal TwoPointNUCAlgorithm(TwoPointNUCAlgorithmTemplate correctionAlgorithmTemplate) : base(correctionAlgorithmTemplate.NonUniformityModel)
+        public TwoPointNonUniformityCorrectionAlgorithm(TwoPointNonUniformityCorrectionAlgorithmTemplate correctionAlgorithmTemplate) : base(correctionAlgorithmTemplate.NonUniformityModel)
         {
         }
 

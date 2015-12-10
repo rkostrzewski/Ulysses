@@ -1,8 +1,8 @@
-﻿using Ulysses.NUC.NonUniformityModels;
+﻿using Ulysses.NonUniformityCorrection.NonUniformityModels;
 
-namespace Ulysses.NUC.Factories.Templates
+namespace Ulysses.NonUniformityCorrection.Factories.Templates
 {
-    public class TwoPointNUCAlgorithmTemplate : BaseNUCAlgorithmTemplate
+    public class TwoPointNonUniformityCorrectionAlgorithmTemplate : BaseNonUniformityCorrectionAlgorithmTemplate
     {
         public NonUniformityModel NonUniformityModel { get; set; }
     }

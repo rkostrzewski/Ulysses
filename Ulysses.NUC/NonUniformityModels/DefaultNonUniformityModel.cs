@@ -1,6 +1,6 @@
 using Ulysses.Core.Models;
 
-namespace Ulysses.NUC.NonUniformityModels
+namespace Ulysses.NonUniformityCorrection.NonUniformityModels
 {
     public class DefaultNonUniformityModel : NonUniformityModel
     {
