@@ -35,6 +35,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ulysses.UI.Tests", "Ulysses
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ulysses.App.Tests", "Ulysses.App.Tests\Ulysses.App.Tests.csproj", "{45F9996F-A851-45CD-BBC2-57BDFEB8735B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ulysses.App.Controls", "Ulysses.App.Controls\Ulysses.App.Controls.csproj", "{25C54779-F8BC-491C-959C-3FFA006B91CF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -97,6 +99,10 @@ Global
 		{45F9996F-A851-45CD-BBC2-57BDFEB8735B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{45F9996F-A851-45CD-BBC2-57BDFEB8735B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{45F9996F-A851-45CD-BBC2-57BDFEB8735B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{25C54779-F8BC-491C-959C-3FFA006B91CF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{25C54779-F8BC-491C-959C-3FFA006B91CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{25C54779-F8BC-491C-959C-3FFA006B91CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{25C54779-F8BC-491C-959C-3FFA006B91CF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

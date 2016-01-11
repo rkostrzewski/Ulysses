@@ -1,0 +1,41 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:zoom="clr-namespace:Ulysses.App.Controls.Workflows.Zoom">
+    <Style TargetType="{x:Type zoom:ZoomBox}">
+        <Setter Property="SnapsToDevicePixels" Value="True" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type zoom:ZoomBox}">
+                    <Border CornerRadius="1"
+                            BorderThickness="1"
+                            Background="#EEE"
+                            BorderBrush="DimGray">
+                        <Grid>
+                            <Slider Name="PART_ZoomSlider"
+                                    VerticalAlignment="Center"
+                                    HorizontalAlignment="Center"
+                                    Margin="0"
+                                    Minimum="25"
+                                    Maximum="500"
+                                    Value="100"
+                                    TickFrequency="25"
+                                    SmallChange="25"
+                                    LargeChange="50"
+                                    IsSnapToTickEnabled="True"
+                                    IsMoveToPointEnabled="False" Width="100" />
+
+                            <TextBlock Text="{Binding ElementName=PART_ZoomSlider, Path=Value}"
+                                       VerticalAlignment="Center"
+                                       HorizontalAlignment="Right"
+                                       Margin="0,0,14,0" />
+                            <TextBlock Text="%"
+                                       VerticalAlignment="Center"
+                                       HorizontalAlignment="Right"
+                                       Margin="1,0,2,0" />
+                        </Grid>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>

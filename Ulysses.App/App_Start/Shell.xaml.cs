@@ -1,6 +1,6 @@
 ﻿using System.Windows;
 
-namespace Ulysses.App.Views
+namespace Ulysses.App
 {
     /// <summary>
     ///     Interaction logic for Shell.xaml

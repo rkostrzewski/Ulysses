@@ -5,7 +5,6 @@ using Prism.Unity;
 using Ulysses.App.Modules.Content.ImageDisplay;
 using Ulysses.App.Modules.Content.ImageProcessingCustomization;
 using Ulysses.App.Modules.ControlPanel;
-using Ulysses.App.Views;
 
 namespace Ulysses.App
 {

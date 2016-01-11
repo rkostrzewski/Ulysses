@@ -64,7 +64,12 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Activities" />
+    <Reference Include="System.Activities.Core.Presentation" />
+    <Reference Include="System.Activities.Presentation" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
@@ -89,8 +94,6 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="App_Start\ContainerBootstrapper.cs" />
-    <Compile Include="Controls\WorkFlows\Models\INode.cs" />
-    <Compile Include="Controls\WorkFlows\WorkFlowDesigner.cs" />
     <Compile Include="Modules\Content\ContentViews.cs" />
     <Compile Include="Modules\Content\ImageDisplay\Commands\SetOutputImageCommand.cs" />
     <Compile Include="Modules\Content\ImageDisplay\Commands\StartImageProcessingCommand.cs" />
@@ -163,6 +166,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Modules\Content\ImageProcessingCustomization\Views\Resources\ToolboxItems\InputWorkflowItems.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Modules\ControlPanel\Views\ControlPanelView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -171,15 +178,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Controls\WorkFlows\Themes\Generic.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Modules\Content\ImageProcessingCustomization\ViewModels\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Ulysses.App.Controls\Ulysses.App.Controls.csproj">
+      <Project>{25c54779-f8bc-491c-959c-3ffa006b91cf}</Project>
+      <Name>Ulysses.App.Controls</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Ulysses.Core\Ulysses.Core.csproj">
       <Project>{9a0e8400-20bc-4359-9ac1-dcf6b176da64}</Project>
       <Name>Ulysses.Core</Name>

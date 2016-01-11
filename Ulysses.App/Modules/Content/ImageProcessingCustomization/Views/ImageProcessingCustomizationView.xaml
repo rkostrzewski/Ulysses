@@ -3,10 +3,94 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             xmlns:workFlows="clr-namespace:Ulysses.App.Controls.WorkFlows"
+             xmlns:designerCanvas="clr-namespace:Ulysses.App.Controls.Workflows.DesignerCanvas;assembly=Ulysses.App.Controls"
+             xmlns:items="clr-namespace:Ulysses.App.Controls.Workflows.Items;assembly=Ulysses.App.Controls"
+             xmlns:toolbox="clr-namespace:Ulysses.App.Controls.Workflows.Toolbox;assembly=Ulysses.App.Controls"
+             xmlns:zoom="clr-namespace:Ulysses.App.Controls.Workflows.Zoom;assembly=Ulysses.App.Controls"
              mc:Ignorable="d"
              d:DesignHeight="300" d:DesignWidth="300">
-    <Grid>
-        <workFlows:WorkFlowDesigner />
+    <Grid Margin="0">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="4*" />
+        </Grid.ColumnDefinitions>
+
+        <Border Grid.Column="0"
+                BorderBrush="Yellow"
+                BorderThickness="1">
+            <StackPanel>
+                <Expander IsExpanded="True"
+                          Header="Symbols"
+                          Margin="0,1,0,0">
+                    <Expander.Content>
+                        <toolbox:WorkflowToolbox
+                            DefaultItemSize="50,50">
+                            <ItemsControl.Items>
+                                <Grid>
+                                    <Ellipse
+                                        Fill="Violet"
+                                        Margin="1"
+                                        ToolTip="Ellipse"
+                                        IsHitTestVisible="False" />
+                                    <items:WorkflowItem.DragThumbTemplate>
+                                        <ControlTemplate>
+                                            <Ellipse
+                                                Fill="Transparent" />
+                                        </ControlTemplate>
+                                    </items:WorkflowItem.DragThumbTemplate>
+                                </Grid>
+                                <Ellipse
+                                    Fill="Blue"
+                                    ToolTip="Ellipse"
+                                    IsHitTestVisible="False">
+                                    <items:WorkflowItem.DragThumbTemplate>
+                                        <ControlTemplate>
+                                            <Ellipse
+                                                Fill="Transparent" />
+                                        </ControlTemplate>
+                                    </items:WorkflowItem.DragThumbTemplate>
+                                </Ellipse>
+                                <Ellipse
+                                    Fill="Yellow"
+                                    ToolTip="Ellipse"
+                                    IsHitTestVisible="False">
+                                    <items:WorkflowItem.DragThumbTemplate>
+                                        <ControlTemplate>
+                                            <Ellipse
+                                                Fill="Transparent" />
+                                        </ControlTemplate>
+                                    </items:WorkflowItem.DragThumbTemplate>
+                                </Ellipse>
+                            </ItemsControl.Items>
+                        </toolbox:WorkflowToolbox>
+                    </Expander.Content>
+                </Expander>
+            </StackPanel>
+        </Border>
+
+        <GridSplitter Grid.Column="1"
+                      HorizontalAlignment="Left"
+                      VerticalAlignment="Stretch"
+                      Background="Transparent"
+                      Width="3" />
+
+        <Border Margin="0"
+                Grid.Column="1"
+                BorderBrush="LightCoral"
+                BorderThickness="1">
+            <Grid>
+                <ScrollViewer Name="WorkflowDesignerScrollViewer" Background="Transparent"
+                              HorizontalScrollBarVisibility="Auto"
+                              VerticalScrollBarVisibility="Auto">
+                    <designerCanvas:WorkflowDesignerCanvas AllowDrop="True" Background="LightGray" />
+                </ScrollViewer>
+                <zoom:ZoomBox Width="180"
+                              HorizontalAlignment="Right"
+                              VerticalAlignment="Top"
+                              ScrollViewer="{Binding ElementName=WorkflowDesignerScrollViewer}"
+                              Margin="0,29,10,0" />
+            </Grid>
+        </Border>
+
     </Grid>
 </UserControl>
