@@ -1,5 +1,6 @@
 ﻿using System;
 using Ulysses.App.Utils;
+using Ulysses.App.Utils.Commands;
 using Ulysses.ProcessingEngine.ProcessingEngine;
 
 namespace Ulysses.App.Modules.Content.ImageDisplay.Commands

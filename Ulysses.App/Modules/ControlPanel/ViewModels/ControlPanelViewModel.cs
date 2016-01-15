@@ -10,6 +10,6 @@ namespace Ulysses.App.Modules.ControlPanel.ViewModels
             ChangeContentRegionViewCommand = new ChangeContentRegionViewCommand(regionManager);
         }
 
-        public IChangeContentRegionCommand ChangeContentRegionViewCommand { get; }
+        public IChangeContentRegionViewCommand ChangeContentRegionViewCommand { get; }
     }
 }

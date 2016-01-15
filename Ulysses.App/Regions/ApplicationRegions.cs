@@ -1,8 +1,8 @@
-﻿namespace Ulysses.App.Regions
+namespace Ulysses.App.Regions
 {
-    public enum ApplicationRegions
+    public static class ApplicationRegions
     {
-        ControlPanelRegion = 1,
-        ContentRegion
+        public static string ControlPanelRegion => "ControlPanelRegion";
+        public static string ContentRegion => "ConentRegion";
     }
 }

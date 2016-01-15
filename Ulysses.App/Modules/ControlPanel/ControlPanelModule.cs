@@ -16,7 +16,7 @@ namespace Ulysses.App.Modules.ControlPanel
 
         public void Initialize()
         {
-            _regionViewRegistry.RegisterViewWithRegion(ApplicationRegions.ControlPanelRegion.ToString(), typeof (ControlPanelView));
+            _regionViewRegistry.RegisterViewWithRegion(ApplicationRegions.ControlPanelRegion, typeof (ControlPanelView));
         }
     }
 }

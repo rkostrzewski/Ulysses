@@ -48,6 +48,12 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="WorkflowDesigner\ListViewWorkflowDesigner.cs" />
+    <Compile Include="WorkflowDesigner\DragAdorner.cs" />
+    <Compile Include="WorkflowDesigner\IMousePositionRelatedEvent.cs" />
+    <Compile Include="WorkflowDesigner\ListViewItemDragState.cs" />
+    <Compile Include="WorkflowDesigner\ListViewMouseExtensions.cs" />
+    <Compile Include="WorkflowDesigner\VisualMouseExtensions.cs" />
     <Compile Include="Properties\Annotations.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
@@ -62,30 +68,6 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="Workflows\Connections\ArrowSymbol.cs" />
-    <Compile Include="Workflows\Connections\Connection.cs" />
-    <Compile Include="Workflows\Connections\ConnectionAdorner.cs" />
-    <Compile Include="Workflows\Connections\Connector.cs" />
-    <Compile Include="Workflows\Connections\ConnectorAdorner.cs" />
-    <Compile Include="Workflows\Connections\ConnectorInfo.cs" />
-    <Compile Include="Workflows\Connections\ConnectorOrientation.cs" />
-    <Compile Include="Workflows\Connections\PathFinder.cs" />
-    <Compile Include="Workflows\ISelectable.cs" />
-    <Compile Include="Workflows\DesignerCanvas\DesignerConfiguration.cs" />
-    <Compile Include="Workflows\Items\Adorners\SelectedItemAdorner.cs" />
-    <Compile Include="Workflows\Items\Adorners\SelectedItemChrome.cs" />
-    <Compile Include="Workflows\Items\ControlWithTemplate.cs" />
-    <Compile Include="Workflows\Items\SelectedItemDecorator.cs" />
-    <Compile Include="Workflows\Templates\StyleNames.cs" />
-    <Compile Include="Workflows\Templates\TemplateNames.cs" />
-    <Compile Include="Workflows\Templates\TemplatePropertyNames.cs" />
-    <Compile Include="Workflows\Items\Thumbs\DragThumb.cs" />
-    <Compile Include="Workflows\Items\WorkflowItem.cs" />
-    <Compile Include="Workflows\Adorners\RubberbandAdorner.cs" />
-    <Compile Include="Workflows\DesignerCanvas\WorkflowDesignerCanvas.cs" />
-    <Compile Include="Workflows\Toolbox\WorkflowToolbox.cs" />
-    <Compile Include="Workflows\Toolbox\WorkflowToolboxItem.cs" />
-    <Compile Include="Workflows\Zoom\ZoomBox.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -96,31 +78,7 @@
     </None>
     <AppDesigner Include="Properties\" />
   </ItemGroup>
-  <ItemGroup>
-    <Page Include="Workflows\Resources\SelectedItemChromeStyle.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Workflows\Resources\WorkflowItem.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Workflows\Resources\WorkflowResources.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Workflows\Resources\WorkflowToolbox.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Workflows\Resources\ZoomBox.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Workflows\Resources\Styles\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

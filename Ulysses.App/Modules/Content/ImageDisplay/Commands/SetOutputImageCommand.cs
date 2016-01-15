@@ -2,6 +2,7 @@
 using System.Windows.Media.Imaging;
 using Ulysses.App.Modules.Content.ImageDisplay.Models;
 using Ulysses.App.Utils;
+using Ulysses.App.Utils.Commands;
 using Ulysses.Core.Models;
 using Ulysses.ProcessingEngine.Output;
 
@@ -31,7 +32,5 @@ namespace Ulysses.App.Modules.Content.ImageDisplay.Commands
         {
             return _setOutputImageDelegate != null;
         }
-
-        public override event EventHandler CanExecuteChanged;
     }
 }

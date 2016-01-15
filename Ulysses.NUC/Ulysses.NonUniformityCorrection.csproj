@@ -40,15 +40,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Algorithms\BaseNonUnifromityAlgorithm.cs" />
-    <Compile Include="Exceptions\NotSupportedNonUniformityCorrectionAlgorithm.cs" />
-    <Compile Include="Factories\NonUniformityCorrectionAlgorithmFactory.cs" />
-    <Compile Include="Factories\Templates\BaseNonUniformityCorrectionTemplate.cs" />
-    <Compile Include="Factories\Templates\NonUniformityCorrectionAlgorithm.cs" />
-    <Compile Include="Factories\Templates\TwoPointNonUniformityCorrectionTemplate.cs" />
-    <Compile Include="NonUniformityModels\DefaultNonUniformityModel.cs" />
-    <Compile Include="NonUniformityModels\NonUniformityModel.cs" />
-    <Compile Include="Algorithms\TwoPointNonUniformityCorrectionAlgorithm.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -78,6 +78,8 @@
     <Compile Include="Modules\Content\ImageDisplay\ViewModels\ImageDisplayViewModelTests.cs" />
     <Compile Include="Modules\ControlPanel\Commands\ChangeContentRegionCommandTests.cs" />
     <Compile Include="Modules\ControlPanel\Commands\TestRegionCollection.cs" />
+    <Compile Include="Modules\ControlPanel\Commands\TestView.cs" />
+    <Compile Include="Modules\ControlPanel\Commands\TestViewsCollection.cs" />
     <Compile Include="Modules\ControlPanel\ViewModels\ControlPanelViewModelTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -93,10 +95,6 @@
     <ProjectReference Include="..\Ulysses.ImageAcquisition\Ulysses.ImageAcquisition.csproj">
       <Project>{1498e5a3-760c-49ec-b09a-fb80fd2ee378}</Project>
       <Name>Ulysses.ImageAcquisition</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Ulysses.NUC\Ulysses.NonUniformityCorrection.csproj">
-      <Project>{a68fcba0-ce6b-4929-b84d-046460bf26be}</Project>
-      <Name>Ulysses.NonUniformityCorrection</Name>
     </ProjectReference>
     <ProjectReference Include="..\Ulysses.ProcessingEngine\Ulysses.ProcessingEngine.csproj">
       <Project>{c06cd4eb-f9ba-407f-8002-3f20aa6a7951}</Project>

@@ -94,7 +94,8 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="App_Start\ContainerBootstrapper.cs" />
-    <Compile Include="Modules\Content\ContentViews.cs" />
+    <Compile Include="Modules\ControlPanel\Commands\IChangeContentRegionViewCommand.cs" />
+    <Compile Include="Modules\Regions\ContentRegionViews.cs" />
     <Compile Include="Modules\Content\ImageDisplay\Commands\SetOutputImageCommand.cs" />
     <Compile Include="Modules\Content\ImageDisplay\Commands\StartImageProcessingCommand.cs" />
     <Compile Include="Modules\Content\ImageDisplay\Commands\StopImageProcessingCommand.cs" />
@@ -107,26 +108,34 @@
     <Compile Include="Modules\Content\ImageDisplay\Views\ImageDisplayView.xaml.cs">
       <DependentUpon>ImageDisplayView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Modules\Content\ImageProcessingCustomization\Controls\ChainWorkflowDesigner.cs" />
     <Compile Include="Modules\Content\ImageProcessingCustomization\ImageProcessingCustomizationModule.cs" />
+    <Compile Include="Modules\Content\ImageProcessingCustomization\ViewModels\IImageProcessingCustomizationViewModel.cs" />
+    <Compile Include="Modules\Content\ImageProcessingCustomization\ViewModels\TemplateViewModels\IImageProcessingAlgorithmTemplateViewModel.cs" />
+    <Compile Include="Modules\Content\ImageProcessingCustomization\ViewModels\ImageProcessingCustomizationViewModel.cs" />
+    <Compile Include="Modules\Content\ImageProcessingCustomization\ViewModels\TemplateViewModels\NonUniformityCorrection\BaseNonUniformityTemplateViewModel.cs" />
+    <Compile Include="Modules\Content\ImageProcessingCustomization\ViewModels\TemplateViewModels\NonUniformityCorrection\TwoPointNonUniformityTemplateViewModel.cs" />
     <Compile Include="Modules\Content\ImageProcessingCustomization\Views\ImageProcessingCustomizationView.xaml.cs">
       <DependentUpon>ImageProcessingCustomizationView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Modules\ControlPanel\Commands\ChangeRegionViewCommand.cs" />
-    <Compile Include="Modules\ControlPanel\Commands\IChangeContentRegionCommand.cs" />
-    <Compile Include="Utils\Command.cs" />
-    <Compile Include="Utils\ICommand.cs" />
+    <Compile Include="Modules\ControlPanel\Commands\ChangeContentRegionViewCommand.cs" />
+    <Compile Include="Modules\Content\ImageProcessingCustomization\Regions\ImageProcessingCustomizationViewRegions.cs" />
+    <Compile Include="Regions\ApplicationRegions.cs" />
+    <Compile Include="Utils\Commands\Command.cs" />
+    <Compile Include="Utils\Commands\ICommand.cs" />
     <Compile Include="Modules\ControlPanel\ControlPanelModule.cs" />
     <Compile Include="Modules\ControlPanel\ViewModels\ControlPanelViewModel.cs" />
     <Compile Include="Modules\ControlPanel\ViewModels\IControlPanelViewModel.cs" />
     <Compile Include="Modules\ControlPanel\Views\ControlPanelView.xaml.cs">
       <DependentUpon>ControlPanelView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Regions\ApplicationRegions.cs" />
-    <Compile Include="App_Start\Shell.xaml.cs">
+    <Compile Include="Shell.xaml.cs">
       <DependentUpon>Shell.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Utils\INoParameterCommand.cs" />
-    <Compile Include="Utils\NoParameterCommand.cs" />
+    <Compile Include="Utils\Commands\INoParameterCommand.cs" />
+    <Compile Include="Utils\Commands\NoParameterCommand.cs" />
+    <Compile Include="Utils\Commands\Region\ChangeRegionViewCommand.cs" />
+    <Compile Include="Utils\Commands\Region\IChangeRegionViewCommand.cs" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\Bootstrapper.cs" />
@@ -166,22 +175,16 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Modules\Content\ImageProcessingCustomization\Views\Resources\ToolboxItems\InputWorkflowItems.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Modules\ControlPanel\Views\ControlPanelView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="App_Start\Shell.xaml">
+    <Page Include="Shell.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Modules\Content\ImageProcessingCustomization\ViewModels\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\Ulysses.App.Controls\Ulysses.App.Controls.csproj">
       <Project>{25c54779-f8bc-491c-959c-3ffa006b91cf}</Project>
@@ -195,9 +198,9 @@
       <Project>{1498e5a3-760c-49ec-b09a-fb80fd2ee378}</Project>
       <Name>Ulysses.ImageAcquisition</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Ulysses.NUC\Ulysses.NonUniformityCorrection.csproj">
-      <Project>{a68fcba0-ce6b-4929-b84d-046460bf26be}</Project>
-      <Name>Ulysses.NonUniformityCorrection</Name>
+    <ProjectReference Include="..\Ulysses.ProcessingAlgorithms\Ulysses.ProcessingAlgorithms.csproj">
+      <Project>{12f8668f-ff96-4108-b9b9-1998218851b8}</Project>
+      <Name>Ulysses.ProcessingAlgorithms</Name>
     </ProjectReference>
     <ProjectReference Include="..\Ulysses.ProcessingEngine\Ulysses.ProcessingEngine.csproj">
       <Project>{c06cd4eb-f9ba-407f-8002-3f20aa6a7951}</Project>

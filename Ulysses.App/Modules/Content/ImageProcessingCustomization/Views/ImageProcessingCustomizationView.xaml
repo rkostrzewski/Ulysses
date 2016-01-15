@@ -3,94 +3,61 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             xmlns:designerCanvas="clr-namespace:Ulysses.App.Controls.Workflows.DesignerCanvas;assembly=Ulysses.App.Controls"
-             xmlns:items="clr-namespace:Ulysses.App.Controls.Workflows.Items;assembly=Ulysses.App.Controls"
-             xmlns:toolbox="clr-namespace:Ulysses.App.Controls.Workflows.Toolbox;assembly=Ulysses.App.Controls"
-             xmlns:zoom="clr-namespace:Ulysses.App.Controls.Workflows.Zoom;assembly=Ulysses.App.Controls"
+             xmlns:controls="clr-namespace:Ulysses.App.Modules.Content.ImageProcessingCustomization.Controls"
+             xmlns:workflowDesigner="clr-namespace:Ulysses.App.Controls.WorkflowDesigner;assembly=Ulysses.App.Controls"
+             xmlns:viewModels="clr-namespace:Ulysses.App.Modules.Content.ImageProcessingCustomization.ViewModels"
+             xmlns:templateViewModels="clr-namespace:Ulysses.App.Modules.Content.ImageProcessingCustomization.ViewModels.TemplateViewModels"
+             xmlns:prism="http://prismlibrary.com/"
              mc:Ignorable="d"
-             d:DesignHeight="300" d:DesignWidth="300">
-    <Grid Margin="0">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="4*" />
-        </Grid.ColumnDefinitions>
-
-        <Border Grid.Column="0"
-                BorderBrush="Yellow"
-                BorderThickness="1">
-            <StackPanel>
-                <Expander IsExpanded="True"
-                          Header="Symbols"
-                          Margin="0,1,0,0">
-                    <Expander.Content>
-                        <toolbox:WorkflowToolbox
-                            DefaultItemSize="50,50">
-                            <ItemsControl.Items>
-                                <Grid>
-                                    <Ellipse
-                                        Fill="Violet"
-                                        Margin="1"
-                                        ToolTip="Ellipse"
-                                        IsHitTestVisible="False" />
-                                    <items:WorkflowItem.DragThumbTemplate>
-                                        <ControlTemplate>
-                                            <Ellipse
-                                                Fill="Transparent" />
-                                        </ControlTemplate>
-                                    </items:WorkflowItem.DragThumbTemplate>
-                                </Grid>
-                                <Ellipse
-                                    Fill="Blue"
-                                    ToolTip="Ellipse"
-                                    IsHitTestVisible="False">
-                                    <items:WorkflowItem.DragThumbTemplate>
-                                        <ControlTemplate>
-                                            <Ellipse
-                                                Fill="Transparent" />
-                                        </ControlTemplate>
-                                    </items:WorkflowItem.DragThumbTemplate>
-                                </Ellipse>
-                                <Ellipse
-                                    Fill="Yellow"
-                                    ToolTip="Ellipse"
-                                    IsHitTestVisible="False">
-                                    <items:WorkflowItem.DragThumbTemplate>
-                                        <ControlTemplate>
-                                            <Ellipse
-                                                Fill="Transparent" />
-                                        </ControlTemplate>
-                                    </items:WorkflowItem.DragThumbTemplate>
-                                </Ellipse>
-                            </ItemsControl.Items>
-                        </toolbox:WorkflowToolbox>
-                    </Expander.Content>
-                </Expander>
-            </StackPanel>
-        </Border>
-
-        <GridSplitter Grid.Column="1"
-                      HorizontalAlignment="Left"
-                      VerticalAlignment="Stretch"
-                      Background="Transparent"
-                      Width="3" />
-
-        <Border Margin="0"
-                Grid.Column="1"
-                BorderBrush="LightCoral"
-                BorderThickness="1">
-            <Grid>
-                <ScrollViewer Name="WorkflowDesignerScrollViewer" Background="Transparent"
-                              HorizontalScrollBarVisibility="Auto"
-                              VerticalScrollBarVisibility="Auto">
-                    <designerCanvas:WorkflowDesignerCanvas AllowDrop="True" Background="LightGray" />
-                </ScrollViewer>
-                <zoom:ZoomBox Width="180"
-                              HorizontalAlignment="Right"
-                              VerticalAlignment="Top"
-                              ScrollViewer="{Binding ElementName=WorkflowDesignerScrollViewer}"
-                              Margin="0,29,10,0" />
-            </Grid>
-        </Border>
-
+             d:DesignHeight="300" d:DesignWidth="300"
+             d:DataContext="{d:DesignInstance viewModels:ImageProcessingCustomizationViewModel}">
+    <UserControl.Resources>
+        <Style x:Key="ItemContStyle" TargetType="ListViewItem">
+            <Style.Resources>
+                <LinearGradientBrush x:Key="MouseOverBrush" StartPoint="0.5, 0" EndPoint="0.5, 1">
+                    <GradientStop Color="#22000000" Offset="0" />
+                    <GradientStop Color="#44000000" Offset="0.4" />
+                    <GradientStop Color="#55000000" Offset="0.6" />
+                    <GradientStop Color="#33000000" Offset="0.9" />
+                    <GradientStop Color="#22000000" Offset="1" />
+                </LinearGradientBrush>
+            </Style.Resources>
+            <Setter Property="Padding" Value="20,54,30,10" />
+            <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+            <!-- The default control template for ListViewItem has a Border 
+           which contains the item's content. -->
+            <Setter Property="Border.BorderThickness" Value="0,0,0,10" />
+            <Setter Property="Border.BorderBrush" Value="LightGray" />
+            <!-- These triggers react to changes in the attached properties set
+           during a managed drag-drop operation. -->
+            <Style.Triggers>
+                <Trigger Property="workflowDesigner:ListViewItemDragState.IsBeingDragged" Value="True">
+                    <Setter Property="FontWeight" Value="DemiBold" />
+                </Trigger>
+                <Trigger Property="workflowDesigner:ListViewItemDragState.IsUnderDragCursor" Value="True">
+                    <Setter Property="Background" Value="{StaticResource MouseOverBrush}" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </UserControl.Resources>
+    <Grid>
+        <controls:ProcessingChainWorkflowDesigner
+            ItemsSource="{Binding ImageProcessingAlgorithmTemplateViewModels}"
+            ItemContainerStyle="{StaticResource ItemContStyle}"
+            Padding="2"
+            SelectionMode="Single" Height="37" VerticalAlignment="Top">
+            <ListView.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <StackPanel Orientation="Horizontal" />
+                </ItemsPanelTemplate>
+            </ListView.ItemsPanel>
+            <ListView.ItemTemplate>
+                <DataTemplate DataType="templateViewModels:IImageProcessingAlgorithmTemplateViewModel">
+                    <TextBlock Margin="0" Text="{Binding Algorithm }" Width="150" Height="150" Background="Yellow"
+                               Foreground="Black" />
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </controls:ProcessingChainWorkflowDesigner>
+        <ContentControl prism:RegionManager.RegionName="ProcessingChainElementCustomizationRegion" Margin="0,37,0,0"></ContentControl>
     </Grid>
 </UserControl>

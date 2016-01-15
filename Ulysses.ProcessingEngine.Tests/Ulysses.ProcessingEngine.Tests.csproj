@@ -73,10 +73,6 @@
       <Project>{1498E5A3-760C-49EC-B09A-FB80FD2EE378}</Project>
       <Name>Ulysses.ImageAcquisition</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Ulysses.NUC\Ulysses.NonUniformityCorrection.csproj">
-      <Project>{a68fcba0-ce6b-4929-b84d-046460bf26be}</Project>
-      <Name>Ulysses.NonUniformityCorrection</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Ulysses.ProcessingEngine\Ulysses.ProcessingEngine.csproj">
       <Project>{C06CD4EB-F9BA-407F-8002-3F20AA6A7951}</Project>
       <Name>Ulysses.ProcessingEngine</Name>

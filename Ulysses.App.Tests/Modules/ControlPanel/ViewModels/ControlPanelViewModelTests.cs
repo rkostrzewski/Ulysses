@@ -20,7 +20,7 @@ namespace Ulysses.App.Tests.Modules.ControlPanel.ViewModels
             var command = viewModel.ChangeContentRegionViewCommand;
 
             // Then
-            Assert.IsInstanceOf<IChangeContentRegionCommand>(command);
+            Assert.IsInstanceOf<IChangeContentRegionViewCommand>(command);
         }
     }
 }

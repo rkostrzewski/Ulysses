@@ -1,5 +1,7 @@
 ﻿using Microsoft.Practices.Unity;
+using Prism.Regions;
 using Ulysses.App.Modules.Content.ImageDisplay.ViewModels;
+using Ulysses.App.Modules.Content.ImageProcessingCustomization.ViewModels;
 using Ulysses.App.Modules.ControlPanel.ViewModels;
 using Ulysses.ProcessingEngine.ProcessingEngine.Factories;
 
@@ -15,6 +17,7 @@ namespace Ulysses.App
 
         private static void RegisterModels(IUnityContainer container)
         {
+            container.RegisterType<IRegionManager>();
             container.RegisterType<IProcessingEngineFactory, ProcessingEngineFactory>();
         }
 
@@ -22,6 +25,7 @@ namespace Ulysses.App
         {
             container.RegisterType<IControlPanelViewModel, ControlPanelViewModel>();
             container.RegisterType<IImageDisplayViewModel, ImageDisplayViewModel>();
+            container.RegisterType<IImageProcessingCustomizationViewModel, ImageProcessingCustomizationViewModel>();
         }
     }
 }
