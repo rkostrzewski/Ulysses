@@ -2,6 +2,7 @@
 {
     public enum ImageProcessingAlgorithm
     {
-        TwoPointNonUniformityAlgorithm = 1
+        TwoPointNonUniformityAlgorithm,
+        OnePointNonUniformityAlgorithm
     }
 }

@@ -94,6 +94,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="App_Start\ContainerBootstrapper.cs" />
+    <Compile Include="Modules\Content\ImageProcessingCustomization\ViewModels\TemplateViewModels\NonUniformityCorrection\OnePointNonUniformityTemplateViewModel.cs" />
     <Compile Include="Modules\ControlPanel\Commands\IChangeContentRegionViewCommand.cs" />
     <Compile Include="Modules\Regions\ContentRegionViews.cs" />
     <Compile Include="Modules\Content\ImageDisplay\Commands\SetOutputImageCommand.cs" />

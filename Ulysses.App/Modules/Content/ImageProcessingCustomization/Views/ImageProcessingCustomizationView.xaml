@@ -8,10 +8,11 @@
              xmlns:viewModels="clr-namespace:Ulysses.App.Modules.Content.ImageProcessingCustomization.ViewModels"
              xmlns:templateViewModels="clr-namespace:Ulysses.App.Modules.Content.ImageProcessingCustomization.ViewModels.TemplateViewModels"
              xmlns:prism="http://prismlibrary.com/"
+             xmlns:dragAndDrop="clr-namespace:Ulysses.App.Controls.DragAndDropExtension.DragAndDrop;assembly=Ulysses.App.Controls"
              mc:Ignorable="d"
              d:DesignHeight="300" d:DesignWidth="300"
              d:DataContext="{d:DesignInstance viewModels:ImageProcessingCustomizationViewModel}">
-    <UserControl.Resources>
+    <!--<UserControl.Resources>
         <Style x:Key="ItemContStyle" TargetType="ListViewItem">
             <Style.Resources>
                 <LinearGradientBrush x:Key="MouseOverBrush" StartPoint="0.5, 0" EndPoint="0.5, 1">
@@ -23,12 +24,12 @@
                 </LinearGradientBrush>
             </Style.Resources>
             <Setter Property="HorizontalContentAlignment" Value="Stretch" />
-            <!-- The default control template for ListViewItem has a Border 
-           which contains the item's content. -->
+            --><!-- The default control template for ListViewItem has a Border 
+           which contains the item's content. --><!--
             <Setter Property="Border.BorderThickness" Value="0,0,0,10" />
             <Setter Property="Border.BorderBrush" Value="LightGray" />
-            <!-- These triggers react to changes in the attached properties set
-           during a managed drag-drop operation. -->
+            --><!-- These triggers react to changes in the attached properties set
+           during a managed drag-drop operation. --><!--
             <Style.Triggers>
                 <Trigger Property="workflowDesigner:ListViewItemDragState.IsBeingDragged" Value="True">
                     <Setter Property="FontWeight" Value="DemiBold" />
@@ -38,9 +39,9 @@
                 </Trigger>
             </Style.Triggers>
         </Style>
-    </UserControl.Resources>
+    </UserControl.Resources>-->
     <Grid>
-        <controls:ProcessingChainWorkflowDesigner
+        <!--<controls:ProcessingChainWorkflowDesigner
             ItemsSource="{Binding ImageProcessingAlgorithmTemplateViewModels}"
             ItemContainerStyle="{StaticResource ItemContStyle}"
             Padding="2"
@@ -56,7 +57,21 @@
                                Foreground="Black" />
                 </DataTemplate>
             </ListView.ItemTemplate>
-        </controls:ProcessingChainWorkflowDesigner>
+        </controls:ProcessingChainWorkflowDesigner>-->
+        <ListView ItemsSource="{Binding ImageProcessingAlgorithmTemplateViewModels}"
+                 dragAndDrop:DragDrop.IsDragSource="True" dragAndDrop:DragDrop.IsDropTarget="True" Height="96.666" VerticalAlignment="Bottom" Grid.ColumnSpan="2">
+            <ListView.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <StackPanel Orientation="Horizontal" />
+                </ItemsPanelTemplate>
+            </ListView.ItemsPanel>
+            <ListView.ItemTemplate>
+                <DataTemplate DataType="templateViewModels:IImageProcessingAlgorithmTemplateViewModel">
+                    <TextBlock Margin="0" Text="{Binding Algorithm }" Width="30" Height="30" Background="Yellow"
+                               Foreground="Black" />
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
         <ContentControl prism:RegionManager.RegionName="ProcessingChainElementCustomizationRegion" Margin="0,37,0,0"></ContentControl>
     </Grid>
 </UserControl>

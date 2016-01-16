@@ -5,7 +5,6 @@ using System.Windows.Controls;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
-using Ulysses.App.Controls.ProcessingChainDesigner;
 
 namespace Ulysses.App.Controls.WorkflowDesigner
 {

@@ -1,7 +1,7 @@
 using System.Windows;
 using System.Windows.Media;
 
-namespace Ulysses.App.Controls.ProcessingChainDesigner
+namespace Ulysses.App.Controls.WorkflowDesigner
 {
     public static class VisualMouseExtensions
     {

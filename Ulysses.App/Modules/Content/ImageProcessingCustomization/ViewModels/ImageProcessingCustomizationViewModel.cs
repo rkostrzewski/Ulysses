@@ -13,9 +13,9 @@ namespace Ulysses.App.Modules.Content.ImageProcessingCustomization.ViewModels
             ImageProcessingAlgorithmTemplateViewModels = new ObservableCollection<IImageProcessingAlgorithmTemplateViewModel>
             {
                 new TwoPointNonUniformityTemplateViewModel(),
+                new OnePointNonUniformityTemplateViewModel(),
                 new TwoPointNonUniformityTemplateViewModel(),
-                new TwoPointNonUniformityTemplateViewModel(),
-                new TwoPointNonUniformityTemplateViewModel(),
+                new OnePointNonUniformityTemplateViewModel(),
             };
         }
     }
