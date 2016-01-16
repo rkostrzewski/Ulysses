@@ -22,7 +22,6 @@
                     <GradientStop Color="#22000000" Offset="1" />
                 </LinearGradientBrush>
             </Style.Resources>
-            <Setter Property="Padding" Value="20,54,30,10" />
             <Setter Property="HorizontalContentAlignment" Value="Stretch" />
             <!-- The default control template for ListViewItem has a Border 
            which contains the item's content. -->
@@ -35,7 +34,7 @@
                     <Setter Property="FontWeight" Value="DemiBold" />
                 </Trigger>
                 <Trigger Property="workflowDesigner:ListViewItemDragState.IsUnderDragCursor" Value="True">
-                    <Setter Property="Background" Value="{StaticResource MouseOverBrush}" />
+                    <Setter Property="Background" Value="Aqua" />
                 </Trigger>
             </Style.Triggers>
         </Style>
@@ -45,7 +44,7 @@
             ItemsSource="{Binding ImageProcessingAlgorithmTemplateViewModels}"
             ItemContainerStyle="{StaticResource ItemContStyle}"
             Padding="2"
-            SelectionMode="Single" Height="37" VerticalAlignment="Top">
+            SelectionMode="Single" Height="100" VerticalAlignment="Top">
             <ListView.ItemsPanel>
                 <ItemsPanelTemplate>
                     <StackPanel Orientation="Horizontal" />
@@ -53,7 +52,7 @@
             </ListView.ItemsPanel>
             <ListView.ItemTemplate>
                 <DataTemplate DataType="templateViewModels:IImageProcessingAlgorithmTemplateViewModel">
-                    <TextBlock Margin="0" Text="{Binding Algorithm }" Width="150" Height="150" Background="Yellow"
+                    <TextBlock Margin="0" Text="{Binding Algorithm }" Width="30" Height="30" Background="Yellow"
                                Foreground="Black" />
                 </DataTemplate>
             </ListView.ItemTemplate>

@@ -76,10 +76,10 @@
     <Compile Include="Modules\Content\ImageDisplay\Commands\StartImageProcessingCommandTest.cs" />
     <Compile Include="Modules\Content\ImageDisplay\Commands\StopImageProcessingCommandTest.cs" />
     <Compile Include="Modules\Content\ImageDisplay\ViewModels\ImageDisplayViewModelTests.cs" />
-    <Compile Include="Modules\ControlPanel\Commands\ChangeContentRegionCommandTests.cs" />
-    <Compile Include="Modules\ControlPanel\Commands\TestRegionCollection.cs" />
-    <Compile Include="Modules\ControlPanel\Commands\TestView.cs" />
-    <Compile Include="Modules\ControlPanel\Commands\TestViewsCollection.cs" />
+    <Compile Include="Utils\Commands\ChangeRegionViewCommandCommandTests.cs" />
+    <Compile Include="Utils\Commands\TestRegionCollection.cs" />
+    <Compile Include="Utils\Commands\TestView.cs" />
+    <Compile Include="Utils\Commands\TestViewsCollection.cs" />
     <Compile Include="Modules\ControlPanel\ViewModels\ControlPanelViewModelTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

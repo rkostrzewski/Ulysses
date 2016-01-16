@@ -18,12 +18,15 @@ namespace Ulysses.App.Controls.WorkflowDesigner
         private int? _indexToSelect;
         private bool _isDragInProgress;
         private T _itemUnderDragCursor;
+        private Orientation _orientation;
 
         public ListViewWorkflowDesigner()
         {
             AllowDrop = true;
             // TODO: Remove and create attached property
+            _orientation = Orientation.Horizontal;
             DragAdornerOpacity = 0.7;
+            // TODO: END
             PreviewMouseLeftButtonDown += OnPreviewMouseLeftButtonDown;
             PreviewMouseMove += OnPreviewMouseMove;
             DragOver += OnDragOver;
@@ -335,7 +338,7 @@ namespace Ulysses.App.Controls.WorkflowDesigner
             layer.Add(_dragAdorner);
 
             // TODO: WAT?
-            //_ptMouseDown = MouseUtilities.GetMousePosition(this.listView);
+            //_dragStartPosition = Mouse.GetPosition(this);
 
             return layer;
         }
@@ -380,8 +383,22 @@ namespace Ulysses.App.Controls.WorkflowDesigner
             var itemBeingDragged = this.GetListViewItem(_indexToSelect.Value);
             var itemLocation = itemBeingDragged.TranslatePoint(new Point(0, 0), this);
 
-            var left = mousePosition.X - _dragStartPosition.Value.X;
-            var top = itemLocation.Y + mousePosition.Y - _dragStartPosition.Value.Y;
+            double left;
+            double top;
+
+            switch (_orientation)
+            {
+                case Orientation.Horizontal:
+                    top = mousePosition.Y - _dragStartPosition.Value.Y;
+                    left = itemLocation.X + mousePosition.X - _dragStartPosition.Value.X;
+                    break;
+                case Orientation.Vertical:
+                    left = mousePosition.X - _dragStartPosition.Value.X;
+                    top = itemLocation.Y + mousePosition.Y - _dragStartPosition.Value.Y;
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
 
             _dragAdorner.SetTransformOffsets(left, top);
         }

@@ -15,7 +15,6 @@ namespace Ulysses.App.Utils.Commands.Region
         {
             _regionManager = regionManager;
             _parentRegionName = parentRegionName;
-
         }
 
         public override bool CanExecute(string targetViewName)
