@@ -76,8 +76,9 @@ namespace Ulysses.App.Controls.DragAndDropExtension.DragAndDrop
         public static void OnIsDragSourceChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             var uiElement = (UIElement)d;
+            var isDragSource = (bool)e.NewValue;
 
-            if ((bool)e.NewValue)
+            if (isDragSource)
             {
                 uiElement.PreviewMouseLeftButtonDown += OnPreviewMouseLeftButtonDown;
                 uiElement.PreviewMouseLeftButtonUp += OnPreviewMouseLeftButtonUp;
@@ -93,8 +94,9 @@ namespace Ulysses.App.Controls.DragAndDropExtension.DragAndDrop
         public static void OnIsDropTargetChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             var uiElement = (UIElement)d;
+            var isDropTarget = (bool)e.NewValue;
 
-            if ((bool)e.NewValue)
+            if (isDropTarget)
             {
                 uiElement.AllowDrop = true;
                 uiElement.PreviewDragEnter += OnPreviewDragEnter;

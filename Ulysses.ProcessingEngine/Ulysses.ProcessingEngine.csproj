@@ -49,7 +49,7 @@
     <Compile Include="ProcessingEngine\AsyncProcessingEngine.cs" />
     <Compile Include="ProcessingEngine\Synchronization\AsyncProcessingMediator.cs" />
     <Compile Include="ProcessingEngine\Synchronization\ImageProcessingStatus.cs" />
-    <Compile Include="Output\ISetOutputImageCommand.cs" />
+    <Compile Include="Output\IReceiveProcessedImageCommand.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ProcessingEngine\SyncProcessingEngine.cs" />
   </ItemGroup>

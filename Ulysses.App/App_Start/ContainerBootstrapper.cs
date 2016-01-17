@@ -2,7 +2,7 @@
 using Prism.Regions;
 using Ulysses.App.Modules.Content.ImageDisplay.ViewModels;
 using Ulysses.App.Modules.Content.ImageProcessingCustomization.ViewModels;
-using Ulysses.App.Modules.ControlPanel.ViewModels;
+using Ulysses.App.Modules.Navigation.ViewModels;
 using Ulysses.ProcessingEngine.ProcessingEngine.Factories;
 
 namespace Ulysses.App
@@ -23,7 +23,7 @@ namespace Ulysses.App
 
         private static void RegisterViewModels(IUnityContainer container)
         {
-            container.RegisterType<IControlPanelViewModel, ControlPanelViewModel>();
+            container.RegisterType<INavigationPanelViewModel, NavigationPanelViewModel>();
             container.RegisterType<IImageDisplayViewModel, ImageDisplayViewModel>();
             container.RegisterType<IImageProcessingCustomizationViewModel, ImageProcessingCustomizationViewModel>();
         }

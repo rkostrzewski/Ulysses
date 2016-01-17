@@ -3,6 +3,7 @@ using Ulysses.Core.Exceptions;
 using Ulysses.Core.Models;
 using Ulysses.ProcessingAlgorithms.Algorithms.NonUniformityCorrection;
 using Ulysses.ProcessingAlgorithms.Algorithms.NonUniformityCorrection.NonUniformityModels;
+using Ulysses.ProcessingAlgorithms.Factories;
 using Ulysses.ProcessingAlgorithms.Factories.NonUniformityCorrection.Templates;
 
 namespace Ulysses.ProcessingAlgorithms.Tests.Algorithms
@@ -18,7 +19,7 @@ namespace Ulysses.ProcessingAlgorithms.Tests.Algorithms
             var correctionAlgorithm =
                 new TwoPointNonUniformityCorrectionAlgorithm(new TwoPointNonUniformityCorrectionAlgorithmTemplate
                 {
-                    Algorithm = ImageProcessingAlgorithm.TwoPointNonUniformityAlgorithm,
+                    Algorithms = ImageProcessingAlgorithmType.TwoPointNonUniformityAlgorithm,
                     NonUniformityModel = nonUniformityModel
                 });
 
@@ -42,7 +43,7 @@ namespace Ulysses.ProcessingAlgorithms.Tests.Algorithms
             var correctionAlgorithm =
                 new TwoPointNonUniformityCorrectionAlgorithm(new TwoPointNonUniformityCorrectionAlgorithmTemplate
                 {
-                    Algorithm = ImageProcessingAlgorithm.TwoPointNonUniformityAlgorithm,
+                    Algorithms = ImageProcessingAlgorithmType.TwoPointNonUniformityAlgorithm,
                     NonUniformityModel = nonUniformityModel
                 });
 
@@ -64,7 +65,7 @@ namespace Ulysses.ProcessingAlgorithms.Tests.Algorithms
             var correctionAlgorithm =
                 new TwoPointNonUniformityCorrectionAlgorithm(new TwoPointNonUniformityCorrectionAlgorithmTemplate
                 {
-                    Algorithm = ImageProcessingAlgorithm.TwoPointNonUniformityAlgorithm,
+                    Algorithms = ImageProcessingAlgorithmType.TwoPointNonUniformityAlgorithm,
                     NonUniformityModel = nonUniformityModel
                 });
 
@@ -87,7 +88,7 @@ namespace Ulysses.ProcessingAlgorithms.Tests.Algorithms
             var correctionAlgorithm =
                 new TwoPointNonUniformityCorrectionAlgorithm(new TwoPointNonUniformityCorrectionAlgorithmTemplate
                 {
-                    Algorithm = ImageProcessingAlgorithm.TwoPointNonUniformityAlgorithm,
+                    Algorithms = ImageProcessingAlgorithmType.TwoPointNonUniformityAlgorithm,
                     NonUniformityModel = nonUniformityModel
                 });
 

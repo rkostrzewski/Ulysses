@@ -47,7 +47,7 @@ namespace Ulysses.App.Controls.DragAndDropExtension
         {
             var itemsControl = control;
             var item = itemsControl.GetItemContainer((UIElement)e.OriginalSource);
-
+            
             if (item == null)
             {
                 SourceCollection = itemsControl.ItemsSource ?? itemsControl.Items;

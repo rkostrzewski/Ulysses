@@ -44,13 +44,14 @@
     <Compile Include="Algorithms\NonUniformityCorrection\TwoPointNonUniformityCorrectionAlgorithm.cs" />
     <Compile Include="Exceptions\NotSupportedNonUniformityCorrectionAlgorithm.cs" />
     <Compile Include="Factories\IImageProcessingAlgorithmTemplate.cs" />
+    <Compile Include="Factories\ImageProcessingAlgorithmType.cs" />
     <Compile Include="Factories\NonUniformityCorrection\NonUniformityCorrectionAlgorithmFactory.cs" />
     <Compile Include="Factories\NonUniformityCorrection\Templates\BaseNonUniformityCorrectionTemplate.cs" />
-    <Compile Include="Factories\NonUniformityCorrection\Templates\NonUniformityCorrectionAlgorithm.cs" />
     <Compile Include="Factories\NonUniformityCorrection\Templates\TwoPointNonUniformityCorrectionTemplate.cs" />
     <Compile Include="IImageProcessingAlgorithm.cs" />
     <Compile Include="Algorithms\NonUniformityCorrection\NonUniformityModels\DefaultNonUniformityModel.cs" />
     <Compile Include="Algorithms\NonUniformityCorrection\NonUniformityModels\NonUniformityModel.cs" />
+    <Compile Include="Factories\ImageProcessingAlgorithmGroup.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

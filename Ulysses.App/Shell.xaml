@@ -6,15 +6,15 @@
         xmlns:prism="http://prismlibrary.com/"
         xmlns:regions="clr-namespace:Ulysses.App.Regions"
         mc:Ignorable="d"
-        Title="Shell" Height="520" Width="740">
-    <Grid>
-        <StackPanel Name="ControlPanelRegion" 
-                    Orientation="Horizontal"
-                    MinWidth="150" 
-                    HorizontalAlignment="Left"
-                    Background="Black" Width="732" Height="41" VerticalAlignment="Top">
-            <ContentControl prism:RegionManager.RegionName="{x:Static regions:ApplicationRegions.ControlPanelRegion}" />
-        </StackPanel>
-        <ContentControl prism:RegionManager.RegionName="{x:Static regions:ApplicationRegions.ContentRegion}" Margin="0,41,0,0" />
+        Title="Shell" Height="520" Width="1151">
+    <Grid Background="{StaticResource Primary300}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="45" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <ContentControl prism:RegionManager.RegionName="{x:Static regions:ApplicationRegions.NavigationPanelRegion}"
+                        Grid.Row="0" />
+        <ContentControl prism:RegionManager.RegionName="{x:Static regions:ApplicationRegions.ContentRegion}"
+                        Grid.Row="1" />
     </Grid>
 </Window>

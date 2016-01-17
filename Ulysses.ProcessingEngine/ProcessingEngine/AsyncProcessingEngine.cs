@@ -14,11 +14,11 @@ namespace Ulysses.ProcessingEngine.ProcessingEngine
         private readonly IImageAcquisition _imageAcquisition;
         private readonly IImageProcessingChain _imageProcessingChain;
         private readonly AsyncProcessingMediator _mediator;
-        private readonly ISetOutputImageCommand _setOutputImageCommand;
+        private readonly IReceiveProcessedImageCommand _setOutputImageCommand;
         private volatile CancellationTokenSource _cancellationTokenSource;
         private Task _task;
 
-        public AsyncProcessingEngine(IImageAcquisition imageAcquisition, IImageProcessingChain imageProcessingChain, ISetOutputImageCommand setOutputImageCommand)
+        public AsyncProcessingEngine(IImageAcquisition imageAcquisition, IImageProcessingChain imageProcessingChain, IReceiveProcessedImageCommand setOutputImageCommand)
         {
             _imageAcquisition = imageAcquisition;
             _imageProcessingChain = imageProcessingChain;

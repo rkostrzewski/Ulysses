@@ -8,9 +8,9 @@ namespace Ulysses.ProcessingAlgorithms.Factories.NonUniformityCorrection
     {
         public Core.IImageProcessingAlgorithm CreateAlgorithmImplementation(BaseNonUniformityCorrectionAlgorithmTemplate correctionAlgorithmTemplate)
         {
-            switch (correctionAlgorithmTemplate.Algorithm)
+            switch (correctionAlgorithmTemplate.Algorithms)
             {
-                case ImageProcessingAlgorithm.TwoPointNonUniformityAlgorithm:
+                case ImageProcessingAlgorithmType.TwoPointNonUniformityAlgorithm:
                     return new TwoPointNonUniformityCorrectionAlgorithm(correctionAlgorithmTemplate as TwoPointNonUniformityCorrectionAlgorithmTemplate);
                 default:
                     throw new NotSupportedNonUniformityCorrectionAlgorithm();

@@ -14,7 +14,7 @@ namespace Ulysses.ProcessingEngine.Tests.ProcessingEngine
     {
         protected int TimesImageAcquisitionCalled;
         protected int TimesImageProcessingChainCalled;
-        protected int TimesSetOutputImageCommandCalled;
+        protected int TimesReceiveProcessedImageCommandCalled;
 
         protected Mock<IImageAcquisition> ImageAcquisition
         {
@@ -37,13 +37,13 @@ namespace Ulysses.ProcessingEngine.Tests.ProcessingEngine
             }
         }
 
-        protected Mock<ISetOutputImageCommand> SetOutputImageCommand
+        protected Mock<IReceiveProcessedImageCommand> ReceiveProcessedImageCommand
         {
             get
             {
-                var setOutputImageCommand = new Mock<ISetOutputImageCommand>();
-                setOutputImageCommand.Setup(ia => ia.Execute(It.IsAny<Image>())).Callback(SetOutputImageCommandMockWork);
-                return setOutputImageCommand;
+                var receiveProcessedImageCommand = new Mock<IReceiveProcessedImageCommand>();
+                receiveProcessedImageCommand.Setup(ia => ia.Execute(It.IsAny<Image>())).Callback(ReceiveProcessedImageCommandMockWork);
+                return receiveProcessedImageCommand;
             }
         }
 
@@ -52,7 +52,7 @@ namespace Ulysses.ProcessingEngine.Tests.ProcessingEngine
         {
             TimesImageAcquisitionCalled = 0;
             TimesImageProcessingChainCalled = 0;
-            TimesSetOutputImageCommandCalled = 0;
+            TimesReceiveProcessedImageCommandCalled = 0;
         }
 
         [SetUp]
@@ -60,7 +60,7 @@ namespace Ulysses.ProcessingEngine.Tests.ProcessingEngine
         {
             TimesImageAcquisitionCalled = 0;
             TimesImageProcessingChainCalled = 0;
-            TimesSetOutputImageCommandCalled = 0;
+            TimesReceiveProcessedImageCommandCalled = 0;
         }
 
         protected static async Task StartProcessingWaitForSpecifiedTimeAndWaitForEnd(IProcessingEngine engine, int milliseconds)
@@ -82,9 +82,9 @@ namespace Ulysses.ProcessingEngine.Tests.ProcessingEngine
             Thread.Sleep(500);
         }
 
-        protected void SetOutputImageCommandMockWork()
+        protected void ReceiveProcessedImageCommandMockWork()
         {
-            TimesSetOutputImageCommandCalled++;
+            TimesReceiveProcessedImageCommandCalled++;
         }
     }
 }

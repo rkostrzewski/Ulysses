@@ -5,7 +5,9 @@ namespace Ulysses.App.Modules.Content.ImageProcessingCustomization.ViewModels.Te
 {
     public abstract class BaseNonUniformityTemplateViewModel : IImageProcessingAlgorithmTemplateViewModel
     {
-        public abstract ImageProcessingAlgorithm Algorithm { get; }
+        public abstract ImageProcessingAlgorithmType Algorithm { get; }
+
+        public ImageProcessingAlgorithmGroup Group => ImageProcessingAlgorithmGroup.NonUniformityCorrection;
 
         public abstract IImageProcessingAlgorithmTemplate Template { get; set; }
 

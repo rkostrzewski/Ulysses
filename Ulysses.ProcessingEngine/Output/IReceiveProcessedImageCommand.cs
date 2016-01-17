@@ -2,7 +2,7 @@ using Ulysses.Core.Models;
 
 namespace Ulysses.ProcessingEngine.Output
 {
-    public interface ISetOutputImageCommand
+    public interface IReceiveProcessedImageCommand
     {
         void Execute(Image parameter);
     }

@@ -2,6 +2,6 @@ namespace Ulysses.ProcessingAlgorithms.Factories.NonUniformityCorrection.Templat
 {
     public abstract class BaseNonUniformityCorrectionAlgorithmTemplate
     {
-        public ImageProcessingAlgorithm Algorithm { get; set; }
+        public ImageProcessingAlgorithmType Algorithms { get; set; }
     }
 }

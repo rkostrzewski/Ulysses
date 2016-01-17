@@ -1,20 +1,20 @@
 ﻿using Moq;
 using NUnit.Framework;
 using Prism.Regions;
-using Ulysses.App.Modules.ControlPanel.Commands;
-using Ulysses.App.Modules.ControlPanel.ViewModels;
+using Ulysses.App.Modules.Navigation.Commands;
+using Ulysses.App.Modules.Navigation.ViewModels;
 
-namespace Ulysses.App.Tests.Modules.ControlPanel.ViewModels
+namespace Ulysses.App.Tests.Modules.NavigationPanel.ViewModels
 {
     [TestFixture]
-    public class ControlPanelViewModelTests
+    public class NavigationPanelViewModelTests
     {
         [Test]
         public void ShouldAllowToChangeActiveContentView()
         {
             // Given
             var regionManagerMock = new Mock<IRegionManager>();
-            IControlPanelViewModel viewModel = new ControlPanelViewModel(regionManagerMock.Object);
+            INavigationPanelViewModel viewModel = new NavigationPanelViewModel(regionManagerMock.Object);
 
             // When
             var command = viewModel.ChangeContentRegionViewCommand;

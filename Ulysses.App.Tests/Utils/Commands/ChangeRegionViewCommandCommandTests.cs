@@ -34,7 +34,7 @@ namespace Ulysses.App.Tests.Utils.Commands
         {
             // Given            
 
-            IChangeRegionViewCommand command = new ChangeRegionViewCommand(_regionManagerMock.Object, _regionName);
+            IChangeRegionViewCommand<string> command = new ChangeRegionViewCommand<string>(_regionManagerMock.Object, _regionName);
 
             // When
 
@@ -54,7 +54,7 @@ namespace Ulysses.App.Tests.Utils.Commands
             var regionManagerMock = new Mock<IRegionManager>();
             var notExistingViewName = Guid.NewGuid().ToString();
             regionManagerMock.SetupGet(r => r.Regions).Returns(regionCollection);
-            IChangeRegionViewCommand command = new ChangeRegionViewCommand(regionManagerMock.Object, _regionName);
+            IChangeRegionViewCommand<string> command = new ChangeRegionViewCommand<string>(regionManagerMock.Object, _regionName);
 
             // When
             // Then
@@ -72,11 +72,11 @@ namespace Ulysses.App.Tests.Utils.Commands
             var regionManagerMock = new Mock<IRegionManager>();
             var notExistingRegionName = Guid.NewGuid().ToString();
             regionManagerMock.SetupGet(r => r.Regions).Returns(regionCollection);
-            IChangeRegionViewCommand command = new ChangeRegionViewCommand(regionManagerMock.Object, notExistingRegionName);
+            IChangeRegionViewCommand<string> command = new ChangeRegionViewCommand<string>(regionManagerMock.Object, notExistingRegionName);
 
             // When
-
             // Then
+
             Assert.IsFalse(command.CanExecute(_viewName));
             Assert.Throws<InvalidOperationException>(() => command.Execute(_viewName));
         }

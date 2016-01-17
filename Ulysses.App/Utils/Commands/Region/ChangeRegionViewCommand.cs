@@ -1,12 +1,10 @@
 ﻿using System;
-using System.ComponentModel;
 using System.Linq;
-using System.Windows.Input;
 using Prism.Regions;
 
 namespace Ulysses.App.Utils.Commands.Region
 {
-    public class ChangeRegionViewCommand : Command<string>, IChangeRegionViewCommand
+    public class ChangeRegionViewCommand<T> : Command<T>, IChangeRegionViewCommand<T> where T : IConvertible
     { 
         private readonly string _parentRegionName;
         private readonly IRegionManager _regionManager;
@@ -17,12 +15,12 @@ namespace Ulysses.App.Utils.Commands.Region
             _parentRegionName = parentRegionName;
         }
 
-        public override bool CanExecute(string targetViewName)
+        public override bool CanExecute(T targetViewName)
         {
-            return _regionManager.Regions.ContainsRegionWithName(_parentRegionName) && _regionManager.Regions[_parentRegionName].Views.Any(v => v.GetType().Name == targetViewName);
+            return _regionManager.Regions.ContainsRegionWithName(_parentRegionName) && _regionManager.Regions[_parentRegionName].Views.Any(v => v.GetType().Name == targetViewName.ToString());
         }
 
-        public override void Execute(string targetViewName)
+        public override void Execute(T targetViewName)
         {
             if (!CanExecute(targetViewName))
             {
@@ -31,7 +29,7 @@ namespace Ulysses.App.Utils.Commands.Region
 
             var region = _regionManager.Regions[_parentRegionName];
 
-            region.RequestNavigate(targetViewName);
+            region.RequestNavigate(targetViewName.ToString());
         }
     }
 }

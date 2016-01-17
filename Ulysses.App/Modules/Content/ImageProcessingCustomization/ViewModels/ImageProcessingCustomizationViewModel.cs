@@ -1,4 +1,5 @@
-﻿using System.Collections.ObjectModel;
+﻿using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using Ulysses.App.Modules.Content.ImageProcessingCustomization.ViewModels.TemplateViewModels;
 using Ulysses.App.Modules.Content.ImageProcessingCustomization.ViewModels.TemplateViewModels.NonUniformityCorrection;
 
@@ -6,17 +7,16 @@ namespace Ulysses.App.Modules.Content.ImageProcessingCustomization.ViewModels
 {
     public class ImageProcessingCustomizationViewModel : IImageProcessingCustomizationViewModel
     {
-        public ObservableCollection<IImageProcessingAlgorithmTemplateViewModel> ImageProcessingAlgorithmTemplateViewModels { get; set; }
-
         public ImageProcessingCustomizationViewModel()
         {
-            ImageProcessingAlgorithmTemplateViewModels = new ObservableCollection<IImageProcessingAlgorithmTemplateViewModel>
-            {
-                new TwoPointNonUniformityTemplateViewModel(),
-                new OnePointNonUniformityTemplateViewModel(),
-                new TwoPointNonUniformityTemplateViewModel(),
-                new OnePointNonUniformityTemplateViewModel(),
-            };
+            SelectedImageProcessingAlgorithmTemplate = new ObservableCollection<IImageProcessingAlgorithmTemplateViewModel>();
+            AvailableImageProcessingAlgorithmTemplates = new List<IImageProcessingAlgorithmTemplateViewModel> { new TwoPointNonUniformityTemplateViewModel() };
         }
+
+        public IList<IImageProcessingAlgorithmTemplateViewModel> AvailableImageProcessingAlgorithmTemplates { get; set; }
+
+        public IImageAcquisitionTemplateViewModel ImageAcquisitionTemplateViewModel { get; set; }
+
+        public ObservableCollection<IImageProcessingAlgorithmTemplateViewModel> SelectedImageProcessingAlgorithmTemplate { get; set; }
     }
 }

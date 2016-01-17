@@ -5,6 +5,6 @@ namespace Ulysses.App.Modules.Content.ImageProcessingCustomization.ViewModels
 {
     public interface IImageProcessingCustomizationViewModel
     {
-        ObservableCollection<IImageProcessingAlgorithmTemplateViewModel> ImageProcessingAlgorithmTemplateViewModels { get; set; }
+        ObservableCollection<IImageProcessingAlgorithmTemplateViewModel> SelectedImageProcessingAlgorithmTemplate { get; set; }
     }
 }

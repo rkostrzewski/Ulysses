@@ -4,7 +4,7 @@ using Prism.Modularity;
 using Prism.Unity;
 using Ulysses.App.Modules.Content.ImageDisplay;
 using Ulysses.App.Modules.Content.ImageProcessingCustomization;
-using Ulysses.App.Modules.ControlPanel;
+using Ulysses.App.Modules.Navigation;
 
 namespace Ulysses.App
 {
@@ -36,7 +36,7 @@ namespace Ulysses.App
 
             moduleCatalog.AddModule(typeof (ImageDisplayModule));
             moduleCatalog.AddModule(typeof (ImageProcessingCustomizationModule));
-            moduleCatalog.AddModule(typeof (ControlPanelModule), nameof(ImageDisplayModule), nameof(ImageProcessingCustomizationModule));
+            moduleCatalog.AddModule(typeof (NavigationPanelModule), nameof(ImageDisplayModule), nameof(ImageProcessingCustomizationModule));
         }
     }
 }

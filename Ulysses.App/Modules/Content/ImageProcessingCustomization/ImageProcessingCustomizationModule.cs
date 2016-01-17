@@ -16,7 +16,7 @@ namespace Ulysses.App.Modules.Content.ImageProcessingCustomization
 
         public void Initialize()
         {
-            _regionManager.RegisterViewWithRegion(ApplicationRegions.ContentRegion, typeof (ImageProcessingCustomizationView));
+            _regionManager.RegisterViewWithRegion(ApplicationRegion.ContentRegion.ToString(), typeof (ImageProcessingCustomizationView));
         }
     }
 }

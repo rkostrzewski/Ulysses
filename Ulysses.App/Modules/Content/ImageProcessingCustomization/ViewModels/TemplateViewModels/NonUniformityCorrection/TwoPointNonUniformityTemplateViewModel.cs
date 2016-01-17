@@ -1,4 +1,5 @@
 using System;
+using Ulysses.App.Controls.DragAndDropExtension.DragAndDrop;
 using Ulysses.ProcessingAlgorithms.Factories;
 using Ulysses.ProcessingAlgorithms.Factories.NonUniformityCorrection.Templates;
 
@@ -8,10 +9,10 @@ namespace Ulysses.App.Modules.Content.ImageProcessingCustomization.ViewModels.Te
     {
         public TwoPointNonUniformityTemplateViewModel()
         {
-            Algorithm = ImageProcessingAlgorithm.TwoPointNonUniformityAlgorithm;
+            Algorithm = ImageProcessingAlgorithmType.TwoPointNonUniformityAlgorithm;
         }
 
-        public override ImageProcessingAlgorithm Algorithm { get; }
+        public override ImageProcessingAlgorithmType Algorithm { get; }
 
         public override IImageProcessingAlgorithmTemplate Template { get; set; }
 

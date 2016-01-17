@@ -28,7 +28,5 @@ namespace Ulysses.App.Modules.Content.ImageDisplay.Commands
         {
             return _processingEngine != null && _processingEngine.IsWorking();
         }
-
-        public override event EventHandler CanExecuteChanged;
     }
 }

@@ -11,12 +11,12 @@ namespace Ulysses.ProcessingEngine.ProcessingEngine
     public class SyncProcessingEngine : IProcessingEngine
     {
         private readonly IImageAcquisition _imageAcquisition;
-        private readonly ISetOutputImageCommand _imageOutputNotifier;
+        private readonly IReceiveProcessedImageCommand _imageOutputNotifier;
         private readonly IImageProcessingChain _imageProcessingChain;
         private volatile CancellationTokenSource _cancellationTokenSource;
         private Task _task;
 
-        public SyncProcessingEngine(IImageAcquisition imageAcquisition, IImageProcessingChain imageProcessingChain, ISetOutputImageCommand imageOutputNotifier)
+        public SyncProcessingEngine(IImageAcquisition imageAcquisition, IImageProcessingChain imageProcessingChain, IReceiveProcessedImageCommand imageOutputNotifier)
         {
             _imageAcquisition = imageAcquisition;
             _imageProcessingChain = imageProcessingChain;

@@ -63,12 +63,6 @@
     <Compile Include="DragAndDropExtension\Extensions\ItemsControlExtensions.cs" />
     <Compile Include="DragAndDropExtension\Handlers\TypeUtilities.cs" />
     <Compile Include="DragAndDropExtension\Extensions\VisualTreeExtensions.cs" />
-    <Compile Include="WorkflowDesigner\ListViewWorkflowDesigner.cs" />
-    <Compile Include="WorkflowDesigner\DragAdorner.cs" />
-    <Compile Include="WorkflowDesigner\IMousePositionRelatedEvent.cs" />
-    <Compile Include="WorkflowDesigner\ListViewItemDragState.cs" />
-    <Compile Include="WorkflowDesigner\ListViewMouseExtensions.cs" />
-    <Compile Include="WorkflowDesigner\VisualMouseExtensions.cs" />
     <Compile Include="Properties\Annotations.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>

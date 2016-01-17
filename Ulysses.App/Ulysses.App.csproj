@@ -94,8 +94,13 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="App_Start\ContainerBootstrapper.cs" />
+    <Compile Include="Modules\Content\ImageDisplay\Commands\ISetOutputImageCommand.cs" />
+    <Compile Include="Modules\Content\ImageProcessingCustomization\ViewModels\TemplateViewModels\IImageAcquisitionTemplateViewModel.cs" />
     <Compile Include="Modules\Content\ImageProcessingCustomization\ViewModels\TemplateViewModels\NonUniformityCorrection\OnePointNonUniformityTemplateViewModel.cs" />
-    <Compile Include="Modules\ControlPanel\Commands\IChangeContentRegionViewCommand.cs" />
+    <Compile Include="Modules\Navigation\Commands\ChangeCurrentRegionInNavigationPanelCommand.cs" />
+    <Compile Include="Modules\Navigation\Commands\IChangeContentRegionViewCommand.cs" />
+    <Compile Include="Modules\Navigation\Commands\IChangeCurrentRegionInNavigationPanelCommand.cs" />
+    <Compile Include="Modules\Navigation\NavigationPanelModule.cs" />
     <Compile Include="Modules\Regions\ContentRegionViews.cs" />
     <Compile Include="Modules\Content\ImageDisplay\Commands\SetOutputImageCommand.cs" />
     <Compile Include="Modules\Content\ImageDisplay\Commands\StartImageProcessingCommand.cs" />
@@ -109,7 +114,6 @@
     <Compile Include="Modules\Content\ImageDisplay\Views\ImageDisplayView.xaml.cs">
       <DependentUpon>ImageDisplayView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Modules\Content\ImageProcessingCustomization\Controls\ChainWorkflowDesigner.cs" />
     <Compile Include="Modules\Content\ImageProcessingCustomization\ImageProcessingCustomizationModule.cs" />
     <Compile Include="Modules\Content\ImageProcessingCustomization\ViewModels\IImageProcessingCustomizationViewModel.cs" />
     <Compile Include="Modules\Content\ImageProcessingCustomization\ViewModels\TemplateViewModels\IImageProcessingAlgorithmTemplateViewModel.cs" />
@@ -119,24 +123,28 @@
     <Compile Include="Modules\Content\ImageProcessingCustomization\Views\ImageProcessingCustomizationView.xaml.cs">
       <DependentUpon>ImageProcessingCustomizationView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Modules\ControlPanel\Commands\ChangeContentRegionViewCommand.cs" />
+    <Compile Include="Modules\Navigation\Commands\ChangeContentRegionViewCommand.cs" />
     <Compile Include="Modules\Content\ImageProcessingCustomization\Regions\ImageProcessingCustomizationViewRegions.cs" />
+    <Compile Include="Properties\Annotations.cs" />
+    <Compile Include="Regions\ApplicationRegion.cs" />
     <Compile Include="Regions\ApplicationRegions.cs" />
     <Compile Include="Utils\Commands\Command.cs" />
+    <Compile Include="Utils\Commands\CompositeCommand.cs" />
     <Compile Include="Utils\Commands\ICommand.cs" />
-    <Compile Include="Modules\ControlPanel\ControlPanelModule.cs" />
-    <Compile Include="Modules\ControlPanel\ViewModels\ControlPanelViewModel.cs" />
-    <Compile Include="Modules\ControlPanel\ViewModels\IControlPanelViewModel.cs" />
-    <Compile Include="Modules\ControlPanel\Views\ControlPanelView.xaml.cs">
-      <DependentUpon>ControlPanelView.xaml</DependentUpon>
+    <Compile Include="Modules\Navigation\ViewModels\NavigationPanelViewModel.cs" />
+    <Compile Include="Modules\Navigation\ViewModels\INavigationPanelViewModel.cs" />
+    <Compile Include="Modules\Navigation\Views\ControlPanelView.cs">
+      <DependentUpon>NavigationPanelView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Shell.xaml.cs">
       <DependentUpon>Shell.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Utils\Commands\ICompositeCommand.cs" />
     <Compile Include="Utils\Commands\INoParameterCommand.cs" />
     <Compile Include="Utils\Commands\NoParameterCommand.cs" />
     <Compile Include="Utils\Commands\Region\ChangeRegionViewCommand.cs" />
     <Compile Include="Utils\Commands\Region\IChangeRegionViewCommand.cs" />
+    <Compile Include="Utils\ViewModels\NotifyPropertyChanged.cs" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\Bootstrapper.cs" />
@@ -176,11 +184,23 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Modules\ControlPanel\Views\ControlPanelView.xaml">
+    <Page Include="Modules\Navigation\Views\NavigationPanelView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Modules\Navigation\Views\Resources\NavigationButtonStyle.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Shell.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Style\Brushes.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Style\Colours.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -16,7 +16,7 @@ namespace Ulysses.App.Modules.Content.ImageDisplay
 
         public void Initialize()
         {
-            _regionViewRegistry.RegisterViewWithRegion(ApplicationRegions.ContentRegion, typeof (ImageDisplayView));
+            _regionViewRegistry.RegisterViewWithRegion(ApplicationRegion.ContentRegion.ToString(), typeof (ImageDisplayView));
         }
     }
 }

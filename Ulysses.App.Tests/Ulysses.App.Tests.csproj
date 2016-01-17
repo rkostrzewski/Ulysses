@@ -80,7 +80,7 @@
     <Compile Include="Utils\Commands\TestRegionCollection.cs" />
     <Compile Include="Utils\Commands\TestView.cs" />
     <Compile Include="Utils\Commands\TestViewsCollection.cs" />
-    <Compile Include="Modules\ControlPanel\ViewModels\ControlPanelViewModelTests.cs" />
+    <Compile Include="Modules\NavigationPanel\ViewModels\NavigationPanelViewModelTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

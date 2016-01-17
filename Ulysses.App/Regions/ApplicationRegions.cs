@@ -1,8 +1,8 @@
 namespace Ulysses.App.Regions
 {
-    public static class ApplicationRegions
+    public class ApplicationRegions
     {
-        public static string ControlPanelRegion => "ControlPanelRegion";
-        public static string ContentRegion => "ConentRegion";
+        public static string NavigationPanelRegion => ApplicationRegion.NavigationPanelRegion.ToString();
+        public static string ContentRegion => ApplicationRegion.ContentRegion.ToString();
     }
 }

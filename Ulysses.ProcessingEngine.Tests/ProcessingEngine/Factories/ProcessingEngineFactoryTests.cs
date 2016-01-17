@@ -19,11 +19,11 @@ namespace Ulysses.ProcessingEngine.Tests.ProcessingEngine.Factories
             // Given
             var imageAcquisition = new Mock<IImageAcquisition>().Object;
             var imageProcessingChain = new Mock<IImageProcessingChain>().Object;
-            var setOutputImageCommand = new Mock<ISetOutputImageCommand>().Object;
+            var receiveProcessedImageCommand = new Mock<IReceiveProcessedImageCommand>().Object;
             var factory = new ProcessingEngineFactory();
 
             // When
-            var engine = factory.CreateInstance(processingStrategy, imageAcquisition, imageProcessingChain, setOutputImageCommand);
+            var engine = factory.CreateInstance(processingStrategy, imageAcquisition, imageProcessingChain, receiveProcessedImageCommand);
 
             // Then
             Assert.IsNotNull(engine);
@@ -35,13 +35,13 @@ namespace Ulysses.ProcessingEngine.Tests.ProcessingEngine.Factories
             // Given
             var imageAcquisition = new Mock<IImageAcquisition>().Object;
             var imageProcessingChain = new Mock<IImageProcessingChain>().Object;
-            var setOutputImageCommand = new Mock<ISetOutputImageCommand>().Object;
+            var receiveProcessedImageCommand = new Mock<IReceiveProcessedImageCommand>().Object;
             var factory = new ProcessingEngineFactory();
             var processingStrategy = (ProcessingStrategy)3;
 
             // When
             // Then
-            Assert.Throws<ArgumentOutOfRangeException>(() => factory.CreateInstance(processingStrategy, imageAcquisition, imageProcessingChain, setOutputImageCommand));
+            Assert.Throws<ArgumentOutOfRangeException>(() => factory.CreateInstance(processingStrategy, imageAcquisition, imageProcessingChain, receiveProcessedImageCommand));
         }
     }
 }

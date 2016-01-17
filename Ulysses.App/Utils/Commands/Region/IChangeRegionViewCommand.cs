@@ -1,6 +1,8 @@
-﻿namespace Ulysses.App.Utils.Commands.Region
+﻿using System;
+
+namespace Ulysses.App.Utils.Commands.Region
 {
-    public interface IChangeRegionViewCommand : ICommand<string>
+    public interface IChangeRegionViewCommand<in T> : ICommand<T> where T : IConvertible
     {
     }
 }

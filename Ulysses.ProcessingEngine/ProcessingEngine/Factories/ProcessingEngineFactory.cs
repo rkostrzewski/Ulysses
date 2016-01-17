@@ -10,7 +10,7 @@ namespace Ulysses.ProcessingEngine.ProcessingEngine.Factories
         public IProcessingEngine CreateInstance(ProcessingStrategy processingStrategy,
                                                 IImageAcquisition imageAcquisition,
                                                 IImageProcessingChain imageProcessingChain,
-                                                ISetOutputImageCommand setOutputImageCommand)
+                                                IReceiveProcessedImageCommand setOutputImageCommand)
         {
             switch (processingStrategy)
             {
