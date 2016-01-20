@@ -1,4 +1,4 @@
-using Ulysses.ImageAcquisition;
+using Ulysses.ImageProviders;
 using Ulysses.ProcessingEngine.ImageProcessingChain;
 using Ulysses.ProcessingEngine.Output;
 
@@ -7,7 +7,7 @@ namespace Ulysses.ProcessingEngine.ProcessingEngine.Factories
     public interface IProcessingEngineFactory
     {
         IProcessingEngine CreateInstance(ProcessingStrategy processingStrategy,
-                                         IImageAcquisition imageAcquisition,
+                                         IImageProvider imageProvider,
                                          IImageProcessingChain imageProcessingChain,
                                          IReceiveProcessedImageCommand setOutputImageCommand);
     }

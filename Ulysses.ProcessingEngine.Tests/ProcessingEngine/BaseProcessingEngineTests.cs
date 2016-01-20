@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 using Moq;
 using NUnit.Framework;
 using Ulysses.Core.Models;
-using Ulysses.ImageAcquisition;
+using Ulysses.ImageProviders;
 using Ulysses.ProcessingEngine.ImageProcessingChain;
 using Ulysses.ProcessingEngine.Output;
 using Ulysses.ProcessingEngine.ProcessingEngine;
@@ -12,18 +12,18 @@ namespace Ulysses.ProcessingEngine.Tests.ProcessingEngine
 {
     public class BaseProcessingEngineTests
     {
-        protected int TimesImageAcquisitionCalled;
+        protected int TimesImageProviderCalled;
         protected int TimesImageProcessingChainCalled;
         protected int TimesReceiveProcessedImageCommandCalled;
 
-        protected Mock<IImageAcquisition> ImageAcquisition
+        protected Mock<IImageProvider> ImageProvider
         {
             get
             {
-                var imageAcquisitionMock = new Mock<IImageAcquisition>();
+                var imageProviderMock = new Mock<IImageProvider>();
                 Image image;
-                imageAcquisitionMock.Setup(ia => ia.TryToObtainImage(out image)).Callback(ImageAcquisitionMockWork).Returns(true);
-                return imageAcquisitionMock;
+                imageProviderMock.Setup(ia => ia.TryToObtainImage(out image)).Callback(ImageProviderMockWork).Returns(true);
+                return imageProviderMock;
             }
         }
 
@@ -50,7 +50,7 @@ namespace Ulysses.ProcessingEngine.Tests.ProcessingEngine
         [TearDown]
         public void TestTearDown()
         {
-            TimesImageAcquisitionCalled = 0;
+            TimesImageProviderCalled = 0;
             TimesImageProcessingChainCalled = 0;
             TimesReceiveProcessedImageCommandCalled = 0;
         }
@@ -58,7 +58,7 @@ namespace Ulysses.ProcessingEngine.Tests.ProcessingEngine
         [SetUp]
         public void TestSetUp()
         {
-            TimesImageAcquisitionCalled = 0;
+            TimesImageProviderCalled = 0;
             TimesImageProcessingChainCalled = 0;
             TimesReceiveProcessedImageCommandCalled = 0;
         }
@@ -76,9 +76,9 @@ namespace Ulysses.ProcessingEngine.Tests.ProcessingEngine
             Thread.Sleep(1000);
         }
 
-        protected void ImageAcquisitionMockWork()
+        protected void ImageProviderMockWork()
         {
-            TimesImageAcquisitionCalled++;
+            TimesImageProviderCalled++;
             Thread.Sleep(500);
         }
 

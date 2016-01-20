@@ -5,6 +5,6 @@ namespace Ulysses.ProcessingEngine.ProcessingEngine.Synchronization
         NoImageProcessed = 0,
         ImagePendingToBeProcessed,
         ImageIsProcessed,
-        ImageAcquisitionStopped
+        ImageProviderStopped
     }
 }

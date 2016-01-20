@@ -2,7 +2,7 @@
 using Moq;
 using NUnit.Framework;
 using Prism.Regions;
-using Ulysses.App.Utils.Commands.Regions;
+using Ulysses.App.Core.Commands.Regions;
 
 namespace Ulysses.App.Tests.Utils.Commands
 {

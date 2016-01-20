@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Ulysses.Core.Models;
-using Ulysses.ImageAcquisition.Remote.Camera;
+using Ulysses.ImageProviders.Camera.CameraStream;
 
 namespace Ulysses.ImageAcquisition.Tests.Camera.TestData
 {

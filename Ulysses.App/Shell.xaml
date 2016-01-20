@@ -4,8 +4,8 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:prism="http://prismlibrary.com/"
-        xmlns:regions="clr-namespace:Ulysses.App.Regions"
-        xmlns:converters="clr-namespace:Ulysses.App.Utils.Converters"
+        xmlns:converters="clr-namespace:Ulysses.App.Core.Converters;assembly=Ulysses.App.Core"
+        xmlns:regions="clr-namespace:Ulysses.App.Core.Regions;assembly=Ulysses.App.Core"
         mc:Ignorable="d"
         Title="Shell" Height="520" Width="1151">
     <Window.Resources>

@@ -1,7 +1,7 @@
 using System.Threading;
 using System.Threading.Tasks;
 using Ulysses.Core.Models;
-using Ulysses.ImageAcquisition;
+using Ulysses.ImageProviders;
 using Ulysses.ProcessingEngine.Exceptions;
 using Ulysses.ProcessingEngine.ImageProcessingChain;
 using Ulysses.ProcessingEngine.Output;
@@ -11,16 +11,16 @@ namespace Ulysses.ProcessingEngine.ProcessingEngine
 {
     public class AsyncProcessingEngine : IProcessingEngine
     {
-        private readonly IImageAcquisition _imageAcquisition;
+        private readonly IImageProvider _imageProvider;
         private readonly IImageProcessingChain _imageProcessingChain;
         private readonly AsyncProcessingMediator _mediator;
         private readonly IReceiveProcessedImageCommand _setOutputImageCommand;
         private volatile CancellationTokenSource _cancellationTokenSource;
         private Task _task;
 
-        public AsyncProcessingEngine(IImageAcquisition imageAcquisition, IImageProcessingChain imageProcessingChain, IReceiveProcessedImageCommand setOutputImageCommand)
+        public AsyncProcessingEngine(IImageProvider imageProvider, IImageProcessingChain imageProcessingChain, IReceiveProcessedImageCommand setOutputImageCommand)
         {
-            _imageAcquisition = imageAcquisition;
+            _imageProvider = imageProvider;
             _imageProcessingChain = imageProcessingChain;
             _setOutputImageCommand = setOutputImageCommand;
             _mediator = new AsyncProcessingMediator();
@@ -67,7 +67,7 @@ namespace Ulysses.ProcessingEngine.ProcessingEngine
             while (!_cancellationTokenSource.IsCancellationRequested)
             {
                 var imageProcessingStatus = _mediator.GetImageProcessingStatus();
-                if (imageProcessingStatus == ImageProcessingStatus.ImageAcquisitionStopped)
+                if (imageProcessingStatus == ImageProcessingStatus.ImageProviderStopped)
                 {
                     break;
                 }
@@ -86,7 +86,7 @@ namespace Ulysses.ProcessingEngine.ProcessingEngine
             while (!_cancellationTokenSource.IsCancellationRequested)
             {
                 Image image;
-                if (!_imageAcquisition.TryToObtainImage(out image))
+                if (!_imageProvider.TryToObtainImage(out image))
                 {
                     break;
                 }
@@ -96,7 +96,7 @@ namespace Ulysses.ProcessingEngine.ProcessingEngine
                 Thread.SpinWait(1);
             }
 
-            _mediator.SetImageProcessingStatus(ImageProcessingStatus.ImageAcquisitionStopped);
+            _mediator.SetImageProcessingStatus(ImageProcessingStatus.ImageProviderStopped);
         }
 
         private static void SetAcquiredImage(AsyncProcessingMediator mediator, Image image)

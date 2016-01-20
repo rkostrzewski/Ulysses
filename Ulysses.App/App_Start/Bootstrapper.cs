@@ -1,12 +1,10 @@
 ﻿using System.Windows;
 using Microsoft.Practices.Unity;
 using Prism.Modularity;
-using Prism.Regions;
 using Prism.Unity;
 using Ulysses.App.Modules.Content.ImageDisplay;
-using Ulysses.App.Modules.Content.ImageProcessingCustomization;
-using Ulysses.App.Modules.Navigation;
-using Ulysses.ProcessingEngine.ProcessingEngine.Factories;
+using Ulysses.App.Modules.ImageProcessingCustomization;
+using Ulysses.App.Modules.NavigationModule;
 
 namespace Ulysses.App
 {
@@ -38,7 +36,7 @@ namespace Ulysses.App
 
             moduleCatalog.AddModule(typeof (ImageDisplayModule));
             moduleCatalog.AddModule(typeof (ImageProcessingCustomizationModule));
-            moduleCatalog.AddModule(typeof (NavigationPanelModule), nameof(ImageDisplayModule), nameof(ImageProcessingCustomizationModule));
+            moduleCatalog.AddModule(typeof (NavigationModule), nameof(ImageDisplayModule), nameof(ImageProcessingCustomizationModule));
         }
     }
 }

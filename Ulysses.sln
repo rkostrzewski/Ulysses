@@ -13,7 +13,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ulysses.Core", "Ulysses.Cor
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ulysses.ProcessingEngine.Tests", "Ulysses.ProcessingEngine.Tests\Ulysses.ProcessingEngine.Tests.csproj", "{97E9A47D-C4FC-4BC5-AA31-EC71B0D2B217}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ulysses.ImageAcquisition", "Ulysses.ImageAcquisition\Ulysses.ImageAcquisition.csproj", "{1498E5A3-760C-49EC-B09A-FB80FD2EE378}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ulysses.ImageProviders", "Ulysses.ImageAcquisition\Ulysses.ImageProviders.csproj", "{1498E5A3-760C-49EC-B09A-FB80FD2EE378}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ulysses.ProcessingEngine", "Ulysses.ProcessingEngine\Ulysses.ProcessingEngine.csproj", "{C06CD4EB-F9BA-407F-8002-3F20AA6A7951}"
 EndProject
@@ -36,6 +36,18 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ulysses.App.Controls", "Ulysses.App.Controls\Ulysses.App.Controls.csproj", "{25C54779-F8BC-491C-959C-3FFA006B91CF}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ulysses.ProcessingAlgorithms", "Ulysses.ProcessingAlgorithms\Ulysses.ProcessingAlgorithms.csproj", "{12F8668F-FF96-4108-B9B9-1998218851B8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ulysses.App.Modules.ImageProcessingCustomization", "Ulysses.App.Modules.ImageProcessingCustomization\Ulysses.App.Modules.ImageProcessingCustomization.csproj", "{44BB87E4-1E96-47BE-B790-ED6D9C501599}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ulysses.App.Core", "Ulysses.App.Core\Ulysses.App.Core.csproj", "{1C7F7EBD-BD5A-42DA-BAE1-FAB2CDBE68DA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ulysses.App.Modules.Navigation", "Ulysses.App.Modules.NavigationModule\Ulysses.App.Modules.Navigation.csproj", "{2B981B65-7FB8-4F95-BC9E-B8CF297B40AC}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Ulysses.App.Modules", "Ulysses.App.Modules", "{3C84E488-1043-486E-998F-B979901FA02A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ulysses.App.Modules.ImageDisplay", "Ulysses.App.Modules.ImageDisplay\Ulysses.App.Modules.ImageDisplay.csproj", "{5FF1BCFC-2000-4F4E-A10C-1A9FFF0DA83B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "NewFolder1", "NewFolder1", "{4097713C-6DBB-4855-B7DA-2735892C0977}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -103,6 +115,22 @@ Global
 		{12F8668F-FF96-4108-B9B9-1998218851B8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{12F8668F-FF96-4108-B9B9-1998218851B8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{12F8668F-FF96-4108-B9B9-1998218851B8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{44BB87E4-1E96-47BE-B790-ED6D9C501599}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{44BB87E4-1E96-47BE-B790-ED6D9C501599}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{44BB87E4-1E96-47BE-B790-ED6D9C501599}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{44BB87E4-1E96-47BE-B790-ED6D9C501599}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1C7F7EBD-BD5A-42DA-BAE1-FAB2CDBE68DA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1C7F7EBD-BD5A-42DA-BAE1-FAB2CDBE68DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1C7F7EBD-BD5A-42DA-BAE1-FAB2CDBE68DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1C7F7EBD-BD5A-42DA-BAE1-FAB2CDBE68DA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2B981B65-7FB8-4F95-BC9E-B8CF297B40AC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2B981B65-7FB8-4F95-BC9E-B8CF297B40AC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2B981B65-7FB8-4F95-BC9E-B8CF297B40AC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2B981B65-7FB8-4F95-BC9E-B8CF297B40AC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5FF1BCFC-2000-4F4E-A10C-1A9FFF0DA83B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5FF1BCFC-2000-4F4E-A10C-1A9FFF0DA83B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5FF1BCFC-2000-4F4E-A10C-1A9FFF0DA83B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5FF1BCFC-2000-4F4E-A10C-1A9FFF0DA83B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -117,5 +145,10 @@ Global
 		{0B6CA737-3BA4-4C52-8D42-68529A3FEFCC} = {FA164ABA-112C-455F-8543-0D0297BF09F9}
 		{2F0E49DD-745C-4565-A0CA-0DB60C644FEB} = {FA164ABA-112C-455F-8543-0D0297BF09F9}
 		{45F9996F-A851-45CD-BBC2-57BDFEB8735B} = {64C2AE44-B55D-49DA-95AB-D83857472496}
+		{44BB87E4-1E96-47BE-B790-ED6D9C501599} = {3C84E488-1043-486E-998F-B979901FA02A}
+		{1C7F7EBD-BD5A-42DA-BAE1-FAB2CDBE68DA} = {3C84E488-1043-486E-998F-B979901FA02A}
+		{2B981B65-7FB8-4F95-BC9E-B8CF297B40AC} = {3C84E488-1043-486E-998F-B979901FA02A}
+		{5FF1BCFC-2000-4F4E-A10C-1A9FFF0DA83B} = {3C84E488-1043-486E-998F-B979901FA02A}
+		{4097713C-6DBB-4855-B7DA-2735892C0977} = {64C2AE44-B55D-49DA-95AB-D83857472496}
 	EndGlobalSection
 EndGlobal

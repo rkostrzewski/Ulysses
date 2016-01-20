@@ -84,6 +84,14 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Ulysses.App.Core\Ulysses.App.Core.csproj">
+      <Project>{1c7f7ebd-bd5a-42da-bae1-fab2cdbe68da}</Project>
+      <Name>Ulysses.App.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Ulysses.App.Modules.ImageDisplay\Ulysses.App.Modules.ImageDisplay.csproj">
+      <Project>{5ff1bcfc-2000-4f4e-a10c-1a9fff0da83b}</Project>
+      <Name>Ulysses.App.Modules.ImageDisplay</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Ulysses.App\Ulysses.App.csproj">
       <Project>{edea7a4c-05b2-44fe-b8f3-40a5f29cdc54}</Project>
       <Name>Ulysses.App</Name>
@@ -92,9 +100,9 @@
       <Project>{9a0e8400-20bc-4359-9ac1-dcf6b176da64}</Project>
       <Name>Ulysses.Core</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Ulysses.ImageAcquisition\Ulysses.ImageAcquisition.csproj">
+    <ProjectReference Include="..\Ulysses.ImageAcquisition\Ulysses.ImageProviders.csproj">
       <Project>{1498e5a3-760c-49ec-b09a-fb80fd2ee378}</Project>
-      <Name>Ulysses.ImageAcquisition</Name>
+      <Name>Ulysses.ImageProviders</Name>
     </ProjectReference>
     <ProjectReference Include="..\Ulysses.ProcessingEngine\Ulysses.ProcessingEngine.csproj">
       <Project>{c06cd4eb-f9ba-407f-8002-3f20aa6a7951}</Project>

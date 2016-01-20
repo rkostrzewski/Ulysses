@@ -1,0 +1,55 @@
+﻿<UserControl x:Class="Ulysses.App.Modules.NavigationModule.Views.NavigationPanelView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:regions="clr-namespace:Ulysses.App.Core.Regions;assembly=Ulysses.App.Core"
+             xmlns:viewModels="clr-namespace:Ulysses.App.Modules.NavigationModule.ViewModels"
+             mc:Ignorable="d" d:DesignWidth="1366"
+             d:DesignHeight="40"
+             d:DataContext="{d:DesignInstance viewModels:NavigationPanelViewModel}">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Resources/NavigationButtonStyle.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+    <Grid>
+        <Border BorderThickness="0,0,0,2" BorderBrush="{StaticResource Accent100}">
+            <StackPanel Orientation="Horizontal">
+                <Button Command="{Binding ChangeContentRegionsViewCommand}"
+                        Content="Image Display"
+                        Margin="0"
+                        CommandParameter="{x:Static regions:ContentRegionView.ImageDisplayView}"
+                        HorizontalAlignment="Left" VerticalAlignment="Bottom">
+                    <Button.Style>
+                        <Style BasedOn="{StaticResource NavigationButtonStyle}" TargetType="Button">
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding Path=CurrentContentRegionView}"
+                                             Value="{x:Static regions:ContentRegionView.ImageDisplayView}">
+                                    <Setter Property="Background" Value="{StaticResource Accent100}" />
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                </Button>
+                <Button Command="{Binding ChangeContentRegionsViewCommand}"
+                        CommandParameter="{x:Static regions:ContentRegionView.ImageProcessingCustomizationView}"
+                        Margin="0"
+                        VerticalAlignment="Bottom" HorizontalAlignment="Left" Content="Processing Customization">
+                    <Button.Style>
+                        <Style BasedOn="{StaticResource NavigationButtonStyle}" TargetType="Button">
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding Path=CurrentContentRegionView}"
+                                             Value="{x:Static regions:ContentRegionView.ImageProcessingCustomizationView}">
+                                    <Setter Property="Background" Value="{StaticResource Accent100}" />
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                </Button>
+            </StackPanel>
+        </Border>
+    </Grid>
+</UserControl>

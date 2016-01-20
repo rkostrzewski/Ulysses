@@ -1,7 +1,7 @@
 using System.Threading;
 using System.Threading.Tasks;
 using Ulysses.Core.Models;
-using Ulysses.ImageAcquisition;
+using Ulysses.ImageProviders;
 using Ulysses.ProcessingEngine.Exceptions;
 using Ulysses.ProcessingEngine.ImageProcessingChain;
 using Ulysses.ProcessingEngine.Output;
@@ -10,15 +10,15 @@ namespace Ulysses.ProcessingEngine.ProcessingEngine
 {
     public class SyncProcessingEngine : IProcessingEngine
     {
-        private readonly IImageAcquisition _imageAcquisition;
+        private readonly IImageProvider _imageProvider;
         private readonly IReceiveProcessedImageCommand _imageOutputNotifier;
         private readonly IImageProcessingChain _imageProcessingChain;
         private volatile CancellationTokenSource _cancellationTokenSource;
         private Task _task;
 
-        public SyncProcessingEngine(IImageAcquisition imageAcquisition, IImageProcessingChain imageProcessingChain, IReceiveProcessedImageCommand imageOutputNotifier)
+        public SyncProcessingEngine(IImageProvider imageProvider, IImageProcessingChain imageProcessingChain, IReceiveProcessedImageCommand imageOutputNotifier)
         {
-            _imageAcquisition = imageAcquisition;
+            _imageProvider = imageProvider;
             _imageProcessingChain = imageProcessingChain;
             _imageOutputNotifier = imageOutputNotifier;
         }
@@ -56,7 +56,7 @@ namespace Ulysses.ProcessingEngine.ProcessingEngine
             while (!_cancellationTokenSource.IsCancellationRequested)
             {
                 Image image;
-                if (!_imageAcquisition.TryToObtainImage(out image))
+                if (!_imageProvider.TryToObtainImage(out image))
                 {
                     return;
                 }

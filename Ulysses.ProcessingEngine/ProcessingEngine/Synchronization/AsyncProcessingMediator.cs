@@ -39,7 +39,7 @@ namespace Ulysses.ProcessingEngine.ProcessingEngine.Synchronization
         public void SetImageProcessingStatus(ImageProcessingStatus imageProcessingStatus)
         {
             SlimLock.EnterWriteLock();
-            if (_imageProcessingStatus != ImageProcessingStatus.ImageAcquisitionStopped)
+            if (_imageProcessingStatus != ImageProcessingStatus.ImageProviderStopped)
             {
                 _imageProcessingStatus = imageProcessingStatus;
             }

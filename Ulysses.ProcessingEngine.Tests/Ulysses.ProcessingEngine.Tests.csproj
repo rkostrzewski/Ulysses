@@ -69,9 +69,9 @@
       <Project>{9A0E8400-20BC-4359-9AC1-DCF6B176DA64}</Project>
       <Name>Ulysses.Core</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Ulysses.ImageAcquisition\Ulysses.ImageAcquisition.csproj">
+    <ProjectReference Include="..\Ulysses.ImageAcquisition\Ulysses.ImageProviders.csproj">
       <Project>{1498E5A3-760C-49EC-B09A-FB80FD2EE378}</Project>
-      <Name>Ulysses.ImageAcquisition</Name>
+      <Name>Ulysses.ImageProviders</Name>
     </ProjectReference>
     <ProjectReference Include="..\Ulysses.ProcessingEngine\Ulysses.ProcessingEngine.csproj">
       <Project>{C06CD4EB-F9BA-407F-8002-3F20AA6A7951}</Project>
