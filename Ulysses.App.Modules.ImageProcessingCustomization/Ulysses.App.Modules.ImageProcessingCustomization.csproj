@@ -147,7 +147,7 @@
       <Project>{1c7f7ebd-bd5a-42da-bae1-fab2cdbe68da}</Project>
       <Name>Ulysses.App.Core</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Ulysses.ImageAcquisition\Ulysses.ImageProviders.csproj">
+    <ProjectReference Include="..\Ulysses.ImageProviders\Ulysses.ImageProviders.csproj">
       <Project>{1498e5a3-760c-49ec-b09a-fb80fd2ee378}</Project>
       <Name>Ulysses.ImageProviders</Name>
     </ProjectReference>

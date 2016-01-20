@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{A68FCBA0-CE6B-4929-B84D-046460BF26BE}</ProjectGuid>
+    <ProjectGuid>{1498E5A3-760C-49EC-B09A-FB80FD2EE378}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Ulysses.NonUniformityCorrection</RootNamespace>
-    <AssemblyName>Ulysses.NonUniformityCorrection</AssemblyName>
+    <RootNamespace>Ulysses.ImageProviders</RootNamespace>
+    <AssemblyName>Ulysses.ImageProviders</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -30,8 +30,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="PresentationCore" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -40,11 +42,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Camera\CameraStream\CameraAcquisitionBuffer.cs" />
+    <Compile Include="Camera\CameraImageProvider.cs" />
+    <Compile Include="Camera\CameraStream\CameraStreamConfiguration.cs" />
+    <Compile Include="Camera\CameraStream\CameraStreamToImageConverter.cs" />
+    <Compile Include="Camera\Udp\UdpClient.cs" />
+    <Compile Include="Factories\CameraImageProviderFactory.cs" />
+    <Compile Include="FileSystem\FileSystemImageProvider.cs" />
+    <Compile Include="Camera\Udp\IUdpClient.cs" />
+    <Compile Include="IImageProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Ulysses.Core\Ulysses.Core.csproj">
-      <Project>{9a0e8400-20bc-4359-9ac1-dcf6b176da64}</Project>
+      <Project>{9A0E8400-20BC-4359-9AC1-DCF6B176DA64}</Project>
       <Name>Ulysses.Core</Name>
     </ProjectReference>
   </ItemGroup>

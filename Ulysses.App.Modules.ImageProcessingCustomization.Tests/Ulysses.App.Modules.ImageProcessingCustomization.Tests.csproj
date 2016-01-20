@@ -3,11 +3,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{97E9A47D-C4FC-4BC5-AA31-EC71B0D2B217}</ProjectGuid>
+    <ProjectGuid>{91F226AE-DAC0-4652-9937-21BF89AEE0CD}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Ulysses.ProcessingEngine.Tests</RootNamespace>
-    <AssemblyName>Ulysses.ProcessingEngine.Tests</AssemblyName>
+    <RootNamespace>Ulysses.App.Modules.ImageProcessingCustomization.Tests</RootNamespace>
+    <AssemblyName>Ulysses.App.Modules.ImageProcessingCustomization.Tests</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -35,14 +35,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Moq, Version=4.2.1510.2205, Culture=neutral, PublicKeyToken=69f491c39445e920, processorArchitecture=MSIL">
-      <HintPath>..\packages\Moq.4.2.1510.2205\lib\net40\Moq.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="nunit.framework, Version=2.6.4.14350, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
-      <HintPath>..\packages\NUnit.2.6.4\lib\nunit.framework.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="System" />
   </ItemGroup>
   <Choose>
@@ -54,33 +46,7 @@
     <Otherwise />
   </Choose>
   <ItemGroup>
-    <Compile Include="ProcessingEngine\AsyncProcessingStrategyTests.cs" />
-    <Compile Include="ProcessingEngine\BaseProcessingEngineTests.cs" />
-    <Compile Include="ProcessingEngine\Factories\ProcessingEngineFactoryTests.cs" />
-    <Compile Include="ProcessingEngine\SyncProcessingEngineTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup />
-  <ItemGroup>
-    <ProjectReference Include="..\Ulysses.Core\Ulysses.Core.csproj">
-      <Project>{9A0E8400-20BC-4359-9AC1-DCF6B176DA64}</Project>
-      <Name>Ulysses.Core</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Ulysses.ImageProviders\Ulysses.ImageProviders.csproj">
-      <Project>{1498E5A3-760C-49EC-B09A-FB80FD2EE378}</Project>
-      <Name>Ulysses.ImageProviders</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Ulysses.ProcessingEngine\Ulysses.ProcessingEngine.csproj">
-      <Project>{C06CD4EB-F9BA-407F-8002-3F20AA6A7951}</Project>
-      <Name>Ulysses.ProcessingEngine</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Ulysses.Tests.Core\Ulysses.Tests.Core.csproj">
-      <Project>{a3739521-f2fa-4148-830d-e55e14684d7f}</Project>
-      <Name>Ulysses.Tests.Core</Name>
-    </ProjectReference>
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">

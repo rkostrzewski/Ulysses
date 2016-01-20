@@ -7,17 +7,17 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ThemedWindowStyle", "Themed
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{64C2AE44-B55D-49DA-95AB-D83857472496}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ulysses.ProcessingAlgorithms.Tests", "Ulysses.NUC.Tests\Ulysses.ProcessingAlgorithms.Tests.csproj", "{5E27E58D-4EFF-4B39-82A8-42B79F528191}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ulysses.ProcessingAlgorithms.Tests", "Ulysses.ProcessingAlgorithms.Tests\Ulysses.ProcessingAlgorithms.Tests.csproj", "{5E27E58D-4EFF-4B39-82A8-42B79F528191}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ulysses.Core", "Ulysses.Core\Ulysses.Core.csproj", "{9A0E8400-20BC-4359-9AC1-DCF6B176DA64}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ulysses.ProcessingEngine.Tests", "Ulysses.ProcessingEngine.Tests\Ulysses.ProcessingEngine.Tests.csproj", "{97E9A47D-C4FC-4BC5-AA31-EC71B0D2B217}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ulysses.ImageProviders", "Ulysses.ImageAcquisition\Ulysses.ImageProviders.csproj", "{1498E5A3-760C-49EC-B09A-FB80FD2EE378}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ulysses.ImageProviders", "Ulysses.ImageProviders\Ulysses.ImageProviders.csproj", "{1498E5A3-760C-49EC-B09A-FB80FD2EE378}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ulysses.ProcessingEngine", "Ulysses.ProcessingEngine\Ulysses.ProcessingEngine.csproj", "{C06CD4EB-F9BA-407F-8002-3F20AA6A7951}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ulysses.ImageAcquisition.Tests", "Ulysses.ImageAcquisition.Tests\Ulysses.ImageAcquisition.Tests.csproj", "{296C102D-1A69-4316-A3D7-2341B6871C53}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ulysses.ImageProviders.Tests", "Ulysses.ImageProviders.Tests\Ulysses.ImageProviders.Tests.csproj", "{296C102D-1A69-4316-A3D7-2341B6871C53}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ulysses.Tests.Core", "Ulysses.Tests.Core\Ulysses.Tests.Core.csproj", "{A3739521-F2FA-4148-830D-E55E14684D7F}"
 EndProject
@@ -30,8 +30,6 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ulysses.UI.WindowObjects", "Ulysses.UI.WindowObjects\Ulysses.UI.WindowObjects.csproj", "{0B6CA737-3BA4-4C52-8D42-68529A3FEFCC}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ulysses.UI.Tests", "Ulysses.UI.Tests\Ulysses.UI.Tests.csproj", "{2F0E49DD-745C-4565-A0CA-0DB60C644FEB}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ulysses.App.Tests", "Ulysses.App.Tests\Ulysses.App.Tests.csproj", "{45F9996F-A851-45CD-BBC2-57BDFEB8735B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ulysses.App.Controls", "Ulysses.App.Controls\Ulysses.App.Controls.csproj", "{25C54779-F8BC-491C-959C-3FFA006B91CF}"
 EndProject
@@ -47,7 +45,15 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Ulysses.App.Modules", "Ulys
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ulysses.App.Modules.ImageDisplay", "Ulysses.App.Modules.ImageDisplay\Ulysses.App.Modules.ImageDisplay.csproj", "{5FF1BCFC-2000-4F4E-A10C-1A9FFF0DA83B}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "NewFolder1", "NewFolder1", "{4097713C-6DBB-4855-B7DA-2735892C0977}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Ulysses.App.Tests", "Ulysses.App.Tests", "{4097713C-6DBB-4855-B7DA-2735892C0977}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ulysses.App.Modules.ImageProcessingCustomization.Tests", "Ulysses.App.Modules.ImageProcessingCustomization.Tests\Ulysses.App.Modules.ImageProcessingCustomization.Tests.csproj", "{91F226AE-DAC0-4652-9937-21BF89AEE0CD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ulysses.App.Modules.Navigation.Tests", "Ulysses.App.Modules.Navigation.Tests\Ulysses.App.Modules.Navigation.Tests.csproj", "{A40B7620-777B-4889-B6A7-994957585108}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ulysses.App.Modules.ImageDisplay.Tests", "Ulysses.App.Modules.ImageDisplay.Tests\Ulysses.App.Modules.ImageDisplay.Tests.csproj", "{AC64AFE8-D272-421B-A621-7E3F5B32A065}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ulysses.App.Core.Tests", "Ulysses.App.Core.Tests\Ulysses.App.Core.Tests.csproj", "{ABDD9002-1CED-46C0-AA50-AFED60C4E7D3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -103,10 +109,6 @@ Global
 		{2F0E49DD-745C-4565-A0CA-0DB60C644FEB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2F0E49DD-745C-4565-A0CA-0DB60C644FEB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2F0E49DD-745C-4565-A0CA-0DB60C644FEB}.Release|Any CPU.Build.0 = Release|Any CPU
-		{45F9996F-A851-45CD-BBC2-57BDFEB8735B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{45F9996F-A851-45CD-BBC2-57BDFEB8735B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{45F9996F-A851-45CD-BBC2-57BDFEB8735B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{45F9996F-A851-45CD-BBC2-57BDFEB8735B}.Release|Any CPU.Build.0 = Release|Any CPU
 		{25C54779-F8BC-491C-959C-3FFA006B91CF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{25C54779-F8BC-491C-959C-3FFA006B91CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{25C54779-F8BC-491C-959C-3FFA006B91CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -131,6 +133,22 @@ Global
 		{5FF1BCFC-2000-4F4E-A10C-1A9FFF0DA83B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5FF1BCFC-2000-4F4E-A10C-1A9FFF0DA83B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5FF1BCFC-2000-4F4E-A10C-1A9FFF0DA83B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{91F226AE-DAC0-4652-9937-21BF89AEE0CD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{91F226AE-DAC0-4652-9937-21BF89AEE0CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{91F226AE-DAC0-4652-9937-21BF89AEE0CD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{91F226AE-DAC0-4652-9937-21BF89AEE0CD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A40B7620-777B-4889-B6A7-994957585108}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A40B7620-777B-4889-B6A7-994957585108}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A40B7620-777B-4889-B6A7-994957585108}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A40B7620-777B-4889-B6A7-994957585108}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AC64AFE8-D272-421B-A621-7E3F5B32A065}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AC64AFE8-D272-421B-A621-7E3F5B32A065}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AC64AFE8-D272-421B-A621-7E3F5B32A065}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AC64AFE8-D272-421B-A621-7E3F5B32A065}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ABDD9002-1CED-46C0-AA50-AFED60C4E7D3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ABDD9002-1CED-46C0-AA50-AFED60C4E7D3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ABDD9002-1CED-46C0-AA50-AFED60C4E7D3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ABDD9002-1CED-46C0-AA50-AFED60C4E7D3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -144,11 +162,13 @@ Global
 		{F7AE18DC-BFA9-40F2-835C-91958703B8C0} = {FA164ABA-112C-455F-8543-0D0297BF09F9}
 		{0B6CA737-3BA4-4C52-8D42-68529A3FEFCC} = {FA164ABA-112C-455F-8543-0D0297BF09F9}
 		{2F0E49DD-745C-4565-A0CA-0DB60C644FEB} = {FA164ABA-112C-455F-8543-0D0297BF09F9}
-		{45F9996F-A851-45CD-BBC2-57BDFEB8735B} = {64C2AE44-B55D-49DA-95AB-D83857472496}
 		{44BB87E4-1E96-47BE-B790-ED6D9C501599} = {3C84E488-1043-486E-998F-B979901FA02A}
-		{1C7F7EBD-BD5A-42DA-BAE1-FAB2CDBE68DA} = {3C84E488-1043-486E-998F-B979901FA02A}
 		{2B981B65-7FB8-4F95-BC9E-B8CF297B40AC} = {3C84E488-1043-486E-998F-B979901FA02A}
 		{5FF1BCFC-2000-4F4E-A10C-1A9FFF0DA83B} = {3C84E488-1043-486E-998F-B979901FA02A}
 		{4097713C-6DBB-4855-B7DA-2735892C0977} = {64C2AE44-B55D-49DA-95AB-D83857472496}
+		{91F226AE-DAC0-4652-9937-21BF89AEE0CD} = {4097713C-6DBB-4855-B7DA-2735892C0977}
+		{A40B7620-777B-4889-B6A7-994957585108} = {4097713C-6DBB-4855-B7DA-2735892C0977}
+		{AC64AFE8-D272-421B-A621-7E3F5B32A065} = {4097713C-6DBB-4855-B7DA-2735892C0977}
+		{ABDD9002-1CED-46C0-AA50-AFED60C4E7D3} = {4097713C-6DBB-4855-B7DA-2735892C0977}
 	EndGlobalSection
 EndGlobal
