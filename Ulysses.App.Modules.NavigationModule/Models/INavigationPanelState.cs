@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel;
 using Ulysses.App.Core.Regions;
 
-namespace Ulysses.App.Modules.NavigationModule.Models
+namespace Ulysses.App.Modules.Navigation.Models
 {
     public interface INavigationPanelState
     {

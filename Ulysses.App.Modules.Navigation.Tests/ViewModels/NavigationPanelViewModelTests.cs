@@ -1,26 +1,62 @@
-﻿//using Moq;
-//using NUnit.Framework;
-//using Prism.Regions;
-//using Ulysses.App.Modules.Navigation.Commands;
-//using Ulysses.App.Modules.Navigation.ViewModels;
+﻿using System.ComponentModel;
+using Moq;
+using NUnit.Framework;
+using Ulysses.App.Core.Regions;
+using Ulysses.App.Modules.Navigation.Commands;
+using Ulysses.App.Modules.Navigation.Models;
+using Ulysses.App.Modules.Navigation.ViewModels;
 
-//namespace Ulysses.App.Tests.Modules.NavigationPanel.ViewModels
-//{
-//    [TestFixture]
-//    public class NavigationPanelViewModelTests
-//    {
-//        [Test]
-//        public void ShouldAllowToChangeActiveContentView()
-//        {
-//            // Given
-//            var regionManagerMock = new Mock<IRegionManager>();
-//            INavigationPanelViewModel viewModel = new NavigationPanelViewModel(null, null, null);
+namespace Ulysses.App.Modules.Navigation.Tests.ViewModels
+{
+    [TestFixture]
+    public class NavigationPanelViewModelTests
+    {
+        [Test]
+        public void ShouldReturnNavigationPanelStatesCurrentContentRegionView()
+        {
+            // Given
+            var navigationPanelState = new Mock<INavigationPanelState>();
+            var changeContentRegionsViewCommand = new Mock<IChangeContentRegionsViewCommand>();
+            var changeCurrentRegionInNavigationPanelCommand = new Mock<IChangeCurrentRegionInNavigationPanelCommand>();
 
-//            // When
-//            var command = viewModel.ChangeContentRegionsViewCommand;
+            navigationPanelState.SetupGet(n => n.CurrentContentRegionView).Returns(ContentRegionView.ImageDisplayView);
 
-//            // Then
-//            Assert.IsInstanceOf<IChangeContentRegionsViewCommand>(command);
-//        }
-//    }
-//}
+            var viewModel = new NavigationPanelViewModel(navigationPanelState.Object,
+                                                         changeContentRegionsViewCommand.Object,
+                                                         changeCurrentRegionInNavigationPanelCommand.Object);
+
+            // When
+            var currentContentRegionView = viewModel.CurrentContentRegionView;
+
+            // Then
+            Assert.AreEqual(ContentRegionView.ImageDisplayView, currentContentRegionView);
+        }
+
+        [Test]
+        public void ShouldFirePropertyChangedEventOnViewModelWhenNavigationPanelStateIsChanged()
+        {
+            // Given
+            var navigationPanelState = new NavigationPanelState();
+            var changeContentRegionsViewCommand = new Mock<IChangeContentRegionsViewCommand>();
+            var changeCurrentRegionInNavigationPanelCommand = new Mock<IChangeCurrentRegionInNavigationPanelCommand>();
+            var viewModel = new NavigationPanelViewModel(navigationPanelState, changeContentRegionsViewCommand.Object, changeCurrentRegionInNavigationPanelCommand.Object);
+            var timesEventFired = 0;
+            object sender = null;
+            PropertyChangedEventArgs args = null;
+            viewModel.PropertyChanged += (s, a) =>
+            {
+                timesEventFired++;
+                sender = s;
+                args = a;
+            };
+
+            // When
+            navigationPanelState.CurrentContentRegionView = ContentRegionView.ImageProcessingCustomizationView;
+
+            // Then
+            Assert.AreEqual(1, timesEventFired);
+            Assert.AreEqual(viewModel, sender);
+            Assert.AreEqual(args.PropertyName, nameof(NavigationPanelViewModel.CurrentContentRegionView));
+        }
+    }
+}

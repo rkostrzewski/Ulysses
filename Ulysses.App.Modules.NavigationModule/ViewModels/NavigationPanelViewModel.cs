@@ -2,10 +2,10 @@
 using Ulysses.App.Core.Commands;
 using Ulysses.App.Core.Regions;
 using Ulysses.App.Core.ViewModels;
-using Ulysses.App.Modules.NavigationModule.Commands;
-using Ulysses.App.Modules.NavigationModule.Models;
+using Ulysses.App.Modules.Navigation.Commands;
+using Ulysses.App.Modules.Navigation.Models;
 
-namespace Ulysses.App.Modules.NavigationModule.ViewModels
+namespace Ulysses.App.Modules.Navigation.ViewModels
 {
     public class NavigationPanelViewModel : NotifyPropertyChanged, INavigationPanelViewModel
     {
@@ -23,23 +23,7 @@ namespace Ulysses.App.Modules.NavigationModule.ViewModels
 
         public ICompositeCommand<ContentRegionView> ChangeContentRegionsViewCommand { get; }
 
-        public ContentRegionView CurrentContentRegionView
-        {
-            get
-            {
-                return _navigationPanelState.CurrentContentRegionView;
-            }
-            set
-            {
-                if (_navigationPanelState.CurrentContentRegionView == value)
-                {
-                    return;
-                }
-
-                _navigationPanelState.CurrentContentRegionView = value;
-                OnPropertyChanged();
-            }
-        }
+        public ContentRegionView CurrentContentRegionView => _navigationPanelState.CurrentContentRegionView;
 
         private void OnNavigationPanelStatePropertyChanged(object sender, PropertyChangedEventArgs e)
         {

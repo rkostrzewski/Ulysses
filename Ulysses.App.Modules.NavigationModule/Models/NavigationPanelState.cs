@@ -1,7 +1,7 @@
 ﻿using Ulysses.App.Core.Regions;
 using Ulysses.App.Core.ViewModels;
 
-namespace Ulysses.App.Modules.NavigationModule.Models
+namespace Ulysses.App.Modules.Navigation.Models
 {
     public class NavigationPanelState : NotifyPropertyChanged, INavigationPanelState
     {

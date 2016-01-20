@@ -2,10 +2,10 @@
 using System.Linq;
 using System.Windows.Media.Imaging;
 using NUnit.Framework;
-using Ulysses.App.Modules.Content.ImageDisplay.Commands;
+using Ulysses.App.Modules.ImageDisplay.Commands;
 using Ulysses.Core.Models;
 
-namespace Ulysses.App.Tests.Modules.Content.ImageDisplay.Commands
+namespace Ulysses.App.Modules.ImageDisplay.Tests.Commands
 {
     [TestFixture]
     public class SetOutputImageCommandTests

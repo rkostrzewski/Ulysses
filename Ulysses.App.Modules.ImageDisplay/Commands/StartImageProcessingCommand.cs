@@ -2,7 +2,7 @@
 using Ulysses.App.Core.Commands;
 using Ulysses.ProcessingEngine.ProcessingEngine;
 
-namespace Ulysses.App.Modules.Content.ImageDisplay.Commands
+namespace Ulysses.App.Modules.ImageDisplay.Commands
 {
     public class StartImageProcessingCommand : NoParameterCommand, IStartImageProcessingCommand
     {

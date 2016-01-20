@@ -1,6 +1,6 @@
-﻿using Ulysses.App.Modules.NavigationModule.ViewModels;
+﻿using Ulysses.App.Modules.Navigation.ViewModels;
 
-namespace Ulysses.App.Modules.NavigationModule.Views
+namespace Ulysses.App.Modules.Navigation.Views
 {
     public partial class NavigationPanelView
     {

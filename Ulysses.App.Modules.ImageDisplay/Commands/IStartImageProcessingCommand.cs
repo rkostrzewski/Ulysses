@@ -1,6 +1,6 @@
 ﻿using Ulysses.App.Core.Commands;
 
-namespace Ulysses.App.Modules.Content.ImageDisplay.Commands
+namespace Ulysses.App.Modules.ImageDisplay.Commands
 {
     public interface IStartImageProcessingCommand : INoParameterCommand
     {

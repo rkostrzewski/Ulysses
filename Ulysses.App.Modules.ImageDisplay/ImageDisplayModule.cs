@@ -2,10 +2,10 @@
 using Prism.Modularity;
 using Prism.Regions;
 using Ulysses.App.Core.Regions;
-using Ulysses.App.Modules.Content.ImageDisplay.ViewModels;
-using Ulysses.App.Modules.Content.ImageDisplay.Views;
+using Ulysses.App.Modules.ImageDisplay.ViewModels;
+using Ulysses.App.Modules.ImageDisplay.Views;
 
-namespace Ulysses.App.Modules.Content.ImageDisplay
+namespace Ulysses.App.Modules.ImageDisplay
 {
     public class ImageDisplayModule : IModule
     {

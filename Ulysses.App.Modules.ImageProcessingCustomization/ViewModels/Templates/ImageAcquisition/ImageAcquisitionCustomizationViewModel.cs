@@ -1,4 +1,4 @@
-﻿namespace Ulysses.App.Modules.ImageProcessingCustomization.ViewModels.Templates.ImageProvider
+﻿namespace Ulysses.App.Modules.ImageProcessingCustomization.ViewModels.Templates.ImageAcquisition
 {
     public class ImageProviderCustomizationViewModel
     {

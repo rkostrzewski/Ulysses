@@ -1,9 +1,8 @@
 ﻿using System.Windows.Media.Imaging;
-using Ulysses.App.Modules.Content.ImageDisplay.Commands;
-using Ulysses.ProcessingEngine.Output;
+using Ulysses.App.Modules.ImageDisplay.Commands;
 using Ulysses.ProcessingEngine.ProcessingEngine.Factories;
 
-namespace Ulysses.App.Modules.Content.ImageDisplay.ViewModels
+namespace Ulysses.App.Modules.ImageDisplay.ViewModels
 {
     public class ImageDisplayViewModel : IImageDisplayViewModel
     {

@@ -2,7 +2,7 @@
 using Ulysses.App.Core.Commands.Regions;
 using Ulysses.App.Core.Regions;
 
-namespace Ulysses.App.Modules.NavigationModule.Commands
+namespace Ulysses.App.Modules.Navigation.Commands
 {
     public class ChangeContentRegionsViewCommand : ChangeRegionsViewCommand<ContentRegionView>, IChangeContentRegionsViewCommand
     {

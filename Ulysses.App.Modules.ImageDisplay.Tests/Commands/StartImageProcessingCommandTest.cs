@@ -1,10 +1,10 @@
 ﻿using System;
 using Moq;
 using NUnit.Framework;
-using Ulysses.App.Modules.Content.ImageDisplay.Commands;
+using Ulysses.App.Modules.ImageDisplay.Commands;
 using Ulysses.ProcessingEngine.ProcessingEngine;
 
-namespace Ulysses.App.Tests.Modules.Content.ImageDisplay.Commands
+namespace Ulysses.App.Modules.ImageDisplay.Tests.Commands
 {
     [TestFixture]
     public class StartImageProcessingCommandTest

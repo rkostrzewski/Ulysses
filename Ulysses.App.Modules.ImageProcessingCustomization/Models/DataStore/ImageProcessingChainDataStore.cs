@@ -1,4 +1,4 @@
-﻿using Ulysses.App.Modules.ImageProcessingCustomization.Models.Templates.ImageProvider;
+﻿using Ulysses.App.Modules.ImageProcessingCustomization.Models.Templates.ImageAcquisition;
 using Ulysses.App.Modules.ImageProcessingCustomization.Models.Templates.ImageDisplay;
 
 namespace Ulysses.App.Modules.ImageProcessingCustomization.Models.DataStore

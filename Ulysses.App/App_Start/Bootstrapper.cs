@@ -2,9 +2,9 @@
 using Microsoft.Practices.Unity;
 using Prism.Modularity;
 using Prism.Unity;
-using Ulysses.App.Modules.Content.ImageDisplay;
+using Ulysses.App.Modules.ImageDisplay;
 using Ulysses.App.Modules.ImageProcessingCustomization;
-using Ulysses.App.Modules.NavigationModule;
+using Ulysses.App.Modules.Navigation;
 
 namespace Ulysses.App
 {

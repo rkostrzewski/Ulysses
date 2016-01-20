@@ -1,6 +1,6 @@
-﻿using Ulysses.App.Modules.Content.ImageDisplay.ViewModels;
+﻿using Ulysses.App.Modules.ImageDisplay.ViewModels;
 
-namespace Ulysses.App.Modules.Content.ImageDisplay.Views
+namespace Ulysses.App.Modules.ImageDisplay.Views
 {
     /// <summary>
     ///     Interaction logic for ImageDisplayView.xaml

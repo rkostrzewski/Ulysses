@@ -4,7 +4,7 @@ using NUnit.Framework;
 using Prism.Regions;
 using Ulysses.App.Core.Commands.Regions;
 
-namespace Ulysses.App.Tests.Utils.Commands
+namespace Ulysses.App.Core.Tests.Commands.Regions
 {
     [TestFixture]
     public class ChangeRegionViewCommandCommandTests

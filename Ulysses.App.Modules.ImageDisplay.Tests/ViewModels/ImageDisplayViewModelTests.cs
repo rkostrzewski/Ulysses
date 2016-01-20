@@ -1,9 +1,9 @@
 ﻿using Moq;
 using NUnit.Framework;
-using Ulysses.App.Modules.Content.ImageDisplay.ViewModels;
+using Ulysses.App.Modules.ImageDisplay.ViewModels;
 using Ulysses.ProcessingEngine.ProcessingEngine.Factories;
 
-namespace Ulysses.App.Tests.Modules.Content.ImageDisplay.ViewModels
+namespace Ulysses.App.Modules.ImageDisplay.Tests.ViewModels
 {
     [TestFixture]
     public class ImageDisplayViewModelTests

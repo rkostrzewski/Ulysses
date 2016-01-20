@@ -2,12 +2,12 @@ using Microsoft.Practices.Unity;
 using Prism.Modularity;
 using Prism.Regions;
 using Ulysses.App.Core.Regions;
-using Ulysses.App.Modules.NavigationModule.Commands;
-using Ulysses.App.Modules.NavigationModule.Models;
-using Ulysses.App.Modules.NavigationModule.ViewModels;
-using Ulysses.App.Modules.NavigationModule.Views;
+using Ulysses.App.Modules.Navigation.Commands;
+using Ulysses.App.Modules.Navigation.Models;
+using Ulysses.App.Modules.Navigation.ViewModels;
+using Ulysses.App.Modules.Navigation.Views;
 
-namespace Ulysses.App.Modules.NavigationModule
+namespace Ulysses.App.Modules.Navigation
 {
     public class NavigationModule : IModule
     {

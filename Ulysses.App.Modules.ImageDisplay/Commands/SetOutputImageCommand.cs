@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Windows.Media.Imaging;
 using Ulysses.App.Core.Commands;
-using Ulysses.App.Modules.Content.ImageDisplay.Models;
+using Ulysses.App.Modules.ImageDisplay.Models;
 using Ulysses.Core.Models;
 
-namespace Ulysses.App.Modules.Content.ImageDisplay.Commands
+namespace Ulysses.App.Modules.ImageDisplay.Commands
 {
     public class SetOutputImageCommand : Command<Image>, ISetOutputImageCommand
     {

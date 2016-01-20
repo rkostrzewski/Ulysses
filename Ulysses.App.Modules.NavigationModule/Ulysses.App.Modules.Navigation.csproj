@@ -7,8 +7,8 @@
     <ProjectGuid>{2B981B65-7FB8-4F95-BC9E-B8CF297B40AC}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Ulysses.App.Modules.NavigationModule</RootNamespace>
-    <AssemblyName>Ulysses.App.Modules.NavigationModule</AssemblyName>
+    <RootNamespace>Ulysses.App.Modules.Navigation</RootNamespace>
+    <AssemblyName>Ulysses.App.Modules.Navigation</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>

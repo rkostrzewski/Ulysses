@@ -1,4 +1,4 @@
-namespace Ulysses.App.Tests.Utils.Commands
+namespace Ulysses.App.Core.Tests.Commands.Regions
 {
     public class TestView
     {
