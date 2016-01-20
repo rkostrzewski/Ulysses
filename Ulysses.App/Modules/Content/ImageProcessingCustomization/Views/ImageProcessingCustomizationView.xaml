@@ -4,37 +4,24 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:viewModels="clr-namespace:Ulysses.App.Modules.Content.ImageProcessingCustomization.ViewModels"
-             xmlns:templateViewModels="clr-namespace:Ulysses.App.Modules.Content.ImageProcessingCustomization.ViewModels.TemplateViewModels"
              xmlns:prism="http://prismlibrary.com/"
              xmlns:dragAndDrop="clr-namespace:Ulysses.App.Controls.DragAndDropExtension.DragAndDrop;assembly=Ulysses.App.Controls"
+             xmlns:converters="clr-namespace:Ulysses.App.Utils.Converters"
+             xmlns:regions="clr-namespace:Ulysses.App.Modules.Content.ImageProcessingCustomization.Regions"
+             xmlns:templates="clr-namespace:Ulysses.App.Modules.Content.ImageProcessingCustomization.Models.Templates"
              mc:Ignorable="d"
              d:DesignHeight="768"
              d:DesignWidth="1366"
              d:DataContext="{d:DesignInstance viewModels:ImageProcessingCustomizationViewModel}">
     <UserControl.Resources>
-        <Style x:Key="ProcessingChainElementStyle" TargetType="{x:Type Label}">
-            <Setter Property="Background" Value="{StaticResource Primary300}" />
-            <Setter Property="Foreground" Value="{StaticResource TextMain}" />
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate>
-                        <Grid Margin="0">
-                            <Rectangle VerticalAlignment="Center" HorizontalAlignment="Stretch"
-                                       Fill="{DynamicResource Accent300}" Margin="0" StrokeThickness="8"
-                                       Stroke="{DynamicResource Accent300}" />
-                            <Border Padding="0" Margin="15, 0, 15, 0" CornerRadius="10" BorderThickness="2"
-                                    BorderBrush="{StaticResource TextMain}"
-                                    Background="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Background}"
-                                    RenderOptions.BitmapScalingMode="Fant">
-                                <TextBlock
-                                    Text="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Content}"
-                                    Padding="10, 0, 10, 0" Margin="5" />
-                            </Border>
-                        </Grid>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Styles/ProcessingChainStyles.xaml" />
+                <ResourceDictionary>
+                    <converters:GenericToStringConverter x:Key="GenericToStringConverter" />
+                </ResourceDictionary>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
     </UserControl.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
@@ -51,14 +38,14 @@
                 </ItemsPanelTemplate>
             </ListView.ItemsPanel>
             <ListView.ItemTemplate>
-                <DataTemplate DataType="templateViewModels:IImageProcessingAlgorithmTemplateViewModel">
+                <DataTemplate DataType="templates:IImageProcessingAlgorithmTemplate">
                     <TextBlock Foreground="{StaticResource TextMain}" Text="{Binding Algorithm}" />
                 </DataTemplate>
             </ListView.ItemTemplate>
             <ListView.GroupStyle>
                 <GroupStyle>
                     <GroupStyle.HeaderTemplate>
-                        <DataTemplate DataType="templateViewModels:IImageProcessingAlgorithmTemplateViewModel">
+                        <DataTemplate DataType="templates:IImageProcessingAlgorithmTemplate">
                             <TextBlock FontWeight="Bold" Padding="15,0,15,0" FontSize="14" Text="{Binding Group}" />
                         </DataTemplate>
                     </GroupStyle.HeaderTemplate>
@@ -70,75 +57,25 @@
                 <RowDefinition Height="120" />
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
-            <Grid Background="{StaticResource CheckeredTileBrush}">
+            <Grid Background="{StaticResource CheckeredTileBrush}" Grid.Row="0">
                 <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Hidden">
                     <StackPanel Orientation="Horizontal" Height="45">
-                        <Label MaxWidth="100" Content="Input" Style="{StaticResource ProcessingChainElementStyle}" />
-
-                        <!-- TODO: Correct display -->
-                        <ListView ItemsSource="{Binding SelectedImageProcessingAlgorithmTemplate}" MinWidth="60"
-                                  dragAndDrop:DragDrop.IsDragSource="True" dragAndDrop:DragDrop.IsDropTarget="True"
-                                  BorderBrush="Transparent" Background="Transparent" Margin="0">
-                            <ListView.ItemsPanel>
-                                <ItemsPanelTemplate>
-                                    <StackPanel Orientation="Horizontal" />
-                                </ItemsPanelTemplate>
-                            </ListView.ItemsPanel>
-                            <ListView.ItemContainerStyle>
-                                <Style TargetType="{x:Type ListViewItem}">
-                                    <Setter Property="Padding" Value="0"/>
-                                    <Setter Property="Margin" Value="0"/>
-                                    <Setter Property="BorderThickness" Value="0"/>
-                                    <Setter Property="Template">
-                                        <Setter.Value>
-                                            <!-- Trun off default selection-->
-                                            <ControlTemplate TargetType="{x:Type ListViewItem}">
-                                                <Border x:Name="Bd" BorderBrush="Gray" BorderThickness="0,0,0,0"
-                                                        Background="{TemplateBinding Background}"
-                                                        Padding="{TemplateBinding Padding}"
-                                                        SnapsToDevicePixels="true">
-                                                    <ContentPresenter
-                                                        HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                                                        SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
-                                                        VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
-                                                </Border>
-                                                <ControlTemplate.Triggers>
-                                                    <Trigger Property="IsEnabled" Value="false">
-                                                        <Setter Property="Foreground"
-                                                                Value="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}" />
-                                                    </Trigger>
-                                                </ControlTemplate.Triggers>
-                                            </ControlTemplate>
-                                        </Setter.Value>
-                                    </Setter>
-                                    <Style.Triggers>
-                                        <MultiTrigger>
-                                            <MultiTrigger.Conditions>
-                                                <Condition Property="IsSelected" Value="True" />
-                                            </MultiTrigger.Conditions>
-                                            <MultiTrigger.Setters>
-                                                <Setter Property="Background" Value="Green" />
-                                                <Setter Property="BorderBrush" Value="Green" />
-                                                <Setter Property="Foreground" Value="White"/>
-                                            </MultiTrigger.Setters>
-                                        </MultiTrigger>
-                                    </Style.Triggers>
-                                </Style>
-                            </ListView.ItemContainerStyle>
-                            <ListView.ItemTemplate>
-
-                                <DataTemplate DataType="templateViewModels:IImageProcessingAlgorithmTemplateViewModel">
-                                    <Label Content="{Binding Algorithm}"
-                                           Style="{StaticResource ProcessingChainElementStyle}" Padding="0"
-                                           RenderTransformOrigin="0.5,0.5" />
-                                </DataTemplate>
-                            </ListView.ItemTemplate>
-                        </ListView>
-                        <Label MaxWidth="100" Content="Output" Style="{StaticResource ProcessingChainElementStyle}" />
+                        <ListBox MinWidth="60" Padding="0" Margin="0"
+                                 SelectionMode="Single"
+                                 SelectedItem="{Binding SelectedProcessingChainElement}"
+                                 ItemsSource="{Binding ImageProcessingChainElements}"
+                                 ItemsPanel="{StaticResource ProcessingChainItemsPanelTemplate}"
+                                 ItemTemplate="{StaticResource ProcessingChainItemTemplate}"
+                                 ItemContainerStyle="{StaticResource ProcessingChainItemContainerStyle}"
+                                 Template="{StaticResource ProcessingChainTemplate}"
+                                 dragAndDrop:DragDrop.IsDragSource="True"
+                                 dragAndDrop:DragDrop.IsDropTarget="True"
+                                 dragAndDrop:DragDrop.DragHandler="{Binding DragHandler}"
+                                 dragAndDrop:DragDrop.DropHandler="{Binding DropHandler}" />
                     </StackPanel>
                 </ScrollViewer>
             </Grid>
-            <ContentControl prism:RegionManager.RegionName="ProcessingChainElementCustomizationRegion" Grid.Row="1" />
+            <ContentControl prism:RegionManager.RegionName="{Binding Source={x:Static regions:ImageProcessingCustomizationViewRegions.ImageProcessingChainElementCustomizationRegion}, Converter={StaticResource GenericToStringConverter}}" Grid.Row="1" />
         </Grid>
     </Grid>
 </UserControl>

@@ -1,15 +1,16 @@
 ﻿using System;
+using System.Globalization;
 using System.Linq;
 using Prism.Regions;
 
-namespace Ulysses.App.Utils.Commands.Region
+namespace Ulysses.App.Utils.Commands.Regions
 {
-    public class ChangeRegionViewCommand<T> : Command<T>, IChangeRegionViewCommand<T> where T : IConvertible
+    public class ChangeRegionsViewCommand<T> : Command<T>, IChangeRegionsViewCommand<T> where T : IConvertible
     { 
         private readonly string _parentRegionName;
         private readonly IRegionManager _regionManager;
 
-        public ChangeRegionViewCommand(IRegionManager regionManager, string parentRegionName)
+        public ChangeRegionsViewCommand(IRegionManager regionManager, string parentRegionName)
         {
             _regionManager = regionManager;
             _parentRegionName = parentRegionName;
@@ -17,7 +18,7 @@ namespace Ulysses.App.Utils.Commands.Region
 
         public override bool CanExecute(T targetViewName)
         {
-            return _regionManager.Regions.ContainsRegionWithName(_parentRegionName) && _regionManager.Regions[_parentRegionName].Views.Any(v => v.GetType().Name == targetViewName.ToString());
+            return _regionManager.Regions.ContainsRegionWithName(_parentRegionName) && _regionManager.Regions[_parentRegionName].Views.Any(v => v.GetType().Name == targetViewName.ToString(CultureInfo.InvariantCulture));
         }
 
         public override void Execute(T targetViewName)
@@ -29,7 +30,7 @@ namespace Ulysses.App.Utils.Commands.Region
 
             var region = _regionManager.Regions[_parentRegionName];
 
-            region.RequestNavigate(targetViewName.ToString());
+            region.RequestNavigate(targetViewName.ToString(CultureInfo.InvariantCulture));
         }
     }
 }

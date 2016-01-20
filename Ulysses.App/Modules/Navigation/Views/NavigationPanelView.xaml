@@ -18,7 +18,7 @@
     <Grid>
         <Border BorderThickness="0,0,0,2" BorderBrush="{StaticResource Accent100}">
             <StackPanel Orientation="Horizontal">
-                <Button Command="{Binding ChangeContentRegionViewCommand}"
+                <Button Command="{Binding ChangeContentRegionsViewCommand}"
                         Content="Image Display"
                         Margin="0"
                         CommandParameter="{x:Static regions:ContentRegionView.ImageDisplayView}"
@@ -26,7 +26,7 @@
                     <Button.Style>
                         <Style BasedOn="{StaticResource NavigationButtonStyle}" TargetType="Button">
                             <Style.Triggers>
-                                <DataTrigger Binding="{Binding Path=SelectedContentRegionView}"
+                                <DataTrigger Binding="{Binding Path=CurrentContentRegionView}"
                                              Value="{x:Static regions:ContentRegionView.ImageDisplayView}">
                                     <Setter Property="Background" Value="{StaticResource Accent100}" />
                                 </DataTrigger>
@@ -34,14 +34,14 @@
                         </Style>
                     </Button.Style>
                 </Button>
-                <Button Command="{Binding ChangeContentRegionViewCommand}"
+                <Button Command="{Binding ChangeContentRegionsViewCommand}"
                         CommandParameter="{x:Static regions:ContentRegionView.ImageProcessingCustomizationView}"
                         Margin="0"
                         VerticalAlignment="Bottom" HorizontalAlignment="Left" Content="Processing Customization">
                     <Button.Style>
                         <Style BasedOn="{StaticResource NavigationButtonStyle}" TargetType="Button">
                             <Style.Triggers>
-                                <DataTrigger Binding="{Binding Path=SelectedContentRegionView}"
+                                <DataTrigger Binding="{Binding Path=CurrentContentRegionView}"
                                              Value="{x:Static regions:ContentRegionView.ImageProcessingCustomizationView}">
                                     <Setter Property="Background" Value="{StaticResource Accent100}" />
                                 </DataTrigger>

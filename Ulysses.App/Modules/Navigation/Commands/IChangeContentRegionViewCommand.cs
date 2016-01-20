@@ -1,9 +1,9 @@
-﻿using Ulysses.App.Utils.Commands.Region;
-using Ulysses.App.Modules.Regions;
+﻿using Ulysses.App.Modules.Regions;
+using Ulysses.App.Utils.Commands.Regions;
 
 namespace Ulysses.App.Modules.Navigation.Commands
 {
-    public interface IChangeContentRegionViewCommand : IChangeRegionViewCommand<ContentRegionView>
+    public interface IChangeContentRegionsViewCommand : IChangeRegionsViewCommand<ContentRegionView>
     {
     }
 }

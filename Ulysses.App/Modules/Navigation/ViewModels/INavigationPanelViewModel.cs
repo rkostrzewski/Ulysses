@@ -6,7 +6,7 @@ namespace Ulysses.App.Modules.Navigation.ViewModels
 {
     public interface INavigationPanelViewModel
     {
-        ICompositeCommand<ContentRegionView> ChangeContentRegionViewCommand { get; }
-        ContentRegionView SelectedContentRegionView { get; set; }
+        ICompositeCommand<ContentRegionView> ChangeContentRegionsViewCommand { get; }
+        ContentRegionView CurrentContentRegionView { get; set; }
     }
 }

@@ -25,7 +25,7 @@ namespace Ulysses.App.Controls.DragAndDropExtension
         public MouseButton MouseButton { get; private set; }
         public IEnumerable SourceCollection { get; private set; }
         public object SourceItem { get; private set; }
-        public IEnumerable SourceItems { get; private set; }
+        public IEnumerable SourceItems { get; set; }
         public UIElement VisualSource { get; private set; }
         public UIElement VisualSourceItem { get; private set; }
 

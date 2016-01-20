@@ -1,13 +1,13 @@
 ﻿using Prism.Regions;
 using Ulysses.App.Modules.Regions;
 using Ulysses.App.Regions;
-using Ulysses.App.Utils.Commands.Region;
+using Ulysses.App.Utils.Commands.Regions;
 
 namespace Ulysses.App.Modules.Navigation.Commands
 {
-    public class ChangeContentRegionViewCommand : ChangeRegionViewCommand<ContentRegionView>, IChangeContentRegionViewCommand
+    public class ChangeContentRegionsViewCommand : ChangeRegionsViewCommand<ContentRegionView>, IChangeContentRegionsViewCommand
     {
-        public ChangeContentRegionViewCommand(IRegionManager regionManager) : base(regionManager, ApplicationRegion.ContentRegion.ToString())
+        public ChangeContentRegionsViewCommand(IRegionManager regionManager) : base(regionManager, ApplicationRegion.ContentRegion.ToString())
         {
         }
     }

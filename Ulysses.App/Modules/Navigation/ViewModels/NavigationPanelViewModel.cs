@@ -1,7 +1,6 @@
-﻿using System.Collections.Generic;
-using Prism.Commands;
-using Prism.Regions;
+﻿using System.ComponentModel;
 using Ulysses.App.Modules.Navigation.Commands;
+using Ulysses.App.Modules.Navigation.Models;
 using Ulysses.App.Modules.Regions;
 using Ulysses.App.Utils.Commands;
 using Ulysses.App.Utils.ViewModels;
@@ -10,33 +9,43 @@ namespace Ulysses.App.Modules.Navigation.ViewModels
 {
     public class NavigationPanelViewModel : NotifyPropertyChanged, INavigationPanelViewModel
     {
-        private ContentRegionView _selectedContentRegionView;
+        private readonly INavigationPanelState _navigationPanelState;
 
-        public NavigationPanelViewModel(IRegionManager regionManager)
+        public NavigationPanelViewModel(INavigationPanelState navigationPanelState, IChangeContentRegionsViewCommand changeContentRegionsViewCommand, IChangeCurrentRegionInNavigationPanelCommand changeCurrentRegionInNavigationPanelCommand)
         {
-            ChangeContentRegionViewCommand = new CompositeCommand<ContentRegionView>();
-            ChangeContentRegionViewCommand.RegisterCommand(new ChangeContentRegionViewCommand(regionManager));
-            ChangeContentRegionViewCommand.RegisterCommand(new ChangeCurrentRegionInNavigationPanelCommand(this));
-            SelectedContentRegionView = ContentRegionView.ImageDisplayView;
+            _navigationPanelState = navigationPanelState;
+            _navigationPanelState.PropertyChanged += OnNavigationPanelStatePropertyChanged;
+
+            ChangeContentRegionsViewCommand = new CompositeCommand<ContentRegionView>();
+            ChangeContentRegionsViewCommand.RegisterCommand(changeContentRegionsViewCommand);
+            ChangeContentRegionsViewCommand.RegisterCommand(changeCurrentRegionInNavigationPanelCommand);
         }
 
-        public ICompositeCommand<ContentRegionView> ChangeContentRegionViewCommand { get; }
+        public ICompositeCommand<ContentRegionView> ChangeContentRegionsViewCommand { get; }
 
-        public ContentRegionView SelectedContentRegionView
+        public ContentRegionView CurrentContentRegionView
         {
             get
             {
-                return _selectedContentRegionView;
+                return _navigationPanelState.CurrentContentRegionView;
             }
             set
             {
-                if (_selectedContentRegionView == value)
+                if (_navigationPanelState.CurrentContentRegionView == value)
                 {
                     return;
                 }
 
-                _selectedContentRegionView = value;
+                _navigationPanelState.CurrentContentRegionView = value;
                 OnPropertyChanged();
+            }
+        }
+
+        private void OnNavigationPanelStatePropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            if (sender == _navigationPanelState && e.PropertyName == nameof(INavigationPanelState.CurrentContentRegionView))
+            {
+                OnPropertyChanged(nameof(CurrentContentRegionView));
             }
         }
     }

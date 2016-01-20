@@ -1,10 +1,12 @@
 ﻿using System.Windows;
 using Microsoft.Practices.Unity;
 using Prism.Modularity;
+using Prism.Regions;
 using Prism.Unity;
 using Ulysses.App.Modules.Content.ImageDisplay;
 using Ulysses.App.Modules.Content.ImageProcessingCustomization;
 using Ulysses.App.Modules.Navigation;
+using Ulysses.ProcessingEngine.ProcessingEngine.Factories;
 
 namespace Ulysses.App
 {
@@ -13,7 +15,7 @@ namespace Ulysses.App
         protected override void ConfigureContainer()
         {
             base.ConfigureContainer();
-            Container.ConfigureDependencies();
+            ContainerBootstrapper.ConfigureDependencies(Container);
         }
 
         protected override DependencyObject CreateShell()

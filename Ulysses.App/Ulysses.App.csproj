@@ -95,11 +95,36 @@
     </Compile>
     <Compile Include="App_Start\ContainerBootstrapper.cs" />
     <Compile Include="Modules\Content\ImageDisplay\Commands\ISetOutputImageCommand.cs" />
-    <Compile Include="Modules\Content\ImageProcessingCustomization\ViewModels\TemplateViewModels\IImageAcquisitionTemplateViewModel.cs" />
-    <Compile Include="Modules\Content\ImageProcessingCustomization\ViewModels\TemplateViewModels\NonUniformityCorrection\OnePointNonUniformityTemplateViewModel.cs" />
+    <Compile Include="Modules\Content\ImageProcessingCustomization\Commands\ChangeImageProcessingChainElementCustomizationRegionViewCommand.cs" />
+    <Compile Include="Modules\Content\ImageProcessingCustomization\Commands\IChangeImageProcessingChainElementCustomizationRegionViewCommand.cs" />
+    <Compile Include="Modules\Content\ImageProcessingCustomization\Commands\NavigateToImageProcessingChainElementCustomizationViewCommand.cs" />
+    <Compile Include="Modules\Content\ImageProcessingCustomization\Models\BaseImageProcessingChainElement.cs" />
+    <Compile Include="Modules\Content\ImageProcessingCustomization\Models\DataStore\IImageProcessingChainDataStore.cs" />
+    <Compile Include="Modules\Content\ImageProcessingCustomization\Models\DataStore\ImageProcessingChainDataStore.cs" />
+    <Compile Include="Modules\Content\ImageProcessingCustomization\Models\DataStore\ImageProcessingChainElementsObservableCollection.cs" />
+    <Compile Include="Modules\Content\ImageProcessingCustomization\Regions\ViewLocators\IImageProcessingChainElementViewLocator.cs" />
+    <Compile Include="Modules\Content\ImageProcessingCustomization\Regions\ViewLocators\ImageProcessingChainElementViewLocator.cs" />
+    <Compile Include="Modules\Content\ImageProcessingCustomization\Models\IImageProcessingChainElement.cs" />
+    <Compile Include="Modules\Content\ImageProcessingCustomization\ViewModels\ImageProcessingChainDropDrag\IImageProcessingChainDragHandler.cs" />
+    <Compile Include="Modules\Content\ImageProcessingCustomization\ViewModels\ImageProcessingChainDropDrag\IImageProcessingChainDropHandler.cs" />
+    <Compile Include="Modules\Content\ImageProcessingCustomization\ViewModels\ImageProcessingChainDropDrag\ImageProcessingChainDragHandler.cs" />
+    <Compile Include="Modules\Content\ImageProcessingCustomization\ViewModels\ImageProcessingChainDropDrag\ImageProcessingChainDropHandler.cs" />
+    <Compile Include="Modules\Content\ImageProcessingCustomization\Models\Templates\ImageAcquisition\ImageAcquisitionTemplate.cs" />
+    <Compile Include="Modules\Content\ImageProcessingCustomization\Models\Templates\ImageDisplay\ImageDisplayTemplate.cs" />
+    <Compile Include="Modules\Content\ImageProcessingCustomization\Models\Templates\IImageAcquisitionTemplate.cs" />
+    <Compile Include="Modules\Content\ImageProcessingCustomization\ViewModels\Templates\NonUniformityCorrection\ITwoPointNonUniformityCorrectionCustomizationViewModel.cs" />
+    <Compile Include="Modules\Content\ImageProcessingCustomization\ViewModels\Templates\NonUniformityCorrection\TwoPointNonUniformityCorrectionCustomizationViewModel.cs" />
+    <Compile Include="Modules\Content\ImageProcessingCustomization\Views\TemplateViews\NonUniformityCorrection\TwoPointNonUniformityCorrectionCustomizationView.xaml.cs">
+      <DependentUpon>TwoPointNonUniformityCorrectionCustomizationView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\Content\ImageProcessingCustomization\Views\TemplateViews\EmptyChainElementCustomizationView.xaml.cs">
+      <DependentUpon>EmptyChainElementCustomizationView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Modules\Navigation\Commands\ChangeCurrentRegionInNavigationPanelCommand.cs" />
     <Compile Include="Modules\Navigation\Commands\IChangeContentRegionViewCommand.cs" />
     <Compile Include="Modules\Navigation\Commands\IChangeCurrentRegionInNavigationPanelCommand.cs" />
+    <Compile Include="Modules\Navigation\Models\INavigationPanelState.cs" />
+    <Compile Include="Modules\Navigation\Models\NavigationPanelState.cs" />
     <Compile Include="Modules\Navigation\NavigationPanelModule.cs" />
     <Compile Include="Modules\Regions\ContentRegionViews.cs" />
     <Compile Include="Modules\Content\ImageDisplay\Commands\SetOutputImageCommand.cs" />
@@ -116,10 +141,10 @@
     </Compile>
     <Compile Include="Modules\Content\ImageProcessingCustomization\ImageProcessingCustomizationModule.cs" />
     <Compile Include="Modules\Content\ImageProcessingCustomization\ViewModels\IImageProcessingCustomizationViewModel.cs" />
-    <Compile Include="Modules\Content\ImageProcessingCustomization\ViewModels\TemplateViewModels\IImageProcessingAlgorithmTemplateViewModel.cs" />
+    <Compile Include="Modules\Content\ImageProcessingCustomization\Models\Templates\IImageProcessingAlgorithmTemplate.cs" />
     <Compile Include="Modules\Content\ImageProcessingCustomization\ViewModels\ImageProcessingCustomizationViewModel.cs" />
-    <Compile Include="Modules\Content\ImageProcessingCustomization\ViewModels\TemplateViewModels\NonUniformityCorrection\BaseNonUniformityTemplateViewModel.cs" />
-    <Compile Include="Modules\Content\ImageProcessingCustomization\ViewModels\TemplateViewModels\NonUniformityCorrection\TwoPointNonUniformityTemplateViewModel.cs" />
+    <Compile Include="Modules\Content\ImageProcessingCustomization\Models\Templates\NonUniformityCorrection\BaseNonUniformityTemplate.cs" />
+    <Compile Include="Modules\Content\ImageProcessingCustomization\Models\Templates\NonUniformityCorrection\TwoPointNonUniformityTemplate.cs" />
     <Compile Include="Modules\Content\ImageProcessingCustomization\Views\ImageProcessingCustomizationView.xaml.cs">
       <DependentUpon>ImageProcessingCustomizationView.xaml</DependentUpon>
     </Compile>
@@ -127,7 +152,6 @@
     <Compile Include="Modules\Content\ImageProcessingCustomization\Regions\ImageProcessingCustomizationViewRegions.cs" />
     <Compile Include="Properties\Annotations.cs" />
     <Compile Include="Regions\ApplicationRegion.cs" />
-    <Compile Include="Regions\ApplicationRegions.cs" />
     <Compile Include="Utils\Commands\Command.cs" />
     <Compile Include="Utils\Commands\CompositeCommand.cs" />
     <Compile Include="Utils\Commands\ICommand.cs" />
@@ -142,8 +166,10 @@
     <Compile Include="Utils\Commands\ICompositeCommand.cs" />
     <Compile Include="Utils\Commands\INoParameterCommand.cs" />
     <Compile Include="Utils\Commands\NoParameterCommand.cs" />
-    <Compile Include="Utils\Commands\Region\ChangeRegionViewCommand.cs" />
-    <Compile Include="Utils\Commands\Region\IChangeRegionViewCommand.cs" />
+    <Compile Include="Utils\Commands\Regions\ChangeRegionsViewCommand.cs" />
+    <Compile Include="Utils\Commands\Regions\IChangeRegionViewCommand.cs" />
+    <Compile Include="Utils\Commands\Regions\IViewLocator.cs" />
+    <Compile Include="Utils\Converters\GenericToStringConverter.cs" />
     <Compile Include="Utils\ViewModels\NotifyPropertyChanged.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -181,6 +207,22 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Modules\Content\ImageProcessingCustomization\Views\ImageProcessingCustomizationView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Modules\Content\ImageProcessingCustomization\Views\Styles\ProcessingChainElementStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Modules\Content\ImageProcessingCustomization\Views\Styles\ProcessingChainStyles.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Modules\Content\ImageProcessingCustomization\Views\TemplateViews\NonUniformityCorrection\TwoPointNonUniformityCorrectionCustomizationView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Modules\Content\ImageProcessingCustomization\Views\TemplateViews\EmptyChainElementCustomizationView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

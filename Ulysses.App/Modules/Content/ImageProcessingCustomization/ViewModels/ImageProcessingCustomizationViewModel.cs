@@ -1,22 +1,62 @@
 ﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using Ulysses.App.Modules.Content.ImageProcessingCustomization.ViewModels.TemplateViewModels;
-using Ulysses.App.Modules.Content.ImageProcessingCustomization.ViewModels.TemplateViewModels.NonUniformityCorrection;
+using Ulysses.App.Modules.Content.ImageProcessingCustomization.Commands;
+using Ulysses.App.Modules.Content.ImageProcessingCustomization.Models;
+using Ulysses.App.Modules.Content.ImageProcessingCustomization.Models.DataStore;
+using Ulysses.App.Modules.Content.ImageProcessingCustomization.Models.Templates;
+using Ulysses.App.Modules.Content.ImageProcessingCustomization.Models.Templates.ImageAcquisition;
+using Ulysses.App.Modules.Content.ImageProcessingCustomization.Models.Templates.ImageDisplay;
+using Ulysses.App.Modules.Content.ImageProcessingCustomization.Models.Templates.NonUniformityCorrection;
+using Ulysses.App.Modules.Content.ImageProcessingCustomization.ViewModels.ImageProcessingChainDropDrag;
+using Ulysses.App.Utils.ViewModels;
 
 namespace Ulysses.App.Modules.Content.ImageProcessingCustomization.ViewModels
 {
-    public class ImageProcessingCustomizationViewModel : IImageProcessingCustomizationViewModel
+    public class ImageProcessingCustomizationViewModel : NotifyPropertyChanged, IImageProcessingCustomizationViewModel
     {
-        public ImageProcessingCustomizationViewModel()
+        private readonly IImageProcessingChainDataStore _imageProcessingChainDataStore;
+        private readonly IChangeImageProcessingChainElementCustomizationRegionViewCommand _changeImageProcessingChainElementCustomizationRegionViewCommand;
+        private IImageProcessingChainElement _selectedProcessingChainElement;
+
+        public ImageProcessingCustomizationViewModel(IImageProcessingChainDataStore imageProcessingChainDataStore,
+                                                     IChangeImageProcessingChainElementCustomizationRegionViewCommand changeImageProcessingChainElementCustomizationRegionViewCommand,
+                                                     IImageProcessingChainDragHandler dragHandler,
+                                                     IImageProcessingChainDropHandler dropHandler)
         {
-            SelectedImageProcessingAlgorithmTemplate = new ObservableCollection<IImageProcessingAlgorithmTemplateViewModel>();
-            AvailableImageProcessingAlgorithmTemplates = new List<IImageProcessingAlgorithmTemplateViewModel> { new TwoPointNonUniformityTemplateViewModel() };
+            _imageProcessingChainDataStore = imageProcessingChainDataStore;
+            _changeImageProcessingChainElementCustomizationRegionViewCommand = changeImageProcessingChainElementCustomizationRegionViewCommand;
+
+            DragHandler = dragHandler;
+            DropHandler = dropHandler;
+
+            AvailableImageProcessingAlgorithmTemplates = new List<IImageProcessingAlgorithmTemplate> { new TwoPointNonUniformityTemplate() };
         }
 
-        public IList<IImageProcessingAlgorithmTemplateViewModel> AvailableImageProcessingAlgorithmTemplates { get; set; }
+        public IList<IImageProcessingAlgorithmTemplate> AvailableImageProcessingAlgorithmTemplates { get; set; }
 
-        public IImageAcquisitionTemplateViewModel ImageAcquisitionTemplateViewModel { get; set; }
+        public ObservableCollection<IImageProcessingChainElement> ImageProcessingChainElements => _imageProcessingChainDataStore.ImageProcessingChainElements;
 
-        public ObservableCollection<IImageProcessingAlgorithmTemplateViewModel> SelectedImageProcessingAlgorithmTemplate { get; set; }
+        public IImageProcessingChainElement SelectedProcessingChainElement
+        {
+            get
+            {
+                return _selectedProcessingChainElement;
+            }
+            set
+            {
+                if (_selectedProcessingChainElement == value)
+                {
+                    return;
+                }
+
+                _selectedProcessingChainElement = value;
+                _changeImageProcessingChainElementCustomizationRegionViewCommand.Execute(_selectedProcessingChainElement);
+                OnPropertyChanged();
+            }
+        }
+
+        public IImageProcessingChainDragHandler DragHandler { get; }
+
+        public IImageProcessingChainDropHandler DropHandler { get; }
     }
 }

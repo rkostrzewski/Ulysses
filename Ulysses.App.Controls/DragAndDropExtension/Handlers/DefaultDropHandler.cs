@@ -35,7 +35,7 @@ namespace Ulysses.App.Controls.DragAndDropExtension.Handlers
             {
                 var sourceList = GetList(dropInfo.DragInfo.SourceCollection);
 
-                foreach (var index in data.Cast<object>().Select(o => sourceList.IndexOf(o)).Where(index => index != -1))
+                foreach (var index in data.Select(o => sourceList.IndexOf(o)).Where(index => index != -1))
                 {
                     sourceList.RemoveAt(index);
 

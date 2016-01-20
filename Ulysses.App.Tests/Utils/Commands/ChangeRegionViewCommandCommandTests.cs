@@ -2,7 +2,7 @@
 using Moq;
 using NUnit.Framework;
 using Prism.Regions;
-using Ulysses.App.Utils.Commands.Region;
+using Ulysses.App.Utils.Commands.Regions;
 
 namespace Ulysses.App.Tests.Utils.Commands
 {
@@ -34,7 +34,7 @@ namespace Ulysses.App.Tests.Utils.Commands
         {
             // Given            
 
-            IChangeRegionViewCommand<string> command = new ChangeRegionViewCommand<string>(_regionManagerMock.Object, _regionName);
+            IChangeRegionsViewCommand<string> command = new ChangeRegionsViewCommand<string>(_regionManagerMock.Object, _regionName);
 
             // When
 
@@ -54,7 +54,7 @@ namespace Ulysses.App.Tests.Utils.Commands
             var regionManagerMock = new Mock<IRegionManager>();
             var notExistingViewName = Guid.NewGuid().ToString();
             regionManagerMock.SetupGet(r => r.Regions).Returns(regionCollection);
-            IChangeRegionViewCommand<string> command = new ChangeRegionViewCommand<string>(regionManagerMock.Object, _regionName);
+            IChangeRegionsViewCommand<string> command = new ChangeRegionsViewCommand<string>(regionManagerMock.Object, _regionName);
 
             // When
             // Then
@@ -72,7 +72,7 @@ namespace Ulysses.App.Tests.Utils.Commands
             var regionManagerMock = new Mock<IRegionManager>();
             var notExistingRegionName = Guid.NewGuid().ToString();
             regionManagerMock.SetupGet(r => r.Regions).Returns(regionCollection);
-            IChangeRegionViewCommand<string> command = new ChangeRegionViewCommand<string>(regionManagerMock.Object, notExistingRegionName);
+            IChangeRegionsViewCommand<string> command = new ChangeRegionsViewCommand<string>(regionManagerMock.Object, notExistingRegionName);
 
             // When
             // Then

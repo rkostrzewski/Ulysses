@@ -14,13 +14,13 @@ namespace Ulysses.App.Tests.Modules.NavigationPanel.ViewModels
         {
             // Given
             var regionManagerMock = new Mock<IRegionManager>();
-            INavigationPanelViewModel viewModel = new NavigationPanelViewModel(regionManagerMock.Object);
+            INavigationPanelViewModel viewModel = new NavigationPanelViewModel(null, null, null);
 
             // When
-            var command = viewModel.ChangeContentRegionViewCommand;
+            var command = viewModel.ChangeContentRegionsViewCommand;
 
             // Then
-            Assert.IsInstanceOf<IChangeContentRegionViewCommand>(command);
+            Assert.IsInstanceOf<IChangeContentRegionsViewCommand>(command);
         }
     }
 }

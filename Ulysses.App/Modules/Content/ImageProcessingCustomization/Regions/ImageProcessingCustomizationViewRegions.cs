@@ -2,6 +2,6 @@
 {
     public enum ImageProcessingCustomizationViewRegions
     {
-        ProcessingChainElementCustomizationRegion
+        ImageProcessingChainElementCustomizationRegion
     }
 }

@@ -1,5 +1,5 @@
 ﻿using System;
-using Ulysses.App.Modules.Navigation.ViewModels;
+using Ulysses.App.Modules.Navigation.Models;
 using Ulysses.App.Modules.Regions;
 using Ulysses.App.Utils.Commands;
 
@@ -7,11 +7,11 @@ namespace Ulysses.App.Modules.Navigation.Commands
 {
     public class ChangeCurrentRegionInNavigationPanelCommand : Command<ContentRegionView>, IChangeCurrentRegionInNavigationPanelCommand
     {
-        private readonly INavigationPanelViewModel _viewModel;
+        private readonly INavigationPanelState _navigationPanelState;
 
-        public ChangeCurrentRegionInNavigationPanelCommand(INavigationPanelViewModel navigationPanelViewModel)
+        public ChangeCurrentRegionInNavigationPanelCommand(INavigationPanelState navigationPanelState)
         {
-            _viewModel = navigationPanelViewModel;
+            _navigationPanelState = navigationPanelState;
         }
 
         public override void Execute(ContentRegionView parameter)
@@ -21,12 +21,12 @@ namespace Ulysses.App.Modules.Navigation.Commands
                 throw new InvalidOperationException();
             }
 
-            _viewModel.SelectedContentRegionView = parameter;
+            _navigationPanelState.CurrentContentRegionView = parameter;
         }
 
         public override bool CanExecute(ContentRegionView parameter)
         {
-            return _viewModel != null;
+            return _navigationPanelState != null;
         }
     }
 }

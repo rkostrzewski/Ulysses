@@ -1,31 +1,20 @@
 ﻿using Microsoft.Practices.Unity;
 using Prism.Regions;
-using Ulysses.App.Modules.Content.ImageDisplay.ViewModels;
-using Ulysses.App.Modules.Content.ImageProcessingCustomization.ViewModels;
-using Ulysses.App.Modules.Navigation.ViewModels;
 using Ulysses.ProcessingEngine.ProcessingEngine.Factories;
 
 namespace Ulysses.App
 {
-    public static class ContainerConfiguration
+    public class ContainerBootstrapper
     {
-        public static void ConfigureDependencies(this IUnityContainer container)
+        public static void ConfigureDependencies(IUnityContainer container)
         {
             RegisterModels(container);
-            RegisterViewModels(container);
         }
 
         private static void RegisterModels(IUnityContainer container)
         {
             container.RegisterType<IRegionManager>();
             container.RegisterType<IProcessingEngineFactory, ProcessingEngineFactory>();
-        }
-
-        private static void RegisterViewModels(IUnityContainer container)
-        {
-            container.RegisterType<INavigationPanelViewModel, NavigationPanelViewModel>();
-            container.RegisterType<IImageDisplayViewModel, ImageDisplayViewModel>();
-            container.RegisterType<IImageProcessingCustomizationViewModel, ImageProcessingCustomizationViewModel>();
         }
     }
 }
