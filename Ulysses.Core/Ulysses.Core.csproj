@@ -52,7 +52,6 @@
     <Compile Include="Models\ImageBitDepth.cs" />
     <Compile Include="Models\ImageMatrix.cs" />
     <Compile Include="Models\ImageModel.cs" />
-    <Compile Include="Models\ImageSize.cs" />
     <Compile Include="IImageProcessingAlgorithm.cs" />
     <Compile Include="Models\Pixel.cs" />
     <Compile Include="Models\Pixels.cs" />

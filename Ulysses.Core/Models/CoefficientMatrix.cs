@@ -4,7 +4,7 @@ namespace Ulysses.Core.Models
 {
     public class CoefficientContainer : ImageContainer
     {
-        public CoefficientContainer(double[,] values, ImageBitDepth bitDepth) : base(values.GetLength(0), values.GetLength(1), bitDepth)
+        public CoefficientContainer(double[,] values, ImageBitDepth bitDepth) : base((ushort)values.GetLength(0), (ushort)values.GetLength(1), bitDepth)
         {
             Values = values;
         }

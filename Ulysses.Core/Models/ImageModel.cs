@@ -4,15 +4,15 @@ namespace Ulysses.Core.Models
 {
     public class ImageModel : IEquatable<ImageModel>
     {
-        public ImageModel(int width, int height, ImageBitDepth imageBitDepth)
+        public ImageModel(ushort width, ushort height, ImageBitDepth imageBitDepth)
         {
             Width = width;
             Height = height;
             ImageBitDepth = imageBitDepth;
         }
 
-        public int Width { get; }
-        public int Height { get; }
+        public ushort Width { get; }
+        public ushort Height { get; }
         public ImageBitDepth ImageBitDepth { get; }
 
         public bool Equals(ImageModel other)
@@ -20,11 +20,6 @@ namespace Ulysses.Core.Models
             if (ReferenceEquals(null, other))
             {
                 return false;
-            }
-
-            if (ReferenceEquals(this, other))
-            {
-                return true;
             }
 
             return Width == other.Width && Height == other.Height && ImageBitDepth == other.ImageBitDepth;
@@ -36,12 +31,7 @@ namespace Ulysses.Core.Models
             {
                 return false;
             }
-
-            if (ReferenceEquals(this, obj))
-            {
-                return true;
-            }
-
+            
             return obj.GetType() == typeof (ImageModel) && Equals((ImageModel)obj);
         }
 
@@ -49,7 +39,7 @@ namespace Ulysses.Core.Models
         {
             unchecked
             {
-                var hashCode = Width;
+                var hashCode = (int)Width;
                 hashCode = (hashCode * 397) ^ Height;
                 hashCode = (hashCode * 397) ^ (int)ImageBitDepth;
                 return hashCode;

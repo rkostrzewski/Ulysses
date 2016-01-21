@@ -50,6 +50,8 @@
     <Otherwise />
   </Choose>
   <ItemGroup>
+    <Compile Include="ImageModelTestCases.cs" />
+    <Compile Include="ImageModelTests.cs" />
     <Compile Include="PixelsTests.cs" />
     <Compile Include="PixelTestCases.cs" />
     <Compile Include="PixelTests.cs" />

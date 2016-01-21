@@ -4,7 +4,7 @@ namespace Ulysses.Core.Models
     {
         public readonly ImageModel ImageModel;
 
-        protected ImageContainer(int height, int width, ImageBitDepth bitDepth)
+        protected ImageContainer(ushort height, ushort width, ImageBitDepth bitDepth)
         {
             ImageModel = new ImageModel(height, width, bitDepth);
         }
