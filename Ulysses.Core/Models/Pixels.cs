@@ -9,7 +9,7 @@ namespace Ulysses.Core.Models
     {
         private readonly Pixel[] _pixels;
 
-        internal Pixels(IEnumerable<Pixel> pixels, ImageModel imageModel)
+        public Pixels(IEnumerable<Pixel> pixels, ImageModel imageModel)
         {
             _pixels = pixels.ToArray();
 
@@ -18,15 +18,7 @@ namespace Ulysses.Core.Models
                 throw new ImageModelMismatchException();
             }
         }
-
-        internal Pixels(IEnumerable<ushort> pixels, ImageModel imageModel) : this(pixels.Select(p => (Pixel)p), imageModel)
-        {
-        }
-
-        internal Pixels(IEnumerable<byte> pixels, ImageModel imageModel) : this(pixels.Select(p => (Pixel)p), imageModel)
-        {
-        }
-
+        
         internal Pixels(int width, int height)
         {
             _pixels = new Pixel[height * width];

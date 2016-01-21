@@ -55,7 +55,7 @@
     <Compile Include="Models\ImageSize.cs" />
     <Compile Include="IImageProcessingAlgorithm.cs" />
     <Compile Include="Models\Pixel.cs" />
-    <Compile Include="Models\PixelMatrix.cs" />
+    <Compile Include="Models\Pixels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />

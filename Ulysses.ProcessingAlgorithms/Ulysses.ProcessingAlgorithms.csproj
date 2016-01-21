@@ -45,7 +45,6 @@
     <Compile Include="Exceptions\NotSupportedNonUniformityCorrectionAlgorithm.cs" />
     <Compile Include="Factories\IImageProcessingAlgorithmTemplate.cs" />
     <Compile Include="Factories\ImageProcessingAlgorithmType.cs" />
-    <Compile Include="Factories\NonUniformityCorrection\NonUniformityCorrectionAlgorithmFactory.cs" />
     <Compile Include="Factories\NonUniformityCorrection\Templates\BaseNonUniformityCorrectionTemplate.cs" />
     <Compile Include="Factories\NonUniformityCorrection\Templates\TwoPointNonUniformityCorrectionTemplate.cs" />
     <Compile Include="IImageProcessingAlgorithm.cs" />

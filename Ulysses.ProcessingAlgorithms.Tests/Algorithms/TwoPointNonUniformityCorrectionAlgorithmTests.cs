@@ -19,7 +19,7 @@ namespace Ulysses.ProcessingAlgorithms.Tests.Algorithms
             var correctionAlgorithm =
                 new TwoPointNonUniformityCorrectionAlgorithm(new TwoPointNonUniformityCorrectionAlgorithmTemplate
                 {
-                    Algorithms = ImageProcessingAlgorithmType.TwoPointNonUniformityAlgorithm,
+                    Algorithm = ImageProcessingAlgorithmType.TwoPointNonUniformityAlgorithm,
                     NonUniformityModel = nonUniformityModel
                 });
 
@@ -43,7 +43,7 @@ namespace Ulysses.ProcessingAlgorithms.Tests.Algorithms
             var correctionAlgorithm =
                 new TwoPointNonUniformityCorrectionAlgorithm(new TwoPointNonUniformityCorrectionAlgorithmTemplate
                 {
-                    Algorithms = ImageProcessingAlgorithmType.TwoPointNonUniformityAlgorithm,
+                    Algorithm = ImageProcessingAlgorithmType.TwoPointNonUniformityAlgorithm,
                     NonUniformityModel = nonUniformityModel
                 });
 
@@ -65,7 +65,7 @@ namespace Ulysses.ProcessingAlgorithms.Tests.Algorithms
             var correctionAlgorithm =
                 new TwoPointNonUniformityCorrectionAlgorithm(new TwoPointNonUniformityCorrectionAlgorithmTemplate
                 {
-                    Algorithms = ImageProcessingAlgorithmType.TwoPointNonUniformityAlgorithm,
+                    Algorithm = ImageProcessingAlgorithmType.TwoPointNonUniformityAlgorithm,
                     NonUniformityModel = nonUniformityModel
                 });
 
@@ -88,7 +88,7 @@ namespace Ulysses.ProcessingAlgorithms.Tests.Algorithms
             var correctionAlgorithm =
                 new TwoPointNonUniformityCorrectionAlgorithm(new TwoPointNonUniformityCorrectionAlgorithmTemplate
                 {
-                    Algorithms = ImageProcessingAlgorithmType.TwoPointNonUniformityAlgorithm,
+                    Algorithm = ImageProcessingAlgorithmType.TwoPointNonUniformityAlgorithm,
                     NonUniformityModel = nonUniformityModel
                 });
 

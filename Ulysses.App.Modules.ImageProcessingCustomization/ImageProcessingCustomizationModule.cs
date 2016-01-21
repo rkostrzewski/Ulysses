@@ -17,19 +17,19 @@ namespace Ulysses.App.Modules.ImageProcessingCustomization
 {
     public class ImageProcessingCustomizationModule : IModule
     {
-        private readonly IRegionManager _regionManager;
+        private readonly IRegionViewRegistry _regionViewRegistry;
 
-        public ImageProcessingCustomizationModule(IRegionManager regionManager, IUnityContainer container)
+        public ImageProcessingCustomizationModule(IRegionViewRegistry regionViewRegistry, IUnityContainer container)
         {
-            _regionManager = regionManager;
+            _regionViewRegistry = regionViewRegistry;
             RegisterModuleDependencies(container);
         }
 
         public void Initialize()
         {
-            _regionManager.RegisterViewWithRegion(ApplicationRegion.ContentRegion.ToString(), typeof (ImageProcessingCustomizationView));
-            _regionManager.RegisterViewWithRegion(ImageProcessingCustomizationViewRegions.ImageProcessingChainElementCustomizationRegion.ToString(), typeof(EmptyChainElementCustomizationView));
-            _regionManager.RegisterViewWithRegion(ImageProcessingCustomizationViewRegions.ImageProcessingChainElementCustomizationRegion.ToString(), typeof(TwoPointNonUniformityCorrectionCustomizationView));
+            _regionViewRegistry.RegisterViewWithRegion(ApplicationRegion.ContentRegion.ToString(), typeof (ImageProcessingCustomizationView));
+            _regionViewRegistry.RegisterViewWithRegion(ImageProcessingCustomizationViewRegions.ImageProcessingChainElementCustomizationRegion.ToString(), typeof(EmptyChainElementCustomizationView));
+            _regionViewRegistry.RegisterViewWithRegion(ImageProcessingCustomizationViewRegions.ImageProcessingChainElementCustomizationRegion.ToString(), typeof(TwoPointNonUniformityCorrectionCustomizationView));
         }
 
         private static void RegisterModuleDependencies(IUnityContainer container)

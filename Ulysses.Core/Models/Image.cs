@@ -9,12 +9,14 @@ namespace Ulysses.Core.Models
     {
         public Image(IEnumerable<byte> imagePixels, ImageModel imageModel) : base(imageModel)
         {
-            ImagePixels = new Pixels(imagePixels, imageModel);
+            var pixels = imagePixels.Select(p => (Pixel)p);
+            ImagePixels = new Pixels(pixels, imageModel);
         }
 
         public Image(IEnumerable<ushort> imagePixels, ImageModel imageModel) : base(imageModel)
         {
-            ImagePixels = new Pixels(imagePixels, imageModel);
+            var pixels = imagePixels.Select(p => (Pixel)p);
+            ImagePixels = new Pixels(pixels, imageModel);
         }
 
         public Image(IEnumerable<Pixel> imagePixels, ImageModel imageModel) : base(imageModel)
