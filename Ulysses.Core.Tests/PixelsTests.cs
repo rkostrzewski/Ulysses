@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using NUnit.Framework;
@@ -10,44 +11,18 @@ namespace Ulysses.Core.Tests
     public class PixelsTests
     {
         [Test]
-        public void ShouldCreatePixelMatrixFromPixelEnumerable()
+        public void ShouldReturnEnumerableOfSameLengthAsOneUsedToCreate()
         {
             // Given
-            IEnumerable<Pixel> pixelsEnumerable = new Pixel[] { 1, 1, 1, 1 };
+            IEnumerable<Pixel> source = new Pixel[] { 1, 1, 1, 1 };
             var imageModel = new ImageModel(2, 2, ImageBitDepth.Bpp8);
+            var image = new Image(source, imageModel);
 
             // When
-            var pixels = new Pixels(pixelsEnumerable, imageModel);
+            var pixelsCount = image.ImagePixels.Count();
 
             // Then
-            CollectionAssert.AreEqual(pixelsEnumerable, pixels);
-        }
-
-        [Test]
-        public void ShouldShouldThrowImageModelMismatchExceptionWhenImageModelDimensionsDifferFromProvidedPixelsLength()
-        {
-            // Given
-            IEnumerable<Pixel> pixelsEnumerable = new Pixel[] { 1, 1 };
-            var imageModel = new ImageModel(2, 2, ImageBitDepth.Bpp8);
-
-            // When
-            // Then
-            Assert.Throws<ImageModelMismatchException>(() => new Pixels(pixelsEnumerable, imageModel));
-        }
-
-        [Test]
-        public void ShouldReturnEnumerableOfSameLenghtAsOneUsedToCreate()
-        {
-            // Given
-            IEnumerable<Pixel> pixelsEnumerable = new Pixel[] { 1, 1, 1, 1 };
-            var imageModel = new ImageModel(2, 2, ImageBitDepth.Bpp8);
-            var pixels = new Pixels(pixelsEnumerable, imageModel);
-
-            // When
-            var pixelsCount = pixels.Count();
-
-            // Then
-            Assert.AreEqual(pixelsEnumerable.Count(), pixelsCount);
+            Assert.AreEqual(source.Count(), pixelsCount);
         }
 
         [Test]
@@ -58,10 +33,10 @@ namespace Ulysses.Core.Tests
             var imageModel = new ImageModel(2, 2, ImageBitDepth.Bpp8);
 
             // When
-            var pixels = new Pixels(source, imageModel);
+            var image = new Image(source, imageModel);
 
             // Then
-            Assert.IsTrue(Enumerable.Range(0, source.Count()).All(i => pixels[i] == source[i]));
+            Assert.IsTrue(Enumerable.Range(0, source.Length).All(i => image.ImagePixels[i] == source[i]));
         }
 
         [Test]
@@ -70,13 +45,28 @@ namespace Ulysses.Core.Tests
             // Given
             var source = new Pixel[] { 1, 2, 3, 4 };
             var imageModel = new ImageModel(2, 2, ImageBitDepth.Bpp8);
-            var pixels = new Pixels(source, imageModel);
+            var image = new Image(source, imageModel);
 
             // When
-            pixels[2] = new Pixel(1);
+            image.ImagePixels[2] = new Pixel(1);
 
             // Then
-            Assert.AreEqual(new Pixel(1), pixels[2]);
+            Assert.AreEqual(new Pixel(1), image.ImagePixels[2]);
+        }
+
+        [Test]
+        public void ShouldCorrectlyReturnIEnumerator()
+        {
+            // Given
+            var source = new Pixel[] { 1, 2, 3, 4 };
+            var imageModel = new ImageModel(2, 2, ImageBitDepth.Bpp8);
+            var image = new Image(source, imageModel);
+
+            // When
+            var enumerator = ((IEnumerable)image.ImagePixels).GetEnumerator();
+
+            // Then
+            Assert.IsNotNull(enumerator);
         }
     }
 }

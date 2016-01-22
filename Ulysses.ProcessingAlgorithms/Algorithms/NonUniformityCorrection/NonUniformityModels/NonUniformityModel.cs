@@ -1,22 +1,17 @@
-﻿using Ulysses.Core.Models;
+﻿using System.Collections.Generic;
+using Ulysses.Core.Models;
 
 namespace Ulysses.ProcessingAlgorithms.Algorithms.NonUniformityCorrection.NonUniformityModels
 {
     public class NonUniformityModel
     {
-        public NonUniformityModel(ImageModel imageModel)
+        public NonUniformityModel(IEnumerable<double> gainCoefficients, IEnumerable<double> offsetCoefficients, ImageModel imageModel)
         {
-            GainCoefficients = new CoefficientContainer(imageModel);
-            OffsetCoefficients = new CoefficientContainer(imageModel);
+            GainCoefficients = new CoefficientImage(gainCoefficients, imageModel);
+            OffsetCoefficients = new CoefficientImage(offsetCoefficients, imageModel);
         }
 
-        public NonUniformityModel(double[,] gainCoefficients, double[,] offsetCoefficients, ImageBitDepth bitDepth)
-        {
-            GainCoefficients = new CoefficientContainer(gainCoefficients, bitDepth);
-            OffsetCoefficients = new CoefficientContainer(offsetCoefficients, bitDepth);
-        }
-
-        public CoefficientContainer GainCoefficients { get; protected set; }
-        public CoefficientContainer OffsetCoefficients { get; protected set; }
+        public CoefficientImage GainCoefficients { get; protected set; }
+        public CoefficientImage OffsetCoefficients { get; protected set; }
     }
 }

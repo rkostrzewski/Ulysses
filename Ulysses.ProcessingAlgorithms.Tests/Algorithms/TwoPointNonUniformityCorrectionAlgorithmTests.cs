@@ -37,7 +37,7 @@ namespace Ulysses.ProcessingAlgorithms.Tests.Algorithms
         public void ShouldCorrectImageWhenProvidedNonUniformityModel()
         {
             // Given
-            var nonUniformityModel = new NonUniformityModel(new[,] { { 1, 0 }, { 0.5, 0.25 } }, new[,] { { 5.0, 0 }, { -4, 5 } }, ImageBitDepth.Bpp8);
+            var nonUniformityModel = new NonUniformityModel(new[] { 1, 0, 0.5, 0.25 }, new[] { 5.0, 0, -4, 5 }, new ImageModel(2, 2, ImageBitDepth.Bpp8));
             var imageModel = new ImageModel(2, 2, ImageBitDepth.Bpp8);
             var inputImage = new Image(new ushort[] { 5, 0, 2, 8 }, imageModel);
             var correctionAlgorithm =
@@ -59,7 +59,7 @@ namespace Ulysses.ProcessingAlgorithms.Tests.Algorithms
         public void ShouldModifyInputImageForNonTrivialNonUniformityModel()
         {
             // Given
-            var nonUniformityModel = new NonUniformityModel(new[,] { { 1, 0 }, { 0.5, 0.25 } }, new[,] { { 5.0, 0 }, { -4, 5 } }, ImageBitDepth.Bpp8);
+            var nonUniformityModel = new NonUniformityModel(new[] { 1, 0, 0.5, 0.25  }, new[] { 5.0, 0 , -4, 5  }, new ImageModel(2, 2, ImageBitDepth.Bpp8));
             var imageModel = new ImageModel(2, 2, ImageBitDepth.Bpp8);
             var inputImage = new Image(new ushort[] { 5, 0, 2, 8 }, imageModel);
             var correctionAlgorithm =
@@ -83,7 +83,7 @@ namespace Ulysses.ProcessingAlgorithms.Tests.Algorithms
             var imageModel = new ImageModel(4, 2, ImageBitDepth.Bpp12);
             var inputImage = new Image(new ushort[] { 5, 0, 2, 8, 2, 8, 2, 8 }, imageModel);
 
-            var nonUniformityModel = new NonUniformityModel(new[,] { { 1, 0 }, { 0.5, 0.25 } }, new[,] { { 5.0, 0 }, { -4, 5 } }, ImageBitDepth.Bpp8);
+            var nonUniformityModel = new NonUniformityModel(new[] { 1, 0, 0.5, 0.25 }, new[] { 5.0, 0, -4, 5 }, new ImageModel(2, 2, ImageBitDepth.Bpp8));
 
             var correctionAlgorithm =
                 new TwoPointNonUniformityCorrectionAlgorithm(new TwoPointNonUniformityCorrectionAlgorithmTemplate

@@ -1,5 +1,6 @@
 ﻿using NUnit.Framework;
 using Ulysses.Core.Models;
+using Ulysses.Core.Tests.TestCases;
 
 namespace Ulysses.Core.Tests
 {

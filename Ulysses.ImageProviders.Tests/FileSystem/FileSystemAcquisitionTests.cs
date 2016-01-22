@@ -48,7 +48,7 @@ namespace Ulysses.ImageAcquisition.Tests.FileSystem
         public void ShouldReturnCorrectImageWhenProvidedImageBitDepth(string imagePath, int imageSize, int pixelValue)
         {
             // Given
-            var imageModel = new ImageModel(imageSize, imageSize, ImageBitDepth.Bpp8);
+            var imageModel = new ImageModel((ushort)imageSize, (ushort)imageSize, ImageBitDepth.Bpp8);
             var imageProvider = new FileSystemImageProvider(imageModel, new[] { imagePath });
 
             // When

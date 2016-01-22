@@ -50,10 +50,15 @@
     <Otherwise />
   </Choose>
   <ItemGroup>
-    <Compile Include="ImageModelTestCases.cs" />
+    <Compile Include="CoefficientImageOperationsTests.cs" />
+    <Compile Include="CoefficientImageTests.cs" />
+    <Compile Include="TestCases\ImageModelTestCases.cs" />
     <Compile Include="ImageModelTests.cs" />
+    <Compile Include="ImageOperationsTests.cs" />
+    <Compile Include="TestCases\ImageTestCases.cs" />
+    <Compile Include="ImageTests.cs" />
     <Compile Include="PixelsTests.cs" />
-    <Compile Include="PixelTestCases.cs" />
+    <Compile Include="TestCases\PixelTestCases.cs" />
     <Compile Include="PixelTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

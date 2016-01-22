@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using Ulysses.Core.Models;
 
-namespace Ulysses.Core.Tests
+namespace Ulysses.Core.Tests.TestCases
 {
     public static class PixelTestCases
     {

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -5,11 +6,19 @@ using Ulysses.Core.Exceptions;
 
 namespace Ulysses.Core.Models
 {
-    public class Pixels : IEnumerable<Pixel>
+    public class Pixels : IEnumerable<Pixel>, IEquatable<Pixels>
     {
         private readonly Pixel[] _pixels;
 
-        public Pixels(IEnumerable<Pixel> pixels, ImageModel imageModel)
+        internal Pixels(IEnumerable<byte> pixels, ImageModel imageModel) : this(pixels.Select(p => (Pixel)p), imageModel)
+        {
+        }
+
+        internal Pixels(IEnumerable<ushort> pixels, ImageModel imageModel) : this(pixels.Select(p => (Pixel)p), imageModel)
+        {
+        }
+
+        internal Pixels(IEnumerable<Pixel> pixels, ImageModel imageModel)
         {
             _pixels = pixels.ToArray();
 
@@ -43,7 +52,12 @@ namespace Ulysses.Core.Models
 
         IEnumerator IEnumerable.GetEnumerator()
         {
-            return _pixels.GetEnumerator();
+            return GetEnumerator();
+        }
+
+        public bool Equals(Pixels other)
+        {
+            return this.SequenceEqual(other);
         }
     }
 }

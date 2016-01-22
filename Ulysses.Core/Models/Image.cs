@@ -9,14 +9,12 @@ namespace Ulysses.Core.Models
     {
         public Image(IEnumerable<byte> imagePixels, ImageModel imageModel) : base(imageModel)
         {
-            var pixels = imagePixels.Select(p => (Pixel)p);
-            ImagePixels = new Pixels(pixels, imageModel);
+            ImagePixels = new Pixels(imagePixels, imageModel);
         }
 
         public Image(IEnumerable<ushort> imagePixels, ImageModel imageModel) : base(imageModel)
         {
-            var pixels = imagePixels.Select(p => (Pixel)p);
-            ImagePixels = new Pixels(pixels, imageModel);
+            ImagePixels = new Pixels(imagePixels, imageModel);
         }
 
         public Image(IEnumerable<Pixel> imagePixels, ImageModel imageModel) : base(imageModel)
@@ -43,7 +41,7 @@ namespace Ulysses.Core.Models
                 return true;
             }
 
-            return ImageModel == other.ImageModel && ImagePixels.SequenceEqual(other.ImagePixels);
+            return ImageModel == other.ImageModel && ImagePixels.Equals(other.ImagePixels);
         }
 
         public override bool Equals(object obj)
@@ -63,7 +61,9 @@ namespace Ulysses.Core.Models
 
         public override int GetHashCode()
         {
-            return ImagePixels.GetHashCode();
+            var hashCode = ImagePixels.GetHashCode();
+            hashCode = (hashCode * 397) ^ ImageModel.GetHashCode();
+            return hashCode;
         }
 
         public static Image operator +(Image first, Image second)

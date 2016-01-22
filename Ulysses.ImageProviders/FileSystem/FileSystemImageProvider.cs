@@ -66,7 +66,6 @@ namespace Ulysses.ImageProviders.FileSystem
         private static IEnumerable<byte> ConvertRgbaPixelsToGrayscale(IReadOnlyList<byte> rgbaPixels)
         {
             var pixelCount = rgbaPixels.Count / 4;
-            var convertedPixels = new byte[pixelCount];
 
             return
                 Enumerable.Range(0, pixelCount)
