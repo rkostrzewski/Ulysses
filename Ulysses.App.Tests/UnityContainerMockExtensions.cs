@@ -2,7 +2,7 @@
 using Microsoft.Practices.Unity;
 using Moq;
 
-namespace Ulysses.App.Tests.Core
+namespace Ulysses.App.Tests
 {
     public static class UnityContainerMockExtensions
     {

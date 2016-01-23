@@ -58,7 +58,9 @@
     <Compile Include="DragAndDropExtension\DropInfo.cs" />
     <Compile Include="DragAndDropExtension\Handlers\DefaultDragHandler.cs" />
     <Compile Include="DragAndDropExtension\Handlers\DefaultDropHandler.cs" />
+    <Compile Include="DragAndDropExtension\IDragInfo.cs" />
     <Compile Include="DragAndDropExtension\IDragSource.cs" />
+    <Compile Include="DragAndDropExtension\IDropInfo.cs" />
     <Compile Include="DragAndDropExtension\IDropTarget.cs" />
     <Compile Include="DragAndDropExtension\Extensions\ItemsControlExtensions.cs" />
     <Compile Include="DragAndDropExtension\Handlers\TypeUtilities.cs" />

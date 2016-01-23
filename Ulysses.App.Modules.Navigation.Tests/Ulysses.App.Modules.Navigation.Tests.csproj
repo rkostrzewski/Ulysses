@@ -99,9 +99,9 @@
       <Project>{2b981b65-7fb8-4f95-bc9e-b8cf297b40ac}</Project>
       <Name>Ulysses.App.Modules.Navigation</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Ulysses.App.Tests.Core\Ulysses.App.Tests.Core.csproj">
+    <ProjectReference Include="..\Ulysses.App.Tests\Ulysses.App.Tests.csproj">
       <Project>{d922a120-995d-42e1-847b-42c49c0abc55}</Project>
-      <Name>Ulysses.App.Tests.Core</Name>
+      <Name>Ulysses.App.Tests</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup />

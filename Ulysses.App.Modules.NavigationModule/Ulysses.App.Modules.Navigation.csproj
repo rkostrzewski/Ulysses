@@ -69,6 +69,7 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Commands\ChangeContentRegionCompositeCommand.cs" />
     <Compile Include="Commands\ChangeContentRegionsViewCommand.cs" />
     <Compile Include="Commands\ChangeCurrentRegionInNavigationPanelCommand.cs" />
     <Compile Include="Commands\IChangeContentRegionsViewCommand.cs" />
@@ -76,6 +77,7 @@
     <Compile Include="Models\INavigationPanelState.cs" />
     <Compile Include="Models\NavigationPanelState.cs" />
     <Compile Include="NavigationPanelModule.cs" />
+    <Compile Include="Commands\IChangeContentRegionCompositeCommand.cs" />
     <Compile Include="ViewModels\INavigationPanelViewModel.cs" />
     <Compile Include="ViewModels\NavigationPanelViewModel.cs" />
     <Compile Include="Views\NavigationPanelView.cs">

@@ -1,9 +1,12 @@
-﻿namespace Ulysses.App.Core.Commands
-{
-    public interface ICompositeCommand<T> : ICommand<T>
-    {
-        void RegisterCommand(ICommand<T> command);
+﻿using System.Windows.Input;
 
-        void UnRegisterCommand(ICommand<T> command);
+namespace Ulysses.App.Core.Commands
+{
+    public interface ICompositeCommand<in T> : ICommand<T>
+    {
+        void RegisterCommand(ICommand command);
+
+        // ReSharper disable once IdentifierTypo
+        void UnregisterCommand(ICommand command);
     }
 }

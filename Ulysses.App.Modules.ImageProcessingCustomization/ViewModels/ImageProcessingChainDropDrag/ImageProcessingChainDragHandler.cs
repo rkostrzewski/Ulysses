@@ -7,7 +7,7 @@ namespace Ulysses.App.Modules.ImageProcessingCustomization.ViewModels.ImageProce
 {
     public class ImageProcessingChainDragHandler : DefaultDragHandler, IImageProcessingChainDragHandler
     {
-        public override void StartDrag(DragInfo dragInfo)
+        public override void StartDrag(IDragInfo dragInfo)
         {
             var imageProcessingAlgorithms = dragInfo.SourceItems.OfType<IImageProcessingAlgorithmTemplate>().ToList();
             dragInfo.SourceItems = imageProcessingAlgorithms;

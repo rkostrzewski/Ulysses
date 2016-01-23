@@ -1,7 +1,7 @@
 ﻿namespace Ulysses.App.Modules.ImageProcessingCustomization.Models.Templates.ImageDisplay
 {
-    public class ImageDisplayTemplate : BaseImageProcessingChainElement, IImageProcessingChainElement
+    public class ImageDisplayTemplate : BaseImageProcessingChainElement
     {
-        public string ElementName => "Output";
+        public override string ElementName => "Output";
     }
 }

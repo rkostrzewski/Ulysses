@@ -3,9 +3,9 @@
 namespace Ulysses.App.Modules.ImageProcessingCustomization.Views.TemplateViews
 {
     /// <summary>
-    ///     Interaction logic for UserControl1.xaml
+    ///     Interaction logic for EmptyChainElementCustomizationView.xaml
     /// </summary>
-    public partial class EmptyChainElementCustomizationView : UserControl
+    public partial class EmptyChainElementCustomizationView
     {
         public EmptyChainElementCustomizationView()
         {

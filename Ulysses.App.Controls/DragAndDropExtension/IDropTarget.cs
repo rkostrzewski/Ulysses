@@ -2,8 +2,8 @@
 {
     public interface IDropTarget
     {
-        void DragOver(DropInfo dropInfo);
+        void DragOver(IDropInfo dropInfo);
 
-        void Drop(DropInfo dropInfo);
+        void Drop(IDropInfo dropInfo);
     }
 }

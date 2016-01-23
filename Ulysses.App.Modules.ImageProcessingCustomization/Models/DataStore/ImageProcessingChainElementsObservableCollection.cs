@@ -8,11 +8,12 @@ namespace Ulysses.App.Modules.ImageProcessingCustomization.Models.DataStore
     {
         protected override void InsertItem(int index, IImageProcessingChainElement item)
         {
-            item.Id = Guid.NewGuid().ToString();
-
-            while (this.Any(i => i.Id == item.Id))
+            if (item.Id == null || this.Any(i => i.Id == item.Id && !ReferenceEquals(i, item)))
             {
-                item.Id = Guid.NewGuid().ToString();
+                do
+                {
+                    item.Id = Guid.NewGuid().ToString();
+                } while (this.Any(i => i.Id == item.Id));
             }
 
             base.InsertItem(index, item);

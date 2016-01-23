@@ -47,6 +47,7 @@
       <HintPath>..\packages\NUnit.3.0.1\lib\net45\nunit.framework.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="PresentationFramework" />
     <Reference Include="Prism, Version=6.1.0.0, Culture=neutral, PublicKeyToken=91a96d2a154366d8, processorArchitecture=MSIL">
       <HintPath>..\packages\Prism.Core.6.1.0\lib\net45\Prism.dll</HintPath>
       <Private>True</Private>
@@ -67,16 +68,24 @@
     <Otherwise />
   </Choose>
   <ItemGroup>
+    <Compile Include="Commands\CommandTests.cs" />
+    <Compile Include="Commands\CompositeCommandTests.cs" />
+    <Compile Include="Commands\NoParameterCommandTests.cs" />
     <Compile Include="Commands\Regions\ChangeRegionViewCommandCommandTests.cs" />
-    <Compile Include="Commands\Regions\TestRegionCollection.cs" />
-    <Compile Include="Commands\Regions\TestView.cs" />
-    <Compile Include="Commands\Regions\TestViewsCollection.cs" />
+    <Compile Include="Converters\GenericToStringConverterTests.cs" />
+    <Compile Include="Helpers\IInvokable.cs" />
+    <Compile Include="Helpers\TestCommand.cs" />
+    <Compile Include="Helpers\TestNoParameterCommand.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Ulysses.App.Core\Ulysses.App.Core.csproj">
       <Project>{1c7f7ebd-bd5a-42da-bae1-fab2cdbe68da}</Project>
       <Name>Ulysses.App.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Ulysses.App.Tests\Ulysses.App.Tests.csproj">
+      <Project>{d922a120-995d-42e1-847b-42c49c0abc55}</Project>
+      <Name>Ulysses.App.Tests</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

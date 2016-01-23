@@ -7,7 +7,7 @@ using Ulysses.App.Core.Regions;
 using Ulysses.App.Modules.Navigation.Commands;
 using Ulysses.App.Modules.Navigation.Models;
 using Ulysses.App.Modules.Navigation.ViewModels;
-using Ulysses.App.Tests.Core;
+using Ulysses.App.Tests;
 
 namespace Ulysses.App.Modules.Navigation.Tests
 {

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Linq;
 using Ulysses.App.Controls.DragAndDropExtension;
 using Ulysses.App.Controls.DragAndDropExtension.Handlers;
@@ -8,7 +9,7 @@ namespace Ulysses.App.Modules.ImageProcessingCustomization.ViewModels.ImageProce
 {
     public class ImageProcessingChainDropHandler : DefaultDropHandler, IImageProcessingChainDropHandler
     {
-        public override void DragOver(DropInfo dropInfo)
+        public override void DragOver(IDropInfo dropInfo)
         {
             if (!(dropInfo.Data is IImageProcessingAlgorithmTemplate))
             {
@@ -23,47 +24,52 @@ namespace Ulysses.App.Modules.ImageProcessingCustomization.ViewModels.ImageProce
             base.DragOver(dropInfo);
         }
 
-        public override void Drop(DropInfo dropInfo)
+        public override void Drop(IDropInfo dropInfo)
         {
             var extractedData = ExtractData(dropInfo.Data);
             var data = extractedData as object[] ?? extractedData.Cast<object>().ToArray();
-
-            var insertIndex = dropInfo.InsertIndex;
             var destinationList = GetList(dropInfo.TargetCollection);
+            var sourceList = GetList(dropInfo.DragInfo.SourceCollection);
+            var isSourceCollectionSameAsTargetCollection = ReferenceEquals(sourceList, destinationList);
 
-            if (Equals(dropInfo.DragInfo.VisualSource, dropInfo.VisualTarget))
+            var insertIndex = PrepareSourceList(dropInfo, data, sourceList, destinationList);
+
+            InsertIntoDestinationList(data, destinationList, insertIndex, isSourceCollectionSameAsTargetCollection);
+        }
+
+        private static void InsertIntoDestinationList(object[] data, IList destinationList, int insertIndex, bool isSourceCollectionSameAsTargetCollection)
+        {
+            foreach (var element in data)
             {
-                var sourceList = GetList(dropInfo.DragInfo.SourceCollection);
+                var objectToInsert = element;
 
-                foreach (var index in data.Select(o => sourceList.IndexOf(o)).Where(index => index != -1))
+                if (!isSourceCollectionSameAsTargetCollection)
                 {
-                    sourceList.RemoveAt(index);
-
-                    if (Equals(sourceList, destinationList) && index < insertIndex)
-                    {
-                        --insertIndex;
-                    }
-                }
-            }
-
-            foreach (var objectConstructor in data.Select(objectToCopy => objectToCopy.GetType().GetConstructor(Type.EmptyTypes)))
-            {
-                if (objectConstructor == null)
-                {
-                    throw new InvalidOperationException();
+                    objectToInsert = CreateNewInstanceOfSameType(element.GetType());
                 }
 
-                var newObject = objectConstructor.Invoke(null);
-                destinationList.Insert(insertIndex++, newObject);
+                destinationList.Insert(insertIndex++, objectToInsert);
             }
         }
 
-        private static bool IsInsertedAtEnd(DropInfo dropInfo)
+        private static object CreateNewInstanceOfSameType(Type type)
+        {
+            var constructor = type.GetConstructor(Type.EmptyTypes);
+
+            if (constructor == null)
+            {
+                throw new InvalidOperationException();
+            }
+
+            return constructor.Invoke(null);
+        }
+
+        private static bool IsInsertedAtStart(IDropInfo dropInfo)
         {
             return dropInfo.InsertIndex == 0;
         }
 
-        private static bool IsInsertedAtStart(DropInfo dropInfo)
+        private static bool IsInsertedAtEnd(IDropInfo dropInfo)
         {
             return dropInfo.InsertIndex == dropInfo.TargetCollection.Cast<object>().Count();
         }

@@ -16,14 +16,12 @@ namespace Ulysses.App.Modules.Navigation.Tests.ViewModels
         {
             // Given
             var navigationPanelState = new Mock<INavigationPanelState>();
-            var changeContentRegionsViewCommand = new Mock<IChangeContentRegionsViewCommand>();
-            var changeCurrentRegionInNavigationPanelCommand = new Mock<IChangeCurrentRegionInNavigationPanelCommand>();
+            var changeContentRegionCompositeCommand = new Mock<IChangeContentRegionCompositeCommand>();
 
             navigationPanelState.SetupGet(n => n.CurrentContentRegionView).Returns(ContentRegionView.ImageDisplayView);
 
             var viewModel = new NavigationPanelViewModel(navigationPanelState.Object,
-                                                         changeContentRegionsViewCommand.Object,
-                                                         changeCurrentRegionInNavigationPanelCommand.Object);
+                                                         changeContentRegionCompositeCommand.Object);
 
             // When
             var currentContentRegionView = viewModel.CurrentContentRegionView;
@@ -37,9 +35,8 @@ namespace Ulysses.App.Modules.Navigation.Tests.ViewModels
         {
             // Given
             var navigationPanelState = new NavigationPanelState();
-            var changeContentRegionsViewCommand = new Mock<IChangeContentRegionsViewCommand>();
-            var changeCurrentRegionInNavigationPanelCommand = new Mock<IChangeCurrentRegionInNavigationPanelCommand>();
-            var viewModel = new NavigationPanelViewModel(navigationPanelState, changeContentRegionsViewCommand.Object, changeCurrentRegionInNavigationPanelCommand.Object);
+            var changeContentRegionCompositeCommand = new Mock<IChangeContentRegionCompositeCommand>();
+            var viewModel = new NavigationPanelViewModel(navigationPanelState, changeContentRegionCompositeCommand.Object);
             var timesEventFired = 0;
             object sender = null;
             PropertyChangedEventArgs args = null;

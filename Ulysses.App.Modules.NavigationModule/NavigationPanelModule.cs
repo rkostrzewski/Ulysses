@@ -29,6 +29,7 @@ namespace Ulysses.App.Modules.Navigation
             container.RegisterInstance(typeof(INavigationPanelState), new NavigationPanelState());
             container.RegisterType<IChangeContentRegionsViewCommand, ChangeContentRegionsViewCommand>();
             container.RegisterType<IChangeCurrentRegionInNavigationPanelCommand, ChangeCurrentRegionInNavigationPanelCommand>();
+            container.RegisterType<IChangeContentRegionCompositeCommand, ChangeContentRegionCompositeCommand>();
             container.RegisterType<INavigationPanelViewModel, NavigationPanelViewModel>();
         }
     }

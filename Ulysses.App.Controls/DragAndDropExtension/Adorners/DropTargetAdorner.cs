@@ -15,7 +15,7 @@ namespace Ulysses.App.Controls.DragAndDropExtension.Adorners
             IsHitTestVisible = false;
         }
 
-        public DropInfo DropInfo { get; set; }
+        public IDropInfo DropInfo { get; set; }
 
         public void Detach()
         {

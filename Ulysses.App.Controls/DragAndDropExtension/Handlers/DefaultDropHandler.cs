@@ -12,7 +12,7 @@ namespace Ulysses.App.Controls.DragAndDropExtension.Handlers
 {
     public class DefaultDropHandler : IDropTarget
     {
-        public virtual void DragOver(DropInfo dropInfo)
+        public virtual void DragOver(IDropInfo dropInfo)
         {
             if (!CanAcceptData(dropInfo))
             {
@@ -20,39 +20,53 @@ namespace Ulysses.App.Controls.DragAndDropExtension.Handlers
             }
 
             dropInfo.Effects = DragDropEffects.Copy;
-            dropInfo.DropTargetAdorner = typeof (DropTargetInsertionAdorner);
+            dropInfo.DropTargetAdorner = typeof(DropTargetInsertionAdorner);
         }
 
-        public virtual void Drop(DropInfo dropInfo)
+        public virtual void Drop(IDropInfo dropInfo)
         {
             var extractedData = ExtractData(dropInfo.Data);
             var data = extractedData as object[] ?? extractedData.Cast<object>().ToArray();
 
-            var insertIndex = dropInfo.InsertIndex;
+            var sourceList = GetList(dropInfo.DragInfo.SourceCollection);
             var destinationList = GetList(dropInfo.TargetCollection);
 
-            if (Equals(dropInfo.DragInfo.VisualSource, dropInfo.VisualTarget))
-            {
-                var sourceList = GetList(dropInfo.DragInfo.SourceCollection);
+            var insertIndex = PrepareSourceList(dropInfo, data, sourceList, destinationList);
 
-                foreach (var index in data.Select(o => sourceList.IndexOf(o)).Where(index => index != -1))
-                {
-                    sourceList.RemoveAt(index);
+            InsertIntoDestinationList(data, destinationList, insertIndex);
+        }
 
-                    if (Equals(sourceList, destinationList) && index < insertIndex)
-                    {
-                        --insertIndex;
-                    }
-                }
-            }
-
+        protected virtual void InsertIntoDestinationList(object[] data, IList destinationList, int insertIndex)
+        {
             foreach (var o in data)
             {
                 destinationList.Insert(insertIndex++, o);
             }
         }
 
-        protected static bool CanAcceptData(DropInfo dropInfo)
+        protected virtual int PrepareSourceList(IDropInfo dropInfo, object[] data, IList sourceList, IList destinationList)
+        {
+            var insertIndex = dropInfo.InsertIndex;
+
+            if (!Equals(dropInfo.DragInfo.VisualSource, dropInfo.VisualTarget))
+            {
+                return insertIndex;
+            }
+
+            foreach (var index in data.Select(sourceList.IndexOf).Where(index => index != -1))
+            {
+                sourceList.RemoveAt(index);
+
+                if (Equals(sourceList, destinationList) && index < insertIndex)
+                {
+                    --insertIndex;
+                }
+            }
+
+            return insertIndex;
+        }
+
+        protected static bool CanAcceptData(IDropInfo dropInfo)
         {
             if (Equals(dropInfo.DragInfo.SourceCollection, dropInfo.TargetCollection))
             {
@@ -113,7 +127,7 @@ namespace Ulysses.App.Controls.DragAndDropExtension.Handlers
 
         protected static bool TestCompatibleTypes(IEnumerable target, object data)
         {
-            TypeFilter filter = (t, o) => t.IsGenericType && t.GetGenericTypeDefinition() == typeof (IEnumerable<>);
+            TypeFilter filter = (t, o) => t.IsGenericType && t.GetGenericTypeDefinition() == typeof(IEnumerable<>);
 
             var enumerableInterfaces = target.GetType().FindInterfaces(filter, null);
             var enumerableTypes = from i in enumerableInterfaces select i.GetGenericArguments().Single();

@@ -6,7 +6,7 @@ using Prism.Regions;
 using Ulysses.App.Core.Regions;
 using Ulysses.App.Modules.ImageDisplay.ViewModels;
 using Ulysses.App.Modules.ImageDisplay.Views;
-using Ulysses.App.Tests.Core;
+using Ulysses.App.Tests;
 
 namespace Ulysses.App.Modules.ImageDisplay.Tests
 {

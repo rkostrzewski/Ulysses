@@ -5,7 +5,7 @@ using System.Collections.Specialized;
 using System.Linq;
 using Prism.Regions;
 
-namespace Ulysses.App.Core.Tests.Commands.Regions
+namespace Ulysses.App.Tests.Regions
 {
     public class TestRegionCollection : IRegionCollection
     {

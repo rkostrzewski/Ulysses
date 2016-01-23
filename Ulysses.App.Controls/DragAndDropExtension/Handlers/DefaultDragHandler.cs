@@ -5,7 +5,7 @@ namespace Ulysses.App.Controls.DragAndDropExtension.Handlers
 {
     public class DefaultDragHandler : IDragSource
     {
-        public virtual void StartDrag(DragInfo dragInfo)
+        public virtual void StartDrag(IDragInfo dragInfo)
         {
             var itemCount = dragInfo.SourceItems.Cast<object>().Count();
 

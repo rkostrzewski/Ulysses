@@ -7,7 +7,7 @@ using Ulysses.App.Controls.DragAndDropExtension.Extensions;
 
 namespace Ulysses.App.Controls.DragAndDropExtension
 {
-    public class DragInfo
+    public class DragInfo : IDragInfo
     {
         public DragInfo(object sender, MouseButtonEventArgs e)
         {

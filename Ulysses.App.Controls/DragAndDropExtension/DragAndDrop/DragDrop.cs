@@ -17,7 +17,7 @@ namespace Ulysses.App.Controls.DragAndDropExtension.DragAndDrop
         private static IDragSource _defaultDragHandler;
         private static IDropTarget _defaultDropHandler;
         private static DragAdorner _dragAdorner;
-        private static DragInfo _dragInfo;
+        private static IDragInfo _dragInfo;
         private static DropTargetAdorner _dropTargetAdorner;
         private static readonly DataFormat Format = DataFormats.GetDataFormat(typeof (DragDrop).FullName);
 
@@ -296,7 +296,7 @@ namespace Ulysses.App.Controls.DragAndDropExtension.DragAndDrop
             Scroll((DependencyObject)sender, e);
         }
 
-        private static void UpdateTargetDropAdorner(DependencyObject target, DropInfo dropInfo)
+        private static void UpdateTargetDropAdorner(DependencyObject target, IDropInfo dropInfo)
         {
             UIElement adornedElement = target.GetVisualDescendent<ItemsPresenter>();
 
@@ -318,7 +318,7 @@ namespace Ulysses.App.Controls.DragAndDropExtension.DragAndDrop
             DropTargetAdorner.InvalidateVisual();
         }
 
-        private static void UpdateDragAdorner(DropInfo dropInfo, DragEventArgs e)
+        private static void UpdateDragAdorner(IDropInfo dropInfo, DragEventArgs e)
         {
             if (dropInfo.Effects == DragDropEffects.None)
             {

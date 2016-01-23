@@ -55,7 +55,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ulysses.App.Modules.ImageDi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ulysses.App.Core.Tests", "Ulysses.App.Core.Tests\Ulysses.App.Core.Tests.csproj", "{ABDD9002-1CED-46C0-AA50-AFED60C4E7D3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ulysses.App.Tests.Core", "Ulysses.App.Tests.Core\Ulysses.App.Tests.Core.csproj", "{D922A120-995D-42E1-847B-42C49C0ABC55}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ulysses.App.Tests", "Ulysses.App.Tests\Ulysses.App.Tests.csproj", "{D922A120-995D-42E1-847B-42C49C0ABC55}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ulysses.Core.Tests", "Ulysses.Core.Tests\Ulysses.Core.Tests.csproj", "{0A944448-EF06-4EC1-880F-AC3BDAFCCC92}"
 EndProject

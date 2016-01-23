@@ -2,6 +2,6 @@
 {
     public class ImageProviderTemplate : BaseImageProcessingChainElement, IImageProcessingChainElement
     {       
-        public string ElementName => "Input";
+        public override string ElementName => "Input";
     }
 }

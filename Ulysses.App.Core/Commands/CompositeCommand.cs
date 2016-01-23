@@ -4,7 +4,7 @@ using Prism.Commands;
 
 namespace Ulysses.App.Core.Commands
 {
-    public class CompositeCommand<T> : CompositeCommand, ICompositeCommand<T>
+    public abstract class CompositeCommand<T> : CompositeCommand, ICompositeCommand<T>
     {
         public void Execute(T parameter)
         {
@@ -19,16 +19,6 @@ namespace Ulysses.App.Core.Commands
         public bool CanExecute(T parameter)
         {
             return base.CanExecute(parameter);
-        }
-
-        public void RegisterCommand(ICommand<T> command)
-        {
-            base.RegisterCommand(command);
-        }
-
-        public void UnRegisterCommand(ICommand<T> command)
-        {
-            base.RegisterCommand(command);
         }
 
         public override void RegisterCommand(ICommand command)

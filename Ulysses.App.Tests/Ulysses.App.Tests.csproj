@@ -7,8 +7,8 @@
     <ProjectGuid>{D922A120-995D-42E1-847B-42C49C0ABC55}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Ulysses.App.Tests.Core</RootNamespace>
-    <AssemblyName>Ulysses.App.Tests.Core</AssemblyName>
+    <RootNamespace>Ulysses.App.Tests</RootNamespace>
+    <AssemblyName>Ulysses.App.Tests</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -70,6 +70,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Regions\TestRegionCollection.cs" />
+    <Compile Include="Regions\TestView.cs" />
+    <Compile Include="Regions\TestViewsCollection.cs" />
     <Compile Include="RegionViewRegistryMockExtensions.cs" />
     <Compile Include="UnityContainerMockExtensions.cs" />
   </ItemGroup>

@@ -13,6 +13,7 @@ namespace Ulysses.App.Modules.ImageProcessingCustomization.Models.Templates.NonU
         public abstract string NonUniformityModelFilePath { get; set; }
 
         public abstract bool UseNonUniformityModel { get; set; }
-        public string ElementName => Algorithm.ToString();
+
+        public override string ElementName => Algorithm.ToString();
     }
 }

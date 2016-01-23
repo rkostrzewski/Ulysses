@@ -1,6 +1,5 @@
 ﻿using System.ComponentModel;
 using System.Runtime.CompilerServices;
-using Ulysses.App.Core.Properties;
 
 namespace Ulysses.App.Core.ViewModels
 {
@@ -8,7 +7,6 @@ namespace Ulysses.App.Core.ViewModels
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
-        [NotifyPropertyChangedInvocator]
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));

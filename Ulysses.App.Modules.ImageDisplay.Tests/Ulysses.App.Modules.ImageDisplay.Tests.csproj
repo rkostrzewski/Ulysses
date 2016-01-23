@@ -102,9 +102,9 @@
       <Project>{5ff1bcfc-2000-4f4e-a10c-1a9fff0da83b}</Project>
       <Name>Ulysses.App.Modules.ImageDisplay</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Ulysses.App.Tests.Core\Ulysses.App.Tests.Core.csproj">
+    <ProjectReference Include="..\Ulysses.App.Tests\Ulysses.App.Tests.csproj">
       <Project>{d922a120-995d-42e1-847b-42c49c0abc55}</Project>
-      <Name>Ulysses.App.Tests.Core</Name>
+      <Name>Ulysses.App.Tests</Name>
     </ProjectReference>
     <ProjectReference Include="..\Ulysses.Core\Ulysses.Core.csproj">
       <Project>{9a0e8400-20bc-4359-9ac1-dcf6b176da64}</Project>

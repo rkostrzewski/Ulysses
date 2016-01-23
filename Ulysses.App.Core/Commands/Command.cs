@@ -3,7 +3,7 @@ using System.Windows.Input;
 
 namespace Ulysses.App.Core.Commands
 {
-    public abstract class Command<T> : ICommand<T>, ICommand
+    public abstract class Command<T> : ICommand<T>
     {
         public event EventHandler CanExecuteChanged
         {

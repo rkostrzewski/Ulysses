@@ -2,7 +2,7 @@ using System;
 using Moq;
 using Prism.Regions;
 
-namespace Ulysses.App.Tests.Core
+namespace Ulysses.App.Tests
 {
     public static class RegionViewRegistryMockExtensions
     {

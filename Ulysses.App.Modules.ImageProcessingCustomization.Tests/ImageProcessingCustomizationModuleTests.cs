@@ -1,4 +1,4 @@
-﻿using Microsoft.Practices.Unity;
+using Microsoft.Practices.Unity;
 using Moq;
 using NUnit.Framework;
 using Prism.Regions;
@@ -10,7 +10,7 @@ using Ulysses.App.Modules.ImageProcessingCustomization.Regions.ViewLocators;
 using Ulysses.App.Modules.ImageProcessingCustomization.ViewModels;
 using Ulysses.App.Modules.ImageProcessingCustomization.ViewModels.ImageProcessingChainDropDrag;
 using Ulysses.App.Modules.ImageProcessingCustomization.ViewModels.Templates.NonUniformityCorrection;
-using Ulysses.App.Tests.Core;
+using Ulysses.App.Tests;
 
 namespace Ulysses.App.Modules.ImageProcessingCustomization.Tests
 {

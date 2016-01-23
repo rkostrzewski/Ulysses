@@ -6,9 +6,9 @@ using Ulysses.App.Controls.DragAndDropExtension.Extensions;
 
 namespace Ulysses.App.Controls.DragAndDropExtension
 {
-    public class DropInfo
+    public class DropInfo : IDropInfo
     {
-        public DropInfo(object sender, DragEventArgs e, DragInfo dragInfo, string dataFormat)
+        public DropInfo(object sender, DragEventArgs e, IDragInfo dragInfo, string dataFormat)
         {
             Data = e.Data.GetDataPresent(dataFormat) ? e.Data.GetData(dataFormat) : e.Data;
             DragInfo = dragInfo;
@@ -18,7 +18,7 @@ namespace Ulysses.App.Controls.DragAndDropExtension
         }
 
         public object Data { get; private set; }
-        public DragInfo DragInfo { get; private set; }
+        public IDragInfo DragInfo { get; private set; }
         public Type DropTargetAdorner { get; set; }
         public DragDropEffects Effects { get; set; }
         public int InsertIndex { get; private set; }

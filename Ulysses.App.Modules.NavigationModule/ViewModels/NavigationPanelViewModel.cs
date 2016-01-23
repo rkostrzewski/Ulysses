@@ -11,14 +11,12 @@ namespace Ulysses.App.Modules.Navigation.ViewModels
     {
         private readonly INavigationPanelState _navigationPanelState;
 
-        public NavigationPanelViewModel(INavigationPanelState navigationPanelState, IChangeContentRegionsViewCommand changeContentRegionsViewCommand, IChangeCurrentRegionInNavigationPanelCommand changeCurrentRegionInNavigationPanelCommand)
+        public NavigationPanelViewModel(INavigationPanelState navigationPanelState, IChangeContentRegionCompositeCommand changeContentRegionsViewCommand)
         {
             _navigationPanelState = navigationPanelState;
             _navigationPanelState.PropertyChanged += OnNavigationPanelStatePropertyChanged;
 
-            ChangeContentRegionsViewCommand = new CompositeCommand<ContentRegionView>();
-            ChangeContentRegionsViewCommand.RegisterCommand(changeContentRegionsViewCommand);
-            ChangeContentRegionsViewCommand.RegisterCommand(changeCurrentRegionInNavigationPanelCommand);
+            ChangeContentRegionsViewCommand = changeContentRegionsViewCommand;
         }
 
         public ICompositeCommand<ContentRegionView> ChangeContentRegionsViewCommand { get; }
