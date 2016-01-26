@@ -83,22 +83,23 @@
     <Otherwise />
   </Choose>
   <ItemGroup>
-    <Compile Include="Commands\NavigateToImageProcessingChainElementCustomizationViewCommandTests.cs" />
+    <Compile Include="Commands\NavigateToProcessingChainElementCustomizationViewCommandTests.cs" />
     <Compile Include="Commands\TemplateWithoutDefinedView.cs" />
     <Compile Include="Helpers\DefaultView.cs" />
     <Compile Include="Helpers\TestViewLocator.cs" />
     <Compile Include="ImageProcessingCustomizationModuleTests.cs" />
-    <Compile Include="Models\DataStore\ImageProcessingChainDataStoreTests.cs" />
+    <Compile Include="Models\DataStore\ProcessingChainDataStoreTests.cs" />
+    <Compile Include="Models\DataStore\ProcessingChainTemplateTests.cs" />
     <Compile Include="Models\Templates\NonUniformityCorrection\TwoPointNonUniformityCorrectionTemplateTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Regions\ViewLocators\ImageProcessingChainElementViewLocatorTests.cs" />
-    <Compile Include="Helpers\TestChainElement.cs" />
-    <Compile Include="ViewModels\ImageProcessingChainDropDrag\ImageProcessingChainDragHandlerTests.cs" />
-    <Compile Include="ViewModels\ImageProcessingChainDropDrag\ImageProcessingChainDropHandlerTests.cs" />
-    <Compile Include="ViewModels\ImageProcessingChainDropDrag\ParameterlessConstructorTestObject.cs" />
-    <Compile Include="ViewModels\ImageProcessingChainDropDrag\TestDropInfo.cs" />
-    <Compile Include="ViewModels\ImageProcessingCustomizationViewModelTests.cs" />
-    <Compile Include="ViewModels\ImageProcessingChainDropDrag\TestDragInfo.cs" />
+    <Compile Include="Helpers\TestChainElementTemplateTemplateTemplateTemplate.cs" />
+    <Compile Include="ViewModels\ProcessingChainDropDrag\ProcessingChainDragHandlerTests.cs" />
+    <Compile Include="ViewModels\ProcessingChainDropDrag\ParameterlessConstructorTestObject.cs" />
+    <Compile Include="ViewModels\ProcessingChainDropDrag\ProcessingChainDropHandlerTests.cs" />
+    <Compile Include="ViewModels\ProcessingChainDropDrag\TestDropInfo.cs" />
+    <Compile Include="ViewModels\ProcessingChainCustomizationViewModelTests.cs" />
+    <Compile Include="ViewModels\ProcessingChainDropDrag\TestDragInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -119,6 +120,18 @@
     <ProjectReference Include="..\Ulysses.App.Tests\Ulysses.App.Tests.csproj">
       <Project>{d922a120-995d-42e1-847b-42c49c0abc55}</Project>
       <Name>Ulysses.App.Tests</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Ulysses.Core\Ulysses.Core.csproj">
+      <Project>{9a0e8400-20bc-4359-9ac1-dcf6b176da64}</Project>
+      <Name>Ulysses.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Ulysses.ImageProviders\Ulysses.ImageProviders.csproj">
+      <Project>{1498e5a3-760c-49ec-b09a-fb80fd2ee378}</Project>
+      <Name>Ulysses.ImageProviders</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Ulysses.ProcessingAlgorithms\Ulysses.ProcessingAlgorithms.csproj">
+      <Project>{12f8668f-ff96-4108-b9b9-1998218851b8}</Project>
+      <Name>Ulysses.ProcessingAlgorithms</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup />

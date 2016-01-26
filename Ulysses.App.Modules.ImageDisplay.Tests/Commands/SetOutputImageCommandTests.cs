@@ -3,6 +3,7 @@ using System.Linq;
 using System.Windows.Media.Imaging;
 using NUnit.Framework;
 using Ulysses.App.Modules.ImageDisplay.Commands;
+using Ulysses.App.Modules.ImageDisplay.Models;
 using Ulysses.Core.Models;
 
 namespace Ulysses.App.Modules.ImageDisplay.Tests.Commands
@@ -10,6 +11,14 @@ namespace Ulysses.App.Modules.ImageDisplay.Tests.Commands
     [TestFixture]
     public class SetOutputImageCommandTests
     {
+        private IImageConverter _imageConverter;
+
+        [SetUp]
+        public void SetUp()
+        {
+            _imageConverter = new BitmapImageConverter();
+        }
+
         [Test]
         public void ShouldSetOutputImageWhenInputImageWas8BppImage()
         {
@@ -17,7 +26,7 @@ namespace Ulysses.App.Modules.ImageDisplay.Tests.Commands
             BitmapSource outputImage = null;
             var imageModel = new ImageModel(2, 2, ImageBitDepth.Bpp8);
             var inputImage = new Image(new byte[] { 1, 2, 3, 4 }, imageModel);
-            var command = new SetOutputImageCommand(value => outputImage = value);
+            var command = new SetOutputImageCommand(value => outputImage = value, _imageConverter);
 
             // When
             command.Execute(inputImage);
@@ -33,7 +42,7 @@ namespace Ulysses.App.Modules.ImageDisplay.Tests.Commands
             BitmapSource outputImage = null;
             var imageModel = new ImageModel(2, 2, ImageBitDepth.Bpp12);
             var inputImage = new Image(new ushort[] { 100, 200, 300, 400 }, imageModel);
-            var command = new SetOutputImageCommand(value => outputImage = value);
+            var command = new SetOutputImageCommand(value => outputImage = value, _imageConverter);
 
             // When
             command.Execute(inputImage);
@@ -48,7 +57,7 @@ namespace Ulysses.App.Modules.ImageDisplay.Tests.Commands
             // Given
             BitmapSource outputImage = new BitmapImage();
 
-            var command = new SetOutputImageCommand(value => outputImage = value);
+            var command = new SetOutputImageCommand(value => outputImage = value, _imageConverter);
 
             // When
             command.Execute(null);
@@ -61,7 +70,7 @@ namespace Ulysses.App.Modules.ImageDisplay.Tests.Commands
         public void ShouldNotAllowToExecuteWhenNotProvidedWayToSetImage()
         {
             // Given
-            var command = new SetOutputImageCommand(null);
+            var command = new SetOutputImageCommand(null, _imageConverter);
 
             // When
             // Then

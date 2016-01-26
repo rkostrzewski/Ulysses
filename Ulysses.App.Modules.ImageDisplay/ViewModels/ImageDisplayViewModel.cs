@@ -1,27 +1,86 @@
-﻿using System.Windows.Media.Imaging;
+﻿using System.Windows.Input;
+using System.Windows.Media.Imaging;
+using System.Windows.Threading;
+using Prism.Events;
+using Ulysses.App.Core.Events;
+using Ulysses.App.Core.ViewModels;
 using Ulysses.App.Modules.ImageDisplay.Commands;
-using Ulysses.ProcessingEngine.ProcessingEngine.Factories;
+using Ulysses.App.Modules.ImageDisplay.Models;
+using Ulysses.ProcessingEngine.Templates;
 
 namespace Ulysses.App.Modules.ImageDisplay.ViewModels
 {
-    public class ImageDisplayViewModel : IImageDisplayViewModel
+    public class ImageDisplayViewModel : NotifyPropertyChanged, IImageDisplayViewModel
     {
-        private readonly IProcessingEngineFactory _processingEngineFactory;
+        private readonly IProcessingService _processingService;
+        private BitmapSource _outputImage;
 
-        public ImageDisplayViewModel(IProcessingEngineFactory processingEngineFactory)
+        public ImageDisplayViewModel(IEventAggregator eventAggregator, IProcessingService processingService, IStartImageProcessingCommand startImageProcessingCommand, IStopImageProcessingCommand stopImageProcessingCommand,
+                                     IImageConverter imageConverter)
         {
-            _processingEngineFactory = processingEngineFactory;
-            StartImageProcessingCommand = new StartImageProcessingCommand(null);
-            StopImageProcessingCommand = new StopImageProcessingCommand(null);
-            SetOutputImageCommand = new SetOutputImageCommand(value => OutputImage = value);
+            _processingService = processingService;
+
+            StartImageProcessingCommand = startImageProcessingCommand;
+            StopImageProcessingCommand = stopImageProcessingCommand;
+
+            StartImageProcessingCommand.OnProcessingStop = () =>
+            {
+                OnPropertyChanged(string.Empty);
+            };
+            StopImageProcessingCommand.OnProcessingStop = () =>
+            {
+                OnPropertyChanged(string.Empty);
+            };
+
+            SetOutputImageCommand = new SetOutputImageCommand(SetOutputImage, imageConverter);
+
+            eventAggregator.GetEvent<ShouldUpdateProcessingEngineEvent>().Subscribe(UpdateProcessingEngine);
         }
 
-        private ISetOutputImageCommand SetOutputImageCommand { get; }
+        public ISetOutputImageCommand SetOutputImageCommand { get; }
 
-        public BitmapSource OutputImage { get; private set; }
+        public BitmapSource OutputImage
+        {
+            get
+            {
+                return _outputImage;
+            }
+            set
+            {
+                _outputImage = value;
+                OnPropertyChanged();
+            }
+        }
 
         public IStartImageProcessingCommand StartImageProcessingCommand { get; }
 
         public IStopImageProcessingCommand StopImageProcessingCommand { get; }
+
+        private void SetOutputImage(BitmapSource bitmap)
+        {
+            if (ReferenceEquals(_outputImage, bitmap))
+            {
+                return;
+            }
+
+            var copy = bitmap.Clone();
+            copy.Freeze();
+
+            Dispatcher.CurrentDispatcher.Invoke(() => OutputImage = copy);
+        }
+        
+        private void UpdateProcessingEngine(ProcessingEngineTemplate template)
+        {
+            template.ReceiveProcessedImageCommand = SetOutputImageCommand;
+
+            if (StopImageProcessingCommand.CanExecute())
+            {
+                StopImageProcessingCommand.Execute();
+            }
+
+            _processingService.UpdateProcessingEngine(template);
+
+            OnPropertyChanged(string.Empty);
+        }
     }
 }

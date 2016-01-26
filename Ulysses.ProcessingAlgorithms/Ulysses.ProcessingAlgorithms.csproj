@@ -40,18 +40,25 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Algorithms\NonUniformityCorrection\BaseNonUnifromityAlgorithm.cs" />
+    <Compile Include="Algorithms\NonUniformityCorrection\BaseNonUniformityCorrectionAlgorithm.cs" />
     <Compile Include="Algorithms\NonUniformityCorrection\TwoPointNonUniformityCorrectionAlgorithm.cs" />
     <Compile Include="Exceptions\NotSupportedNonUniformityCorrectionAlgorithm.cs" />
-    <Compile Include="Factories\IImageProcessingAlgorithmTemplate.cs" />
-    <Compile Include="Factories\ImageProcessingAlgorithmType.cs" />
-    <Compile Include="Factories\NonUniformityCorrection\Templates\BaseNonUniformityCorrectionTemplate.cs" />
-    <Compile Include="Factories\NonUniformityCorrection\Templates\TwoPointNonUniformityCorrectionTemplate.cs" />
+    <Compile Include="Factories\IImageProcessingAlgorithmsFactory.cs" />
+    <Compile Include="Factories\IImageProcessingChainFactory.cs" />
+    <Compile Include="Factories\ImageProcessingAlgorithmsFactory.cs" />
+    <Compile Include="Factories\ImageProcessingChainFactory.cs" />
+    <Compile Include="IImageProcessingChain.cs" />
+    <Compile Include="ImageProcessingChain.cs" />
+    <Compile Include="Algorithms\DummyAlgorithms\Sleeper.cs" />
+    <Compile Include="Templates\DummyAlgorithms\SleeperTemplate.cs" />
+    <Compile Include="Templates\IImageProcessingAlgorithmTemplate.cs" />
+    <Compile Include="Templates\NonUniformityCorrection\BaseNonUniformityCorrectionTemplate.cs" />
     <Compile Include="IImageProcessingAlgorithm.cs" />
     <Compile Include="Algorithms\NonUniformityCorrection\NonUniformityModels\DefaultNonUniformityModel.cs" />
     <Compile Include="Algorithms\NonUniformityCorrection\NonUniformityModels\NonUniformityModel.cs" />
-    <Compile Include="Factories\ImageProcessingAlgorithmGroup.cs" />
+    <Compile Include="Templates\ImageProcessingAlgorithmGroup.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Templates\NonUniformityCorrection\TwoPointNonUniformityCorrectionTemplate.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Ulysses.Core\Ulysses.Core.csproj">
@@ -59,7 +66,9 @@
       <Name>Ulysses.Core</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Save\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

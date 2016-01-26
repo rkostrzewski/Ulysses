@@ -1,46 +1,33 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <Style x:Key="ProcessingChainElementStyle" TargetType="{x:Type Label}">
-        <Setter Property="Background" Value="{StaticResource Primary300}" />
-        <Setter Property="Foreground" Value="{StaticResource TextMain}" />
+        <Setter Property="Background"
+                Value="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ListBoxItem}, Path=Background}" />
+        <Setter Property="BorderBrush"
+                Value="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ListBoxItem}, Path=BorderBrush}" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate>
                     <Grid Margin="0">
-                        <Rectangle VerticalAlignment="Center" HorizontalAlignment="Stretch"
-                                       Fill="{StaticResource Accent100}" Margin="0" StrokeThickness="8"
-                                       Stroke="{StaticResource Accent100}" />
-                        <Border Padding="0" Margin="15, 0, 15, 0" CornerRadius="10" BorderThickness="2"
+                        <StackPanel Orientation="Horizontal">
+                            <Rectangle VerticalAlignment="Center" HorizontalAlignment="Stretch"
+                                       Margin="0" StrokeThickness="8"
+                                       Fill="{DynamicResource AccentColorBrush}"
+                                       Stroke="{DynamicResource AccentColorBrush}" />
+                            <Border CornerRadius="10" BorderThickness="2"
                                     BorderBrush="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType=Border}, Path=BorderBrush }"
                                     Background="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Background}"
                                     RenderOptions.BitmapScalingMode="Fant">
-                            <Label Foreground="{StaticResource TextMain}"
-                                   Content="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Content}"
-                                   Padding="10, 0, 10, 0" Margin="5" />
-                        </Border>
-                    </Grid>
-                </ControlTemplate>
-            </Setter.Value>
-        </Setter>
-    </Style>
-
-    <Style x:Key="FirstProcessingChainElementStyle" TargetType="{x:Type Label}">
-        <Setter Property="Background" Value="{StaticResource Primary300}" />
-        <Setter Property="Foreground" Value="{StaticResource TextMain}" />
-        <Setter Property="Template">
-            <Setter.Value>
-                <ControlTemplate>
-                    <Grid Margin="0">
-                        <Rectangle VerticalAlignment="Center" HorizontalAlignment="Stretch"
-                                       Fill="{DynamicResource Accent300}" Margin="0" StrokeThickness="8"
-                                       Stroke="{DynamicResource Accent300}" />
-                        <Border Padding="0" Margin="15, 0, 15, 0" CornerRadius="10" BorderThickness="2"
-                                    Background="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Background }"
-                                    RenderOptions.BitmapScalingMode="Fant">
-                            <TextBlock
-                                    Text="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Content}"
+                                <Label
+                                    Content="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Content}"
+                                    Foreground="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Label}, Path=Foreground}"
                                     Padding="10, 0, 10, 0" Margin="5" />
-                        </Border>
+                            </Border>
+                            <Rectangle VerticalAlignment="Center" HorizontalAlignment="Stretch"
+                                       Margin="0" StrokeThickness="8"
+                                       Fill="{DynamicResource AccentColorBrush}"
+                                       Stroke="{DynamicResource AccentColorBrush}" />
+                        </StackPanel>
                     </Grid>
                 </ControlTemplate>
             </Setter.Value>

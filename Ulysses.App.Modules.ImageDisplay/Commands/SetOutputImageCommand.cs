@@ -9,10 +9,12 @@ namespace Ulysses.App.Modules.ImageDisplay.Commands
     public class SetOutputImageCommand : Command<Image>, ISetOutputImageCommand
     {
         private readonly Action<BitmapSource> _setOutputImageDelegate;
+        private readonly IImageConverter _imageConverter;
 
-        public SetOutputImageCommand(Action<BitmapSource> setOutputImageDelegate)
+        public SetOutputImageCommand(Action<BitmapSource> setOutputImageDelegate, IImageConverter imageConverter)
         {
             _setOutputImageDelegate = setOutputImageDelegate;
+            _imageConverter = imageConverter;
         }
 
         public override void Execute(Image parameter)
@@ -22,7 +24,7 @@ namespace Ulysses.App.Modules.ImageDisplay.Commands
                 throw new InvalidOperationException();
             }
 
-            var bitmap = ImageConverter.ConvertToBitmapSource(parameter);
+            var bitmap = _imageConverter.ConvertToBitmapSource(parameter);
             _setOutputImageDelegate.Invoke(bitmap);
         }
 

@@ -1,0 +1,97 @@
+﻿<UserControl x:Class="Ulysses.App.Modules.ImageProcessingCustomization.Views.ImageProcessingCustomizationView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:prism="http://prismlibrary.com/"
+             xmlns:dragAndDrop="clr-namespace:Ulysses.App.Controls.DragAndDropExtension.DragAndDrop;assembly=Ulysses.App.Controls"
+             xmlns:regions="clr-namespace:Ulysses.App.Modules.ImageProcessingCustomization.Regions"
+             xmlns:converters="clr-namespace:Ulysses.App.Core.Converters;assembly=Ulysses.App.Core"
+             xmlns:viewModels="clr-namespace:Ulysses.App.Modules.ImageProcessingCustomization.ViewModels"
+             xmlns:templates="clr-namespace:Ulysses.ProcessingAlgorithms.Templates;assembly=Ulysses.ProcessingAlgorithms"
+             mc:Ignorable="d"
+             d:DesignHeight="768"
+             d:DesignWidth="1366"
+             d:DataContext="{d:DesignInstance viewModels:ProcessingChainCustomizationViewModel}">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/Ulysses.App.Core;component/Style/AppStyle.xaml"/>
+                <ResourceDictionary Source="Styles/ProcessingChainStyles.xaml" />
+                <ResourceDictionary>
+                    <converters:GenericToStringConverter x:Key="GenericToStringConverter" />
+                </ResourceDictionary>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="180" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <ListView ItemsSource="{Binding AvailableImageProcessingAlgorithmTemplates}"
+                  dragAndDrop:DragDrop.IsDragSource="True" dragAndDrop:DragDrop.IsDropTarget="False"
+                  SelectionMode="Single" >
+            <ListView.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <StackPanel Orientation="Vertical" />
+                </ItemsPanelTemplate>
+            </ListView.ItemsPanel>
+            <ListView.ItemTemplate>
+                <DataTemplate DataType="templates:IImageProcessingAlgorithmTemplate">
+                    <TextBlock Text="{Binding ElementName}" />
+                </DataTemplate>
+            </ListView.ItemTemplate>
+            <ListView.GroupStyle>
+                <GroupStyle>
+                    <GroupStyle.HeaderTemplate>
+                        <DataTemplate DataType="templates:IImageProcessingAlgorithmTemplate">
+                            <TextBlock FontWeight="Bold" Padding="15,0,15,0" FontSize="14" Text="{Binding Group}" />
+                        </DataTemplate>
+                    </GroupStyle.HeaderTemplate>
+                </GroupStyle>
+            </ListView.GroupStyle>
+        </ListView>
+        <Grid Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="120" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0">
+                <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Hidden">
+                    <StackPanel Orientation="Horizontal" Height="45">
+                        <ListBox MinWidth="60" Padding="0" Margin="0"
+                                 SelectionMode="Single"
+                                 SelectedItem="{Binding SelectedProcessingChainElementTemplate}"
+                                 ItemsSource="{Binding ProcessingChainElements}"
+                                 ItemsPanel="{StaticResource ProcessingChainItemsPanelTemplate}"
+                                 ItemTemplate="{StaticResource ProcessingChainItemTemplate}"
+                                 ItemContainerStyle="{StaticResource ProcessingChainItemContainerStyle}"
+                                 Template="{StaticResource ProcessingChainTemplate}"
+                                 dragAndDrop:DragDrop.IsDragSource="True"
+                                 dragAndDrop:DragDrop.IsDropTarget="True"
+                                 dragAndDrop:DragDrop.DragHandler="{Binding DragHandler}"
+                                 dragAndDrop:DragDrop.DropHandler="{Binding DropHandler}" />
+                    </StackPanel>
+                </ScrollViewer>
+            </Grid>
+            <Grid Grid.Row="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="60"/>
+                </Grid.RowDefinitions>
+                <ContentControl prism:RegionManager.RegionName="{Binding Source={x:Static regions:ImageProcessingCustomizationViewRegions.ImageProcessingChainElementCustomizationRegion}, Converter={StaticResource GenericToStringConverter}}" Grid.Row="0" />
+                <Button Content="Save All"
+                        Command="{Binding UpdateProcessingEngineCommand}"
+                        Grid.Row="1" 
+                        Style="{DynamicResource AccentedSquareButtonStyle}"
+                        Width="100" 
+                        Height="26" 
+                        Margin="0, 0, 50, 0" 
+                        HorizontalAlignment="Right" 
+                        VerticalAlignment="Center">
+                </Button>
+            </Grid>
+        </Grid>
+    </Grid>
+</UserControl>

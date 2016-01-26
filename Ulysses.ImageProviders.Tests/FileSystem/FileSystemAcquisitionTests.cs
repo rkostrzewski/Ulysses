@@ -1,9 +1,14 @@
-﻿using System.Linq;
+﻿using System;
+using System.IO;
+using System.Linq;
 using NUnit.Framework;
 using Ulysses.Core.Exceptions;
 using Ulysses.Core.Models;
 using Ulysses.ImageAcquisition.Tests.FileSystem.TestData;
+using Ulysses.ImageProviders;
+using Ulysses.ImageProviders.Factories;
 using Ulysses.ImageProviders.FileSystem;
+using Ulysses.ImageProviders.Templates;
 
 namespace Ulysses.ImageAcquisition.Tests.FileSystem
 {
@@ -37,7 +42,7 @@ namespace Ulysses.ImageAcquisition.Tests.FileSystem
             // Then
             Assert.IsFalse(result);
         }
-
+        
         [Test]
         [TestCase(TestDataSource.Bpp1Black512X512ImagePath, 512, 0)]
         [TestCase(TestDataSource.Bpp1White512X512ImagePath, 512, 255)]
@@ -48,8 +53,20 @@ namespace Ulysses.ImageAcquisition.Tests.FileSystem
         public void ShouldReturnCorrectImageWhenProvidedImageBitDepth(string imagePath, int imageSize, int pixelValue)
         {
             // Given
+            var absoluteFilePath = Path.GetFullPath(imagePath);
             var imageModel = new ImageModel((ushort)imageSize, (ushort)imageSize, ImageBitDepth.Bpp8);
-            var imageProvider = new FileSystemImageProvider(imageModel, new[] { imagePath });
+            var template = new ImageProviderTemplate
+            {
+                ImageProviderType = ImageProviderType.FileSystemProvider,
+                FileSystemImageProviderTemplate = new FileSystemImageProviderTemplate
+                {
+                    FolderPath = Path.GetDirectoryName(absoluteFilePath),
+                    FileSearchPattern = Path.GetFileName(absoluteFilePath)
+                },
+                ImageModel = imageModel
+            };
+
+            var imageProvider = new ImageProviderFactory().CreateInstance(template);
 
             // When
             Image image;

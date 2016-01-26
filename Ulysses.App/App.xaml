@@ -4,7 +4,7 @@
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="pack://application:,,,/Ulysses.App.Core;component/Style/Brushes.xaml"/>
+                <ResourceDictionary Source="pack://application:,,,/Ulysses.App.Core;component/Style/AppStyle.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

@@ -6,13 +6,13 @@ using Ulysses.Core.Models;
 
 namespace Ulysses.App.Modules.ImageDisplay.Models
 {
-    public class ImageConverter
+    public class BitmapImageConverter : IImageConverter
     {
         private const int Dpi = 96;
         private static readonly PixelFormat PixelFormat = PixelFormats.Gray8;
         private static readonly BitmapPalette Palette = BitmapPalettes.Gray256;
 
-        public static BitmapSource ConvertToBitmapSource(Image image)
+        public BitmapSource ConvertToBitmapSource(Image image)
         {
             if (image == null)
             {

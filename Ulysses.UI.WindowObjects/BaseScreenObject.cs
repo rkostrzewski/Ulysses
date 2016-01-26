@@ -9,7 +9,7 @@ namespace Ulysses.UI.WindowObjects
 
         public BaseScreenObject()
         {
-            _window = new Window(By.Name("Shell"));
+            _window = new Window(By.Name("Ulysses"));
             TitleBar = new TitleBarScreenObject(_window);
         }
 

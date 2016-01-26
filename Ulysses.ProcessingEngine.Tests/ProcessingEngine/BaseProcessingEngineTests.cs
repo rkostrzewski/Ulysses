@@ -4,7 +4,7 @@ using Moq;
 using NUnit.Framework;
 using Ulysses.Core.Models;
 using Ulysses.ImageProviders;
-using Ulysses.ProcessingEngine.ImageProcessingChain;
+using Ulysses.ProcessingAlgorithms;
 using Ulysses.ProcessingEngine.Output;
 using Ulysses.ProcessingEngine.ProcessingEngine;
 

@@ -2,6 +2,7 @@
 using Moq;
 using NUnit.Framework;
 using Ulysses.App.Modules.ImageDisplay.Commands;
+using Ulysses.App.Modules.ImageDisplay.Models;
 using Ulysses.ProcessingEngine.ProcessingEngine;
 
 namespace Ulysses.App.Modules.ImageDisplay.Tests.Commands
@@ -14,7 +15,10 @@ namespace Ulysses.App.Modules.ImageDisplay.Tests.Commands
         {
             // Given
             var processingEngineMock = new Mock<IProcessingEngine>();
-            var command = new StartImageProcessingCommand(processingEngineMock.Object);
+            var processingServiceMock = new Mock<IProcessingService>();
+            processingServiceMock.SetupGet(ps => ps.ProcessingEngine).Returns(processingEngineMock.Object);
+
+            var command = new StartImageProcessingCommand(processingServiceMock.Object);
 
             // When
             command.Execute();
@@ -28,10 +32,11 @@ namespace Ulysses.App.Modules.ImageDisplay.Tests.Commands
         {
             // Given
             var processingEngineMock = new Mock<IProcessingEngine>();
-
             processingEngineMock.Setup(s => s.IsWorking()).Returns(true);
+            var processingServiceMock = new Mock<IProcessingService>();
+            processingServiceMock.SetupGet(ps => ps.ProcessingEngine).Returns(processingEngineMock.Object);
 
-            var command = new StartImageProcessingCommand(processingEngineMock.Object);
+            var command = new StartImageProcessingCommand(processingServiceMock.Object);
 
             // When         
             // Then

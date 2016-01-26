@@ -1,0 +1,95 @@
+﻿<UserControl
+    x:Class="Ulysses.App.Modules.ImageProcessingCustomization.Views.TemplateViews.ImageProvider.ImageProviderCustomizationView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:imageProvider="clr-namespace:Ulysses.App.Modules.ImageProcessingCustomization.ViewModels.Templates.ImageProvider"
+    mc:Ignorable="d"
+    d:DesignHeight="400" d:DesignWidth="500"
+    d:DataContext="{d:DesignInstance imageProvider:ImageProviderCustomizationViewModel}">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/Ulysses.App.Core;component/Style/AppStyle.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="160" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="100" />
+                <ColumnDefinition Width="220" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <StackPanel Grid.Column="0" Margin="10, 10, 0 ,0">
+                <TextBlock Text="Provider" />
+                <TextBlock Text="Image Bit Depth" />
+                <TextBlock Text="Image Width" />
+                <TextBlock Text="Image Height" />
+            </StackPanel>
+            <StackPanel Grid.Column="1" Margin="10, 10, 0 ,0">
+                <ComboBox ItemsSource="{Binding Path=AvailableImageProviders}" DisplayMemberPath="DisplayText"
+                          SelectedValue="{Binding SelectedImageProvider}"
+                          SelectedValuePath="Value"
+                          Margin="0, 0, 0, 10" />
+                <ComboBox ItemsSource="{Binding Path=AvailableBitDepths}" 
+                                  DisplayMemberPath="DisplayText"
+                                  SelectedValuePath="Value"
+                                  SelectedValue="{Binding ImageBitDepth}"
+                                  Margin="0, 0, 0, 10" />
+                <TextBox Text="{Binding ImageWidth}" />
+                <TextBox Text="{Binding ImageHeight}" />
+            </StackPanel>
+        </Grid>
+
+        <TabControl Background="Transparent" BorderBrush="Transparent" Grid.Row="1"
+                    SelectedIndex="{Binding SelectedTabIndex}">
+            <TabItem Visibility="Collapsed">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="100" />
+                        <ColumnDefinition Width="220" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <StackPanel Grid.Column="0" Margin="10, 10, 0 ,0">
+                        <TextBlock Text="Port" />
+                        <TextBlock Text="Timeout" />
+                    </StackPanel>
+                    <StackPanel Grid.Column="1" Margin="10, 10, 0 ,0">
+                        <TextBox Text="{Binding Port}" />
+                        <TextBox Text="{Binding Timeout}" />
+                    </StackPanel>
+                </Grid>
+            </TabItem>
+            <TabItem Visibility="Collapsed">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="100" />
+                        <ColumnDefinition Width="220" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <StackPanel Grid.Column="0" Margin="10, 10, 0 ,0">
+                        <TextBlock Text="Folder" />
+                        <TextBlock Text="Pattern" />
+                    </StackPanel>
+                    <StackPanel Grid.Column="1" Margin="10, 10, 0 ,0">
+                        <Grid Margin="0, 0, 0, 5">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="150" />
+                                <ColumnDefinition Width="70" />
+                            </Grid.ColumnDefinitions>
+                            <TextBox Text="{Binding FolderPath}"  Grid.Column="0" Margin="0, 0, 5, 0" />
+                            <Button Grid.Column="1" Content="Browse" VerticalAlignment="Center" HorizontalAlignment="Center" Padding="5, 0, 5, 0" ></Button>
+                        </Grid>
+                        <TextBox Text="{Binding FileSearchPattern}"/>
+                    </StackPanel>
+                </Grid>
+            </TabItem>
+        </TabControl>
+    </Grid>
+</UserControl>

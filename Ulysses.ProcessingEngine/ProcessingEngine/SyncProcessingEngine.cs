@@ -2,8 +2,8 @@ using System.Threading;
 using System.Threading.Tasks;
 using Ulysses.Core.Models;
 using Ulysses.ImageProviders;
+using Ulysses.ProcessingAlgorithms;
 using Ulysses.ProcessingEngine.Exceptions;
-using Ulysses.ProcessingEngine.ImageProcessingChain;
 using Ulysses.ProcessingEngine.Output;
 
 namespace Ulysses.ProcessingEngine.ProcessingEngine
@@ -16,11 +16,11 @@ namespace Ulysses.ProcessingEngine.ProcessingEngine
         private volatile CancellationTokenSource _cancellationTokenSource;
         private Task _task;
 
-        public SyncProcessingEngine(IImageProvider imageProvider, IImageProcessingChain imageProcessingChain, IReceiveProcessedImageCommand imageOutputNotifier)
+        public SyncProcessingEngine(IImageProvider imageProvider, IImageProcessingChain imageProcessingChain, IReceiveProcessedImageCommand receiveProcessedImageCommand)
         {
             _imageProvider = imageProvider;
             _imageProcessingChain = imageProcessingChain;
-            _imageOutputNotifier = imageOutputNotifier;
+            _imageOutputNotifier = receiveProcessedImageCommand;
         }
 
         public Task Start()

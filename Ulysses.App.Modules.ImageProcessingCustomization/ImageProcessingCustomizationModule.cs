@@ -7,10 +7,16 @@ using Ulysses.App.Modules.ImageProcessingCustomization.Models.DataStore;
 using Ulysses.App.Modules.ImageProcessingCustomization.Regions;
 using Ulysses.App.Modules.ImageProcessingCustomization.Regions.ViewLocators;
 using Ulysses.App.Modules.ImageProcessingCustomization.ViewModels;
-using Ulysses.App.Modules.ImageProcessingCustomization.ViewModels.ImageProcessingChainDropDrag;
+using Ulysses.App.Modules.ImageProcessingCustomization.ViewModels.DragAndDrop;
+using Ulysses.App.Modules.ImageProcessingCustomization.ViewModels.Templates.ImageProvider;
 using Ulysses.App.Modules.ImageProcessingCustomization.ViewModels.Templates.NonUniformityCorrection;
+using Ulysses.App.Modules.ImageProcessingCustomization.ViewModels.Templates.Utilities;
 using Ulysses.App.Modules.ImageProcessingCustomization.Views;
 using Ulysses.App.Modules.ImageProcessingCustomization.Views.TemplateViews;
+using Ulysses.App.Modules.ImageProcessingCustomization.Views.TemplateViews.ImageProvider;
+using Ulysses.App.Modules.ImageProcessingCustomization.Views.TemplateViews.Utilities;
+using Ulysses.ImageProviders.Factories;
+using Ulysses.ProcessingAlgorithms.Factories;
 using TwoPointNonUniformityCorrectionCustomizationView = Ulysses.App.Modules.ImageProcessingCustomization.Views.TemplateViews.NonUniformityCorrection.TwoPointNonUniformityCorrectionCustomizationView;
 
 namespace Ulysses.App.Modules.ImageProcessingCustomization
@@ -30,17 +36,30 @@ namespace Ulysses.App.Modules.ImageProcessingCustomization
             _regionViewRegistry.RegisterViewWithRegion(ApplicationRegion.ContentRegion.ToString(), typeof (ImageProcessingCustomizationView));
             _regionViewRegistry.RegisterViewWithRegion(ImageProcessingCustomizationViewRegions.ImageProcessingChainElementCustomizationRegion.ToString(), typeof(EmptyChainElementCustomizationView));
             _regionViewRegistry.RegisterViewWithRegion(ImageProcessingCustomizationViewRegions.ImageProcessingChainElementCustomizationRegion.ToString(), typeof(TwoPointNonUniformityCorrectionCustomizationView));
+            _regionViewRegistry.RegisterViewWithRegion(ImageProcessingCustomizationViewRegions.ImageProcessingChainElementCustomizationRegion.ToString(), typeof(ImageProviderCustomizationView));
+            _regionViewRegistry.RegisterViewWithRegion(ImageProcessingCustomizationViewRegions.ImageProcessingChainElementCustomizationRegion.ToString(), typeof(SleeperCustomizationView));
         }
 
         private static void RegisterModuleDependencies(IUnityContainer container)
         {
-            container.RegisterInstance(typeof (IImageProcessingChainDataStore), new ImageProcessingChainDataStore());
+            container.RegisterInstance(typeof (IProcessingChainBuilderDataStore), new ProcessingChainDataStore());
             container.RegisterType<IImageProcessingChainElementViewLocator, ImageProcessingChainElementViewLocator>();
-            container.RegisterType<IChangeImageProcessingChainElementCustomizationRegionViewCommand, ChangeImageProcessingChainElementCustomizationRegionViewCommand>();
-            container.RegisterType<IImageProcessingChainDragHandler, ImageProcessingChainDragHandler>();
-            container.RegisterType<IImageProcessingChainDropHandler, ImageProcessingChainDropHandler>();
-            container.RegisterType<IImageProcessingCustomizationViewModel, ImageProcessingCustomizationViewModel>();
+
+            container.RegisterType<IImageProviderFactory, ImageProviderFactory>();
+            container.RegisterType<IImageProcessingAlgorithmsFactory, ImageProcessingAlgorithmsFactory>();
+            container.RegisterType<IImageProcessingChainFactory, ImageProcessingChainFactory>();
+
+            container.RegisterType<IUpdateProcessingEngineCommand, UpdateProcessingEngineCommand>();
+            container.RegisterType<IChangeProcessingChainElementCustomizationRegionViewCommand, ChangeProcessingChainElementCustomizationRegionViewCommand>();
+
+            container.RegisterType<IProcessingChainDragHandler, ProcessingChainDragHandler>();
+            container.RegisterType<IProcessingChainDropHandler, ProcessingChainDropHandler>();
+
+            container.RegisterType<IProcessingChainCustomizationViewModel, ProcessingChainCustomizationViewModel>();
+
+            container.RegisterType<IImageProviderCustomizationViewModel, ImageProviderCustomizationViewModel>();
             container.RegisterType<ITwoPointNonUniformityCorrectionCustomizationViewModel, TwoPointNonUniformityCorrectionCustomizationViewModel>();
+            container.RegisterType<ISleeperCustomizationViewModel, SleeperCustomizationViewModel>();
         }
     }
 }

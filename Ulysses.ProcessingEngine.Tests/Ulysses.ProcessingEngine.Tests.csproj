@@ -73,6 +73,10 @@
       <Project>{1498E5A3-760C-49EC-B09A-FB80FD2EE378}</Project>
       <Name>Ulysses.ImageProviders</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Ulysses.ProcessingAlgorithms\Ulysses.ProcessingAlgorithms.csproj">
+      <Project>{12f8668f-ff96-4108-b9b9-1998218851b8}</Project>
+      <Name>Ulysses.ProcessingAlgorithms</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Ulysses.ProcessingEngine\Ulysses.ProcessingEngine.csproj">
       <Project>{C06CD4EB-F9BA-407F-8002-3F20AA6A7951}</Project>
       <Name>Ulysses.ProcessingEngine</Name>

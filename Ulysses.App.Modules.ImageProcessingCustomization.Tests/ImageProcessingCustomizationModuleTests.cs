@@ -8,7 +8,7 @@ using Ulysses.App.Modules.ImageProcessingCustomization.Models.DataStore;
 using Ulysses.App.Modules.ImageProcessingCustomization.Regions;
 using Ulysses.App.Modules.ImageProcessingCustomization.Regions.ViewLocators;
 using Ulysses.App.Modules.ImageProcessingCustomization.ViewModels;
-using Ulysses.App.Modules.ImageProcessingCustomization.ViewModels.ImageProcessingChainDropDrag;
+using Ulysses.App.Modules.ImageProcessingCustomization.ViewModels.DragAndDrop;
 using Ulysses.App.Modules.ImageProcessingCustomization.ViewModels.Templates.NonUniformityCorrection;
 using Ulysses.App.Tests;
 
@@ -31,12 +31,12 @@ namespace Ulysses.App.Modules.ImageProcessingCustomization.Tests
 
             // Then
 
-            container.VerifyInstanceRegistered<IImageProcessingChainDataStore>(Times.Once());
+            container.VerifyInstanceRegistered<IProcessingChainBuilderDataStore>(Times.Once());
             container.VerifyTypeRegistered<IImageProcessingChainElementViewLocator>(Times.Once());
-            container.VerifyTypeRegistered<IChangeImageProcessingChainElementCustomizationRegionViewCommand>(Times.Once());
-            container.VerifyTypeRegistered<IImageProcessingChainDragHandler>(Times.Once());
-            container.VerifyTypeRegistered<IImageProcessingChainDropHandler>(Times.Once());
-            container.VerifyTypeRegistered<IImageProcessingCustomizationViewModel>(Times.Once());
+            container.VerifyTypeRegistered<IChangeProcessingChainElementCustomizationRegionViewCommand>(Times.Once());
+            container.VerifyTypeRegistered<IProcessingChainDragHandler>(Times.Once());
+            container.VerifyTypeRegistered<IProcessingChainDropHandler>(Times.Once());
+            container.VerifyTypeRegistered<IProcessingChainCustomizationViewModel>(Times.Once());
             container.VerifyTypeRegistered<ITwoPointNonUniformityCorrectionCustomizationViewModel>(Times.Once());
         }
 
@@ -56,7 +56,7 @@ namespace Ulysses.App.Modules.ImageProcessingCustomization.Tests
             // Then
 
             regionViewRegistry.VerifyViewWasRegisteredWithRegion(ApplicationRegion.ContentRegion.ToString(), Times.Once());
-            regionViewRegistry.VerifyViewWasRegisteredWithRegion(ImageProcessingCustomizationViewRegions.ImageProcessingChainElementCustomizationRegion.ToString(), Times.Exactly(2));
+            regionViewRegistry.VerifyViewWasRegisteredWithRegion(ImageProcessingCustomizationViewRegions.ImageProcessingChainElementCustomizationRegion.ToString(), Times.AtLeastOnce());
         }
     }
 }

@@ -5,7 +5,10 @@ using System.Threading.Tasks;
 using NUnit.Framework;
 using Ulysses.Core.Models;
 using Ulysses.ImageAcquisition.Tests.Camera.TestData;
+using Ulysses.ImageProviders;
+using Ulysses.ImageProviders.Camera;
 using Ulysses.ImageProviders.Factories;
+using Ulysses.ImageProviders.Templates;
 
 namespace Ulysses.ImageAcquisition.Tests.IntegrationTests
 {
@@ -18,8 +21,14 @@ namespace Ulysses.ImageAcquisition.Tests.IntegrationTests
         {
             // Given
             var imageModel = new ImageModel(1024, 768, ImageBitDepth.Bpp8);
+            var template = new ImageProviderTemplate
+            {
+                ImageProviderType = ImageProviderType.CameraProvider,
+                ImageModel = imageModel,
+                CameraImageProviderTemplate = new CameraImageProviderTemplate { Port = 0, Timeout = 100 }
+            };
+            var cameraImageProvider = new ImageProviderFactory().CreateInstance(template);
 
-            var cameraImageProvider = CameraImageProviderFactory.CreateInstance(new IPEndPoint(IPAddress.Any, 0), 100, imageModel);
             Image image;
 
             // When
@@ -31,11 +40,17 @@ namespace Ulysses.ImageAcquisition.Tests.IntegrationTests
         public void ShouldReturnEmptyImageWhenTwoStartSequencesWhereSent()
         {
             // Given
-            var ipEndpoint = new IPEndPoint(IPAddress.Parse("127.0.0.1"), 8080);
+            const int port = 8080;
+            var ipEndpoint = new IPEndPoint(IPAddress.Parse(CameraImageProvider.LocalhostIpAddress), port);
             var udpSender = new UdpClient();
             var imageModel = new ImageModel(1024, 768, ImageBitDepth.Bpp8);
-
-            var cameraImageProvider = CameraImageProviderFactory.CreateInstance(ipEndpoint, 10000, imageModel);
+            var template = new ImageProviderTemplate
+            {
+                ImageProviderType = ImageProviderType.CameraProvider,
+                ImageModel = imageModel,
+                CameraImageProviderTemplate = new CameraImageProviderTemplate { Port = port, Timeout = 10000 }
+            };
+            var cameraImageProvider = new ImageProviderFactory().CreateInstance(template);
 
             Image image;
             // When
@@ -58,12 +73,17 @@ namespace Ulysses.ImageAcquisition.Tests.IntegrationTests
         [Test]
         public void ShouldReceiveDummyImageWhenSentOne()
         {
-            // Given
-            var ipEndpoint = new IPEndPoint(IPAddress.Parse("127.0.0.1"), 8090);
+            const int port = 8090;
+            var ipEndpoint = new IPEndPoint(IPAddress.Parse(CameraImageProvider.LocalhostIpAddress), port);
             var udpSender = new UdpClient();
             var imageModel = new ImageModel(1024, 768, ImageBitDepth.Bpp8);
-
-            var cameraImageProvider = CameraImageProviderFactory.CreateInstance(ipEndpoint, 10000, imageModel);
+            var template = new ImageProviderTemplate
+            {
+                ImageProviderType = ImageProviderType.CameraProvider,
+                ImageModel = imageModel,
+                CameraImageProviderTemplate = new CameraImageProviderTemplate { Port = port, Timeout = 10000 }
+            };
+            var cameraImageProvider = new ImageProviderFactory().CreateInstance(template);
 
             Image image;
             // When

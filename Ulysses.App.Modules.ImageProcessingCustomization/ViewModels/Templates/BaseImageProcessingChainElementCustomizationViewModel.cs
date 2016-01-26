@@ -2,20 +2,20 @@ using System;
 using System.Linq;
 using Prism.Regions;
 using Ulysses.App.Core.ViewModels;
-using Ulysses.App.Modules.ImageProcessingCustomization.Models;
 using Ulysses.App.Modules.ImageProcessingCustomization.Models.DataStore;
+using Ulysses.Core.Templates;
 
 namespace Ulysses.App.Modules.ImageProcessingCustomization.ViewModels.Templates
 {
     public abstract class BaseImageProcessingChainElementCustomizationViewModel<T> : NotifyPropertyChanged, INavigationAware
     {
-        protected const string IdKey = nameof(IImageProcessingChainElement.Id);
-        protected readonly IImageProcessingChainDataStore DataStore;
+        protected const string IdKey = nameof(IProcessingChainElementTemplate.Id);
+        protected readonly IProcessingChainBuilderDataStore DataStore;
         protected T ChainElement;
 
-        protected BaseImageProcessingChainElementCustomizationViewModel(IImageProcessingChainDataStore dataStore)
+        protected BaseImageProcessingChainElementCustomizationViewModel(IProcessingChainBuilderDataStore dataStore)
         {
-            if (!typeof (IImageProcessingChainElement).IsAssignableFrom(typeof (T)))
+            if (!typeof (IProcessingChainElementTemplate).IsAssignableFrom(typeof (T)))
             {
                 throw new InvalidOperationException();
             }
@@ -37,10 +37,8 @@ namespace Ulysses.App.Modules.ImageProcessingCustomization.ViewModels.Templates
         public virtual void OnNavigatedTo(NavigationContext navigationContext)
         {
             ChainElement = RetrieveElementFromStore(navigationContext);
-            OnPropertiesChanged();
+            OnPropertyChanged(string.Empty);
         }
-
-        protected abstract void OnPropertiesChanged();
 
         protected bool AreParametersCorrect(NavigationParameters parameters)
         {
@@ -49,14 +47,14 @@ namespace Ulysses.App.Modules.ImageProcessingCustomization.ViewModels.Templates
 
         protected bool DoesStoreContainElement(string id)
         {
-            return DataStore.ImageProcessingChainElements.Any(e => e.Id == id);
+            return DataStore.ProcessingChainTemplate.Any(e => e.Id == id);
         }
 
         protected T RetrieveElementFromStore(NavigationContext navigationContext)
         {
             var id = (string)navigationContext.Parameters[IdKey];
 
-            return DataStore.ImageProcessingChainElements.OfType<T>().FirstOrDefault(i => ((IImageProcessingChainElement)i).Id == id);
+            return DataStore.ProcessingChainTemplate.OfType<T>().FirstOrDefault(i => ((IProcessingChainElementTemplate)i).Id == id);
         }
     }
 }

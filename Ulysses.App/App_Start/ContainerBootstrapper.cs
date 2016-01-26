@@ -1,6 +1,6 @@
 ﻿using Microsoft.Practices.Unity;
 using Prism.Regions;
-using Ulysses.ProcessingEngine.ProcessingEngine.Factories;
+using Ulysses.ProcessingEngine.Factories;
 
 namespace Ulysses.App
 {

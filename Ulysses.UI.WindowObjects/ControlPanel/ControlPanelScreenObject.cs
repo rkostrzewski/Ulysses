@@ -14,7 +14,7 @@ namespace Ulysses.UI.WindowObjects.ControlPanel
 
         public ControlPanelScreenObject()
         {
-            _window = new Window(By.Name("Shell"));
+            _window = new Window(By.Name("ULYSSES"));
             _imageDisplay = new Button(_window, By.Name("Image Display"));
             _imageProcessingCustomization = new Button(_window, By.Name("Processing Customization"));
         }

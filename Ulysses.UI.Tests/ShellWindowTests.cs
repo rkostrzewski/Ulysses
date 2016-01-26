@@ -6,7 +6,7 @@ using Ulysses.UI.WindowObjects.ControlPanel;
 
 namespace Ulysses.UI.Tests
 {
-    [CodedUITest]
+    //[CodedUITest]
     public class ControlPanelTests : BaseTest
     {
         [TestMethod]

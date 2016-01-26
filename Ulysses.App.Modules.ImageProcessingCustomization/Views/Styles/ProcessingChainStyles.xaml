@@ -24,7 +24,9 @@
         <Setter Property="Padding" Value="0" />
         <Setter Property="Margin" Value="0" />
         <Setter Property="BorderThickness" Value="0" />
-        <Setter Property="BorderBrush" Value="{StaticResource TextMain}" />
+        <Setter Property="Foreground" Value="{DynamicResource IdealForegroundColorBrush}" />
+        <Setter Property="Background" Value="{DynamicResource AccentColorBrush}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource AccentColorBrush}" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type ListBoxItem}">
@@ -32,8 +34,9 @@
                             Padding="0"
                             Margin="0"
                             SnapsToDevicePixels="true"
-                            BorderBrush="{TemplateBinding   BorderBrush }">
-                        <ContentPresenter Margin="0" 
+                            Name="ProcessingChainItemBorder"
+                            BorderBrush="{TemplateBinding BorderBrush}">
+                        <ContentPresenter Margin="0"
                                           Height="45"
                                           HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
                                           SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
@@ -48,7 +51,9 @@
                     <Condition Property="IsSelected" Value="True" />
                 </MultiTrigger.Conditions>
                 <MultiTrigger.Setters>
-                    <Setter Property="BorderBrush" Value="{StaticResource Accent300}" />
+                    <Setter Property="Foreground" Value="{DynamicResource BlackColorBrush}" />
+                    <Setter Property="Background" Value="{DynamicResource GrayBrush10}" />
+                    <Setter Property="BorderBrush" Value="{DynamicResource AccentColorBrush}" />
                 </MultiTrigger.Setters>
             </MultiTrigger>
         </Style.Triggers>
@@ -58,7 +63,8 @@
                   DataType="models:IImageProcessingChainElement">
         <Grid>
             <Label Padding="0" Content="{Binding ElementName}" Style="{StaticResource ProcessingChainElementStyle}"
-                   SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+                   SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+                   Foreground="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ListBoxItem}, Path=Foreground}"/>
         </Grid>
 
     </DataTemplate>

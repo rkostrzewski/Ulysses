@@ -3,9 +3,17 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:nonUniformityCorrection="clr-namespace:Ulysses.App.Modules.ImageProcessingCustomization.ViewModels.Templates.NonUniformityCorrection"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300"
              d:DataContext="{d:DesignInstance nonUniformityCorrection:TwoPointNonUniformityCorrectionCustomizationViewModel}">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/Ulysses.App.Core;component/Style/AppStyle.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
     <Grid>
         <TextBlock Text="{Binding Id}" Foreground="Yellow" FontSize="24"></TextBlock>  
     </Grid>

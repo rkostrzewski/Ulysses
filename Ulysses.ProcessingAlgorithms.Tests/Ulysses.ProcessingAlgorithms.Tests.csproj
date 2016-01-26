@@ -54,7 +54,10 @@
     <Otherwise />
   </Choose>
   <ItemGroup>
-    <Compile Include="Algorithms\TwoPointNonUniformityCorrectionAlgorithmTests.cs" />
+    <Compile Include="Algorithms\DummyAlgorithms\SleeperTests.cs" />
+    <Compile Include="Algorithms\NonUniformityCorrection\TwoPointNonUniformityCorrectionAlgorithmTests.cs" />
+    <Compile Include="Factories\ImageProcessingAlgorithmsFactoryTests.cs" />
+    <Compile Include="ImageProcessingAlgorithmInterfaceTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -74,6 +77,7 @@
       <Name>Ulysses.Tests.Core</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
       <ItemGroup>

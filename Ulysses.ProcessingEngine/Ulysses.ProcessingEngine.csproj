@@ -30,6 +30,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="JetBrains.Annotations, Version=10.0.0.0, Culture=neutral, PublicKeyToken=1010a0d8d6380325, processorArchitecture=MSIL">
+      <HintPath>..\packages\JetBrains.Annotations.10.0.0\lib\net20\JetBrains.Annotations.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -41,17 +45,17 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Exceptions\ConcurrencyException.cs" />
-    <Compile Include="ProcessingEngine\Factories\ProcessingEngineFactory.cs" />
-    <Compile Include="ProcessingEngine\Factories\ProcessingStrategies.cs" />
-    <Compile Include="ImageProcessingChain\IImageProcessingChain.cs" />
+    <Compile Include="Factories\ProcessingEngineFactory.cs" />
+    <Compile Include="ProcessingEngine\ProcessingStrategies.cs" />
     <Compile Include="ProcessingEngine\IProcessingEngine.cs" />
-    <Compile Include="ProcessingEngine\Factories\IProcessingEngineFactory.cs" />
+    <Compile Include="Factories\IProcessingEngineFactory.cs" />
     <Compile Include="ProcessingEngine\AsyncProcessingEngine.cs" />
     <Compile Include="ProcessingEngine\Synchronization\AsyncProcessingMediator.cs" />
     <Compile Include="ProcessingEngine\Synchronization\ImageProcessingStatus.cs" />
     <Compile Include="Output\IReceiveProcessedImageCommand.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ProcessingEngine\SyncProcessingEngine.cs" />
+    <Compile Include="Templates\ProcessingEngineTemplate.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Ulysses.Core\Ulysses.Core.csproj">
@@ -62,8 +66,14 @@
       <Project>{1498E5A3-760C-49EC-B09A-FB80FD2EE378}</Project>
       <Name>Ulysses.ImageProviders</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Ulysses.ProcessingAlgorithms\Ulysses.ProcessingAlgorithms.csproj">
+      <Project>{12f8668f-ff96-4108-b9b9-1998218851b8}</Project>
+      <Name>Ulysses.ProcessingAlgorithms</Name>
+    </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

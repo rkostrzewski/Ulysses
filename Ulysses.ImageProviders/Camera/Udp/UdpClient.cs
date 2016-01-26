@@ -8,11 +8,11 @@ namespace Ulysses.ImageProviders.Camera.Udp
     {
         private IPEndPoint _ipEndPoint;
 
-        internal UdpClient(IPEndPoint ipEndPoint, int timeout)
+        internal UdpClient(IPEndPoint ipEndPoint, int timeoutInMilliseconds)
         {
             _ipEndPoint = ipEndPoint;
 
-            Client.ReceiveTimeout = timeout;
+            Client.ReceiveTimeout = timeoutInMilliseconds;
             Client.SetSocketOption(SocketOptionLevel.Socket, SocketOptionName.ReuseAddress, true);
             Client.Bind(ipEndPoint);
         }

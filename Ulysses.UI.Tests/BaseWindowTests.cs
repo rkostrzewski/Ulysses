@@ -7,7 +7,7 @@ using Assert = NUnit.Framework.Assert;
 
 namespace Ulysses.UI.Tests
 {
-    [CodedUITest]
+    //[CodedUITest]
     public class ShellWindowTests : BaseTest
     {
         [TestMethod]

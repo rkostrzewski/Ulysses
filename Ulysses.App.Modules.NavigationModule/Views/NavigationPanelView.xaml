@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:regions="clr-namespace:Ulysses.App.Core.Regions;assembly=Ulysses.App.Core"
+             xmlns:viewModels="clr-namespace:Ulysses.App.Modules.Navigation.ViewModels"
              mc:Ignorable="d" d:DesignWidth="1366"
              d:DesignHeight="40"
              d:DataContext="{d:DesignInstance viewModels:NavigationPanelViewModel}">
@@ -15,7 +16,7 @@
         </ResourceDictionary>
     </UserControl.Resources>
     <Grid>
-        <Border BorderThickness="0,0,0,2" BorderBrush="{StaticResource Accent100}">
+        <Border BorderThickness="0,0,0,2" BorderBrush="{DynamicResource AccentColorBrush}">
             <StackPanel Orientation="Horizontal">
                 <Button Command="{Binding ChangeContentRegionsViewCommand}"
                         Content="Image Display"
@@ -27,7 +28,8 @@
                             <Style.Triggers>
                                 <DataTrigger Binding="{Binding Path=CurrentContentRegionView}"
                                              Value="{x:Static regions:ContentRegionView.ImageDisplayView}">
-                                    <Setter Property="Background" Value="{StaticResource Accent100}" />
+                                    <Setter Property="Foreground" Value="{DynamicResource IdealForegroundColorBrush}" />
+                                    <Setter Property="Background" Value="{DynamicResource AccentColorBrush}" />
                                 </DataTrigger>
                             </Style.Triggers>
                         </Style>
@@ -42,7 +44,8 @@
                             <Style.Triggers>
                                 <DataTrigger Binding="{Binding Path=CurrentContentRegionView}"
                                              Value="{x:Static regions:ContentRegionView.ImageProcessingCustomizationView}">
-                                    <Setter Property="Background" Value="{StaticResource Accent100}" />
+                                    <Setter Property="Foreground" Value="{DynamicResource IdealForegroundColorBrush}" />
+                                    <Setter Property="Background" Value="{DynamicResource AccentColorBrush}" />
                                 </DataTrigger>
                             </Style.Triggers>
                         </Style>

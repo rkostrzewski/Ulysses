@@ -3,10 +3,20 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:viewModels="clr-namespace:Ulysses.App.Modules.ImageDisplay.ViewModels"
              mc:Ignorable="d"
-             d:DesignHeight="300" d:DesignWidth="600" >
+             d:DataContext="{d:DesignInstance viewModels:ImageDisplayViewModel}"
+             d:DesignHeight="720" d:DesignWidth="1024" >
     <Grid>
-        <Image Margin="0,0,0,65" OpacityMask="#FFC13232" />
-        <Button Name="Play" Content="Play" Width="50" Height="50" Margin="319,240,231,10" />
+        <Grid.RowDefinitions>
+            <RowDefinition Height="259*"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="20"/>
+        </Grid.RowDefinitions>
+        <Image Margin="10,10,10,10" OpacityMask="#FFC13232" Source="{Binding OutputImage}"/>
+        <Grid Grid.Row="1">
+            <Button Content="Stop" Command="{Binding StopImageProcessingCommand}" Grid.Row="1" Margin="0, 0, 90, 0" HorizontalAlignment="Center" Width="60" Height="30" VerticalAlignment="Center" />
+            <Button Content="Play" Command="{Binding StartImageProcessingCommand}" Grid.Row="1" Margin="90, 0, 0, 0" HorizontalAlignment="Center" Width="60" Height="30" VerticalAlignment="Center" />
+        </Grid>
     </Grid>
 </UserControl>

@@ -9,6 +9,7 @@ namespace Ulysses.ImageProviders.Camera
 {
     public class CameraImageProvider : IImageProvider
     {
+        public const string LocalhostIpAddress = "127.0.0.1";
         private readonly ImageModel _imageModel;
         private readonly IUdpClient _udpClient;
 

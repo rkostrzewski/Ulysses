@@ -1,16 +1,17 @@
 ﻿using System;
+using System.Threading.Tasks;
 using Ulysses.App.Core.Commands;
-using Ulysses.ProcessingEngine.ProcessingEngine;
+using Ulysses.App.Modules.ImageDisplay.Models;
 
 namespace Ulysses.App.Modules.ImageDisplay.Commands
 {
     public class StartImageProcessingCommand : NoParameterCommand, IStartImageProcessingCommand
     {
-        private readonly IProcessingEngine _processingEngine;
+        private readonly IProcessingService _processingService;
 
-        public StartImageProcessingCommand(IProcessingEngine processingEngine)
+        public StartImageProcessingCommand(IProcessingService processingService)
         {
-            _processingEngine = processingEngine;
+            _processingService = processingService;
         }
 
         public override void Execute()
@@ -20,12 +21,17 @@ namespace Ulysses.App.Modules.ImageDisplay.Commands
                 throw new InvalidOperationException();
             }
 
-            _processingEngine.Start();
+            _processingService.ProcessingEngine?.Start().ContinueWith((task) =>
+            {
+                OnProcessingStop?.Invoke();
+            });
         }
 
         public override bool CanExecute()
         {
-            return _processingEngine != null && !_processingEngine.IsWorking();
+            return _processingService?.ProcessingEngine != null && !_processingService.ProcessingEngine.IsWorking();
         }
+
+        public Action OnProcessingStop { get; set; }
     }
 }
