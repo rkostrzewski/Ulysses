@@ -20,13 +20,13 @@ namespace Ulysses.App.Controls.DragAndDropExtension
         }
 
         public object Data { get; set; }
-        public Point DragStartPosition { get; private set; }
+        public Point DragStartPosition { get; }
         public DragDropEffects Effects { get; set; }
-        public MouseButton MouseButton { get; private set; }
+        public MouseButton MouseButton { get; }
         public IEnumerable SourceCollection { get; private set; }
         public object SourceItem { get; private set; }
         public IEnumerable SourceItems { get; set; }
-        public UIElement VisualSource { get; private set; }
+        public UIElement VisualSource { get; }
         public UIElement VisualSourceItem { get; private set; }
 
         private void InitializeFromSender(object sender, RoutedEventArgs e)
@@ -47,7 +47,7 @@ namespace Ulysses.App.Controls.DragAndDropExtension
         {
             var itemsControl = control;
             var item = itemsControl.GetItemContainer((UIElement)e.OriginalSource);
-            
+
             if (item == null)
             {
                 SourceCollection = itemsControl.ItemsSource ?? itemsControl.Items;

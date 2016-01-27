@@ -20,7 +20,7 @@ namespace Ulysses.App.Modules.ImageProcessingCustomization.ViewModels.DragAndDro
             {
                 return;
             }
-            
+
             base.DragOver(dropInfo);
         }
 
@@ -58,7 +58,7 @@ namespace Ulysses.App.Modules.ImageProcessingCustomization.ViewModels.DragAndDro
 
             if (constructor == null)
             {
-                throw new InvalidOperationException();
+                throw new ArgumentException(type.FullName);
             }
 
             return constructor.Invoke(null);

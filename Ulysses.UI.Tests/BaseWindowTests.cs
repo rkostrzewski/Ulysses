@@ -1,4 +1,3 @@
-using Microsoft.VisualStudio.TestTools.UITesting;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Ulysses.UI.Tests.Base;
 using Ulysses.UI.Tests.Core.Utils;

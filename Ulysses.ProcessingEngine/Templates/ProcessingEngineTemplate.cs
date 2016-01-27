@@ -11,7 +11,7 @@ namespace Ulysses.ProcessingEngine.Templates
         public ProcessingStrategy ProcessingStrategy { get; set; }
 
         public IImageProvider ImageProvider { get; set; }
-        
+
         public IImageProcessingChain ImageProcessingChain { get; set; }
 
         [CanBeNull]

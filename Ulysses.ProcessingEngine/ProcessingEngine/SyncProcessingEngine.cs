@@ -10,9 +10,9 @@ namespace Ulysses.ProcessingEngine.ProcessingEngine
 {
     public class SyncProcessingEngine : IProcessingEngine
     {
-        private readonly IImageProvider _imageProvider;
         private readonly IReceiveProcessedImageCommand _imageOutputNotifier;
         private readonly IImageProcessingChain _imageProcessingChain;
+        private readonly IImageProvider _imageProvider;
         private volatile CancellationTokenSource _cancellationTokenSource;
         private Task _task;
 

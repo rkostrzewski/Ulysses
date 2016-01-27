@@ -1,4 +1,5 @@
 ﻿using Microsoft.Practices.Unity;
+using Prism.Events;
 using Prism.Regions;
 using Ulysses.ProcessingEngine.Factories;
 
@@ -13,6 +14,7 @@ namespace Ulysses.App
 
         private static void RegisterModels(IUnityContainer container)
         {
+            container.RegisterType<IEventAggregator>();
             container.RegisterType<IRegionManager>();
             container.RegisterType<IProcessingEngineFactory, ProcessingEngineFactory>();
         }

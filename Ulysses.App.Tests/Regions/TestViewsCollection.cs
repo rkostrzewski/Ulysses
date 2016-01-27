@@ -12,10 +12,7 @@ namespace Ulysses.App.Tests.Regions
 
         public TestViewsCollection()
         {
-            _views = new List<object>
-            {
-                new TestView()
-            };
+            _views = new List<object> { new TestView() };
         }
 
         public IEnumerator<object> GetEnumerator()

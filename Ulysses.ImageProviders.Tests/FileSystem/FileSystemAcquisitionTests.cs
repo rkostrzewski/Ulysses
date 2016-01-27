@@ -1,5 +1,4 @@
-﻿using System;
-using System.IO;
+﻿using System.IO;
 using System.Linq;
 using NUnit.Framework;
 using Ulysses.Core.Exceptions;
@@ -42,7 +41,7 @@ namespace Ulysses.ImageAcquisition.Tests.FileSystem
             // Then
             Assert.IsFalse(result);
         }
-        
+
         [Test]
         [TestCase(TestDataSource.Bpp1Black512X512ImagePath, 512, 0)]
         [TestCase(TestDataSource.Bpp1White512X512ImagePath, 512, 255)]
@@ -58,11 +57,8 @@ namespace Ulysses.ImageAcquisition.Tests.FileSystem
             var template = new ImageProviderTemplate
             {
                 ImageProviderType = ImageProviderType.FileSystemProvider,
-                FileSystemImageProviderTemplate = new FileSystemImageProviderTemplate
-                {
-                    FolderPath = Path.GetDirectoryName(absoluteFilePath),
-                    FileSearchPattern = Path.GetFileName(absoluteFilePath)
-                },
+                FileSystemImageProviderTemplate =
+                    new FileSystemImageProviderTemplate { FolderPath = Path.GetDirectoryName(absoluteFilePath), FileSearchPattern = Path.GetFileName(absoluteFilePath) },
                 ImageModel = imageModel
             };
 

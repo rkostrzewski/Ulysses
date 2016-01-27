@@ -2,6 +2,7 @@
 using Moq;
 using NUnit.Framework;
 using Prism.Regions;
+using Ulysses.App.Core.Exceptions;
 using Ulysses.App.Modules.ImageProcessingCustomization.Commands;
 using Ulysses.App.Modules.ImageProcessingCustomization.Tests.Helpers;
 using Ulysses.App.Tests.Regions;
@@ -50,7 +51,7 @@ namespace Ulysses.App.Modules.ImageProcessingCustomization.Tests.Commands
             // Then
 
             Assert.IsFalse(command.CanExecute(_chainElementTemplate));
-            Assert.Throws<InvalidOperationException>(() => command.Execute(_chainElementTemplate));
+            Assert.Throws<CannotExecuteCommandException>(() => command.Execute(_chainElementTemplate));
         }
 
         [Test]
@@ -64,7 +65,7 @@ namespace Ulysses.App.Modules.ImageProcessingCustomization.Tests.Commands
             // Then
 
             Assert.IsFalse(command.CanExecute(templateWithoutDefinedView));
-            Assert.Throws<InvalidOperationException>(() => command.Execute(templateWithoutDefinedView));
+            Assert.Throws<CannotExecuteCommandException>(() => command.Execute(templateWithoutDefinedView));
         }
 
         [Test]
@@ -81,10 +82,7 @@ namespace Ulysses.App.Modules.ImageProcessingCustomization.Tests.Commands
             var expectedParameters = new NavigationParameters { { nameof(IProcessingChainElementTemplate.Id), _chainElementTemplate.Id } };
 
             _regionMock.Verify(
-                r =>
-                r.RequestNavigate(new Uri(typeof (TestView).Name, UriKind.RelativeOrAbsolute),
-                                  It.IsNotNull<Action<NavigationResult>>(),
-                                  expectedParameters),
+                r => r.RequestNavigate(new Uri(typeof (TestView).Name, UriKind.RelativeOrAbsolute), It.IsNotNull<Action<NavigationResult>>(), expectedParameters),
                 Times.Once);
         }
     }

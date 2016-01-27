@@ -1,5 +1,5 @@
-﻿using NUnit.Framework;
-using System;
+﻿using System;
+using NUnit.Framework;
 using Ulysses.ProcessingAlgorithms.Templates.NonUniformityCorrection;
 
 namespace Ulysses.App.Modules.ImageProcessingCustomization.Tests.Models.Templates.NonUniformityCorrection

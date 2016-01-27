@@ -3,7 +3,7 @@
 namespace Ulysses.App.Modules.ImageProcessingCustomization.Views.TemplateViews.ImageProvider
 {
     /// <summary>
-    /// Interaction logic for ImageProviderCustomizationView.xaml
+    ///     Interaction logic for ImageProviderCustomizationView.xaml
     /// </summary>
     public partial class ImageProviderCustomizationView
     {

@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using Ulysses.App.Core.Providers;
+using Ulysses.App.Modules.ImageProcessingCustomization.Commands;
 using Ulysses.App.Modules.ImageProcessingCustomization.Models.DataStore;
 using Ulysses.App.Resources;
 using Ulysses.Core.Models;
@@ -13,8 +14,9 @@ namespace Ulysses.App.Modules.ImageProcessingCustomization.ViewModels.Templates.
     {
         private int _selectedIndex;
 
-        public ImageProviderCustomizationViewModel(IProcessingChainBuilderDataStore dataStore) : base(dataStore)
+        public ImageProviderCustomizationViewModel(IProcessingChainBuilderDataStore dataStore, ISelectFolderCommand selectFolderCommand) : base(dataStore)
         {
+            SelectFolderCommand = selectFolderCommand;
             AvailableBitDepths = new DisplayableEnumProvider<ImageBitDepth>(ImageBitDepthResources.ResourceManager).GetDisplayableEnums().ToList();
             AvailableImageProviders = new DisplayableEnumProvider<ImageProviderType>(ImageProviderResources.ResourceManager).GetDisplayableEnums().ToList();
 
@@ -23,12 +25,13 @@ namespace Ulysses.App.Modules.ImageProcessingCustomization.ViewModels.Templates.
                 ChainElement = new ImageProviderTemplate();
             }
 
+            SelectFolderCommand.OnFolderSelected = selectedFolder => FolderPath = selectedFolder;
             SelectedTabIndex = (int)SelectedImageProvider;
         }
 
-        public IList<Displayable<ImageProviderType>> AvailableImageProviders { get; }
+        public ISelectFolderCommand SelectFolderCommand { get; }
 
-        public IList<Displayable<ImageBitDepth>> AvailableBitDepths { get; }
+        public IList<Displayable<ImageProviderType>> AvailableImageProviders { get; }
 
         public int SelectedTabIndex
         {
@@ -74,7 +77,7 @@ namespace Ulysses.App.Modules.ImageProcessingCustomization.ViewModels.Templates.
                 {
                     return;
                 }
-                
+
                 ChainElement.ImageModel = new ImageModel(ChainElement.ImageModel.Width, ChainElement.ImageModel.Height, value);
                 OnPropertyChanged();
             }
@@ -187,5 +190,7 @@ namespace Ulysses.App.Modules.ImageProcessingCustomization.ViewModels.Templates.
                 OnPropertyChanged();
             }
         }
+
+        public IList<Displayable<ImageBitDepth>> AvailableBitDepths { get; }
     }
 }

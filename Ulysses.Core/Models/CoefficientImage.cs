@@ -24,7 +24,7 @@ namespace Ulysses.Core.Models
             {
                 throw new ImageModelMismatchException();
             }
-            
+
             var imagePixels = image.ImagePixels.Zip(coefficients.Coefficients, (pixel, coefficient) => (Pixel)(pixel + coefficient));
             return new Image(imagePixels, image.ImageModel);
         }

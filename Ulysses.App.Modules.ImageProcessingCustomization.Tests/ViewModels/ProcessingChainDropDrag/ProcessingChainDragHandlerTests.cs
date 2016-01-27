@@ -1,5 +1,7 @@
 ﻿using System;
+using Moq;
 using NUnit.Framework;
+using Prism.Events;
 using Ulysses.App.Modules.ImageProcessingCustomization.Models.Templates.ImageDisplay;
 using Ulysses.App.Modules.ImageProcessingCustomization.ViewModels.DragAndDrop;
 using Ulysses.ImageProviders.Templates;
@@ -10,9 +12,17 @@ namespace Ulysses.App.Modules.ImageProcessingCustomization.Tests.ViewModels.Proc
     [TestFixture]
     public class ProcessingChainDragHandlerTests
     {
+        private IEventAggregator _eventAggregator;
+
+        [SetUp]
+        public void SetUp()
+        {
+            _eventAggregator = new Mock<IEventAggregator>().Object;
+        }
+
         [Test]
-        [TestCase(typeof(ImageDisplayTemplateTemplate))]
-        [TestCase(typeof(ImageProviderTemplate))]
+        [TestCase(typeof (ImageDisplayTemplateTemplate))]
+        [TestCase(typeof (ImageProviderTemplate))]
         public void ShouldNotAllowToDragInputAndOutputItems(Type typeOfElement)
         {
             // Given

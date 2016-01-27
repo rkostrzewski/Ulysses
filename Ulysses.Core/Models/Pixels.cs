@@ -27,7 +27,7 @@ namespace Ulysses.Core.Models
                 throw new ImageModelMismatchException();
             }
         }
-        
+
         internal Pixels(int width, int height)
         {
             _pixels = new Pixel[height * width];

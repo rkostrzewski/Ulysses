@@ -37,11 +37,11 @@
                           SelectedValue="{Binding SelectedImageProvider}"
                           SelectedValuePath="Value"
                           Margin="0, 0, 0, 10" />
-                <ComboBox ItemsSource="{Binding Path=AvailableBitDepths}" 
-                                  DisplayMemberPath="DisplayText"
-                                  SelectedValuePath="Value"
-                                  SelectedValue="{Binding ImageBitDepth}"
-                                  Margin="0, 0, 0, 10" />
+                <ComboBox ItemsSource="{Binding Path=AvailableBitDepths}"
+                          DisplayMemberPath="DisplayText"
+                          SelectedValuePath="Value"
+                          SelectedValue="{Binding ImageBitDepth}"
+                          Margin="0, 0, 0, 10" />
                 <TextBox Text="{Binding ImageWidth}" />
                 <TextBox Text="{Binding ImageHeight}" />
             </StackPanel>
@@ -83,10 +83,12 @@
                                 <ColumnDefinition Width="150" />
                                 <ColumnDefinition Width="70" />
                             </Grid.ColumnDefinitions>
-                            <TextBox Text="{Binding FolderPath}"  Grid.Column="0" Margin="0, 0, 5, 0" />
-                            <Button Grid.Column="1" Content="Browse" VerticalAlignment="Center" HorizontalAlignment="Center" Padding="5, 0, 5, 0" ></Button>
+                            <TextBox Text="{Binding FolderPath}" Grid.Column="0" Margin="0, 0, 5, 0" IsEnabled="False" />
+                            <Button Grid.Column="1" Content="Browse" VerticalAlignment="Center"
+                                    HorizontalAlignment="Center" Padding="5, 0, 5, 0"
+                                    Command="{Binding SelectFolderCommand}" />
                         </Grid>
-                        <TextBox Text="{Binding FileSearchPattern}"/>
+                        <TextBox Text="{Binding FileSearchPattern}" />
                     </StackPanel>
                 </Grid>
             </TabItem>

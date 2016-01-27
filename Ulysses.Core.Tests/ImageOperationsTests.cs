@@ -15,14 +15,10 @@ namespace Ulysses.Core.Tests
             // Given
             var imageModel = new ImageModel(1024, 1024, ImageBitDepth.Bpp8);
             var random = new Random();
-            var firstImagePixels = Enumerable.Range(0, 1024 * 1024)
-                                             .Select(i => (Pixel)random.Next(ushort.MinValue, ushort.MaxValue))
-                                             .ToArray();
+            var firstImagePixels = Enumerable.Range(0, 1024 * 1024).Select(i => (Pixel)random.Next(ushort.MinValue, ushort.MaxValue)).ToArray();
             var firstImage = new Image(firstImagePixels, imageModel);
 
-            var secondImagePixels = Enumerable.Range(0, 1024 * 1024)
-                                              .Select(i => (Pixel)random.Next(ushort.MinValue, ushort.MaxValue))
-                                              .ToArray();
+            var secondImagePixels = Enumerable.Range(0, 1024 * 1024).Select(i => (Pixel)random.Next(ushort.MinValue, ushort.MaxValue)).ToArray();
             var secondImage = new Image(secondImagePixels, imageModel);
 
             var sumOfPixels = firstImagePixels.Zip(secondImagePixels, (first, second) => first + second);
@@ -33,7 +29,7 @@ namespace Ulysses.Core.Tests
             // Then
             CollectionAssert.AreEqual(sumOfPixels, outputImage.ImagePixels);
         }
-        
+
         [Test]
         public void ShouldNotAllowToAddTwoImagesOfDifferentImageModel()
         {
@@ -41,23 +37,16 @@ namespace Ulysses.Core.Tests
             var random = new Random();
 
             var firstImageModel = new ImageModel(1024, 1024, ImageBitDepth.Bpp8);
-            var firstImagePixels = Enumerable.Range(0, 1024 * 1024)
-                                             .Select(i => (Pixel)random.Next(ushort.MinValue, ushort.MaxValue))
-                                             .ToArray();
+            var firstImagePixels = Enumerable.Range(0, 1024 * 1024).Select(i => (Pixel)random.Next(ushort.MinValue, ushort.MaxValue)).ToArray();
             var firstImage = new Image(firstImagePixels, firstImageModel);
 
             var secondImageModel = new ImageModel(1024, 1024, ImageBitDepth.Bpp12);
-            var secondImagePixels = Enumerable.Range(0, 1024 * 1024)
-                                              .Select(i => (Pixel)random.Next(ushort.MinValue, ushort.MaxValue))
-                                              .ToArray();
+            var secondImagePixels = Enumerable.Range(0, 1024 * 1024).Select(i => (Pixel)random.Next(ushort.MinValue, ushort.MaxValue)).ToArray();
             var secondImage = new Image(secondImagePixels, secondImageModel);
 
             // When
             // Then
-            Assert.Throws<ImageModelMismatchException>(() =>
-            {
-                var outputImage = firstImage + secondImage;
-            });
+            Assert.Throws<ImageModelMismatchException>(() => { var outputImage = firstImage + secondImage; });
         }
 
         [Test]
@@ -66,14 +55,10 @@ namespace Ulysses.Core.Tests
             // Given
             var imageModel = new ImageModel(1024, 1024, ImageBitDepth.Bpp8);
             var random = new Random();
-            var firstImagePixels = Enumerable.Range(0, 1024 * 1024)
-                                             .Select(i => (Pixel)random.Next(ushort.MinValue, ushort.MaxValue))
-                                             .ToArray();
+            var firstImagePixels = Enumerable.Range(0, 1024 * 1024).Select(i => (Pixel)random.Next(ushort.MinValue, ushort.MaxValue)).ToArray();
             var firstImage = new Image(firstImagePixels, imageModel);
 
-            var secondImagePixels = Enumerable.Range(0, 1024 * 1024)
-                                              .Select(i => (Pixel)random.Next(ushort.MinValue, ushort.MaxValue))
-                                              .ToArray();
+            var secondImagePixels = Enumerable.Range(0, 1024 * 1024).Select(i => (Pixel)random.Next(ushort.MinValue, ushort.MaxValue)).ToArray();
             var secondImage = new Image(secondImagePixels, imageModel);
 
             var sumOfPixels = firstImagePixels.Zip(secondImagePixels, (first, second) => first - second);
@@ -84,7 +69,7 @@ namespace Ulysses.Core.Tests
             // Then
             CollectionAssert.AreEqual(sumOfPixels, outputImage.ImagePixels);
         }
-        
+
         [Test]
         public void ShouldNotAllowToSubtractTwoImagesOfDifferentImageModel()
         {
@@ -92,23 +77,16 @@ namespace Ulysses.Core.Tests
             var random = new Random();
 
             var firstImageModel = new ImageModel(1024, 1024, ImageBitDepth.Bpp8);
-            var firstImagePixels = Enumerable.Range(0, 1024 * 1024)
-                                             .Select(i => (Pixel)random.Next(ushort.MinValue, ushort.MaxValue))
-                                             .ToArray();
+            var firstImagePixels = Enumerable.Range(0, 1024 * 1024).Select(i => (Pixel)random.Next(ushort.MinValue, ushort.MaxValue)).ToArray();
             var firstImage = new Image(firstImagePixels, firstImageModel);
 
             var secondImageModel = new ImageModel(1024, 512, ImageBitDepth.Bpp8);
-            var secondImagePixels = Enumerable.Range(0, 1024 * 512)
-                                              .Select(i => (Pixel)random.Next(ushort.MinValue, ushort.MaxValue))
-                                              .ToArray();
+            var secondImagePixels = Enumerable.Range(0, 1024 * 512).Select(i => (Pixel)random.Next(ushort.MinValue, ushort.MaxValue)).ToArray();
             var secondImage = new Image(secondImagePixels, secondImageModel);
 
             // When
             // Then
-            Assert.Throws<ImageModelMismatchException>(() =>
-            {
-                var outputImage = firstImage - secondImage;
-            });
+            Assert.Throws<ImageModelMismatchException>(() => { var outputImage = firstImage - secondImage; });
         }
     }
 }

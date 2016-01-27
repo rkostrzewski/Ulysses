@@ -25,7 +25,7 @@ namespace Ulysses.Core.Tests
         }
 
         [Test]
-        [TestCaseSource(typeof(ImageModelTestCases), nameof(ImageModelTestCases.EqualityTestCases))]
+        [TestCaseSource(typeof (ImageModelTestCases), nameof(ImageModelTestCases.EqualityTestCases))]
         public void ShouldCorrectlyMarkEqualityOfImageModels(ImageModel first, ImageModel second, bool expected)
         {
             // Given
@@ -38,7 +38,7 @@ namespace Ulysses.Core.Tests
         }
 
         [Test]
-        [TestCaseSource(typeof(ImageModelTestCases), nameof(ImageModelTestCases.EqualityTestCases))]
+        [TestCaseSource(typeof (ImageModelTestCases), nameof(ImageModelTestCases.EqualityTestCases))]
         public void ShouldCorrectlyMarkEqualityOfImageModelsUsingEqualsCall(ImageModel first, ImageModel second, bool expected)
         {
             // Given
@@ -51,7 +51,7 @@ namespace Ulysses.Core.Tests
         }
 
         [Test]
-        [TestCaseSource(typeof(ImageModelTestCases), nameof(ImageModelTestCases.EqualityTestCases))]
+        [TestCaseSource(typeof (ImageModelTestCases), nameof(ImageModelTestCases.EqualityTestCases))]
         public void ShouldCorrectlyMarkEqualityOfImageModelAndObject(ImageModel first, object second, bool expected)
         {
             // Given
@@ -64,7 +64,7 @@ namespace Ulysses.Core.Tests
         }
 
         [Test]
-        [TestCaseSource(typeof(ImageModelTestCases), nameof(ImageModelTestCases.EqualityTestCases))]
+        [TestCaseSource(typeof (ImageModelTestCases), nameof(ImageModelTestCases.EqualityTestCases))]
         public void ShouldCorrectlyMarkInequalityOfImageModels(ImageModel first, ImageModel second, bool notExpected)
         {
             // Given

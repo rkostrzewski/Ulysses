@@ -20,8 +20,7 @@ namespace Ulysses.App.Modules.Navigation.Tests.ViewModels
 
             navigationPanelState.SetupGet(n => n.CurrentContentRegionView).Returns(ContentRegionView.ImageDisplayView);
 
-            var viewModel = new NavigationPanelViewModel(navigationPanelState.Object,
-                                                         changeContentRegionCompositeCommand.Object);
+            var viewModel = new NavigationPanelViewModel(navigationPanelState.Object, changeContentRegionCompositeCommand.Object);
 
             // When
             var currentContentRegionView = viewModel.CurrentContentRegionView;

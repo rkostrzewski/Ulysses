@@ -1,5 +1,4 @@
-﻿using Ulysses.App.Modules.ImageProcessingCustomization.Models;
-using Ulysses.Core.Templates;
+﻿using Ulysses.Core.Templates;
 
 namespace Ulysses.App.Modules.ImageProcessingCustomization.Tests.Helpers
 {

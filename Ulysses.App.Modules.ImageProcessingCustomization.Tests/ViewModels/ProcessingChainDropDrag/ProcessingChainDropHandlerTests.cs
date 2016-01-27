@@ -1,7 +1,9 @@
 using System;
 using System.Collections.Generic;
 using System.Windows;
+using Moq;
 using NUnit.Framework;
+using Prism.Events;
 using Ulysses.App.Modules.ImageProcessingCustomization.Models.DataStore;
 using Ulysses.App.Modules.ImageProcessingCustomization.ViewModels.DragAndDrop;
 using Ulysses.Core.Templates;
@@ -13,9 +15,17 @@ namespace Ulysses.App.Modules.ImageProcessingCustomization.Tests.ViewModels.Proc
     [TestFixture]
     public class ProcessingChainDropHandlerTests
     {
+        private IEventAggregator _eventAggregator;
+
+        [SetUp]
+        public void SetUp()
+        {
+            _eventAggregator = new Mock<IEventAggregator>().Object;
+        }
+
         [Test]
-        [TestCase(typeof(ImageProviderTemplate), false)]
-        [TestCase(typeof(TwoPointNonUniformityCorrectionTemplate), true)]
+        [TestCase(typeof (ImageProviderTemplate), false)]
+        [TestCase(typeof (TwoPointNonUniformityCorrectionTemplate), true)]
         public void ShouldNotAllowToDragOverItemsOtherThanImageProcessingAlgorithmTemplates(Type elementType, bool shouldAllowToDragOver)
         {
             // Given
@@ -23,10 +33,7 @@ namespace Ulysses.App.Modules.ImageProcessingCustomization.Tests.ViewModels.Proc
             {
                 Data = elementType.GetConstructor(Type.EmptyTypes)?.Invoke(null),
                 TargetCollection = new object[3],
-                DragInfo = new TestDragInfo
-                {
-                    SourceCollection = new object[3]
-                },
+                DragInfo = new TestDragInfo { SourceCollection = new object[3] },
                 InsertIndex = 1
             };
 
@@ -45,12 +52,7 @@ namespace Ulysses.App.Modules.ImageProcessingCustomization.Tests.ViewModels.Proc
         public void ShouldNotAllowToDragOverItemsAtStartOrEndOfCollection(int index)
         {
             // Given
-            var dropInfo = new TestDropInfo
-            {
-                Data = new TwoPointNonUniformityCorrectionTemplate(),
-                TargetCollection = new object[3],
-                InsertIndex = index
-            };
+            var dropInfo = new TestDropInfo { Data = new TwoPointNonUniformityCorrectionTemplate(), TargetCollection = new object[3], InsertIndex = index };
 
             var dropHandler = new ProcessingChainDropHandler();
 
@@ -69,10 +71,7 @@ namespace Ulysses.App.Modules.ImageProcessingCustomization.Tests.ViewModels.Proc
             var element = new TwoPointNonUniformityCorrectionTemplate();
             var dataSource = new ProcessingChainDataStore();
             var targetCollection = dataSource.ProcessingChainTemplate;
-            var sourceCollection = new List<IProcessingChainElementTemplate>
-            {
-                element
-            };
+            var sourceCollection = new List<IProcessingChainElementTemplate> { element };
 
             sourceCollection.Insert(index, element);
 
@@ -80,10 +79,7 @@ namespace Ulysses.App.Modules.ImageProcessingCustomization.Tests.ViewModels.Proc
             {
                 Data = element,
                 TargetCollection = targetCollection,
-                DragInfo = new TestDragInfo
-                {
-                    SourceCollection = sourceCollection
-                },
+                DragInfo = new TestDragInfo { SourceCollection = sourceCollection },
                 InsertIndex = index
             };
 
@@ -116,10 +112,7 @@ namespace Ulysses.App.Modules.ImageProcessingCustomization.Tests.ViewModels.Proc
             {
                 Data = element,
                 TargetCollection = targetCollection,
-                DragInfo = new TestDragInfo
-                {
-                    SourceCollection = sourceCollection
-                },
+                DragInfo = new TestDragInfo { SourceCollection = sourceCollection },
                 InsertIndex = index
             };
 
@@ -142,7 +135,7 @@ namespace Ulysses.App.Modules.ImageProcessingCustomization.Tests.ViewModels.Proc
             const int index = 1;
             var element = new ParameterlessConstructorTestObject(1);
             var dataSource = new ProcessingChainDataStore();
-            
+
             var sourceCollection = new List<object> { element };
             var targetCollection = dataSource.ProcessingChainTemplate;
 
@@ -150,10 +143,7 @@ namespace Ulysses.App.Modules.ImageProcessingCustomization.Tests.ViewModels.Proc
             {
                 Data = element,
                 TargetCollection = targetCollection,
-                DragInfo = new TestDragInfo
-                {
-                    SourceCollection = sourceCollection
-                },
+                DragInfo = new TestDragInfo { SourceCollection = sourceCollection },
                 InsertIndex = index
             };
 
@@ -161,7 +151,7 @@ namespace Ulysses.App.Modules.ImageProcessingCustomization.Tests.ViewModels.Proc
 
             // When
             // Then
-            Assert.Throws<InvalidOperationException>(() => dropHandler.Drop(dropInfo));
+            Assert.Throws<ArgumentException>(() => dropHandler.Drop(dropInfo));
         }
     }
 }

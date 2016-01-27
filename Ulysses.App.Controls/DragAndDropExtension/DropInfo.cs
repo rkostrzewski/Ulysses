@@ -17,14 +17,14 @@ namespace Ulysses.App.Controls.DragAndDropExtension
             InitializeFromSender(sender, e);
         }
 
-        public object Data { get; private set; }
-        public IDragInfo DragInfo { get; private set; }
+        public object Data { get; }
+        public IDragInfo DragInfo { get; }
         public Type DropTargetAdorner { get; set; }
         public DragDropEffects Effects { get; set; }
         public int InsertIndex { get; private set; }
         public IEnumerable TargetCollection { get; private set; }
         public object TargetItem { get; private set; }
-        public UIElement VisualTarget { get; private set; }
+        public UIElement VisualTarget { get; }
         public UIElement VisualTargetItem { get; private set; }
         public Orientation VisualTargetOrientation { get; private set; }
 

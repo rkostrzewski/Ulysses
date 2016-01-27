@@ -35,6 +35,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="JetBrains.Annotations, Version=10.0.0.0, Culture=neutral, PublicKeyToken=1010a0d8d6380325, processorArchitecture=MSIL">
+      <HintPath>..\packages\JetBrains.Annotations.10.0.0\lib\net20\JetBrains.Annotations.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="MahApps.Metro, Version=1.2.4.0, Culture=neutral, PublicKeyToken=f4fb5a3c4d1e5b4f, processorArchitecture=MSIL">
       <HintPath>..\packages\MahApps.Metro.1.2.4.0\lib\net45\MahApps.Metro.dll</HintPath>
       <Private>True</Private>
@@ -101,6 +105,15 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="App_Start\ContainerBootstrapper.cs" />
+    <Compile Include="ExceptionHandling\ExceptionHandler.cs" />
+    <Compile Include="ExceptionHandling\ExceptionHandlingResolution.cs" />
+    <Compile Include="ExceptionHandling\Handlers\ImageOperationsExceptionHandler.cs" />
+    <Compile Include="ExceptionHandling\Handlers\ModuleExceptionHandling.cs" />
+    <Compile Include="ExceptionHandling\IExceptionHandler.cs" />
+    <Compile Include="ExceptionHandling\Handlers\IInternalExceptionHandling.cs" />
+    <Compile Include="ExceptionHandling\Handlers\ImageProviderExceptionHandler.cs" />
+    <Compile Include="ExceptionHandling\Handlers\ProcessingAlgorithmExceptionHandling.cs" />
+    <Compile Include="ExceptionHandling\Handlers\ProcessingEngineExceptionHandler.cs" />
     <Compile Include="Shell.xaml.cs">
       <DependentUpon>Shell.xaml</DependentUpon>
     </Compile>

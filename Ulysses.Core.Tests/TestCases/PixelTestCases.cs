@@ -13,7 +13,6 @@ namespace Ulysses.Core.Tests.TestCases
                 yield return new object[] { (byte)2, new Pixel(2) };
                 yield return new object[] { (byte)(byte.MaxValue - 1), new Pixel(254) };
                 yield return new object[] { byte.MaxValue, new Pixel(255) };
-
             }
         }
 

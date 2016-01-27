@@ -29,7 +29,7 @@ namespace Ulysses.ImageProviders.Camera.CameraStream
         {
             if (packet.Length != _cameraStreamConfiguration.SizeOfPixelsInPacket + _cameraStreamConfiguration.Padding)
             {
-                throw new ImageModelMismatchException();
+                throw new ImageModelMismatchException(typeof (CameraAcquisitionBuffer));
             }
 
             var packetId = packet[0] * 100 + packet[1];

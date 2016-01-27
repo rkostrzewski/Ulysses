@@ -26,7 +26,7 @@ namespace Ulysses.App.Modules.Navigation.Tests.Models
 
             // When
             navigationPanelState.CurrentContentRegionView = ContentRegionView.ImageProcessingCustomizationView;
-            
+
             // Then
             Assert.AreEqual(1, timesEventFired);
             Assert.AreEqual(navigationPanelState, sender);
@@ -41,10 +41,7 @@ namespace Ulysses.App.Modules.Navigation.Tests.Models
             var timesEventFired = 0;
             navigationPanelState.CurrentContentRegionView = ContentRegionView.ImageDisplayView;
 
-            navigationPanelState.PropertyChanged += (s, a) =>
-            {
-                timesEventFired++;
-            };
+            navigationPanelState.PropertyChanged += (s, a) => { timesEventFired++; };
 
             // When
             navigationPanelState.CurrentContentRegionView = ContentRegionView.ImageDisplayView;

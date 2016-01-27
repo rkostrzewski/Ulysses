@@ -56,7 +56,8 @@ namespace Ulysses.App.Modules.ImageProcessingCustomization.Tests
             // Then
 
             regionViewRegistry.VerifyViewWasRegisteredWithRegion(ApplicationRegion.ContentRegion.ToString(), Times.Once());
-            regionViewRegistry.VerifyViewWasRegisteredWithRegion(ImageProcessingCustomizationViewRegions.ImageProcessingChainElementCustomizationRegion.ToString(), Times.AtLeastOnce());
+            regionViewRegistry.VerifyViewWasRegisteredWithRegion(ImageProcessingCustomizationViewRegions.ImageProcessingChainElementCustomizationRegion.ToString(),
+                                                                 Times.AtLeastOnce());
         }
     }
 }

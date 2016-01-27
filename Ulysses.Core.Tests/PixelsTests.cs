@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using NUnit.Framework;
-using Ulysses.Core.Exceptions;
 using Ulysses.Core.Models;
 
 namespace Ulysses.Core.Tests

@@ -1,5 +1,6 @@
 using Ulysses.Core.Exceptions;
 using Ulysses.Core.Models;
+using Ulysses.ImageProviders.Exception;
 
 namespace Ulysses.ImageProviders.Camera.CameraStream
 {
@@ -9,7 +10,7 @@ namespace Ulysses.ImageProviders.Camera.CameraStream
         {
             if (imageModel.Width != ImageWidth || imageModel.Height != ImageHeight)
             {
-                throw new NotSupportedImageException();
+                throw new NotSupportedImageSizeForCameraProviderException();
             }
 
             switch (imageModel.ImageBitDepth)

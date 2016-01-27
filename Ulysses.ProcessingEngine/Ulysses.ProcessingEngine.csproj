@@ -44,7 +44,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Exceptions\ConcurrencyException.cs" />
+    <Compile Include="Exceptions\InvalidEngineStateException.cs" />
     <Compile Include="Factories\ProcessingEngineFactory.cs" />
     <Compile Include="ProcessingEngine\ProcessingStrategies.cs" />
     <Compile Include="ProcessingEngine\IProcessingEngine.cs" />

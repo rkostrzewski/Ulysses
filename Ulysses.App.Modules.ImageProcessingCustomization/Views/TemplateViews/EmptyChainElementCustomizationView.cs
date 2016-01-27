@@ -1,6 +1,4 @@
-﻿using System.Windows.Controls;
-
-namespace Ulysses.App.Modules.ImageProcessingCustomization.Views.TemplateViews
+﻿namespace Ulysses.App.Modules.ImageProcessingCustomization.Views.TemplateViews
 {
     /// <summary>
     ///     Interaction logic for EmptyChainElementCustomizationView.xaml

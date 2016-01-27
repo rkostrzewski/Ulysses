@@ -1,5 +1,5 @@
-﻿using System;
-using Ulysses.App.Core.Commands;
+﻿using Ulysses.App.Core.Commands;
+using Ulysses.App.Core.Exceptions;
 using Ulysses.App.Core.Regions;
 using Ulysses.App.Modules.Navigation.Models;
 
@@ -18,7 +18,7 @@ namespace Ulysses.App.Modules.Navigation.Commands
         {
             if (!CanExecute(parameter))
             {
-                throw new InvalidOperationException();
+                throw new CannotExecuteCommandException(GetType());
             }
 
             _navigationPanelState.CurrentContentRegionView = parameter;

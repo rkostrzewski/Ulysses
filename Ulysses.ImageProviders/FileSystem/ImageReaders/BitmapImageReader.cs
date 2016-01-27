@@ -23,7 +23,7 @@ namespace Ulysses.ImageProviders.FileSystem.ImageReaders
             var inputImage = new Bitmap(System.Drawing.Image.FromFile(filePath));
             if (inputImage.Width != _imageModel.Width || inputImage.Height != _imageModel.Height)
             {
-                throw new ImageModelMismatchException();
+                throw new ImageModelMismatchException(typeof (BitmapImageReader));
             }
 
             return ConvertToImage(inputImage);

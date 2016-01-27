@@ -1,5 +1,4 @@
-﻿using Microsoft.VisualStudio.TestTools.UITesting;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Ulysses.UI.Tests.Base;
 using Ulysses.UI.WindowObjects;
 using Ulysses.UI.WindowObjects.ControlPanel;

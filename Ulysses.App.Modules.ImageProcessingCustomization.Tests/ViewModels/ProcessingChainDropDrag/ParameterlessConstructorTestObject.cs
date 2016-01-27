@@ -4,7 +4,6 @@ namespace Ulysses.App.Modules.ImageProcessingCustomization.Tests.ViewModels.Proc
     {
         public ParameterlessConstructorTestObject(int i)
         {
-            
         }
     }
 }

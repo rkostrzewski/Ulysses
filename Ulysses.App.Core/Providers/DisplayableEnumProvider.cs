@@ -8,12 +8,12 @@ namespace Ulysses.App.Core.Providers
 {
     public class DisplayableEnumProvider<T>
     {
-        private readonly ResourceManager _resourceManager;
         private readonly CultureInfo _cultureInfo;
+        private readonly ResourceManager _resourceManager;
 
         public DisplayableEnumProvider(ResourceManager resourceManager, CultureInfo cultureInfo = null)
         {
-            if (!typeof(T).IsEnum)
+            if (!typeof (T).IsEnum)
             {
                 throw new InvalidOperationException();
             }
@@ -24,14 +24,10 @@ namespace Ulysses.App.Core.Providers
 
         public IEnumerable<Displayable<T>> GetDisplayableEnums()
         {
-            return Enum.GetValues(typeof(T)).Cast<T>().Select(e =>
+            return Enum.GetValues(typeof (T)).Cast<T>().Select(e =>
             {
                 var localizedText = _resourceManager.GetString(e.ToString(), _cultureInfo);
-                return new Displayable<T>
-                {
-                    Value = e,
-                    DisplayText = localizedText ?? e.ToString()
-                };
+                return new Displayable<T> { Value = e, DisplayText = localizedText ?? e.ToString() };
             });
         }
     }

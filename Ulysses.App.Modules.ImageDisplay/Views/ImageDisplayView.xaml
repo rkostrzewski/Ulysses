@@ -6,17 +6,19 @@
              xmlns:viewModels="clr-namespace:Ulysses.App.Modules.ImageDisplay.ViewModels"
              mc:Ignorable="d"
              d:DataContext="{d:DesignInstance viewModels:ImageDisplayViewModel}"
-             d:DesignHeight="720" d:DesignWidth="1024" >
+             d:DesignHeight="720" d:DesignWidth="1024">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="259*"/>
-            <RowDefinition Height="40"/>
-            <RowDefinition Height="20"/>
+            <RowDefinition Height="259*" />
+            <RowDefinition Height="40" />
+            <RowDefinition Height="20" />
         </Grid.RowDefinitions>
-        <Image Margin="10,10,10,10" OpacityMask="#FFC13232" Source="{Binding OutputImage}"/>
+        <Image Margin="10,10,10,10" OpacityMask="#FFC13232" Source="{Binding OutputImage}" />
         <Grid Grid.Row="1">
-            <Button Content="Stop" Command="{Binding StopImageProcessingCommand}" Grid.Row="1" Margin="0, 0, 90, 0" HorizontalAlignment="Center" Width="60" Height="30" VerticalAlignment="Center" />
-            <Button Content="Play" Command="{Binding StartImageProcessingCommand}" Grid.Row="1" Margin="90, 0, 0, 0" HorizontalAlignment="Center" Width="60" Height="30" VerticalAlignment="Center" />
+            <Button Content="Stop" Command="{Binding StopImageProcessingCommand}" Grid.Row="1" Margin="0, 0, 90, 0"
+                    HorizontalAlignment="Center" Width="60" Height="30" VerticalAlignment="Center" />
+            <Button Content="Play" Command="{Binding StartImageProcessingCommand}" Grid.Row="1" Margin="90, 0, 0, 0"
+                    HorizontalAlignment="Center" Width="60" Height="30" VerticalAlignment="Center" />
         </Grid>
     </Grid>
 </UserControl>

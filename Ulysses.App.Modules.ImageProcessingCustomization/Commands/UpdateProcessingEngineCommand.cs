@@ -4,6 +4,7 @@ using System.Linq;
 using Prism.Events;
 using Ulysses.App.Core.Commands;
 using Ulysses.App.Core.Events;
+using Ulysses.App.Core.Exceptions;
 using Ulysses.App.Modules.ImageProcessingCustomization.Models.DataStore;
 using Ulysses.ImageProviders.Factories;
 using Ulysses.ImageProviders.Templates;
@@ -42,7 +43,7 @@ namespace Ulysses.App.Modules.ImageProcessingCustomization.Commands
         {
             if (!CanExecute())
             {
-                throw new InvalidOperationException();
+                throw new CannotExecuteCommandException(GetType());
             }
 
             var processingChainTemplate = _processingChainBuilderDataStore.ProcessingChainTemplate;
@@ -51,7 +52,7 @@ namespace Ulysses.App.Modules.ImageProcessingCustomization.Commands
             var imageProcessingChainAlgorithmsTemplates = GetImageProcessingChainAlgorithmsTemplates(processingChainTemplate);
 
             var imageProvider = _imageProviderFactory.CreateInstance(imageProviderTemplate);
-            var imageProcessingChain = _imageProcessingChainFactory.BuildChain(imageProcessingChainAlgorithmsTemplates);
+            var imageProcessingChain = _imageProcessingChainFactory.BuildChain(imageProcessingChainAlgorithmsTemplates, imageProviderTemplate.ImageModel);
 
             var processingEngineTemplate = new ProcessingEngineTemplate
             {

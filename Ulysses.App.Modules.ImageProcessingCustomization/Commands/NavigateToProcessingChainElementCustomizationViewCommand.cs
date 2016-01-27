@@ -1,8 +1,8 @@
-using System;
 using System.Linq;
 using Prism.Regions;
 using Ulysses.App.Core.Commands;
 using Ulysses.App.Core.Commands.Regions;
+using Ulysses.App.Core.Exceptions;
 using Ulysses.Core.Templates;
 
 namespace Ulysses.App.Modules.ImageProcessingCustomization.Commands
@@ -38,7 +38,7 @@ namespace Ulysses.App.Modules.ImageProcessingCustomization.Commands
         {
             if (!CanExecute(processingChainElementTemplate))
             {
-                throw new InvalidOperationException();
+                throw new CannotExecuteCommandException(GetType());
             }
 
             var region = _regionManager.Regions[_parentRegionName];

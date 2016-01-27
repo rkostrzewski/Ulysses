@@ -1,5 +1,4 @@
-﻿using System.Windows.Input;
-using System.Windows.Media.Imaging;
+﻿using System.Windows.Media.Imaging;
 using System.Windows.Threading;
 using Prism.Events;
 using Ulysses.App.Core.Events;
@@ -15,24 +14,22 @@ namespace Ulysses.App.Modules.ImageDisplay.ViewModels
         private readonly IProcessingService _processingService;
         private BitmapSource _outputImage;
 
-        public ImageDisplayViewModel(IEventAggregator eventAggregator, IProcessingService processingService, IStartImageProcessingCommand startImageProcessingCommand, IStopImageProcessingCommand stopImageProcessingCommand,
+        public ImageDisplayViewModel(IEventAggregator eventAggregator,
+                                     IProcessingService processingService,
+                                     IStartImageProcessingCommand startImageProcessingCommand,
+                                     IStopImageProcessingCommand stopImageProcessingCommand,
+                                     ISetOutputImageCommand setOutputImageCommand,
                                      IImageConverter imageConverter)
         {
             _processingService = processingService;
 
             StartImageProcessingCommand = startImageProcessingCommand;
             StopImageProcessingCommand = stopImageProcessingCommand;
+            SetOutputImageCommand = setOutputImageCommand;
 
-            StartImageProcessingCommand.OnProcessingStop = () =>
-            {
-                OnPropertyChanged(string.Empty);
-            };
-            StopImageProcessingCommand.OnProcessingStop = () =>
-            {
-                OnPropertyChanged(string.Empty);
-            };
-
-            SetOutputImageCommand = new SetOutputImageCommand(SetOutputImage, imageConverter);
+            StartImageProcessingCommand.OnProcessingStop = () => { OnPropertyChanged(string.Empty); };
+            StopImageProcessingCommand.OnProcessingStop = () => { OnPropertyChanged(string.Empty); };
+            SetOutputImageCommand.OnImageUpdate = SetOutputImage;
 
             eventAggregator.GetEvent<ShouldUpdateProcessingEngineEvent>().Subscribe(UpdateProcessingEngine);
         }
@@ -68,7 +65,7 @@ namespace Ulysses.App.Modules.ImageDisplay.ViewModels
 
             Dispatcher.CurrentDispatcher.Invoke(() => OutputImage = copy);
         }
-        
+
         private void UpdateProcessingEngine(ProcessingEngineTemplate template)
         {
             template.ReceiveProcessedImageCommand = SetOutputImageCommand;

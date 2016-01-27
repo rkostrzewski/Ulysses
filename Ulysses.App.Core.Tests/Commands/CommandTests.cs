@@ -56,7 +56,8 @@ namespace Ulysses.App.Core.Tests.Commands
             // Given
             var invokable = new Mock<IInvokable<bool>>();
             var command = new TestCommand<bool>(invokable.Object);
-            var listener = new EventHandler((sender, args) => { });;
+            var listener = new EventHandler((sender, args) => { });
+            ;
             command.CanExecuteChanged += listener;
 
             // When

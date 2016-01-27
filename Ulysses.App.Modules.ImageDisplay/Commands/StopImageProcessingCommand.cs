@@ -1,5 +1,6 @@
 ﻿using System;
 using Ulysses.App.Core.Commands;
+using Ulysses.App.Core.Exceptions;
 using Ulysses.App.Modules.ImageDisplay.Models;
 
 namespace Ulysses.App.Modules.ImageDisplay.Commands
@@ -13,17 +14,34 @@ namespace Ulysses.App.Modules.ImageDisplay.Commands
             _processingService = processingService;
         }
 
-        public override void Execute()
+        public override async void Execute()
         {
             if (!CanExecute())
             {
-                throw new InvalidOperationException();
+                throw new CannotExecuteCommandException(GetType());
             }
 
-            _processingService.ProcessingEngine?.Stop().ContinueWith((task) =>
+            var processingTask = _processingService.ProcessingEngine?.Stop();
+
+            if (processingTask == null)
             {
-                OnProcessingStop?.Invoke();
-            });
+                return;
+            }
+
+            await processingTask;
+
+            OnProcessingStop?.Invoke();
+
+            if (!processingTask.IsFaulted)
+            {
+                return;
+            }
+
+            var baseException = processingTask.Exception?.GetBaseException();
+            if (baseException != null)
+            {
+                throw baseException;
+            }
         }
 
         public override bool CanExecute()

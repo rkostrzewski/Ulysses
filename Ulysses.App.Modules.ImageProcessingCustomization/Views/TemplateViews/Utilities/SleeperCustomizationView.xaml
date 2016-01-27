@@ -17,6 +17,6 @@
     </UserControl.Resources>
     <Grid>
         <TextBlock Text="Sleep Time" />
-        <TextBox Text="{Binding SleepTimeInMilliseconds}"  />
+        <TextBox Text="{Binding SleepTimeInMilliseconds}" />
     </Grid>
 </UserControl>

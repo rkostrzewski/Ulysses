@@ -12,10 +12,10 @@ namespace Ulysses.App.Modules.ImageProcessingCustomization.Tests.ViewModels
     [TestFixture]
     public class ProcessingChainCustomizationViewModelTests
     {
-        private IProcessingChainBuilderDataStore _dataStore;
         private Mock<IChangeProcessingChainElementCustomizationRegionViewCommand> _changeCustomizationRegionViewCommandMock;
-        private IProcessingChainDropHandler _dropHandler;
+        private IProcessingChainBuilderDataStore _dataStore;
         private IProcessingChainDragHandler _dragHandler;
+        private IProcessingChainDropHandler _dropHandler;
         private IUpdateProcessingEngineCommand _updateProcessingEngineCommand;
 
         [SetUp]
@@ -33,7 +33,11 @@ namespace Ulysses.App.Modules.ImageProcessingCustomization.Tests.ViewModels
         {
             // Given
             // When
-            var viewModel = new ProcessingChainCustomizationViewModel(_dataStore, _changeCustomizationRegionViewCommandMock.Object, _updateProcessingEngineCommand, _dragHandler, _dropHandler);
+            var viewModel = new ProcessingChainCustomizationViewModel(_dataStore,
+                                                                      _changeCustomizationRegionViewCommandMock.Object,
+                                                                      _updateProcessingEngineCommand,
+                                                                      _dragHandler,
+                                                                      _dropHandler);
 
             // Then
             Assert.AreEqual(_dragHandler, viewModel.DragHandler);
@@ -44,7 +48,11 @@ namespace Ulysses.App.Modules.ImageProcessingCustomization.Tests.ViewModels
         public void ShouldNotChangeChainElementCustomizationRegionWhenSameItemIsSelected()
         {
             // Given
-            var viewModel = new ProcessingChainCustomizationViewModel(_dataStore, _changeCustomizationRegionViewCommandMock.Object, _updateProcessingEngineCommand, _dragHandler, _dropHandler);
+            var viewModel = new ProcessingChainCustomizationViewModel(_dataStore,
+                                                                      _changeCustomizationRegionViewCommandMock.Object,
+                                                                      _updateProcessingEngineCommand,
+                                                                      _dragHandler,
+                                                                      _dropHandler);
             var selectedElement = viewModel.ProcessingChainElements.First();
             viewModel.SelectedProcessingChainElementTemplate = selectedElement;
             _changeCustomizationRegionViewCommandMock.ResetCalls();
@@ -60,7 +68,11 @@ namespace Ulysses.App.Modules.ImageProcessingCustomization.Tests.ViewModels
         public void ShouldChangeChainElementCustomizationRegionWhenNewItemIsSelected()
         {
             // Given
-            var viewModel = new ProcessingChainCustomizationViewModel(_dataStore, _changeCustomizationRegionViewCommandMock.Object, _updateProcessingEngineCommand, _dragHandler, _dropHandler);
+            var viewModel = new ProcessingChainCustomizationViewModel(_dataStore,
+                                                                      _changeCustomizationRegionViewCommandMock.Object,
+                                                                      _updateProcessingEngineCommand,
+                                                                      _dragHandler,
+                                                                      _dropHandler);
             var selectedElement = viewModel.ProcessingChainElements.First();
             viewModel.SelectedProcessingChainElementTemplate = selectedElement;
             _changeCustomizationRegionViewCommandMock.ResetCalls();

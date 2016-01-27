@@ -16,7 +16,7 @@
     <UserControl.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="pack://application:,,,/Ulysses.App.Core;component/Style/AppStyle.xaml"/>
+                <ResourceDictionary Source="pack://application:,,,/Ulysses.App.Core;component/Style/AppStyle.xaml" />
                 <ResourceDictionary Source="Styles/ProcessingChainStyles.xaml" />
                 <ResourceDictionary>
                     <converters:GenericToStringConverter x:Key="GenericToStringConverter" />
@@ -31,7 +31,7 @@
         </Grid.ColumnDefinitions>
         <ListView ItemsSource="{Binding AvailableImageProcessingAlgorithmTemplates}"
                   dragAndDrop:DragDrop.IsDragSource="True" dragAndDrop:DragDrop.IsDropTarget="False"
-                  SelectionMode="Single" >
+                  SelectionMode="Single">
             <ListView.ItemsPanel>
                 <ItemsPanelTemplate>
                     <StackPanel Orientation="Vertical" />
@@ -78,19 +78,20 @@
             <Grid Grid.Row="1">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*" />
-                    <RowDefinition Height="60"/>
+                    <RowDefinition Height="60" />
                 </Grid.RowDefinitions>
-                <ContentControl prism:RegionManager.RegionName="{Binding Source={x:Static regions:ImageProcessingCustomizationViewRegions.ImageProcessingChainElementCustomizationRegion}, Converter={StaticResource GenericToStringConverter}}" Grid.Row="0" />
+                <ContentControl
+                    prism:RegionManager.RegionName="{Binding Source={x:Static regions:ImageProcessingCustomizationViewRegions.ImageProcessingChainElementCustomizationRegion}, Converter={StaticResource GenericToStringConverter}}"
+                    Grid.Row="0" />
                 <Button Content="Save All"
                         Command="{Binding UpdateProcessingEngineCommand}"
-                        Grid.Row="1" 
+                        Grid.Row="1"
                         Style="{DynamicResource AccentedSquareButtonStyle}"
-                        Width="100" 
-                        Height="26" 
-                        Margin="0, 0, 50, 0" 
-                        HorizontalAlignment="Right" 
-                        VerticalAlignment="Center">
-                </Button>
+                        Width="100"
+                        Height="26"
+                        Margin="0, 0, 50, 0"
+                        HorizontalAlignment="Right"
+                        VerticalAlignment="Center" />
             </Grid>
         </Grid>
     </Grid>

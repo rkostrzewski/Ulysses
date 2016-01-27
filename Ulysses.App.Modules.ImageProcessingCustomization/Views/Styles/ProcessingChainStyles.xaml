@@ -64,7 +64,7 @@
         <Grid>
             <Label Padding="0" Content="{Binding ElementName}" Style="{StaticResource ProcessingChainElementStyle}"
                    SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
-                   Foreground="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ListBoxItem}, Path=Foreground}"/>
+                   Foreground="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ListBoxItem}, Path=Foreground}" />
         </Grid>
 
     </DataTemplate>

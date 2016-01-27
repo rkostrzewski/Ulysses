@@ -1,6 +1,7 @@
 using System;
 using System.Linq;
 using NUnit.Framework;
+using Ulysses.App.Modules.ImageProcessingCustomization.Exceptions;
 using Ulysses.App.Modules.ImageProcessingCustomization.Models.DataStore;
 using Ulysses.App.Modules.ImageProcessingCustomization.Models.Templates.ImageDisplay;
 using Ulysses.ImageProviders.Templates;
@@ -92,7 +93,7 @@ namespace Ulysses.App.Modules.ImageProcessingCustomization.Tests.Models.DataStor
 
             // When
             // Then
-            Assert.Throws<InvalidOperationException>(() => processingChainTemplate.Insert(0, template));
+            Assert.Throws<InvalidProcessingChainElementInsertionException>(() => processingChainTemplate.Insert(0, template));
         }
 
         [Test]
@@ -100,11 +101,11 @@ namespace Ulysses.App.Modules.ImageProcessingCustomization.Tests.Models.DataStor
         {
             // Given
             var template = new ImageProviderTemplate();
-            var processingChainTemplate = new ProcessingChainTemplate() { new ImageProviderTemplate(), new ImageDisplayTemplateTemplate() };
+            var processingChainTemplate = new ProcessingChainTemplate { new ImageProviderTemplate(), new ImageDisplayTemplateTemplate() };
 
             // When
             // Then
-            Assert.Throws<InvalidOperationException>(() => processingChainTemplate.Insert(1, template));
+            Assert.Throws<InvalidProcessingChainElementInsertionException>(() => processingChainTemplate.Insert(1, template));
         }
 
         [Test]
@@ -112,11 +113,11 @@ namespace Ulysses.App.Modules.ImageProcessingCustomization.Tests.Models.DataStor
         {
             // Given
             var template = new TwoPointNonUniformityCorrectionTemplate();
-            var processingChainTemplate = new ProcessingChainTemplate() { new ImageProviderTemplate(), new ImageDisplayTemplateTemplate() };
+            var processingChainTemplate = new ProcessingChainTemplate { new ImageProviderTemplate(), new ImageDisplayTemplateTemplate() };
 
             // When
             // Then
-            Assert.Throws<InvalidOperationException>(() => processingChainTemplate.Insert(processingChainTemplate.Count, template));
+            Assert.Throws<InvalidProcessingChainElementInsertionException>(() => processingChainTemplate.Insert(processingChainTemplate.Count, template));
         }
 
         [Test]
@@ -124,11 +125,11 @@ namespace Ulysses.App.Modules.ImageProcessingCustomization.Tests.Models.DataStor
         {
             // Given
             var template = new ImageDisplayTemplateTemplate();
-            var processingChainTemplate = new ProcessingChainTemplate() { new ImageProviderTemplate(), new ImageDisplayTemplateTemplate() };
+            var processingChainTemplate = new ProcessingChainTemplate { new ImageProviderTemplate(), new ImageDisplayTemplateTemplate() };
 
             // When
             // Then
-            Assert.Throws<InvalidOperationException>(() => processingChainTemplate.Insert(1, template));
+            Assert.Throws<InvalidProcessingChainElementInsertionException>(() => processingChainTemplate.Insert(1, template));
         }
     }
 }

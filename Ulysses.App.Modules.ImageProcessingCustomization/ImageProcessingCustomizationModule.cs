@@ -14,10 +14,11 @@ using Ulysses.App.Modules.ImageProcessingCustomization.ViewModels.Templates.Util
 using Ulysses.App.Modules.ImageProcessingCustomization.Views;
 using Ulysses.App.Modules.ImageProcessingCustomization.Views.TemplateViews;
 using Ulysses.App.Modules.ImageProcessingCustomization.Views.TemplateViews.ImageProvider;
+using Ulysses.App.Modules.ImageProcessingCustomization.Views.TemplateViews.NonUniformityCorrection;
 using Ulysses.App.Modules.ImageProcessingCustomization.Views.TemplateViews.Utilities;
 using Ulysses.ImageProviders.Factories;
+using Ulysses.ProcessingAlgorithms.Algorithms.NonUniformityCorrection.NonUniformityModels;
 using Ulysses.ProcessingAlgorithms.Factories;
-using TwoPointNonUniformityCorrectionCustomizationView = Ulysses.App.Modules.ImageProcessingCustomization.Views.TemplateViews.NonUniformityCorrection.TwoPointNonUniformityCorrectionCustomizationView;
 
 namespace Ulysses.App.Modules.ImageProcessingCustomization
 {
@@ -34,10 +35,14 @@ namespace Ulysses.App.Modules.ImageProcessingCustomization
         public void Initialize()
         {
             _regionViewRegistry.RegisterViewWithRegion(ApplicationRegion.ContentRegion.ToString(), typeof (ImageProcessingCustomizationView));
-            _regionViewRegistry.RegisterViewWithRegion(ImageProcessingCustomizationViewRegions.ImageProcessingChainElementCustomizationRegion.ToString(), typeof(EmptyChainElementCustomizationView));
-            _regionViewRegistry.RegisterViewWithRegion(ImageProcessingCustomizationViewRegions.ImageProcessingChainElementCustomizationRegion.ToString(), typeof(TwoPointNonUniformityCorrectionCustomizationView));
-            _regionViewRegistry.RegisterViewWithRegion(ImageProcessingCustomizationViewRegions.ImageProcessingChainElementCustomizationRegion.ToString(), typeof(ImageProviderCustomizationView));
-            _regionViewRegistry.RegisterViewWithRegion(ImageProcessingCustomizationViewRegions.ImageProcessingChainElementCustomizationRegion.ToString(), typeof(SleeperCustomizationView));
+            _regionViewRegistry.RegisterViewWithRegion(ImageProcessingCustomizationViewRegions.ImageProcessingChainElementCustomizationRegion.ToString(),
+                                                       typeof (EmptyChainElementCustomizationView));
+            _regionViewRegistry.RegisterViewWithRegion(ImageProcessingCustomizationViewRegions.ImageProcessingChainElementCustomizationRegion.ToString(),
+                                                       typeof (TwoPointNonUniformityCorrectionCustomizationView));
+            _regionViewRegistry.RegisterViewWithRegion(ImageProcessingCustomizationViewRegions.ImageProcessingChainElementCustomizationRegion.ToString(),
+                                                       typeof (ImageProviderCustomizationView));
+            _regionViewRegistry.RegisterViewWithRegion(ImageProcessingCustomizationViewRegions.ImageProcessingChainElementCustomizationRegion.ToString(),
+                                                       typeof (SleeperCustomizationView));
         }
 
         private static void RegisterModuleDependencies(IUnityContainer container)
@@ -45,11 +50,14 @@ namespace Ulysses.App.Modules.ImageProcessingCustomization
             container.RegisterInstance(typeof (IProcessingChainBuilderDataStore), new ProcessingChainDataStore());
             container.RegisterType<IImageProcessingChainElementViewLocator, ImageProcessingChainElementViewLocator>();
 
+            container.RegisterType<INonUniformityModelProvider, NonUniformityModelProvider>();
             container.RegisterType<IImageProviderFactory, ImageProviderFactory>();
             container.RegisterType<IImageProcessingAlgorithmsFactory, ImageProcessingAlgorithmsFactory>();
             container.RegisterType<IImageProcessingChainFactory, ImageProcessingChainFactory>();
 
             container.RegisterType<IUpdateProcessingEngineCommand, UpdateProcessingEngineCommand>();
+            container.RegisterType<ISelectFolderCommand, SelectFolderCommand>();
+            container.RegisterType<ISelectFileCommand, SelectFileCommand>();
             container.RegisterType<IChangeProcessingChainElementCustomizationRegionViewCommand, ChangeProcessingChainElementCustomizationRegionViewCommand>();
 
             container.RegisterType<IProcessingChainDragHandler, ProcessingChainDragHandler>();

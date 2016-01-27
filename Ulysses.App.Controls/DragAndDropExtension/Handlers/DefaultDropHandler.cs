@@ -20,7 +20,7 @@ namespace Ulysses.App.Controls.DragAndDropExtension.Handlers
             }
 
             dropInfo.Effects = DragDropEffects.Copy;
-            dropInfo.DropTargetAdorner = typeof(DropTargetInsertionAdorner);
+            dropInfo.DropTargetAdorner = typeof (DropTargetInsertionAdorner);
         }
 
         public virtual void Drop(IDropInfo dropInfo)
@@ -127,7 +127,7 @@ namespace Ulysses.App.Controls.DragAndDropExtension.Handlers
 
         protected static bool TestCompatibleTypes(IEnumerable target, object data)
         {
-            TypeFilter filter = (t, o) => t.IsGenericType && t.GetGenericTypeDefinition() == typeof(IEnumerable<>);
+            TypeFilter filter = (t, o) => t.IsGenericType && t.GetGenericTypeDefinition() == typeof (IEnumerable<>);
 
             var enumerableInterfaces = target.GetType().FindInterfaces(filter, null);
             var enumerableTypes = from i in enumerableInterfaces select i.GetGenericArguments().Single();

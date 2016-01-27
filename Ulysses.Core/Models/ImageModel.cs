@@ -31,7 +31,7 @@ namespace Ulysses.Core.Models
             {
                 return false;
             }
-            
+
             return obj.GetType() == typeof (ImageModel) && Equals((ImageModel)obj);
         }
 

@@ -8,6 +8,5 @@ namespace Ulysses.App.Modules.ImageDisplay.Commands
     {
         [CanBeNull]
         Action OnProcessingStop { get; set; }
-
     }
 }

@@ -1,6 +1,6 @@
-﻿using System;
-using System.Windows.Input;
+﻿using System.Windows.Input;
 using Prism.Commands;
+using Ulysses.App.Core.Exceptions;
 
 namespace Ulysses.App.Core.Commands
 {
@@ -10,7 +10,7 @@ namespace Ulysses.App.Core.Commands
         {
             if (!CanExecute(parameter))
             {
-                throw new InvalidOperationException();
+                throw new CannotExecuteCommandException(GetType());
             }
 
             base.Execute(parameter);

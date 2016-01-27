@@ -30,6 +30,7 @@ namespace Ulysses.App.Modules.ImageDisplay
             container.RegisterType<IProcessingEngineFactory, ProcessingEngineFactory>();
             container.RegisterType<IProcessingService, ProcessingService>(new ContainerControlledLifetimeManager());
             container.RegisterType<IImageConverter, BitmapImageConverter>();
+            container.RegisterType<ISetOutputImageCommand, SetOutputImageCommand>();
             container.RegisterType<IStopImageProcessingCommand, StopImageProcessingCommand>();
             container.RegisterType<IStartImageProcessingCommand, StartImageProcessingCommand>();
             container.RegisterType<IImageDisplayViewModel, ImageDisplayViewModel>();

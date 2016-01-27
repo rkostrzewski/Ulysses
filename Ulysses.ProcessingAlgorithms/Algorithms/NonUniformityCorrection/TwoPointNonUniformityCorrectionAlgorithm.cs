@@ -5,7 +5,8 @@ namespace Ulysses.ProcessingAlgorithms.Algorithms.NonUniformityCorrection
 {
     public class TwoPointNonUniformityCorrectionAlgorithm : BaseNonUniformityCorrectionAlgorithm
     {
-        public TwoPointNonUniformityCorrectionAlgorithm(TwoPointNonUniformityCorrectionTemplate correctionAlgorithmTemplate) : base(correctionAlgorithmTemplate.NonUniformityModel)
+        public TwoPointNonUniformityCorrectionAlgorithm(TwoPointNonUniformityCorrectionTemplate correctionAlgorithmTemplate)
+            : base(correctionAlgorithmTemplate.NonUniformityModel)
         {
         }
 

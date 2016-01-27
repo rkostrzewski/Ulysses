@@ -5,7 +5,8 @@ namespace Ulysses.App.Modules.Navigation.Commands
 {
     public class ChangeContentRegionCompositeCommand : CompositeCommand<ContentRegionView>, IChangeContentRegionCompositeCommand
     {
-        public ChangeContentRegionCompositeCommand(IChangeContentRegionsViewCommand changeContentRegionsViewCommand, IChangeCurrentRegionInNavigationPanelCommand changeCurrentRegionInNavigationPanelCommand) : base()
+        public ChangeContentRegionCompositeCommand(IChangeContentRegionsViewCommand changeContentRegionsViewCommand,
+                                                   IChangeCurrentRegionInNavigationPanelCommand changeCurrentRegionInNavigationPanelCommand)
         {
             RegisterCommand(changeContentRegionsViewCommand);
             RegisterCommand(changeCurrentRegionInNavigationPanelCommand);

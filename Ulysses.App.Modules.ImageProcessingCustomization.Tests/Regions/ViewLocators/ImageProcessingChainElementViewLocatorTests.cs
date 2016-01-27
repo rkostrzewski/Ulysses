@@ -15,12 +15,12 @@ namespace Ulysses.App.Modules.ImageProcessingCustomization.Tests.Regions.ViewLoc
         {
             // Given
             var viewLocator = new ImageProcessingChainElementViewLocator();
-            
+
             // When
             var viewType = viewLocator.GetViewType(new TestChainElementTemplateTemplateTemplateTemplate());
 
             // Then
-            Assert.AreEqual(typeof(EmptyChainElementCustomizationView), viewType);
+            Assert.AreEqual(typeof (EmptyChainElementCustomizationView), viewType);
         }
 
         [Test]
@@ -33,7 +33,7 @@ namespace Ulysses.App.Modules.ImageProcessingCustomization.Tests.Regions.ViewLoc
             var viewType = viewLocator.GetViewType(new TwoPointNonUniformityCorrectionTemplate());
 
             // Then
-            Assert.AreEqual(typeof(TwoPointNonUniformityCorrectionCustomizationView), viewType);
+            Assert.AreEqual(typeof (TwoPointNonUniformityCorrectionCustomizationView), viewType);
         }
     }
 }

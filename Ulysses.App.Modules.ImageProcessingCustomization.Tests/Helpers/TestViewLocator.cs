@@ -1,6 +1,5 @@
 ﻿using System;
 using Ulysses.App.Core.Commands.Regions;
-using Ulysses.App.Modules.ImageProcessingCustomization.Models;
 using Ulysses.App.Tests.Regions;
 using Ulysses.Core.Templates;
 

@@ -57,10 +57,8 @@ namespace Ulysses.Core.Tests
             // Given
             var imageModel = new ImageModel(256, 256, ImageBitDepth.Bpp8);
             var random = new Random();
-            var pixels = Enumerable.Range(0, 256 * 256)
-                .Select(i => (ushort)random.Next(ushort.MinValue, ushort.MaxValue))
-                .ToArray();
-            
+            var pixels = Enumerable.Range(0, 256 * 256).Select(i => (ushort)random.Next(ushort.MinValue, ushort.MaxValue)).ToArray();
+
 
             // When
             var image = new Image(pixels, imageModel);
@@ -75,9 +73,7 @@ namespace Ulysses.Core.Tests
             // Given
             var imageModel = new ImageModel(256, 256, ImageBitDepth.Bpp8);
             var random = new Random();
-            var pixels = Enumerable.Range(0, 256 * 256)
-                .Select(i => (Pixel)random.Next(ushort.MinValue, ushort.MaxValue))
-                .ToArray();
+            var pixels = Enumerable.Range(0, 256 * 256).Select(i => (Pixel)random.Next(ushort.MinValue, ushort.MaxValue)).ToArray();
 
 
             // When
@@ -93,9 +89,7 @@ namespace Ulysses.Core.Tests
             // Given
             var imageModel = new ImageModel(256, 256, ImageBitDepth.Bpp12);
             var random = new Random();
-            var pixels = Enumerable.Range(0, 256 * 256)
-                .Select(i => (Pixel)random.Next(ushort.MinValue, ushort.MaxValue))
-                .ToArray();
+            var pixels = Enumerable.Range(0, 256 * 256).Select(i => (Pixel)random.Next(ushort.MinValue, ushort.MaxValue)).ToArray();
 
             // When
             var image = new Image(pixels, imageModel);
@@ -110,9 +104,7 @@ namespace Ulysses.Core.Tests
             // Given
             var imageModel = new ImageModel(256, 128, ImageBitDepth.Bpp12);
             var random = new Random();
-            var pixels = Enumerable.Range(0, 256 * 256)
-                .Select(i => (Pixel)random.Next(ushort.MinValue, ushort.MaxValue))
-                .ToArray();
+            var pixels = Enumerable.Range(0, 256 * 256).Select(i => (Pixel)random.Next(ushort.MinValue, ushort.MaxValue)).ToArray();
 
             // When
             // Then
@@ -120,7 +112,7 @@ namespace Ulysses.Core.Tests
         }
 
         [Test]
-        [TestCaseSource(typeof(ImageTestCases), nameof(ImageTestCases.EqualityTestCases))]
+        [TestCaseSource(typeof (ImageTestCases), nameof(ImageTestCases.EqualityTestCases))]
         public void ShouldCorrectlyMarkEqualityOfImagesUsingEqualityOperator(Image first, Image second, bool expected)
         {
             // Given
@@ -132,7 +124,7 @@ namespace Ulysses.Core.Tests
         }
 
         [Test]
-        [TestCaseSource(typeof(ImageTestCases), nameof(ImageTestCases.EqualityTestCases))]
+        [TestCaseSource(typeof (ImageTestCases), nameof(ImageTestCases.EqualityTestCases))]
         public void ShouldCorrectlyMarkEqualityOfImagesUsingEqualsCall(Image first, Image second, bool expected)
         {
             // Given
@@ -144,7 +136,7 @@ namespace Ulysses.Core.Tests
         }
 
         [Test]
-        [TestCaseSource(typeof(ImageTestCases), nameof(ImageTestCases.EqualityTestCases))]
+        [TestCaseSource(typeof (ImageTestCases), nameof(ImageTestCases.EqualityTestCases))]
         public void ShouldCorrectlyMarkEqualityOfImageAndObjectUsingEqualsCall(Image first, object second, bool expected)
         {
             // Given
@@ -156,7 +148,7 @@ namespace Ulysses.Core.Tests
         }
 
         [Test]
-        [TestCaseSource(typeof(ImageTestCases), nameof(ImageTestCases.EqualityTestCases))]
+        [TestCaseSource(typeof (ImageTestCases), nameof(ImageTestCases.EqualityTestCases))]
         public void ShouldCorrectlyMarkInequalityOfImagesUsingInequalityOperator(Image first, Image second, bool notExpected)
         {
             // Given
@@ -173,9 +165,7 @@ namespace Ulysses.Core.Tests
             // Given
             var imageModel = new ImageModel(2, 2, ImageBitDepth.Bpp12);
             var random = new Random();
-            var pixels = Enumerable.Range(0, 2 * 2)
-                .Select(i => (Pixel)random.Next(ushort.MinValue, ushort.MaxValue))
-                .ToArray();
+            var pixels = Enumerable.Range(0, 2 * 2).Select(i => (Pixel)random.Next(ushort.MinValue, ushort.MaxValue)).ToArray();
 
             var image = new Image(pixels, imageModel);
             var expectedHashCode = (image.ImagePixels.GetHashCode() * 397) ^ imageModel.GetHashCode();

@@ -1,8 +1,10 @@
 ﻿using System;
 using Moq;
 using NUnit.Framework;
+using Prism.Events;
 using Prism.Regions;
 using Ulysses.App.Core.Commands.Regions;
+using Ulysses.App.Core.Exceptions;
 using Ulysses.App.Tests.Regions;
 
 namespace Ulysses.App.Core.Tests.Commands.Regions
@@ -10,10 +12,11 @@ namespace Ulysses.App.Core.Tests.Commands.Regions
     [TestFixture]
     public class ChangeRegionViewCommandCommandTests
     {
+        private IEventAggregator _eventAggregator;
+        private Mock<IRegionManager> _regionManagerMock;
+        private Mock<IRegion> _regionMock;
         private string _regionName;
         private string _viewName;
-        private Mock<IRegion> _regionMock;
-        private Mock<IRegionManager> _regionManagerMock;
 
         [SetUp]
         public void SetUp()
@@ -28,6 +31,8 @@ namespace Ulysses.App.Core.Tests.Commands.Regions
 
             _regionManagerMock = new Mock<IRegionManager>();
             _regionManagerMock.SetupGet(r => r.Regions).Returns(regionCollection);
+
+            _eventAggregator = new Mock<IEventAggregator>().Object;
         }
 
         [Test]
@@ -61,7 +66,7 @@ namespace Ulysses.App.Core.Tests.Commands.Regions
             // Then
 
             Assert.IsFalse(command.CanExecute(notExistingViewName));
-            Assert.Throws<InvalidOperationException>(() => command.Execute(notExistingViewName));
+            Assert.Throws<CannotExecuteCommandException>(() => command.Execute(notExistingViewName));
         }
 
         [Test]
@@ -79,7 +84,7 @@ namespace Ulysses.App.Core.Tests.Commands.Regions
             // Then
 
             Assert.IsFalse(command.CanExecute(_viewName));
-            Assert.Throws<InvalidOperationException>(() => command.Execute(_viewName));
+            Assert.Throws<CannotExecuteCommandException>(() => command.Execute(_viewName));
         }
     }
 }

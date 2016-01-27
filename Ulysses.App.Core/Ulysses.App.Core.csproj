@@ -75,6 +75,7 @@
     <Compile Include="Commands\Regions\IViewLocator.cs" />
     <Compile Include="Converters\GenericToStringConverter.cs" />
     <Compile Include="Events\ShouldUpdateProcessingEngineEvent.cs" />
+    <Compile Include="Exceptions\CannotExecuteCommandException.cs" />
     <Compile Include="Providers\Displayable.cs" />
     <Compile Include="Providers\DisplayableEnumProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -97,6 +98,7 @@
       <Name>Ulysses.ProcessingEngine</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

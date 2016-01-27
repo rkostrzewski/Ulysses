@@ -2,15 +2,14 @@
 using System.Collections.Generic;
 using Ulysses.Core.Models;
 using Ulysses.ImageProviders.FileSystem.ImageReaders;
-using Image = Ulysses.Core.Models.Image;
 
 namespace Ulysses.ImageProviders.FileSystem
 {
     public class FileSystemImageProvider : IImageProvider
     {
         private readonly IEnumerator<string> _filePathsEnumerator;
-        private readonly IImageReader _imageReader;
         private readonly ImageModel _imageModel;
+        private readonly IImageReader _imageReader;
 
         public FileSystemImageProvider(ImageModel imageModel, IEnumerable<string> filePaths)
         {

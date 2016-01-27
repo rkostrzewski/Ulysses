@@ -1,8 +1,6 @@
-﻿using System;
-using System.Windows.Input;
-using Moq;
+﻿using Moq;
 using NUnit.Framework;
-using Ulysses.App.Core.Commands;
+using Ulysses.App.Core.Exceptions;
 using Ulysses.App.Core.Tests.Helpers;
 
 namespace Ulysses.App.Core.Tests.Commands
@@ -79,7 +77,7 @@ namespace Ulysses.App.Core.Tests.Commands
 
             // When
             // Then
-            Assert.Throws<InvalidOperationException>(() => compositeCommand.Execute(true));
+            Assert.Throws<CannotExecuteCommandException>(() => compositeCommand.Execute(true));
         }
 
         [Test]

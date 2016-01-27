@@ -1,6 +1,4 @@
-﻿using MahApps.Metro.Controls;
-
-namespace Ulysses.App
+﻿namespace Ulysses.App
 {
     /// <summary>
     ///     Interaction logic for Shell.xaml

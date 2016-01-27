@@ -1,6 +1,4 @@
-﻿using Ulysses.Core.Models;
-
-namespace Ulysses.ImageProviders.Templates
+﻿namespace Ulysses.ImageProviders.Templates
 {
     public class CameraImageProviderTemplate
     {

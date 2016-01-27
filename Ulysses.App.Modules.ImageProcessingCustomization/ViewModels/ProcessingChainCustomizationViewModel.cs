@@ -13,12 +13,13 @@ namespace Ulysses.App.Modules.ImageProcessingCustomization.ViewModels
 {
     public class ProcessingChainCustomizationViewModel : NotifyPropertyChanged, IProcessingChainCustomizationViewModel
     {
-        private readonly IProcessingChainBuilderDataStore _processingChainDataStore;
         private readonly IChangeProcessingChainElementCustomizationRegionViewCommand _changeImageProcessingChainElementCustomizationRegionViewCommand;
+        private readonly IProcessingChainBuilderDataStore _processingChainDataStore;
         private IProcessingChainElementTemplate _selectedProcessingChainElementTemplate;
 
         public ProcessingChainCustomizationViewModel(IProcessingChainBuilderDataStore processingChainDataStore,
-                                                     IChangeProcessingChainElementCustomizationRegionViewCommand changeImageProcessingChainElementCustomizationRegionViewCommand,
+                                                     IChangeProcessingChainElementCustomizationRegionViewCommand
+                                                         changeImageProcessingChainElementCustomizationRegionViewCommand,
                                                      IUpdateProcessingEngineCommand updateProcessingEngineCommand,
                                                      IProcessingChainDragHandler dragHandler,
                                                      IProcessingChainDropHandler dropHandler)

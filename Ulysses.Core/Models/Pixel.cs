@@ -9,7 +9,7 @@ namespace Ulysses.Core.Models
             _value = value;
         }
 
-        public static implicit operator byte (Pixel p)
+        public static implicit operator byte(Pixel p)
         {
             return p._value > byte.MaxValue ? byte.MaxValue : (byte)p._value;
         }
@@ -19,7 +19,7 @@ namespace Ulysses.Core.Models
             return p._value;
         }
 
-        public static implicit operator int (Pixel p)
+        public static implicit operator int(Pixel p)
         {
             return p._value;
         }
@@ -52,7 +52,7 @@ namespace Ulysses.Core.Models
         public static Pixel operator *(Pixel p1, Pixel p2)
         {
             var product = (long)p1._value * p2._value;
-            
+
             return product > ushort.MaxValue ? ushort.MaxValue : (ushort)product;
         }
 

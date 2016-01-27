@@ -3,7 +3,7 @@
 namespace Ulysses.ProcessingAlgorithms.Exceptions
 {
     [Serializable]
-    public class NotSupportedNonUniformityCorrectionAlgorithm : Exception
+    public class InvalidNonUniformityModelSourceFormatException : Exception
     {
     }
 }

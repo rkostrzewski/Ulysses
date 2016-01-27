@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
+using Ulysses.Core.Models;
 using Ulysses.ProcessingAlgorithms.Templates;
 
 namespace Ulysses.ProcessingAlgorithms.Factories
@@ -13,9 +13,14 @@ namespace Ulysses.ProcessingAlgorithms.Factories
             _imageProcessingAlgorithmsFactory = imageProcessingAlgorithmsFactory;
         }
 
-        public IImageProcessingChain BuildChain(IEnumerable<IImageProcessingAlgorithmTemplate> templates)
+        public IImageProcessingChain BuildChain(IEnumerable<IImageProcessingAlgorithmTemplate> templates, ImageModel initialImageModel)
         {
-            var preparedAlgorithms = templates.Select(template => _imageProcessingAlgorithmsFactory.CreateInstance(template));
+            //var preparedAlgorithms = templates.Select(template => _imageProcessingAlgorithmsFactory.CreateInstance(template, initialImageModel));
+            var preparedAlgorithms = new List<IImageProcessingAlgorithm>();
+            foreach (var template in templates)
+            {
+                preparedAlgorithms.Add(_imageProcessingAlgorithmsFactory.CreateInstance(template, initialImageModel));
+            }
 
             return new ImageProcessingChain(preparedAlgorithms);
         }

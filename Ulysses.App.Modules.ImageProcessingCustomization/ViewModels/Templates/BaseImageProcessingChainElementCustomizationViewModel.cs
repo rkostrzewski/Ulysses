@@ -1,7 +1,7 @@
-using System;
 using System.Linq;
 using Prism.Regions;
 using Ulysses.App.Core.ViewModels;
+using Ulysses.App.Modules.ImageProcessingCustomization.Exceptions;
 using Ulysses.App.Modules.ImageProcessingCustomization.Models.DataStore;
 using Ulysses.Core.Templates;
 
@@ -17,7 +17,7 @@ namespace Ulysses.App.Modules.ImageProcessingCustomization.ViewModels.Templates
         {
             if (!typeof (IProcessingChainElementTemplate).IsAssignableFrom(typeof (T)))
             {
-                throw new InvalidOperationException();
+                throw new InvalidProcessingChainElementException();
             }
 
             DataStore = dataStore;

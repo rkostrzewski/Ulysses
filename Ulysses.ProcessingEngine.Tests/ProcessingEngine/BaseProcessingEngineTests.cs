@@ -12,8 +12,8 @@ namespace Ulysses.ProcessingEngine.Tests.ProcessingEngine
 {
     public class BaseProcessingEngineTests
     {
-        protected int TimesImageProviderCalled;
         protected int TimesImageProcessingChainCalled;
+        protected int TimesImageProviderCalled;
         protected int TimesReceiveProcessedImageCommandCalled;
 
         protected Mock<IImageProvider> ImageProvider

@@ -30,6 +30,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="JetBrains.Annotations, Version=10.0.0.0, Culture=neutral, PublicKeyToken=1010a0d8d6380325, processorArchitecture=MSIL">
+      <HintPath>..\packages\JetBrains.Annotations.10.0.0\lib\net20\JetBrains.Annotations.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="MahApps.Metro, Version=1.2.4.0, Culture=neutral, PublicKeyToken=f4fb5a3c4d1e5b4f, processorArchitecture=MSIL">
       <HintPath>..\packages\MahApps.Metro.1.2.4.0\lib\net45\MahApps.Metro.dll</HintPath>
       <Private>True</Private>
@@ -48,6 +52,18 @@
     </Reference>
     <Reference Include="Microsoft.Practices.Unity.RegistrationByConvention, Version=4.0.0.0, Culture=neutral, PublicKeyToken=6d32ff45e0ccc69f, processorArchitecture=MSIL">
       <HintPath>..\packages\Unity.4.0.1\lib\net45\Microsoft.Practices.Unity.RegistrationByConvention.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.WindowsAPICodePack, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.WindowsAPICodePack-Core.1.1.0.0\lib\Microsoft.WindowsAPICodePack.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.WindowsAPICodePack.Shell, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.WindowsAPICodePack-Shell.1.1.0.0\lib\Microsoft.WindowsAPICodePack.Shell.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.WindowsAPICodePack.ShellExtensions, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.WindowsAPICodePack-Shell.1.1.0.0\lib\Microsoft.WindowsAPICodePack.ShellExtensions.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="PresentationCore" />
@@ -85,9 +101,15 @@
   <ItemGroup>
     <Compile Include="Commands\ChangeProcessingChainElementCustomizationRegionViewCommand.cs" />
     <Compile Include="Commands\IChangeProcessingChainElementCustomizationRegionViewCommand.cs" />
+    <Compile Include="Commands\ISelectFileCommand.cs" />
+    <Compile Include="Commands\ISelectFolderCommand.cs" />
     <Compile Include="Commands\IUpdateProcessingEngineCommand.cs" />
     <Compile Include="Commands\NavigateToProcessingChainElementCustomizationViewCommand.cs" />
+    <Compile Include="Commands\SelectFileCommand.cs" />
+    <Compile Include="Commands\SelectFolderCommand.cs" />
     <Compile Include="Commands\UpdateProcessingEngineCommand.cs" />
+    <Compile Include="Exceptions\InvalidProcessingChainElementException.cs" />
+    <Compile Include="Exceptions\InvalidProcessingChainElementInsertionException.cs" />
     <Compile Include="ImageProcessingCustomizationModule.cs" />
     <Compile Include="Models\DataStore\IProcessingChainBuilderDataStore.cs" />
     <Compile Include="Models\DataStore\ProcessingChainDataStore.cs" />

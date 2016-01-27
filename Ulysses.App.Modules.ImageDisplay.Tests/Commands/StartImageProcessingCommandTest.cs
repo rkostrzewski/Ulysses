@@ -1,6 +1,6 @@
-﻿using System;
-using Moq;
+﻿using Moq;
 using NUnit.Framework;
+using Ulysses.App.Core.Exceptions;
 using Ulysses.App.Modules.ImageDisplay.Commands;
 using Ulysses.App.Modules.ImageDisplay.Models;
 using Ulysses.ProcessingEngine.ProcessingEngine;
@@ -41,7 +41,7 @@ namespace Ulysses.App.Modules.ImageDisplay.Tests.Commands
             // When         
             // Then
             Assert.IsFalse(command.CanExecute());
-            Assert.Throws<InvalidOperationException>(command.Execute);
+            Assert.Throws<CannotExecuteCommandException>(command.Execute);
         }
 
         [Test]

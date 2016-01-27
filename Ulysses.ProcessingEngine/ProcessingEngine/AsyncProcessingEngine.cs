@@ -11,8 +11,8 @@ namespace Ulysses.ProcessingEngine.ProcessingEngine
 {
     public class AsyncProcessingEngine : IProcessingEngine
     {
-        private readonly IImageProvider _imageProvider;
         private readonly IImageProcessingChain _imageProcessingChain;
+        private readonly IImageProvider _imageProvider;
         private readonly AsyncProcessingMediator _mediator;
         private readonly IReceiveProcessedImageCommand _setOutputImageCommand;
         private volatile CancellationTokenSource _cancellationTokenSource;

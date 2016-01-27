@@ -41,8 +41,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Algorithms\NonUniformityCorrection\BaseNonUniformityCorrectionAlgorithm.cs" />
+    <Compile Include="Algorithms\NonUniformityCorrection\NonUniformityModels\INonUniformityModelProvider.cs" />
+    <Compile Include="Algorithms\NonUniformityCorrection\NonUniformityModels\NonUniformityModelProvider.cs" />
     <Compile Include="Algorithms\NonUniformityCorrection\TwoPointNonUniformityCorrectionAlgorithm.cs" />
-    <Compile Include="Exceptions\NotSupportedNonUniformityCorrectionAlgorithm.cs" />
+    <Compile Include="Exceptions\AlgorithmCreationException.cs" />
+    <Compile Include="Exceptions\InvalidNonUniformityModelSourceFormatException.cs" />
     <Compile Include="Factories\IImageProcessingAlgorithmsFactory.cs" />
     <Compile Include="Factories\IImageProcessingChainFactory.cs" />
     <Compile Include="Factories\ImageProcessingAlgorithmsFactory.cs" />
