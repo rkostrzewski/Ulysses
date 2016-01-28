@@ -2,6 +2,7 @@
 using Moq;
 using NUnit.Framework;
 using Ulysses.App.Modules.ImageProcessingCustomization.Commands;
+using Ulysses.App.Modules.ImageProcessingCustomization.Models;
 using Ulysses.App.Modules.ImageProcessingCustomization.Models.DataStore;
 using Ulysses.App.Modules.ImageProcessingCustomization.ViewModels;
 using Ulysses.App.Modules.ImageProcessingCustomization.ViewModels.DragAndDrop;
@@ -12,12 +13,13 @@ namespace Ulysses.App.Modules.ImageProcessingCustomization.Tests.ViewModels
     [TestFixture]
     public class ProcessingChainCustomizationViewModelTests
     {
+        private IAvailableProcessingChainElements _availableProcessingChainElements;
         private Mock<IChangeProcessingChainElementCustomizationRegionViewCommand> _changeCustomizationRegionViewCommandMock;
         private IProcessingChainBuilderDataStore _dataStore;
         private IProcessingChainDragHandler _dragHandler;
         private IProcessingChainDropHandler _dropHandler;
-        private IUpdateProcessingEngineCommand _updateProcessingEngineCommand;
         private IRemoveItemFromProcessingChainCommand _removeItemFromProcessingChainCommand;
+        private IUpdateProcessingEngineCommand _updateProcessingEngineCommand;
 
         [SetUp]
         public void SetUp()
@@ -28,6 +30,7 @@ namespace Ulysses.App.Modules.ImageProcessingCustomization.Tests.ViewModels
             _dragHandler = new Mock<IProcessingChainDragHandler>().Object;
             _updateProcessingEngineCommand = new Mock<IUpdateProcessingEngineCommand>().Object;
             _removeItemFromProcessingChainCommand = new Mock<IRemoveItemFromProcessingChainCommand>().Object;
+            _availableProcessingChainElements = new Mock<IAvailableProcessingChainElements>().Object;
         }
 
         [Test]
@@ -36,6 +39,7 @@ namespace Ulysses.App.Modules.ImageProcessingCustomization.Tests.ViewModels
             // Given
             // When
             var viewModel = new ProcessingChainCustomizationViewModel(_dataStore,
+                                                                      _availableProcessingChainElements,
                                                                       _changeCustomizationRegionViewCommandMock.Object,
                                                                       _updateProcessingEngineCommand,
                                                                       _removeItemFromProcessingChainCommand,
@@ -52,6 +56,7 @@ namespace Ulysses.App.Modules.ImageProcessingCustomization.Tests.ViewModels
         {
             // Given
             var viewModel = new ProcessingChainCustomizationViewModel(_dataStore,
+                                                                      _availableProcessingChainElements,
                                                                       _changeCustomizationRegionViewCommandMock.Object,
                                                                       _updateProcessingEngineCommand,
                                                                       _removeItemFromProcessingChainCommand,
@@ -73,6 +78,7 @@ namespace Ulysses.App.Modules.ImageProcessingCustomization.Tests.ViewModels
         {
             // Given
             var viewModel = new ProcessingChainCustomizationViewModel(_dataStore,
+                                                                      _availableProcessingChainElements,
                                                                       _changeCustomizationRegionViewCommandMock.Object,
                                                                       _updateProcessingEngineCommand,
                                                                       _removeItemFromProcessingChainCommand,

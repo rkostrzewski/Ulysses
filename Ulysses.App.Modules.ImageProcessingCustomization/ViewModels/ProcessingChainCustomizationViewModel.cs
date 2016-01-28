@@ -7,9 +7,6 @@ using Ulysses.App.Modules.ImageProcessingCustomization.Models;
 using Ulysses.App.Modules.ImageProcessingCustomization.Models.DataStore;
 using Ulysses.App.Modules.ImageProcessingCustomization.ViewModels.DragAndDrop;
 using Ulysses.Core.Templates;
-using Ulysses.ProcessingAlgorithms.Templates;
-using Ulysses.ProcessingAlgorithms.Templates.DummyAlgorithms;
-using Ulysses.ProcessingAlgorithms.Templates.NonUniformityCorrection;
 
 namespace Ulysses.App.Modules.ImageProcessingCustomization.ViewModels
 {
@@ -39,7 +36,7 @@ namespace Ulysses.App.Modules.ImageProcessingCustomization.ViewModels
             AvailableImageProcessingAlgorithmTemplates = availableProcessingChainElements.ToList();
         }
 
-        public IList<IImageProcessingAlgorithmTemplate> AvailableImageProcessingAlgorithmTemplates { get; set; }
+        public IList<IProcessingChainElementTemplate> AvailableImageProcessingAlgorithmTemplates { get; set; }
 
         public ObservableCollection<IProcessingChainElementTemplate> ProcessingChainElements => _processingChainDataStore.ProcessingChainTemplate;
 
