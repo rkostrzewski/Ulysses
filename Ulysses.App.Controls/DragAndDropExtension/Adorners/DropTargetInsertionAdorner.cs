@@ -9,10 +9,13 @@ namespace Ulysses.App.Controls.DragAndDropExtension.Adorners
     {
         private static readonly Pen Pen;
         private static readonly PathGeometry Triangle;
+        protected static double ScaleFactor;
 
         static DropTargetInsertionAdorner()
         {
             const int triangleSize = 3;
+
+            ScaleFactor = 1.0d;
 
             Pen = new Pen(Brushes.Gray, 2);
             Pen.Freeze();
@@ -56,9 +59,10 @@ namespace Ulysses.App.Controls.DragAndDropExtension.Adorners
             }
 
             var itemRect = new Rect(itemContainer.TranslatePoint(new Point(), AdornedElement), itemContainer.RenderSize);
+            
             Point startPoint, endPoint;
             double rotation = 0;
-
+            int length;
             switch (DropInfo.VisualTargetOrientation)
             {
                 case Orientation.Horizontal:
@@ -66,9 +70,9 @@ namespace Ulysses.App.Controls.DragAndDropExtension.Adorners
                     {
                         itemRect.X += itemContainer.RenderSize.Width;
                     }
-
-                    startPoint = new Point(itemRect.X, itemRect.Y);
-                    endPoint = new Point(itemRect.X, itemRect.Bottom);
+                    length = (int)((itemRect.Bottom - itemRect.Y) * ScaleFactor);
+                    startPoint = new Point(itemRect.X, itemRect.Y + length);
+                    endPoint = new Point(itemRect.X, itemRect.Bottom - length);
                     rotation = 90;
                     break;
                 case Orientation.Vertical:
@@ -77,8 +81,9 @@ namespace Ulysses.App.Controls.DragAndDropExtension.Adorners
                         itemRect.Y += itemContainer.RenderSize.Height;
                     }
 
-                    startPoint = new Point(itemRect.X, itemRect.Y);
-                    endPoint = new Point(itemRect.Right, itemRect.Y);
+                    length = (int)((itemRect.Right - itemRect.X) * ScaleFactor);
+                    startPoint = new Point(itemRect.X, itemRect.Y + length);
+                    endPoint = new Point(itemRect.Right, itemRect.Y - length);
                     break;
                 default:
                     throw new ArgumentOutOfRangeException();

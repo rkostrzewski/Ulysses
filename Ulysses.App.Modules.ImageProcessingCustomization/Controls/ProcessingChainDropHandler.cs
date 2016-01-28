@@ -3,6 +3,7 @@ using System.Collections;
 using System.Linq;
 using Ulysses.App.Controls.DragAndDropExtension;
 using Ulysses.App.Controls.DragAndDropExtension.Handlers;
+using Ulysses.App.Modules.ImageProcessingCustomization.Controls;
 using Ulysses.ProcessingAlgorithms.Templates;
 
 namespace Ulysses.App.Modules.ImageProcessingCustomization.ViewModels.DragAndDrop
@@ -22,6 +23,7 @@ namespace Ulysses.App.Modules.ImageProcessingCustomization.ViewModels.DragAndDro
             }
 
             base.DragOver(dropInfo);
+            dropInfo.DropTargetAdorner = typeof (ProcessingChainDropTargetInsertionAdorner);
         }
 
         public override void Drop(IDropInfo dropInfo)

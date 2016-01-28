@@ -108,6 +108,7 @@
     <Compile Include="Commands\SelectFileCommand.cs" />
     <Compile Include="Commands\SelectFolderCommand.cs" />
     <Compile Include="Commands\UpdateProcessingEngineCommand.cs" />
+    <Compile Include="Controls\ProcessingChainDropTargetInsertionAdorner.cs" />
     <Compile Include="Exceptions\InvalidProcessingChainElementException.cs" />
     <Compile Include="Exceptions\InvalidProcessingChainElementInsertionException.cs" />
     <Compile Include="ImageProcessingCustomizationModule.cs" />
@@ -121,10 +122,10 @@
     <Compile Include="Regions\ViewLocators\IImageProcessingChainElementViewLocator.cs" />
     <Compile Include="Regions\ViewLocators\ImageProcessingChainElementViewLocator.cs" />
     <Compile Include="ViewModels\IProcessingChainCustomizationViewModel.cs" />
-    <Compile Include="ViewModels\DragAndDrop\IProcessingChainDragHandler.cs" />
-    <Compile Include="ViewModels\DragAndDrop\IProcessingChainDropHandler.cs" />
-    <Compile Include="ViewModels\DragAndDrop\ProcessingChainDragHandler.cs" />
-    <Compile Include="ViewModels\DragAndDrop\ProcessingChainDropHandler.cs" />
+    <Compile Include="Controls\IProcessingChainDragHandler.cs" />
+    <Compile Include="Controls\IProcessingChainDropHandler.cs" />
+    <Compile Include="Controls\ProcessingChainDragHandler.cs" />
+    <Compile Include="Controls\ProcessingChainDropHandler.cs" />
     <Compile Include="ViewModels\ProcessingChainCustomizationViewModel.cs" />
     <Compile Include="ViewModels\Templates\BaseImageProcessingChainElementCustomizationViewModel.cs" />
     <Compile Include="ViewModels\Templates\ImageProvider\IImageProviderCustomizationViewModel.cs" />

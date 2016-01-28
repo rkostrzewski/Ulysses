@@ -27,6 +27,7 @@
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="180" />
+            <ColumnDefinition Width="10" />
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
         <ListView ItemsSource="{Binding AvailableImageProcessingAlgorithmTemplates}"
@@ -52,29 +53,25 @@
                 </GroupStyle>
             </ListView.GroupStyle>
         </ListView>
-        <Grid Grid.Column="1">
+        <Grid Grid.Column="2">
             <Grid.RowDefinitions>
                 <RowDefinition Height="120" />
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
-            <Grid Grid.Row="0">
-                <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Hidden">
-                    <StackPanel Orientation="Horizontal" Height="45">
-                        <ListBox MinWidth="60" Padding="0" Margin="0"
-                                 SelectionMode="Single"
-                                 SelectedItem="{Binding SelectedProcessingChainElementTemplate}"
-                                 ItemsSource="{Binding ProcessingChainElements}"
-                                 ItemsPanel="{StaticResource ProcessingChainItemsPanelTemplate}"
-                                 ItemTemplate="{StaticResource ProcessingChainItemTemplate}"
-                                 ItemContainerStyle="{StaticResource ProcessingChainItemContainerStyle}"
-                                 Template="{StaticResource ProcessingChainTemplate}"
-                                 dragAndDrop:DragDrop.IsDragSource="True"
-                                 dragAndDrop:DragDrop.IsDropTarget="True"
-                                 dragAndDrop:DragDrop.DragHandler="{Binding DragHandler}"
-                                 dragAndDrop:DragDrop.DropHandler="{Binding DropHandler}" />
-                    </StackPanel>
-                </ScrollViewer>
-            </Grid>
+            <ListBox Grid.Row="0"
+                     MinWidth="60"
+                     VerticalContentAlignment="Center"
+                     SelectionMode="Single"
+                     SelectedItem="{Binding SelectedProcessingChainElementTemplate}"
+                     ItemsSource="{Binding ProcessingChainElements}"
+                     ItemsPanel="{StaticResource ProcessingChainItemsPanelTemplate}"
+                     ItemTemplate="{StaticResource ProcessingChainItemTemplate}"
+                     ItemContainerStyle="{StaticResource ProcessingChainItemContainerStyle}"
+                     Template="{StaticResource ProcessingChainTemplate}"
+                     dragAndDrop:DragDrop.IsDragSource="True"
+                     dragAndDrop:DragDrop.IsDropTarget="True"
+                     dragAndDrop:DragDrop.DragHandler="{Binding DragHandler}"
+                     dragAndDrop:DragDrop.DropHandler="{Binding DropHandler}" />
             <Grid Grid.Row="1">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*" />

@@ -50,7 +50,6 @@
   <ItemGroup>
     <Compile Include="DragAndDropExtension\Adorners\DragAdorner.cs" />
     <Compile Include="DragAndDropExtension\Adorners\DropTargetAdorner.cs" />
-    <Compile Include="DragAndDropExtension\Adorners\DropTargetHighlightAdorner.cs" />
     <Compile Include="DragAndDropExtension\Adorners\DropTargetInsertionAdorner.cs" />
     <Compile Include="DragAndDropExtension\DragAndDrop\DragDrop.cs" />
     <Compile Include="DragAndDropExtension\DragAndDrop\DragDropAttachedProperties.cs" />
