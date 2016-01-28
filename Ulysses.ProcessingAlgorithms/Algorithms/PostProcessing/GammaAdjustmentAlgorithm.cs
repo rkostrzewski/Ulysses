@@ -9,7 +9,7 @@ namespace Ulysses.ProcessingAlgorithms.Algorithms.PostProcessing
     {
         private readonly Pixel[] _lookupTable;
 
-        public GammaAdjustmentAlgorithm(ContrastAdjustmentTemplate template)
+        public GammaAdjustmentAlgorithm(GammaAdjustmentAlgorithm template)
         {
             double imageDynamicRange;
 

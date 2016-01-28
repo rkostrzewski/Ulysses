@@ -2,6 +2,6 @@
 {
     public interface IContrastAdjustmentCustomizationViewModel
     {
-        int AdjustmentValue { get; set; }
+        double AdjustmentValue { get; set; }
     }
 }

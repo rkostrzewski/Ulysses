@@ -71,6 +71,7 @@
     <Compile Include="Templates\NonUniformityCorrection\ConstantRangeNonUniformityCorrectionTemplate.cs" />
     <Compile Include="Templates\NonUniformityCorrection\TwoPointNonUniformityCorrectionTemplate.cs" />
     <Compile Include="Templates\PostProcessing\ContrastAdjustmentTemplate.cs" />
+    <Compile Include="Templates\PostProcessing\GammaAdjustmentTemplate.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Ulysses.Core\Ulysses.Core.csproj">

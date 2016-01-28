@@ -2,6 +2,6 @@
 {
     public interface IGammaAdjustmentCustomizationViewModel
     {
-        int AdjustmentValue { get; set; }
+        double AdjustmentValue { get; set; }
     }
 }

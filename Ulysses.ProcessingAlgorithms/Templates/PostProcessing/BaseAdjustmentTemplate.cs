@@ -9,7 +9,7 @@ namespace Ulysses.ProcessingAlgorithms.Templates.PostProcessing
         public ImageModel ImageModel { get; set; }
         public abstract Type AlgorithmType { get; }
         public ImageProcessingAlgorithmGroup Group { get; }
-        public int AdjustmentValue { get; set; }
+        public double AdjustmentValue { get; set; }
         public override string ElementName => AlgorithmType.Name;
     }
 }

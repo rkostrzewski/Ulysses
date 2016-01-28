@@ -1,4 +1,5 @@
-﻿using Ulysses.App.Modules.ImageProcessingCustomization.Models.DataStore;
+﻿using System;
+using Ulysses.App.Modules.ImageProcessingCustomization.Models.DataStore;
 using Ulysses.ProcessingAlgorithms.Templates.PostProcessing;
 
 namespace Ulysses.App.Modules.ImageProcessingCustomization.ViewModels.Templates.PostProcessing
@@ -9,7 +10,7 @@ namespace Ulysses.App.Modules.ImageProcessingCustomization.ViewModels.Templates.
         {
         }
 
-        public int AdjustmentValue
+        public double AdjustmentValue
         {
             get
             {
@@ -17,7 +18,7 @@ namespace Ulysses.App.Modules.ImageProcessingCustomization.ViewModels.Templates.
             }
             set
             {
-                if (ChainElement.AdjustmentValue == value)
+                if (Math.Abs(ChainElement.AdjustmentValue - value) < double.Epsilon)
                 {
                     return;
                 }

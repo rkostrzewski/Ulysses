@@ -7,9 +7,4 @@ namespace Ulysses.ProcessingAlgorithms.Templates.PostProcessing
     {
         public override Type AlgorithmType => typeof (BrightnessAdjustmentAlgorithm);
     }
-
-    public class GammaAdjustmentTemplate : BaseAdjustmentTemplate
-    {
-        public override Type AlgorithmType => typeof(GammaAdjustmentAlgorithm);
-    }
 }

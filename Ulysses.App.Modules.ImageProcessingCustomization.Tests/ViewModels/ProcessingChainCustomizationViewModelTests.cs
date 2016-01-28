@@ -30,7 +30,7 @@ namespace Ulysses.App.Modules.ImageProcessingCustomization.Tests.ViewModels
             _dragHandler = new Mock<IProcessingChainDragHandler>().Object;
             _updateProcessingEngineCommand = new Mock<IUpdateProcessingEngineCommand>().Object;
             _removeItemFromProcessingChainCommand = new Mock<IRemoveItemFromProcessingChainCommand>().Object;
-            _availableProcessingChainElements = new Mock<IAvailableProcessingChainElements>().Object;
+            _availableProcessingChainElements = new AvailableProcessingChainElements();
         }
 
         [Test]
