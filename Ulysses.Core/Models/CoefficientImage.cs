@@ -106,6 +106,17 @@ namespace Ulysses.Core.Models
             return new ProcessedImage(imagePixels, image.ImageModel);
         }
 
+        public static ProcessedImage operator *(ProcessedImage first, ProcessedImage second)
+        {
+            if (first.ImageModel != second.ImageModel)
+            {
+                throw new ImageModelMismatchException();
+            }
+
+            var imagePixels = first.Values.Zip(second.Values, (f, s) => (f * s));
+            return new ProcessedImage(imagePixels, first.ImageModel);
+        }
+
         public static ProcessedImage operator *(double scalar, ProcessedImage processedImage)
         {
             var imagePixels = processedImage.Values.Select(c => scalar * c);
