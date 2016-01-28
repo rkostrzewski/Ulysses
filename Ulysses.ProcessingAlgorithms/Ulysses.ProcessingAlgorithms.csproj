@@ -41,6 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Algorithms\NonUniformityCorrection\BaseNonUniformityCorrectionAlgorithm.cs" />
+    <Compile Include="Algorithms\NonUniformityCorrection\ConstantRangeNonUniformityCorrectionAlgorithm.cs" />
     <Compile Include="Algorithms\NonUniformityCorrection\NonUniformityModels\INonUniformityModelProvider.cs" />
     <Compile Include="Algorithms\NonUniformityCorrection\NonUniformityModels\NonUniformityModelProvider.cs" />
     <Compile Include="Algorithms\NonUniformityCorrection\TwoPointNonUniformityCorrectionAlgorithm.cs" />
@@ -53,6 +54,7 @@
     <Compile Include="IImageProcessingChain.cs" />
     <Compile Include="ImageProcessingChain.cs" />
     <Compile Include="Algorithms\DummyAlgorithms\Sleeper.cs" />
+    <Compile Include="Templates\BaseImageProcessingAlgorithmTemplate.cs" />
     <Compile Include="Templates\DummyAlgorithms\SleeperTemplate.cs" />
     <Compile Include="Templates\IImageProcessingAlgorithmTemplate.cs" />
     <Compile Include="Templates\NonUniformityCorrection\BaseNonUniformityCorrectionTemplate.cs" />
@@ -61,6 +63,7 @@
     <Compile Include="Algorithms\NonUniformityCorrection\NonUniformityModels\NonUniformityModel.cs" />
     <Compile Include="Templates\ImageProcessingAlgorithmGroup.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Templates\NonUniformityCorrection\ConstantRangeNonUniformityCorrectionTemplate.cs" />
     <Compile Include="Templates\NonUniformityCorrection\TwoPointNonUniformityCorrectionTemplate.cs" />
   </ItemGroup>
   <ItemGroup>

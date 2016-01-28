@@ -35,6 +35,7 @@ namespace Ulysses.App.Modules.ImageProcessingCustomization.ViewModels
             AvailableImageProcessingAlgorithmTemplates = new List<IImageProcessingAlgorithmTemplate>
             {
                 new TwoPointNonUniformityCorrectionTemplate(),
+                new ConstantRangeNonUniformityCorrectionTemplate(),
                 new SleeperTemplate()
             };
         }

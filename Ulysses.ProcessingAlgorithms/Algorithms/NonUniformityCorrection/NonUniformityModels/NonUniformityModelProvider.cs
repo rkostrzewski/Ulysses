@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using Ulysses.Core.Models;
 using Ulysses.ProcessingAlgorithms.Exceptions;
 
@@ -9,6 +10,7 @@ namespace Ulysses.ProcessingAlgorithms.Algorithms.NonUniformityCorrection.NonUni
         public NonUniformityModel GetNonUniformityModel(string sourceFilePath, ImageModel imageModel)
         {
             var fileInfo = new FileInfo(sourceFilePath);
+
             var imageLength = imageModel.Width * imageModel.Height;
             var bytesToRead = 2 * imageLength * sizeof (double);
 

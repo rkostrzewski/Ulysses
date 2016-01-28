@@ -129,6 +129,8 @@
     <Compile Include="ViewModels\Templates\BaseImageProcessingChainElementCustomizationViewModel.cs" />
     <Compile Include="ViewModels\Templates\ImageProvider\IImageProviderCustomizationViewModel.cs" />
     <Compile Include="ViewModels\Templates\ImageProvider\ImageProviderCustomizationViewModel.cs" />
+    <Compile Include="ViewModels\Templates\NonUniformityCorrection\ConstantRangeNonUniformityCorrectionCustomizationViewModel.cs" />
+    <Compile Include="ViewModels\Templates\NonUniformityCorrection\IConstantRangeNonUniformityCorrectionCustomizationViewModel.cs" />
     <Compile Include="ViewModels\Templates\NonUniformityCorrection\ITwoPointNonUniformityCorrectionCustomizationViewModel.cs" />
     <Compile Include="ViewModels\Templates\NonUniformityCorrection\TwoPointNonUniformityCorrectionCustomizationViewModel.cs" />
     <Compile Include="ViewModels\Templates\Utilities\ISleeperViewModel.cs" />
@@ -141,6 +143,9 @@
     </Compile>
     <Compile Include="Views\TemplateViews\ImageProvider\ImageProviderCustomizationView.xaml.cs">
       <DependentUpon>ImageProviderCustomizationView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\TemplateViews\NonUniformityCorrection\ConstantRangeNonUniformityCorrectionCustomizationView.xaml.cs">
+      <DependentUpon>ConstantRangeNonUniformityCorrectionCustomizationView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\TemplateViews\NonUniformityCorrection\TwoPointNonUniformityCorrectionCustomizationView.cs">
       <DependentUpon>TwoPointNonUniformityCorrectionCustomizationView.xaml</DependentUpon>
@@ -170,6 +175,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\TemplateViews\NonUniformityCorrection\ConstantRangeNonUniformityCorrectionCustomizationView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\TemplateViews\NonUniformityCorrection\TwoPointNonUniformityCorrectionCustomizationView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -179,9 +188,7 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="ViewModels\Templates\ImageDisplay\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\Ulysses.App.Controls\Ulysses.App.Controls.csproj">
       <Project>{25c54779-f8bc-491c-959c-3ffa006b91cf}</Project>

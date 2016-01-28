@@ -1,17 +1,16 @@
 ﻿using System;
-using Ulysses.Core.Templates;
 using Ulysses.ProcessingAlgorithms.Algorithms.DummyAlgorithms;
 
 namespace Ulysses.ProcessingAlgorithms.Templates.DummyAlgorithms
 {
-    public class SleeperTemplate : BaseProcessingChainElementTemplate, IImageProcessingAlgorithmTemplate
+    public class SleeperTemplate : BaseImageProcessingAlgorithmTemplate, IImageProcessingAlgorithmTemplate
     {
         public int SleepTimeInMilliseconds { get; set; }
 
         public override string ElementName => nameof(Sleeper);
 
-        public Type AlgorithmType => typeof (Sleeper);
+        public override ImageProcessingAlgorithmGroup Group { get; }
 
-        public ImageProcessingAlgorithmGroup Group { get; }
+        public override Type AlgorithmType => typeof (Sleeper);
     }
 }

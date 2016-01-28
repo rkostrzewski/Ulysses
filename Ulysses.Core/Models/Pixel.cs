@@ -1,3 +1,5 @@
+using System;
+
 namespace Ulysses.Core.Models
 {
     public struct Pixel
@@ -84,6 +86,26 @@ namespace Ulysses.Core.Models
         public override int GetHashCode()
         {
             return _value.GetHashCode();
+        }
+
+        public Pixel ConvertToBitDepth(ImageBitDepth bitDepthFrom, ImageBitDepth bitDepthTo)
+        {
+            if (bitDepthFrom == bitDepthTo)
+            {
+                return _value;
+            }
+
+            if (bitDepthFrom == ImageBitDepth.Bpp8 && bitDepthTo == ImageBitDepth.Bpp12)
+            {
+                return _value << 4;
+            }
+
+            if (bitDepthFrom == ImageBitDepth.Bpp12 && bitDepthTo == ImageBitDepth.Bpp8)
+            {
+                return _value >> 4;
+            }
+
+            throw new InvalidOperationException();
         }
     }
 }

@@ -47,13 +47,14 @@
     <Compile Include="Camera\CameraStream\CameraStreamConfiguration.cs" />
     <Compile Include="Camera\CameraStream\CameraStreamToImageConverter.cs" />
     <Compile Include="Camera\Udp\UdpClient.cs" />
-    <Compile Include="Exception\NotSupportedImageException.cs" />
+    <Compile Include="Exceptions\NotSupportedImageSizeForCameraProviderException.cs" />
     <Compile Include="Factories\IImageProviderFactory.cs" />
     <Compile Include="Factories\ImageProviderFactory.cs" />
     <Compile Include="FileSystem\ImageReaders\BitmapImageReader.cs" />
     <Compile Include="FileSystem\FileSystemImageProvider.cs" />
     <Compile Include="Camera\Udp\IUdpClient.cs" />
     <Compile Include="FileSystem\ImageReaders\IBitmapImageReader.cs" />
+    <Compile Include="FileSystem\ImageReaders\RawImageReader.cs" />
     <Compile Include="IImageProvider.cs" />
     <Compile Include="ImageProviderType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

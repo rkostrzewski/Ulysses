@@ -50,6 +50,7 @@
   <ItemGroup>
     <Compile Include="Exceptions\ImageModelMismatchException.cs" />
     <Compile Include="Models\CoefficientImage.cs" />
+    <Compile Include="Models\CoefficientImageExtensions.cs" />
     <Compile Include="Models\Image.cs" />
     <Compile Include="Models\ImageBitDepth.cs" />
     <Compile Include="Models\ImageMatrix.cs" />

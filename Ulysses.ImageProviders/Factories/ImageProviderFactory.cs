@@ -39,7 +39,7 @@ namespace Ulysses.ImageProviders.Factories
         {
             var files = Directory.EnumerateFiles(template.FolderPath, template.FileSearchPattern);
 
-            return new FileSystemImageProvider(imageModel, files);
+            return new FileSystemImageProvider(imageModel, files, template.InfiniteLoop);
         }
     }
 }

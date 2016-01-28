@@ -1,24 +1,21 @@
 using System;
 using Ulysses.ProcessingAlgorithms.Algorithms.NonUniformityCorrection;
+using Ulysses.ProcessingAlgorithms.Algorithms.NonUniformityCorrection.NonUniformityModels;
 
 namespace Ulysses.ProcessingAlgorithms.Templates.NonUniformityCorrection
 {
     public class TwoPointNonUniformityCorrectionTemplate : BaseNonUniformityCorrectionTemplate
     {
+        public TwoPointNonUniformityCorrectionTemplate()
+        {
+            NonUniformityModelFilePath = string.Empty;
+        }
+
         public override Type AlgorithmType => typeof (TwoPointNonUniformityCorrectionAlgorithm);
 
-        public override string NonUniformityModelFilePath { get; set; }
+        public NonUniformityModel NonUniformityModel { get; set; }
 
-        public override bool UseNonUniformityModel
-        {
-            get
-            {
-                return true;
-            }
-            set
-            {
-                throw new InvalidOperationException();
-            }
-        }
+        public string NonUniformityModelFilePath { get; set; }
+
     }
 }

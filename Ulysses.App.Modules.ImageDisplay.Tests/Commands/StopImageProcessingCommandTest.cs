@@ -42,7 +42,6 @@ namespace Ulysses.App.Modules.ImageDisplay.Tests.Commands
             // When
             // Then
             Assert.IsFalse(command.CanExecute());
-            Assert.Throws<CannotExecuteCommandException>(() => command.Execute());
         }
 
         [Test]

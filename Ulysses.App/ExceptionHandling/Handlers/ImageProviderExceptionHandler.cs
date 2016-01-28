@@ -1,7 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.Net.Sockets;
-using Ulysses.ImageProviders.Exception;
+using Ulysses.ImageProviders.Exceptions;
 
 namespace Ulysses.App.ExceptionHandling.Handlers
 {

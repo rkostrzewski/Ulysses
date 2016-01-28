@@ -26,16 +26,14 @@ namespace Ulysses.ProcessingAlgorithms.Factories
                 throw new AlgorithmCreationException(algorithmType);
             }
 
-            var nonUniformityCorrectionTemplate = template as BaseNonUniformityCorrectionTemplate;
-            if (nonUniformityCorrectionTemplate == null || !nonUniformityCorrectionTemplate.UseNonUniformityModel)
+            template.ImageModel = imageModel;
+
+            if (template is TwoPointNonUniformityCorrectionTemplate)
             {
-                return CreateAlgorithm(template, algorithmType);
+                return CreateTwoPointNonUniformityCorrectionTemplate((TwoPointNonUniformityCorrectionTemplate)template, algorithmType);
             }
 
-            var nonUniformitySourceFilePath = nonUniformityCorrectionTemplate.NonUniformityModelFilePath;
-            nonUniformityCorrectionTemplate.NonUniformityModel = _nonUniformityModelProvider.GetNonUniformityModel(nonUniformitySourceFilePath, imageModel);
-
-            return CreateAlgorithm(nonUniformityCorrectionTemplate, algorithmType);
+            return CreateAlgorithm(template, algorithmType);
         }
 
         private static IImageProcessingAlgorithm CreateAlgorithm(IImageProcessingAlgorithmTemplate template, Type algorithmType)
@@ -55,6 +53,15 @@ namespace Ulysses.ProcessingAlgorithms.Factories
             }
 
             return algorithmInstance;
+        }
+
+        private IImageProcessingAlgorithm CreateTwoPointNonUniformityCorrectionTemplate(TwoPointNonUniformityCorrectionTemplate nonUniformityCorrectionTemplate,
+                                                                                        Type algorithmType)
+        {
+            var nonUniformitySourceFilePath = nonUniformityCorrectionTemplate.NonUniformityModelFilePath;
+            nonUniformityCorrectionTemplate.NonUniformityModel = _nonUniformityModelProvider.GetNonUniformityModel(nonUniformitySourceFilePath, nonUniformityCorrectionTemplate.ImageModel);
+
+            return CreateAlgorithm(nonUniformityCorrectionTemplate, algorithmType);
         }
     }
 }

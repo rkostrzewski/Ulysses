@@ -7,10 +7,10 @@ using Ulysses.Core.Models;
 namespace Ulysses.Core.Tests
 {
     [TestFixture]
-    public class CoefficientImageOperationsTests
+    public class ProcessedImageOperationsTests
     {
         [Test]
-        public void ShouldCorrectlyAddImageToCoefficientImage()
+        public void ShouldCorrectlyAddProcessedImageToImage()
         {
             // Given
             var imageModel = new ImageModel(1024, 1024, ImageBitDepth.Bpp8);
@@ -19,19 +19,19 @@ namespace Ulysses.Core.Tests
             var image = new Image(imagePixels, imageModel);
 
             var coefficients = Enumerable.Range(0, 1024 * 1024).Select(i => random.NextDouble() * ushort.MaxValue).ToArray();
-            var coefficientImage = new CoefficientImage(coefficients, imageModel);
+            var processedImage = new ProcessedImage(coefficients, imageModel);
 
             var sum = imagePixels.Zip(coefficients, (first, second) => (Pixel)(first + second));
 
             // When
-            var output = coefficientImage + image;
+            var output = image + processedImage;
 
             // Then
-            CollectionAssert.AreEqual(sum, output.ImagePixels);
+            CollectionAssert.AreEqual(sum, output.Values);
         }
 
         [Test]
-        public void ShouldCorrectlyAddCoefficientImageToImage()
+        public void ShouldThrowExceptionWhenAddedImageAndProcessedImageImageModelsDiffer()
         {
             // Given
             var imageModel = new ImageModel(1024, 1024, ImageBitDepth.Bpp8);
@@ -39,39 +39,18 @@ namespace Ulysses.Core.Tests
             var imagePixels = Enumerable.Range(0, 1024 * 1024).Select(i => (Pixel)random.Next(ushort.MinValue, ushort.MaxValue)).ToArray();
             var image = new Image(imagePixels, imageModel);
 
+            var processedImageModel = new ImageModel(1024, 1024, ImageBitDepth.Bpp12);
             var coefficients = Enumerable.Range(0, 1024 * 1024).Select(i => random.NextDouble() * ushort.MaxValue).ToArray();
-            var coefficientImage = new CoefficientImage(coefficients, imageModel);
-
-            var sum = imagePixels.Zip(coefficients, (first, second) => (Pixel)(first + second));
-
-            // When
-            var output = image + coefficientImage;
-
-            // Then
-            CollectionAssert.AreEqual(sum, output.ImagePixels);
-        }
-
-        [Test]
-        public void ShouldThrowExceptionWhenAddedImageAndCoefficientImageImageModelsDiffer()
-        {
-            // Given
-            var imageModel = new ImageModel(1024, 1024, ImageBitDepth.Bpp8);
-            var random = new Random();
-            var imagePixels = Enumerable.Range(0, 1024 * 1024).Select(i => (Pixel)random.Next(ushort.MinValue, ushort.MaxValue)).ToArray();
-            var image = new Image(imagePixels, imageModel);
-
-            var coefficientImageModel = new ImageModel(1024, 1024, ImageBitDepth.Bpp12);
-            var coefficients = Enumerable.Range(0, 1024 * 1024).Select(i => random.NextDouble() * ushort.MaxValue).ToArray();
-            var coefficientImage = new CoefficientImage(coefficients, coefficientImageModel);
+            var processedImage = new ProcessedImage(coefficients, processedImageModel);
 
             // When
             // Then
-            Assert.Throws<ImageModelMismatchException>(() => { var output = coefficientImage + image; });
-            Assert.Throws<ImageModelMismatchException>(() => { var output = image + coefficientImage; });
+            Assert.Throws<ImageModelMismatchException>(() => { var output = processedImage + image; });
+            Assert.Throws<ImageModelMismatchException>(() => { var output = image + processedImage; });
         }
 
         [Test]
-        public void ShouldCorrectlySubtractImageToCoefficientImage()
+        public void ShouldCorrectlySubtractProcessedImageToImage()
         {
             // Given
             var imageModel = new ImageModel(1024, 1024, ImageBitDepth.Bpp8);
@@ -80,40 +59,19 @@ namespace Ulysses.Core.Tests
             var image = new Image(imagePixels, imageModel);
 
             var coefficients = Enumerable.Range(0, 1024 * 1024).Select(i => random.NextDouble() * ushort.MaxValue).ToArray();
-            var coefficientImage = new CoefficientImage(coefficients, imageModel);
-
-            var result = coefficients.Zip(imagePixels, (first, second) => (Pixel)(first - second));
-
-            // When
-            var output = coefficientImage - image;
-
-            // Then
-            CollectionAssert.AreEqual(result, output.ImagePixels);
-        }
-
-        [Test]
-        public void ShouldCorrectlySubtractCoefficientImageToImage()
-        {
-            // Given
-            var imageModel = new ImageModel(1024, 1024, ImageBitDepth.Bpp8);
-            var random = new Random();
-            var imagePixels = Enumerable.Range(0, 1024 * 1024).Select(i => (Pixel)random.Next(ushort.MinValue, ushort.MaxValue)).ToArray();
-            var image = new Image(imagePixels, imageModel);
-
-            var coefficients = Enumerable.Range(0, 1024 * 1024).Select(i => random.NextDouble() * ushort.MaxValue).ToArray();
-            var coefficientImage = new CoefficientImage(coefficients, imageModel);
+            var processedImage = new ProcessedImage(coefficients, imageModel);
 
             var result = imagePixels.Zip(coefficients, (first, second) => (Pixel)(first - second));
 
             // When
-            var output = image - coefficientImage;
+            var output = image - processedImage;
 
             // Then
-            CollectionAssert.AreEqual(result, output.ImagePixels);
+            CollectionAssert.AreEqual(result, output.Values);
         }
 
         [Test]
-        public void ShouldThrowExceptionWhenSubtractingImageAndCoefficientImageWithDifferentImageModels()
+        public void ShouldThrowExceptionWhenSubtractingImageAndProcessedImageWithDifferentImageModels()
         {
             // Given
             var imageModel = new ImageModel(1024, 1024, ImageBitDepth.Bpp8);
@@ -121,14 +79,14 @@ namespace Ulysses.Core.Tests
             var imagePixels = Enumerable.Range(0, 1024 * 1024).Select(i => (Pixel)random.Next(ushort.MinValue, ushort.MaxValue)).ToArray();
             var image = new Image(imagePixels, imageModel);
 
-            var coefficientImageModel = new ImageModel(1024, 1024, ImageBitDepth.Bpp12);
+            var processedImageModel = new ImageModel(1024, 1024, ImageBitDepth.Bpp12);
             var coefficients = Enumerable.Range(0, 1024 * 1024).Select(i => random.NextDouble() * ushort.MaxValue).ToArray();
-            var coefficientImage = new CoefficientImage(coefficients, coefficientImageModel);
+            var processedImage = new ProcessedImage(coefficients, processedImageModel);
 
             // When
             // Then
-            Assert.Throws<ImageModelMismatchException>(() => { var output = coefficientImage - image; });
-            Assert.Throws<ImageModelMismatchException>(() => { var output = image - coefficientImage; });
+            Assert.Throws<ImageModelMismatchException>(() => { var output = processedImage - image; });
+            Assert.Throws<ImageModelMismatchException>(() => { var output = image - processedImage; });
         }
     }
 }

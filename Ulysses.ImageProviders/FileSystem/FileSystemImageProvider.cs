@@ -7,22 +7,23 @@ namespace Ulysses.ImageProviders.FileSystem
 {
     public class FileSystemImageProvider : IImageProvider
     {
+        private readonly bool _infitlyLoopOverFiles;
         private readonly IEnumerator<string> _filePathsEnumerator;
-        private readonly ImageModel _imageModel;
         private readonly IImageReader _imageReader;
 
-        public FileSystemImageProvider(ImageModel imageModel, IEnumerable<string> filePaths)
+        public FileSystemImageProvider(ImageModel imageModel, IEnumerable<string> filePaths, bool infitlyLoopOverFiles)
         {
-            _imageModel = imageModel;
+            _infitlyLoopOverFiles = infitlyLoopOverFiles;
             _filePathsEnumerator = filePaths.GetEnumerator();
 
-            switch (_imageModel.ImageBitDepth)
+            switch (imageModel.ImageBitDepth)
             {
                 case ImageBitDepth.Bpp8:
-                    _imageReader = new BitmapImageReader(_imageModel);
+                    _imageReader = new BitmapImageReader(imageModel);
                     break;
                 case ImageBitDepth.Bpp12:
-                    throw new NotImplementedException();
+                    _imageReader = new RawImageReader(imageModel);
+                    break;
                 default:
                     throw new ArgumentOutOfRangeException();
             }
@@ -32,26 +33,24 @@ namespace Ulysses.ImageProviders.FileSystem
         {
             if (!_filePathsEnumerator.MoveNext())
             {
-                image = null;
-                return false;
+                var nextFilePending = false;
+
+                if (_infitlyLoopOverFiles)
+                {
+                    _filePathsEnumerator.Reset();
+                    nextFilePending = _filePathsEnumerator.MoveNext();
+                }
+
+                if (!nextFilePending)
+                {
+                    image = null;
+                    return false;
+                }
             }
 
-            image = GetImageFromFile(_filePathsEnumerator.Current);
+            image = _imageReader.Read(_filePathsEnumerator.Current);
 
             return true;
-        }
-
-        private Image GetImageFromFile(string filePath)
-        {
-            switch (_imageModel.ImageBitDepth)
-            {
-                case ImageBitDepth.Bpp8:
-                    return _imageReader.Read(filePath);
-                case ImageBitDepth.Bpp12:
-                    throw new NotImplementedException();
-                default:
-                    throw new ArgumentOutOfRangeException();
-            }
         }
     }
 }

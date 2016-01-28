@@ -7,10 +7,10 @@ using Ulysses.Core.Models;
 namespace Ulysses.Core.Tests
 {
     [TestFixture]
-    public class CoefficientImageTests
+    public class ProcessedImageTests
     {
         [Test]
-        public void ShouldCreateEmptyCoefficientImageProvidedOnlyImageModel()
+        public void ShouldCreateEmptyProcessedImageProvidedOnlyImageModel()
         {
             // Given
             var imageModel = new ImageModel(25, 25, ImageBitDepth.Bpp8);
@@ -18,10 +18,10 @@ namespace Ulysses.Core.Tests
             var coefficients = Enumerable.Range(0, imageModel.Width * imageModel.Height).Select(i => random.NextDouble()).ToArray();
 
             // When
-            var coefficientImage = new CoefficientImage(coefficients, imageModel);
+            var processedImage = new ProcessedImage(coefficients, imageModel);
 
             // Then
-            CollectionAssert.AreEqual(coefficients, coefficientImage.Coefficients);
+            CollectionAssert.AreEqual(coefficients, processedImage.Values);
         }
 
         [Test]
@@ -34,7 +34,7 @@ namespace Ulysses.Core.Tests
 
             // When
             // Then
-            Assert.Throws<ImageModelMismatchException>(() => new CoefficientImage(coefficients, imageModel));
+            Assert.Throws<ImageModelMismatchException>(() => new ProcessedImage(coefficients, imageModel));
         }
     }
 }

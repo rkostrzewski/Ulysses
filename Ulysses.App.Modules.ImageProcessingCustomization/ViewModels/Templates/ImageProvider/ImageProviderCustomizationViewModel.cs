@@ -192,5 +192,23 @@ namespace Ulysses.App.Modules.ImageProcessingCustomization.ViewModels.Templates.
         }
 
         public IList<Displayable<ImageBitDepth>> AvailableBitDepths { get; }
+
+        public bool InfiniteLoop
+        {
+            get
+            {
+                return ChainElement.FileSystemImageProviderTemplate.InfiniteLoop;
+            }
+            set
+            {
+                if (ChainElement.FileSystemImageProviderTemplate.InfiniteLoop == value)
+                {
+                    return;
+                }
+
+                ChainElement.FileSystemImageProviderTemplate.InfiniteLoop = value;
+                OnPropertyChanged();
+            }
+        }
     }
 }

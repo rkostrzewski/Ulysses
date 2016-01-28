@@ -17,79 +17,95 @@
     </UserControl.Resources>
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="160" />
+            <RowDefinition Height="32" />
+            <RowDefinition Height="32" />
+            <RowDefinition Height="32" />
+            <RowDefinition Height="32" />
+            <RowDefinition Height="32" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-        <Grid>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="100" />
-                <ColumnDefinition Width="220" />
-                <ColumnDefinition Width="*" />
-            </Grid.ColumnDefinitions>
-            <StackPanel Grid.Column="0" Margin="10, 10, 0 ,0">
-                <TextBlock Text="Provider" />
-                <TextBlock Text="Image Bit Depth" />
-                <TextBlock Text="Image Width" />
-                <TextBlock Text="Image Height" />
-            </StackPanel>
-            <StackPanel Grid.Column="1" Margin="10, 10, 0 ,0">
-                <ComboBox ItemsSource="{Binding Path=AvailableImageProviders}" DisplayMemberPath="DisplayText"
-                          SelectedValue="{Binding SelectedImageProvider}"
-                          SelectedValuePath="Value"
-                          Margin="0, 0, 0, 10" />
-                <ComboBox ItemsSource="{Binding Path=AvailableBitDepths}"
-                          DisplayMemberPath="DisplayText"
-                          SelectedValuePath="Value"
-                          SelectedValue="{Binding ImageBitDepth}"
-                          Margin="0, 0, 0, 10" />
-                <TextBox Text="{Binding ImageWidth}" />
-                <TextBox Text="{Binding ImageHeight}" />
-            </StackPanel>
-        </Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="140" />
+            <ColumnDefinition Width="280" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <TextBlock Text="Provider" Grid.Row="0" Grid.Column="0"
+                   Height="24"
+                   VerticalAlignment="Top" />
+        <ComboBox ItemsSource="{Binding Path=AvailableImageProviders}" DisplayMemberPath="DisplayText"
+                  SelectedValue="{Binding SelectedImageProvider}"
+                  SelectedValuePath="Value"
+                  Height="24"
+                  VerticalAlignment="Top"
+                  Grid.Row="0" Grid.Column="1" />
+        <TextBlock Text="Image Bit Depth" Grid.Row="1" Grid.Column="0"
+                   Height="24"
+                   VerticalAlignment="Top" />
+        <ComboBox ItemsSource="{Binding Path=AvailableBitDepths}"
+                  DisplayMemberPath="DisplayText"
+                  SelectedValuePath="Value"
+                  SelectedValue="{Binding ImageBitDepth}"
+                  Grid.Row="1" Grid.Column="1"
+                  Height="24"
+                  VerticalAlignment="Top" />
+        <TextBlock Text="Image Width" Grid.Row="2" Grid.Column="0"
+                   Height="24"
+                   VerticalAlignment="Top" />
+        <TextBox Text="{Binding ImageWidth}" Grid.Row="2" Grid.Column="1"
+                 Height="24"
+                 VerticalAlignment="Top" />
+        <TextBlock Text="Image Height" Grid.Row="3" Grid.Column="0"
+                   Height="24"
+                   VerticalAlignment="Top" />
+        <TextBox Text="{Binding ImageHeight}" Grid.Row="3" Grid.Column="1"
+                 Height="24"
+                 VerticalAlignment="Top" />
 
-        <TabControl Background="Transparent" BorderBrush="Transparent" Grid.Row="1"
+        <TabControl Background="Transparent" BorderBrush="Transparent" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" BorderThickness="0"
                     SelectedIndex="{Binding SelectedTabIndex}">
-            <TabItem Visibility="Collapsed">
+            <TabItem Visibility="Collapsed" BorderThickness="0">
                 <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="32" />
+                        <RowDefinition Height="32" />
+                        <RowDefinition Height="32" />
+                    </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="100" />
-                        <ColumnDefinition Width="220" />
+                        <ColumnDefinition Width="138" />
                         <ColumnDefinition Width="*" />
                     </Grid.ColumnDefinitions>
-                    <StackPanel Grid.Column="0" Margin="10, 10, 0 ,0">
-                        <TextBlock Text="Port" />
-                        <TextBlock Text="Timeout" />
-                    </StackPanel>
-                    <StackPanel Grid.Column="1" Margin="10, 10, 0 ,0">
-                        <TextBox Text="{Binding Port}" />
-                        <TextBox Text="{Binding Timeout}" />
-                    </StackPanel>
+                    <TextBlock Text="Port" Grid.Row="0" Grid.Column="0" Height="24" VerticalAlignment="Top"/>
+                    <TextBox Text="{Binding Port}" Grid.Row="0" Grid.Column="1" Height="24" VerticalAlignment="Top"/>
+                    <TextBlock Text="Timeout" Grid.Row="1" Grid.Column="0" Height="24" VerticalAlignment="Top" />
+                    <TextBox Text="{Binding Timeout}" Grid.Row="1" Grid.Column="1" Height="24" VerticalAlignment="Top"/>
                 </Grid>
             </TabItem>
             <TabItem Visibility="Collapsed">
                 <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="32" />
+                        <RowDefinition Height="32" />
+                        <RowDefinition Height="32" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="100" />
-                        <ColumnDefinition Width="220" />
+                        <ColumnDefinition Width="138" />
                         <ColumnDefinition Width="*" />
                     </Grid.ColumnDefinitions>
-                    <StackPanel Grid.Column="0" Margin="10, 10, 0 ,0">
-                        <TextBlock Text="Folder" />
-                        <TextBlock Text="Pattern" />
-                    </StackPanel>
-                    <StackPanel Grid.Column="1" Margin="10, 10, 0 ,0">
-                        <Grid Margin="0, 0, 0, 5">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="150" />
-                                <ColumnDefinition Width="70" />
-                            </Grid.ColumnDefinitions>
-                            <TextBox Text="{Binding FolderPath}" Grid.Column="0" Margin="0, 0, 5, 0" IsEnabled="False" />
-                            <Button Grid.Column="1" Content="Browse" VerticalAlignment="Center"
-                                    HorizontalAlignment="Center" Padding="5, 0, 5, 0"
-                                    Command="{Binding SelectFolderCommand}" />
-                        </Grid>
-                        <TextBox Text="{Binding FileSearchPattern}" />
-                    </StackPanel>
+                    <TextBlock Text="Folder" Grid.Row="0" Grid.Column="0" Height="24" VerticalAlignment="Top" />
+                    <TextBox Text="{Binding FolderPath}" VerticalAlignment="Top" Grid.Row="0" Grid.Column="1"
+                             IsEnabled="False" Height="24" Margin="0, 0, 60, 0" />
+                    <Button Content="Browse" VerticalAlignment="Top"
+                            HorizontalAlignment="Right"
+                            Grid.Row="0" Grid.Column="1"
+                            Command="{Binding SelectFolderCommand}" Height="24" />
+                    <TextBlock Text="Pattern" Grid.Row="1" Grid.Column="0" Height="24" VerticalAlignment="Top" />
+                    <TextBox Text="{Binding FileSearchPattern}" Grid.Row="1" Grid.Column="1" Height="24"
+                             VerticalAlignment="Top" />
+                    <TextBlock Text="Infinite loop" Grid.Row="2" Grid.Column="0" Height="24" VerticalAlignment="Top" />
+                    <CheckBox IsChecked="{Binding InfiniteLoop}" 
+                              VerticalAlignment="Top" Grid.Row="2" Grid.Column="1"
+                             IsEnabled="True" Height="24" />
                 </Grid>
             </TabItem>
         </TabControl>

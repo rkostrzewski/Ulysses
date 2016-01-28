@@ -7,11 +7,11 @@ namespace Ulysses.ProcessingAlgorithms.Algorithms.NonUniformityCorrection.NonUni
     {
         public NonUniformityModel(IEnumerable<double> gainCoefficients, IEnumerable<double> offsetCoefficients, ImageModel imageModel)
         {
-            GainCoefficients = new CoefficientImage(gainCoefficients, imageModel);
-            OffsetCoefficients = new CoefficientImage(offsetCoefficients, imageModel);
+            GainCoefficients = new ProcessedImage(gainCoefficients, imageModel);
+            OffsetCoefficients = new ProcessedImage(offsetCoefficients, imageModel);
         }
 
-        public CoefficientImage GainCoefficients { get; protected set; }
-        public CoefficientImage OffsetCoefficients { get; protected set; }
+        public ProcessedImage GainCoefficients { get; protected set; }
+        public ProcessedImage OffsetCoefficients { get; protected set; }
     }
 }

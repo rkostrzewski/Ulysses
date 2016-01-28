@@ -97,6 +97,15 @@
     <Content Include="FileSystem\TestData\TestImages\Bpp8Gray1024X1024ImagePath.bmp">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="FileSystem\TestData\TestImages\RawBpp121024X1024WhiteImagePath.raw">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="FileSystem\TestData\TestImages\RawBpp12256X512CheckeredImagePath.raw">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="FileSystem\TestData\TestImages\RawBpp12512X512BlackImagePath.raw">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">

@@ -4,5 +4,6 @@
     {
         public string FolderPath { get; set; }
         public string FileSearchPattern { get; set; }
+        public bool InfiniteLoop { get; set; }
     }
 }

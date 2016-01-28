@@ -6,6 +6,7 @@ using Ulysses.Core.Models;
 using Ulysses.ImageAcquisition.Tests.Camera.TestData;
 using Ulysses.ImageProviders.Camera;
 using Ulysses.ImageProviders.Camera.Udp;
+using Ulysses.ImageProviders.Exceptions;
 
 namespace Ulysses.ImageAcquisition.Tests.Camera
 {
@@ -72,7 +73,7 @@ namespace Ulysses.ImageAcquisition.Tests.Camera
             Assert.AreEqual(expectedImage, actualImage);
         }
 
-        [Test, ExpectedException(typeof (NotSupportedImageException))]
+        [Test, ExpectedException(typeof (NotSupportedImageSizeForCameraProviderException))]
         public void ShouldThrowExceptionWhenUnsupportedParametersAreUsed()
         {
             // Given

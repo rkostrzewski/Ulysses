@@ -39,6 +39,10 @@ namespace Ulysses.App.Modules.ImageProcessingCustomization
                                                        typeof (EmptyChainElementCustomizationView));
             _regionViewRegistry.RegisterViewWithRegion(ImageProcessingCustomizationViewRegions.ImageProcessingChainElementCustomizationRegion.ToString(),
                                                        typeof (TwoPointNonUniformityCorrectionCustomizationView));
+
+            _regionViewRegistry.RegisterViewWithRegion(ImageProcessingCustomizationViewRegions.ImageProcessingChainElementCustomizationRegion.ToString(),
+                                                       typeof(ConstantRangeNonUniformityCorrectionCustomizationView));
+
             _regionViewRegistry.RegisterViewWithRegion(ImageProcessingCustomizationViewRegions.ImageProcessingChainElementCustomizationRegion.ToString(),
                                                        typeof (ImageProviderCustomizationView));
             _regionViewRegistry.RegisterViewWithRegion(ImageProcessingCustomizationViewRegions.ImageProcessingChainElementCustomizationRegion.ToString(),
@@ -67,6 +71,7 @@ namespace Ulysses.App.Modules.ImageProcessingCustomization
 
             container.RegisterType<IImageProviderCustomizationViewModel, ImageProviderCustomizationViewModel>();
             container.RegisterType<ITwoPointNonUniformityCorrectionCustomizationViewModel, TwoPointNonUniformityCorrectionCustomizationViewModel>();
+            container.RegisterType<IConstantRangeNonUniformityCorrectionCustomizationViewModel, ConstantRangeNonUniformityCorrectionCustomizationViewModel>();
             container.RegisterType<ISleeperCustomizationViewModel, SleeperCustomizationViewModel>();
         }
     }

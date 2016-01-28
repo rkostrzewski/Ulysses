@@ -1,20 +1,23 @@
 ﻿using Ulysses.Core.Models;
+using Ulysses.ProcessingAlgorithms.Algorithms.NonUniformityCorrection.NonUniformityModels;
 using Ulysses.ProcessingAlgorithms.Templates.NonUniformityCorrection;
 
 namespace Ulysses.ProcessingAlgorithms.Algorithms.NonUniformityCorrection
 {
-    public class TwoPointNonUniformityCorrectionAlgorithm : BaseNonUniformityCorrectionAlgorithm
+    public class TwoPointNonUniformityCorrectionAlgorithm : IImageProcessingAlgorithm
     {
-        public TwoPointNonUniformityCorrectionAlgorithm(TwoPointNonUniformityCorrectionTemplate correctionAlgorithmTemplate)
-            : base(correctionAlgorithmTemplate.NonUniformityModel)
+        private readonly NonUniformityModel _nonUniformityModel;
+
+        public TwoPointNonUniformityCorrectionAlgorithm(TwoPointNonUniformityCorrectionTemplate template)
         {
+            _nonUniformityModel = template.NonUniformityModel;
         }
 
-        public override Image ProcessImage(Image inputImagePixels)
+        public Image ProcessImage(Image inputImagePixels)
         {
-            var outputImage = NonUniformityModel.GainCoefficients * inputImagePixels + NonUniformityModel.OffsetCoefficients;
+            var outputImage = inputImagePixels * _nonUniformityModel.GainCoefficients + _nonUniformityModel.OffsetCoefficients ;
 
-            return outputImage;
+            return outputImage.ToImage();
         }
     }
 }

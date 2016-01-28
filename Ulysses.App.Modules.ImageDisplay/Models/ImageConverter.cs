@@ -21,7 +21,8 @@ namespace Ulysses.App.Modules.ImageDisplay.Models
 
             var width = image.ImageModel.Width;
             var height = image.ImageModel.Height;
-            var pixels = image.ImagePixels.Select(p => (byte)p).ToArray();
+            var sourceBitDepth = image.ImageModel.ImageBitDepth;
+            var pixels = image.ImagePixels.Select(p => (byte)p.ConvertToBitDepth(sourceBitDepth, ImageBitDepth.Bpp8)).ToArray();
 
             var rectangle = new Int32Rect(0, 0, width, height);
             var stride = width;

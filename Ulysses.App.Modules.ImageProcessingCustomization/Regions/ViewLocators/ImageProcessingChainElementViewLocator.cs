@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Ulysses.App.Modules.ImageProcessingCustomization.ViewModels.Templates.NonUniformityCorrection;
 using Ulysses.App.Modules.ImageProcessingCustomization.Views.TemplateViews;
 using Ulysses.App.Modules.ImageProcessingCustomization.Views.TemplateViews.ImageProvider;
 using Ulysses.App.Modules.ImageProcessingCustomization.Views.TemplateViews.NonUniformityCorrection;
@@ -36,6 +37,7 @@ namespace Ulysses.App.Modules.ImageProcessingCustomization.Regions.ViewLocators
         {
             { typeof (ImageProviderTemplate), typeof (ImageProviderCustomizationView) },
             { typeof (TwoPointNonUniformityCorrectionTemplate), typeof (TwoPointNonUniformityCorrectionCustomizationView) },
+            { typeof (ConstantRangeNonUniformityCorrectionTemplate), typeof (ConstantRangeNonUniformityCorrectionCustomizationView) },
             { typeof (SleeperTemplate), typeof (SleeperCustomizationView) }
         };
     }

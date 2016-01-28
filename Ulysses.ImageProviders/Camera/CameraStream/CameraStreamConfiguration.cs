@@ -1,6 +1,7 @@
+using System;
 using Ulysses.Core.Exceptions;
 using Ulysses.Core.Models;
-using Ulysses.ImageProviders.Exception;
+using Ulysses.ImageProviders.Exceptions;
 
 namespace Ulysses.ImageProviders.Camera.CameraStream
 {
@@ -23,6 +24,8 @@ namespace Ulysses.ImageProviders.Camera.CameraStream
                     SizeOfPixelsInPacket = 768;
                     PacketAmount = 1536;
                     break;
+                default:
+                    throw new ArgumentOutOfRangeException();
             }
         }
 
