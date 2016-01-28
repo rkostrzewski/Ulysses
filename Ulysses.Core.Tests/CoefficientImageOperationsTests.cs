@@ -21,7 +21,7 @@ namespace Ulysses.Core.Tests
             var coefficients = Enumerable.Range(0, 1024 * 1024).Select(i => random.NextDouble() * ushort.MaxValue).ToArray();
             var processedImage = new ProcessedImage(coefficients, imageModel);
 
-            var sum = imagePixels.Zip(coefficients, (first, second) => (Pixel)(first + second));
+            var sum = imagePixels.Zip(coefficients, (first, second) => (first + second));
 
             // When
             var output = image + processedImage;
@@ -61,7 +61,7 @@ namespace Ulysses.Core.Tests
             var coefficients = Enumerable.Range(0, 1024 * 1024).Select(i => random.NextDouble() * ushort.MaxValue).ToArray();
             var processedImage = new ProcessedImage(coefficients, imageModel);
 
-            var result = imagePixels.Zip(coefficients, (first, second) => (Pixel)(first - second));
+            var result = imagePixels.Zip(coefficients, (first, second) => (first - second));
 
             // When
             var output = image - processedImage;

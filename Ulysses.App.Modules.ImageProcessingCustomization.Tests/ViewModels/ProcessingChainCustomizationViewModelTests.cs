@@ -17,6 +17,7 @@ namespace Ulysses.App.Modules.ImageProcessingCustomization.Tests.ViewModels
         private IProcessingChainDragHandler _dragHandler;
         private IProcessingChainDropHandler _dropHandler;
         private IUpdateProcessingEngineCommand _updateProcessingEngineCommand;
+        private IRemoveItemFromProcessingChainCommand _removeItemFromProcessingChainCommand;
 
         [SetUp]
         public void SetUp()
@@ -26,6 +27,7 @@ namespace Ulysses.App.Modules.ImageProcessingCustomization.Tests.ViewModels
             _dropHandler = new Mock<IProcessingChainDropHandler>().Object;
             _dragHandler = new Mock<IProcessingChainDragHandler>().Object;
             _updateProcessingEngineCommand = new Mock<IUpdateProcessingEngineCommand>().Object;
+            _removeItemFromProcessingChainCommand = new Mock<IRemoveItemFromProcessingChainCommand>().Object;
         }
 
         [Test]
@@ -36,6 +38,7 @@ namespace Ulysses.App.Modules.ImageProcessingCustomization.Tests.ViewModels
             var viewModel = new ProcessingChainCustomizationViewModel(_dataStore,
                                                                       _changeCustomizationRegionViewCommandMock.Object,
                                                                       _updateProcessingEngineCommand,
+                                                                      _removeItemFromProcessingChainCommand,
                                                                       _dragHandler,
                                                                       _dropHandler);
 
@@ -51,6 +54,7 @@ namespace Ulysses.App.Modules.ImageProcessingCustomization.Tests.ViewModels
             var viewModel = new ProcessingChainCustomizationViewModel(_dataStore,
                                                                       _changeCustomizationRegionViewCommandMock.Object,
                                                                       _updateProcessingEngineCommand,
+                                                                      _removeItemFromProcessingChainCommand,
                                                                       _dragHandler,
                                                                       _dropHandler);
             var selectedElement = viewModel.ProcessingChainElements.First();
@@ -71,6 +75,7 @@ namespace Ulysses.App.Modules.ImageProcessingCustomization.Tests.ViewModels
             var viewModel = new ProcessingChainCustomizationViewModel(_dataStore,
                                                                       _changeCustomizationRegionViewCommandMock.Object,
                                                                       _updateProcessingEngineCommand,
+                                                                      _removeItemFromProcessingChainCommand,
                                                                       _dragHandler,
                                                                       _dropHandler);
             var selectedElement = viewModel.ProcessingChainElements.First();

@@ -1,14 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using Ulysses.App.Modules.ImageProcessingCustomization.ViewModels.Templates.NonUniformityCorrection;
 using Ulysses.App.Modules.ImageProcessingCustomization.Views.TemplateViews;
-using Ulysses.App.Modules.ImageProcessingCustomization.Views.TemplateViews.ImageProvider;
-using Ulysses.App.Modules.ImageProcessingCustomization.Views.TemplateViews.NonUniformityCorrection;
-using Ulysses.App.Modules.ImageProcessingCustomization.Views.TemplateViews.Utilities;
 using Ulysses.Core.Templates;
-using Ulysses.ImageProviders.Templates;
-using Ulysses.ProcessingAlgorithms.Templates.DummyAlgorithms;
-using Ulysses.ProcessingAlgorithms.Templates.NonUniformityCorrection;
 
 namespace Ulysses.App.Modules.ImageProcessingCustomization.Regions.ViewLocators
 {
@@ -29,16 +21,5 @@ namespace Ulysses.App.Modules.ImageProcessingCustomization.Regions.ViewLocators
                        ? _defaultViewType
                        : ImageProcessingChainElementsViewDefinitions.ViewDefinitions[viewRequesterType];
         }
-    }
-
-    public static class ImageProcessingChainElementsViewDefinitions
-    {
-        public static IDictionary<Type, Type> ViewDefinitions { get; } = new Dictionary<Type, Type>
-        {
-            { typeof (ImageProviderTemplate), typeof (ImageProviderCustomizationView) },
-            { typeof (TwoPointNonUniformityCorrectionTemplate), typeof (TwoPointNonUniformityCorrectionCustomizationView) },
-            { typeof (ConstantRangeNonUniformityCorrectionTemplate), typeof (ConstantRangeNonUniformityCorrectionCustomizationView) },
-            { typeof (SleeperTemplate), typeof (SleeperCustomizationView) }
-        };
     }
 }

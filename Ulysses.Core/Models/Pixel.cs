@@ -107,5 +107,8 @@ namespace Ulysses.Core.Models
 
             throw new InvalidOperationException();
         }
+
+        public static ushort MaxValue => ushort.MaxValue;
+        public static ushort MinValue => ushort.MinValue;
     }
 }

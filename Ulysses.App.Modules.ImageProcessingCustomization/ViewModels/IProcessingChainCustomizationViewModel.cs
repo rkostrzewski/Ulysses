@@ -10,15 +10,11 @@ namespace Ulysses.App.Modules.ImageProcessingCustomization.ViewModels
     public interface IProcessingChainCustomizationViewModel
     {
         IList<IImageProcessingAlgorithmTemplate> AvailableImageProcessingAlgorithmTemplates { get; set; }
-
         ObservableCollection<IProcessingChainElementTemplate> ProcessingChainElements { get; }
-
         IProcessingChainElementTemplate SelectedProcessingChainElementTemplate { get; set; }
-
         IProcessingChainDragHandler DragHandler { get; }
-
         IProcessingChainDropHandler DropHandler { get; }
-
         IUpdateProcessingEngineCommand UpdateProcessingEngineCommand { get; }
+        IRemoveItemFromProcessingChainCommand RemoveItemFromProcessingChainCommand { get; }
     }
 }

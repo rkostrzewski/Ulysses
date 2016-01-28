@@ -42,14 +42,15 @@ namespace Ulysses.App.Modules.ImageDisplay.Tests.Commands
             // Given
             BitmapSource outputImage = null;
             var imageModel = new ImageModel(2, 2, ImageBitDepth.Bpp12);
-            var inputImage = new Image(new ushort[] { 100, 200, 300, 400 }, imageModel);
+            var inputImage = new Image(new ushort[] { 0, 1024, 2048, 4095 }, imageModel);
+            var expectedImage = new Image(new ushort[] { 0, 64, 128, 255 }, imageModel);
             var command = new SetOutputImageCommand(_imageConverter) { OnImageUpdate = value => outputImage = value };
 
             // When
             command.Execute(inputImage);
 
             // Then
-            Assert.IsTrue(BitmapImageIsSameAsImage(outputImage, inputImage));
+            Assert.IsTrue(BitmapImageIsSameAsImage(outputImage, expectedImage));
         }
 
         [Test]

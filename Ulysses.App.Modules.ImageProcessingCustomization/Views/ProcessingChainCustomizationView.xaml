@@ -71,7 +71,15 @@
                      dragAndDrop:DragDrop.IsDragSource="True"
                      dragAndDrop:DragDrop.IsDropTarget="True"
                      dragAndDrop:DragDrop.DragHandler="{Binding DragHandler}"
-                     dragAndDrop:DragDrop.DropHandler="{Binding DropHandler}" />
+                     dragAndDrop:DragDrop.DropHandler="{Binding DropHandler}" >
+                <ListBox.ContextMenu>
+                    <ContextMenu>
+                        <MenuItem Header="Remove"
+                                  Command="{Binding RemoveItemFromProcessingChainCommand}"
+                                  CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=ContextMenu, Mode=FindAncestor}, Path=PlacementTarget.SelectedItem}" />
+                    </ContextMenu>
+                </ListBox.ContextMenu>
+            </ListBox>
             <Grid Grid.Row="1">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*" />

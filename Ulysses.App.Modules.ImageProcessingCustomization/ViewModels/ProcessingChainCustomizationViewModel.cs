@@ -1,7 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
 using Ulysses.App.Core.ViewModels;
 using Ulysses.App.Modules.ImageProcessingCustomization.Commands;
+using Ulysses.App.Modules.ImageProcessingCustomization.Models;
 using Ulysses.App.Modules.ImageProcessingCustomization.Models.DataStore;
 using Ulysses.App.Modules.ImageProcessingCustomization.ViewModels.DragAndDrop;
 using Ulysses.Core.Templates;
@@ -18,9 +20,10 @@ namespace Ulysses.App.Modules.ImageProcessingCustomization.ViewModels
         private IProcessingChainElementTemplate _selectedProcessingChainElementTemplate;
 
         public ProcessingChainCustomizationViewModel(IProcessingChainBuilderDataStore processingChainDataStore,
-                                                     IChangeProcessingChainElementCustomizationRegionViewCommand
-                                                         changeImageProcessingChainElementCustomizationRegionViewCommand,
+                                                     IAvailableProcessingChainElements availableProcessingChainElements,
+                                                     IChangeProcessingChainElementCustomizationRegionViewCommand changeImageProcessingChainElementCustomizationRegionViewCommand,
                                                      IUpdateProcessingEngineCommand updateProcessingEngineCommand,
+                                                     IRemoveItemFromProcessingChainCommand removeItemFromProcessingChainCommand,
                                                      IProcessingChainDragHandler dragHandler,
                                                      IProcessingChainDropHandler dropHandler)
         {
@@ -28,16 +31,12 @@ namespace Ulysses.App.Modules.ImageProcessingCustomization.ViewModels
             _changeImageProcessingChainElementCustomizationRegionViewCommand = changeImageProcessingChainElementCustomizationRegionViewCommand;
 
             UpdateProcessingEngineCommand = updateProcessingEngineCommand;
+            RemoveItemFromProcessingChainCommand = removeItemFromProcessingChainCommand;
 
             DragHandler = dragHandler;
             DropHandler = dropHandler;
 
-            AvailableImageProcessingAlgorithmTemplates = new List<IImageProcessingAlgorithmTemplate>
-            {
-                new TwoPointNonUniformityCorrectionTemplate(),
-                new ConstantRangeNonUniformityCorrectionTemplate(),
-                new SleeperTemplate()
-            };
+            AvailableImageProcessingAlgorithmTemplates = availableProcessingChainElements.ToList();
         }
 
         public IList<IImageProcessingAlgorithmTemplate> AvailableImageProcessingAlgorithmTemplates { get; set; }
@@ -68,5 +67,7 @@ namespace Ulysses.App.Modules.ImageProcessingCustomization.ViewModels
         public IProcessingChainDropHandler DropHandler { get; }
 
         public IUpdateProcessingEngineCommand UpdateProcessingEngineCommand { get; }
+
+        public IRemoveItemFromProcessingChainCommand RemoveItemFromProcessingChainCommand { get; }
     }
 }
