@@ -135,6 +135,8 @@
     <Compile Include="ViewModels\Templates\BaseImageProcessingChainElementCustomizationViewModel.cs" />
     <Compile Include="ViewModels\Templates\ImageProvider\IImageProviderCustomizationViewModel.cs" />
     <Compile Include="ViewModels\Templates\ImageProvider\ImageProviderCustomizationViewModel.cs" />
+    <Compile Include="ViewModels\Templates\Misc\ISaveImageCustomizationViewModel.cs" />
+    <Compile Include="ViewModels\Templates\Misc\SaveImageCustomizationViewModel.cs" />
     <Compile Include="ViewModels\Templates\NonUniformityCorrection\ConstantRangeNonUniformityCorrectionCustomizationViewModel.cs" />
     <Compile Include="ViewModels\Templates\NonUniformityCorrection\IConstantRangeNonUniformityCorrectionCustomizationViewModel.cs" />
     <Compile Include="ViewModels\Templates\NonUniformityCorrection\IMidwayInfraredEqualizationCustomizationViewModel.cs" />
@@ -154,8 +156,8 @@
     <Compile Include="ViewModels\Templates\PostProcessing\IGammaAdjustmentCustomizationViewModel.cs" />
     <Compile Include="ViewModels\Templates\PostProcessing\IHighDefinitionRangeDetailEnhancementCustomizationViewModel.cs" />
     <Compile Include="ViewModels\Templates\NonUniformityCorrection\MidwayInfraredEqualizationCustomizationViewModel.cs" />
-    <Compile Include="ViewModels\Templates\Utilities\ISleeperViewModel.cs" />
-    <Compile Include="ViewModels\Templates\Utilities\SleeperCustomizationViewModel.cs" />
+    <Compile Include="ViewModels\Templates\Misc\ISleeperViewModel.cs" />
+    <Compile Include="ViewModels\Templates\Misc\SleeperCustomizationViewModel.cs" />
     <Compile Include="Views\ProcessingChainCustomizationView.xaml.cs">
       <DependentUpon>ProcessingChainCustomizationView.xaml</DependentUpon>
     </Compile>
@@ -164,6 +166,9 @@
     </Compile>
     <Compile Include="Views\TemplateViews\ImageProvider\ImageProviderCustomizationView.xaml.cs">
       <DependentUpon>ImageProviderCustomizationView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\TemplateViews\Misc\SaveImageCustomizationView.xaml.cs">
+      <DependentUpon>SaveImageCustomizationView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\TemplateViews\NonUniformityCorrection\ConstantRangeNonUniformityCorrectionCustomizationView.xaml.cs">
       <DependentUpon>ConstantRangeNonUniformityCorrectionCustomizationView.xaml</DependentUpon>
@@ -192,7 +197,7 @@
     <Compile Include="Views\TemplateViews\PostProcessing\HighDefinitionRangeDetailEnhancementCustomizationView.xaml.cs">
       <DependentUpon>HighDefinitionRangeDetailEnhancementCustomizationView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\TemplateViews\Utilities\SleeperCustomizationView.xaml.cs">
+    <Compile Include="Views\TemplateViews\Misc\SleeperCustomizationView.xaml.cs">
       <DependentUpon>SleeperCustomizationView.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
@@ -214,6 +219,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\TemplateViews\ImageProvider\ImageProviderCustomizationView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\TemplateViews\Misc\SaveImageCustomizationView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -253,7 +262,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\TemplateViews\Utilities\SleeperCustomizationView.xaml">
+    <Page Include="Views\TemplateViews\Misc\SleeperCustomizationView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -74,6 +74,7 @@
     <Compile Include="Commands\Regions\IChangeRegionsViewCommand.cs" />
     <Compile Include="Commands\Regions\IViewLocator.cs" />
     <Compile Include="Converters\GenericToStringConverter.cs" />
+    <Compile Include="Converters\SplitUppercaseStringConverter.cs" />
     <Compile Include="Events\ShouldUpdateProcessingEngineEvent.cs" />
     <Compile Include="Exceptions\CannotExecuteCommandException.cs" />
     <Compile Include="Providers\Displayable.cs" />

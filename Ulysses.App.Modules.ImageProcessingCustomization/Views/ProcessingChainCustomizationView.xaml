@@ -9,6 +9,7 @@
              xmlns:converters="clr-namespace:Ulysses.App.Core.Converters;assembly=Ulysses.App.Core"
              xmlns:viewModels="clr-namespace:Ulysses.App.Modules.ImageProcessingCustomization.ViewModels"
              xmlns:templates="clr-namespace:Ulysses.ProcessingAlgorithms.Templates;assembly=Ulysses.ProcessingAlgorithms"
+             xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
              mc:Ignorable="d"
              d:DesignHeight="768"
              d:DesignWidth="1366"
@@ -20,19 +21,21 @@
                 <ResourceDictionary Source="Styles/ProcessingChainStyles.xaml" />
                 <ResourceDictionary>
                     <converters:GenericToStringConverter x:Key="GenericToStringConverter" />
+                    <converters:SplitUppercaseStringConverter x:Key="SplitUppercaseStringConverter" />
                 </ResourceDictionary>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </UserControl.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="180" />
+            <ColumnDefinition Width="280" />
             <ColumnDefinition Width="10" />
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
         <ListView ItemsSource="{Binding AvailableImageProcessingAlgorithmTemplates}"
                   dragAndDrop:DragDrop.IsDragSource="True" dragAndDrop:DragDrop.IsDropTarget="False"
-                  SelectionMode="Single">
+                  SelectionMode="Single" BorderThickness="0, 0, 2, 0" Margin="10, 0, 0, 0"
+                  BorderBrush="{DynamicResource GrayBrush10}">
             <ListView.ItemsPanel>
                 <ItemsPanelTemplate>
                     <StackPanel Orientation="Vertical" />
@@ -40,7 +43,7 @@
             </ListView.ItemsPanel>
             <ListView.ItemTemplate>
                 <DataTemplate DataType="templates:IImageProcessingAlgorithmTemplate">
-                    <TextBlock Text="{Binding ElementName}" />
+                    <TextBlock Text="{Binding ElementName, Converter={StaticResource SplitUppercaseStringConverter}}" />
                 </DataTemplate>
             </ListView.ItemTemplate>
             <ListView.GroupStyle>
@@ -71,7 +74,7 @@
                      dragAndDrop:DragDrop.IsDragSource="True"
                      dragAndDrop:DragDrop.IsDropTarget="True"
                      dragAndDrop:DragDrop.DragHandler="{Binding DragHandler}"
-                     dragAndDrop:DragDrop.DropHandler="{Binding DropHandler}" >
+                     dragAndDrop:DragDrop.DropHandler="{Binding DropHandler}">
                 <ListBox.ContextMenu>
                     <ContextMenu>
                         <MenuItem Header="Remove"
@@ -82,15 +85,32 @@
             </ListBox>
             <Grid Grid.Row="1">
                 <Grid.RowDefinitions>
+                    <RowDefinition Height="35" />
                     <RowDefinition Height="*" />
                     <RowDefinition Height="60" />
                 </Grid.RowDefinitions>
+                <Border BorderBrush="{DynamicResource GrayBrush10}"
+                     BorderThickness="0, 0, 0, 2"
+                        Grid.Row="0">
+                <StackPanel  Orientation="Horizontal" HorizontalAlignment="Right">
+                        <controls:ToggleSwitch OnLabel="Async" OffLabel="Sync" IsChecked="{Binding IsAsyncModeEnabled}" Margin="65, 0, 65, 0" RenderTransformOrigin="0.5,0.5">
+                            <controls:ToggleSwitch.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform ScaleY="0.75" ScaleX="0.75"/>
+                                    <SkewTransform/>
+                                    <RotateTransform/>
+                                    <TranslateTransform/>
+                                </TransformGroup>
+                            </controls:ToggleSwitch.RenderTransform>
+                        </controls:ToggleSwitch>
+                    </StackPanel>
+                </Border>
                 <ContentControl
                     prism:RegionManager.RegionName="{Binding Source={x:Static regions:ImageProcessingCustomizationViewRegions.ImageProcessingChainElementCustomizationRegion}, Converter={StaticResource GenericToStringConverter}}"
-                    Grid.Row="0" />
+                    Grid.Row="1" />
                 <Button Content="Save All"
                         Command="{Binding UpdateProcessingEngineCommand}"
-                        Grid.Row="1"
+                        Grid.Row="2"
                         Style="{DynamicResource AccentedSquareButtonStyle}"
                         Width="100"
                         Height="26"

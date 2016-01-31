@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Ulysses.Core.Templates;
 using Ulysses.ProcessingAlgorithms.Templates;
 using Ulysses.ProcessingAlgorithms.Templates.DummyAlgorithms;
+using Ulysses.ProcessingAlgorithms.Templates.Misc;
 using Ulysses.ProcessingAlgorithms.Templates.NonUniformityCorrection;
 using Ulysses.ProcessingAlgorithms.Templates.PostProcessing;
 
@@ -21,7 +22,8 @@ namespace Ulysses.App.Modules.ImageProcessingCustomization.Models
             new BrightnessAdjustmentTemplate(),
             new ContrastAdjustmentTemplate(),
             new GammaAdjustmentTemplate(),
-            new SleeperTemplate()
+            new SleeperTemplate(),
+            new SaveImageTemplate()
         };
 
         public IEnumerator<IProcessingChainElementTemplate> GetEnumerator()

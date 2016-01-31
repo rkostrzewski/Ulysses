@@ -1,5 +1,6 @@
 ﻿using Ulysses.App.Modules.ImageProcessingCustomization.Models.Templates.ImageDisplay;
 using Ulysses.ImageProviders.Templates;
+using Ulysses.ProcessingEngine.ProcessingEngine;
 
 namespace Ulysses.App.Modules.ImageProcessingCustomization.Models.DataStore
 {
@@ -11,5 +12,6 @@ namespace Ulysses.App.Modules.ImageProcessingCustomization.Models.DataStore
         }
 
         public ProcessingChainTemplate ProcessingChainTemplate { get; set; }
+        public ProcessingStrategy ProcessingStrategy { get; set; }
     }
 }

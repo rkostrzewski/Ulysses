@@ -30,16 +30,21 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="PresentationCore" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Xaml" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Algorithms\Misc\SaveImage.cs" />
     <Compile Include="Algorithms\NonUniformityCorrection\ConstantRangeNonUniformityCorrectionAlgorithm.cs" />
     <Compile Include="Algorithms\NonUniformityCorrection\NonUniformityModels\INonUniformityModelProvider.cs" />
     <Compile Include="Algorithms\NonUniformityCorrection\NonUniformityModels\NonUniformityModelProvider.cs" />
@@ -47,6 +52,7 @@
     <Compile Include="Algorithms\PostProcessing\BilateralFilterAlgorithm.cs" />
     <Compile Include="Algorithms\PostProcessing\HighDefinitionRangeDetailEnhancement.cs" />
     <Compile Include="Algorithms\NonUniformityCorrection\MidwayInfraredEqualization.cs" />
+    <Compile Include="Templates\Misc\SaveImageTemplate.cs" />
     <Compile Include="Templates\NonUniformityCorrection\MidwayInfraredEqualizationTemplate.cs" />
     <Compile Include="Templates\PostProcessing\HighDefinitionRangeDetailEnhancementTemplate.cs" />
     <Compile Include="ITransformsImageModel.cs" />
@@ -65,9 +71,9 @@
     <Compile Include="Factories\ImageProcessingChainFactory.cs" />
     <Compile Include="IImageProcessingChain.cs" />
     <Compile Include="ImageProcessingChain.cs" />
-    <Compile Include="Algorithms\DummyAlgorithms\Sleeper.cs" />
+    <Compile Include="Algorithms\Misc\Sleeper.cs" />
     <Compile Include="Templates\BaseImageProcessingAlgorithmTemplate.cs" />
-    <Compile Include="Templates\DummyAlgorithms\SleeperTemplate.cs" />
+    <Compile Include="Templates\Misc\SleeperTemplate.cs" />
     <Compile Include="Templates\IImageProcessingAlgorithmTemplate.cs" />
     <Compile Include="Templates\NonUniformityCorrection\BaseNonUniformityCorrectionTemplate.cs" />
     <Compile Include="IImageProcessingAlgorithm.cs" />

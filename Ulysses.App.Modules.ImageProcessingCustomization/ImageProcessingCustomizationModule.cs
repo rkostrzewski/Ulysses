@@ -10,12 +10,14 @@ using Ulysses.App.Modules.ImageProcessingCustomization.Regions.ViewLocators;
 using Ulysses.App.Modules.ImageProcessingCustomization.ViewModels;
 using Ulysses.App.Modules.ImageProcessingCustomization.ViewModels.DragAndDrop;
 using Ulysses.App.Modules.ImageProcessingCustomization.ViewModels.Templates.ImageProvider;
+using Ulysses.App.Modules.ImageProcessingCustomization.ViewModels.Templates.Misc;
 using Ulysses.App.Modules.ImageProcessingCustomization.ViewModels.Templates.NonUniformityCorrection;
 using Ulysses.App.Modules.ImageProcessingCustomization.ViewModels.Templates.PostProcessing;
 using Ulysses.App.Modules.ImageProcessingCustomization.ViewModels.Templates.Utilities;
 using Ulysses.App.Modules.ImageProcessingCustomization.Views;
 using Ulysses.App.Modules.ImageProcessingCustomization.Views.TemplateViews;
 using Ulysses.App.Modules.ImageProcessingCustomization.Views.TemplateViews.ImageProvider;
+using Ulysses.App.Modules.ImageProcessingCustomization.Views.TemplateViews.Misc;
 using Ulysses.App.Modules.ImageProcessingCustomization.Views.TemplateViews.NonUniformityCorrection;
 using Ulysses.App.Modules.ImageProcessingCustomization.Views.TemplateViews.PostProcessing;
 using Ulysses.App.Modules.ImageProcessingCustomization.Views.TemplateViews.Utilities;
@@ -91,6 +93,7 @@ namespace Ulysses.App.Modules.ImageProcessingCustomization
         private static void RegisterPostProcessingViewModels(IUnityContainer container)
         {
             container.RegisterType<ISleeperCustomizationViewModel, SleeperCustomizationViewModel>();
+            container.RegisterType<ISaveImageCustomizationViewModel, SaveImageCustomizationViewModel>();
             container.RegisterType<IBrightnessAdjustmentCustomizationViewModel, BrightnessAdjustmentCustomizationViewModel>();
             container.RegisterType<IContrastAdjustmentCustomizationViewModel, ContrastAdjustmentCustomizationViewModel>();
             container.RegisterType<IGammaAdjustmentCustomizationViewModel, GammaAdjustmentCustomizationViewModel>();
@@ -114,6 +117,7 @@ namespace Ulysses.App.Modules.ImageProcessingCustomization
             RegisterNonUniformityCorrectionViews();
             RegisterPostProcessingCorrectionViews();
             _regionViewRegistry.RegisterViewWithRegion(ImageProcessingCustomizationViewRegions.ImageProcessingChainElementCustomizationRegion.ToString(), typeof(SleeperCustomizationView));
+            _regionViewRegistry.RegisterViewWithRegion(ImageProcessingCustomizationViewRegions.ImageProcessingChainElementCustomizationRegion.ToString(), typeof(SaveImageCustomizationView));
         }
 
         private void RegisterPostProcessingCorrectionViews()

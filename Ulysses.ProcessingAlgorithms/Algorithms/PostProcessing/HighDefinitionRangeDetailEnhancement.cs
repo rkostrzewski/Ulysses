@@ -84,15 +84,8 @@ namespace Ulysses.ProcessingAlgorithms.Algorithms.PostProcessing
 
             for (var i = 0; i < _width * _height; i++)
             {
-                try
-                {
-                    var pixelValue = inputImage.ImagePixels[i];
-                    histogram12Bit[pixelValue]++;
-                }
-                catch (Exception e)
-                {
-                    throw;
-                }
+                var pixelValue = inputImage.ImagePixels[i];
+                histogram12Bit[pixelValue]++;
             }
 
             uint validPixels = 0;

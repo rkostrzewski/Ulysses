@@ -44,7 +44,7 @@ namespace Ulysses.ProcessingAlgorithms.Algorithms.NonUniformityCorrection
                 SpecifyColumn(outputImagePixels, currentColumn, midwayWeightedHistogram);
             }
 
-            return new Image(outputImagePixels, inputImage.I);
+            return new Image(outputImagePixels, inputImage.ImageModel);
         }
 
         private uint[,] CumulativeColumnHistogram(Pixel[] inputImagePixels)

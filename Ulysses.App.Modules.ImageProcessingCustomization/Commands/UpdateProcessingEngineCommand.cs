@@ -47,6 +47,7 @@ namespace Ulysses.App.Modules.ImageProcessingCustomization.Commands
             }
 
             var processingChainTemplate = _processingChainBuilderDataStore.ProcessingChainTemplate;
+            var processingStrategy = _processingChainBuilderDataStore.ProcessingStrategy;
 
             var imageProviderTemplate = GetImageProviderTemplate(processingChainTemplate);
             var imageProcessingChainAlgorithmsTemplates = GetImageProcessingChainAlgorithmsTemplates(processingChainTemplate);
@@ -58,7 +59,7 @@ namespace Ulysses.App.Modules.ImageProcessingCustomization.Commands
             {
                 ImageProvider = imageProvider,
                 ImageProcessingChain = imageProcessingChain,
-                ProcessingStrategy = ProcessingStrategy.Sync
+                ProcessingStrategy = processingStrategy
             };
 
             _shouldUpdateProcessingEngineEvent.Publish(processingEngineTemplate);
