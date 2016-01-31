@@ -1,11 +1,10 @@
-﻿using System.Collections.Generic;
-using Ulysses.Core.Models;
+﻿using Ulysses.Core.Models;
 
 namespace Ulysses.ProcessingAlgorithms.Algorithms.NonUniformityCorrection.NonUniformityModels
 {
     public class NonUniformityModel
     {
-        public NonUniformityModel(IEnumerable<double> gainCoefficients, IEnumerable<double> offsetCoefficients, ImageModel imageModel)
+        public NonUniformityModel(double[] gainCoefficients, double[] offsetCoefficients, ImageModel imageModel)
         {
             GainCoefficients = new ProcessedImage(gainCoefficients, imageModel);
             OffsetCoefficients = new ProcessedImage(offsetCoefficients, imageModel);

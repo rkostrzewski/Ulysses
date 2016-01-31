@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using MahApps.Metro.Controls;
@@ -43,7 +44,10 @@ namespace Ulysses.App.ExceptionHandling
                 }
             }
 
-            message = string.IsNullOrWhiteSpace(message) ? "The application will abort now." : message;
+            if (string.IsNullOrWhiteSpace(message))
+            {
+                message = "An unexpected error has occured. Application will abort now.";
+            }
 
             await ShowExceptionMessage(errorDialogTittle, message);
 

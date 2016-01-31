@@ -1,5 +1,6 @@
 using System;
 using System.IO;
+using System.Linq;
 using System.Net;
 using Ulysses.Core.Models;
 using Ulysses.ImageProviders.Camera;
@@ -37,7 +38,7 @@ namespace Ulysses.ImageProviders.Factories
 
         private static IImageProvider CreateFileSystemProviderInstance(ImageModel imageModel, FileSystemImageProviderTemplate template)
         {
-            var files = Directory.EnumerateFiles(template.FolderPath, template.FileSearchPattern);
+            var files = Directory.EnumerateFiles(template.FolderPath, template.FileSearchPattern).ToList();
 
             return new FileSystemImageProvider(imageModel, files, template.InfiniteLoop);
         }

@@ -69,7 +69,7 @@ namespace Ulysses.ImageAcquisition.Tests.FileSystem
             imageProvider.TryToObtainImage(out image);
 
             // Then
-            var expectedImagePixels = Enumerable.Range(0, imageModel.Width * imageModel.Height).Select(p => (Pixel)pixelValue);
+            var expectedImagePixels = Enumerable.Range(0, imageModel.Width * imageModel.Height).Select(p => (Pixel)pixelValue).ToArray();
             var expectedImage = new Image(expectedImagePixels, imageModel);
             Assert.AreEqual(expectedImage, image);
         }
@@ -98,7 +98,7 @@ namespace Ulysses.ImageAcquisition.Tests.FileSystem
             imageProvider.TryToObtainImage(out image);
 
             // Then
-            var expectedImagePixels = Enumerable.Range(0, imageModel.Width * imageModel.Height).Select(p => p % 2 == 0 ? (Pixel)evenPixelValue : (Pixel)oddPixelValue);
+            var expectedImagePixels = Enumerable.Range(0, imageModel.Width * imageModel.Height).Select(p => p % 2 == 0 ? (Pixel)evenPixelValue : (Pixel)oddPixelValue).ToArray();
             var expectedImage = new Image(expectedImagePixels, imageModel);
             Assert.AreEqual(expectedImage, image);
         }

@@ -1,5 +1,4 @@
 using System;
-using System.Linq;
 
 namespace Ulysses.Core.Models
 {
@@ -7,18 +6,27 @@ namespace Ulysses.Core.Models
     {
         public static Image ToImage(this ProcessedImage processedImage)
         {
-            var imagePixels = processedImage.Values.Select(i => (Pixel)i);
             var imageModel = processedImage.ImageModel;
-            
-            return new Image(imagePixels, imageModel);
+            var outputImagePixels = new Pixel[imageModel.Width * imageModel.Height];
+
+            for (var i = 0; i < imageModel.Width * imageModel.Height; i++)
+            {
+                outputImagePixels[i] = (Pixel)processedImage.Values[i];
+            }
+
+            return new Image(outputImagePixels, imageModel);
         }
 
         public static ProcessedImage Abs(this ProcessedImage processedImage)
         {
-            var coefficients = processedImage.Values.Select(Math.Abs);
-            var imageModel = processedImage.ImageModel;
+            var outputImage = new ProcessedImage(processedImage.ImageModel);
 
-            return new ProcessedImage(coefficients, imageModel);
+            for (var i = 0; i < outputImage.Values.Length; i++)
+            {
+                outputImage.Values[i] = Math.Abs(processedImage.Values[i]);
+            }
+
+            return outputImage;
         }
     }
 }

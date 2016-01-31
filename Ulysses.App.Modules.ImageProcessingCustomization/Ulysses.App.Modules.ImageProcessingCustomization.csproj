@@ -137,15 +137,23 @@
     <Compile Include="ViewModels\Templates\ImageProvider\ImageProviderCustomizationViewModel.cs" />
     <Compile Include="ViewModels\Templates\NonUniformityCorrection\ConstantRangeNonUniformityCorrectionCustomizationViewModel.cs" />
     <Compile Include="ViewModels\Templates\NonUniformityCorrection\IConstantRangeNonUniformityCorrectionCustomizationViewModel.cs" />
+    <Compile Include="ViewModels\Templates\NonUniformityCorrection\IMidwayInfraredEqualizationCustomizationViewModel.cs" />
     <Compile Include="ViewModels\Templates\NonUniformityCorrection\ITwoPointNonUniformityCorrectionCustomizationViewModel.cs" />
     <Compile Include="ViewModels\Templates\NonUniformityCorrection\TwoPointNonUniformityCorrectionCustomizationViewModel.cs" />
     <Compile Include="ViewModels\Templates\PostProcessing\BaseAdjustmentCustomizationViewModel.cs" />
+    <Compile Include="ViewModels\Templates\PostProcessing\BilateralFilterCustomizationViewModel.cs" />
     <Compile Include="ViewModels\Templates\PostProcessing\BrightnessAdjustmentCustomizationViewModel.cs" />
     <Compile Include="ViewModels\Templates\PostProcessing\ContrastAdjustmentCustomizationViewModel.cs" />
+    <Compile Include="ViewModels\Templates\PostProcessing\DestripeCustomizationViewModel.cs" />
     <Compile Include="ViewModels\Templates\PostProcessing\GammaAdjustmentCustomizationViewModel.cs" />
+    <Compile Include="ViewModels\Templates\PostProcessing\HighDefinitionRangeDetailEnhancementCustomizationViewModel.cs" />
+    <Compile Include="ViewModels\Templates\PostProcessing\IBilateralFilterCustomizationViewModel.cs" />
     <Compile Include="ViewModels\Templates\PostProcessing\IBrightnessAdjustmentCustomizationViewModel.cs" />
     <Compile Include="ViewModels\Templates\PostProcessing\IContrastAdjustmentCustomizationViewModel.cs" />
+    <Compile Include="ViewModels\Templates\PostProcessing\IDestripeCustomizationViewModel.cs" />
     <Compile Include="ViewModels\Templates\PostProcessing\IGammaAdjustmentCustomizationViewModel.cs" />
+    <Compile Include="ViewModels\Templates\PostProcessing\IHighDefinitionRangeDetailEnhancementCustomizationViewModel.cs" />
+    <Compile Include="ViewModels\Templates\NonUniformityCorrection\MidwayInfraredEqualizationCustomizationViewModel.cs" />
     <Compile Include="ViewModels\Templates\Utilities\ISleeperViewModel.cs" />
     <Compile Include="ViewModels\Templates\Utilities\SleeperCustomizationViewModel.cs" />
     <Compile Include="Views\ProcessingChainCustomizationView.xaml.cs">
@@ -160,8 +168,17 @@
     <Compile Include="Views\TemplateViews\NonUniformityCorrection\ConstantRangeNonUniformityCorrectionCustomizationView.xaml.cs">
       <DependentUpon>ConstantRangeNonUniformityCorrectionCustomizationView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\TemplateViews\NonUniformityCorrection\MidwayInfraredEqualizationCustomizationView.xaml.cs">
+      <DependentUpon>MidwayInfraredEqualizationCustomizationView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\TemplateViews\NonUniformityCorrection\TwoPointNonUniformityCorrectionCustomizationView.cs">
       <DependentUpon>TwoPointNonUniformityCorrectionCustomizationView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\TemplateViews\PostProcessing\BilateralFilterCustomizationView.xaml.cs">
+      <DependentUpon>BilateralFilterCustomizationView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\TemplateViews\PostProcessing\DestripeAdjustmentCustomizationView.xaml.cs">
+      <DependentUpon>DestripeAdjustmentCustomizationView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\TemplateViews\PostProcessing\BrightnessAdjustmentCustomizationView.xaml.cs">
       <DependentUpon>BrightnessAdjustmentCustomizationView.xaml</DependentUpon>
@@ -171,6 +188,9 @@
     </Compile>
     <Compile Include="Views\TemplateViews\PostProcessing\GammaAdjustmentCustomizationView.xaml.cs">
       <DependentUpon>GammaAdjustmentCustomizationView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\TemplateViews\PostProcessing\HighDefinitionRangeDetailEnhancementCustomizationView.xaml.cs">
+      <DependentUpon>HighDefinitionRangeDetailEnhancementCustomizationView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\TemplateViews\Utilities\SleeperCustomizationView.xaml.cs">
       <DependentUpon>SleeperCustomizationView.xaml</DependentUpon>
@@ -201,7 +221,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\TemplateViews\NonUniformityCorrection\MidwayInfraredEqualizationCustomizationView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\TemplateViews\NonUniformityCorrection\TwoPointNonUniformityCorrectionCustomizationView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\TemplateViews\PostProcessing\BilateralFilterCustomizationView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\TemplateViews\PostProcessing\DestripeAdjustmentCustomizationView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -214,6 +246,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\TemplateViews\PostProcessing\GammaAdjustmentCustomizationView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\TemplateViews\PostProcessing\HighDefinitionRangeDetailEnhancementCustomizationView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

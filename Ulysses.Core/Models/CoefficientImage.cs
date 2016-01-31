@@ -1,14 +1,12 @@
-using System.Collections.Generic;
-using System.Linq;
 using Ulysses.Core.Exceptions;
 
 namespace Ulysses.Core.Models
 {
     public class ProcessedImage : ImageContainer
     {
-        public ProcessedImage(IEnumerable<double> values, ImageModel imageModel) : base(imageModel)
+        public ProcessedImage(double[] values, ImageModel imageModel) : base(imageModel)
         {
-            Values = values.ToArray();
+            Values = values;
 
             if (Values.Length != imageModel.Height * imageModel.Width)
             {
@@ -16,12 +14,23 @@ namespace Ulysses.Core.Models
             }
         }
 
+        internal ProcessedImage(ImageModel imageModel) : base(imageModel)
+        {
+            Values = new double[imageModel.Width * imageModel.Height];
+        }
+
         public double[] Values { get; set; }
 
         public static ProcessedImage operator +(double scalar, ProcessedImage processedImage)
         {
-            var imagePixels = processedImage.Values.Select(p => p + scalar);
-            return new ProcessedImage(imagePixels, processedImage.ImageModel);
+            var outputImage = new ProcessedImage(processedImage.ImageModel);
+
+            for (var i = 0; i < outputImage.Values.Length; i++)
+            {
+                outputImage.Values[i] = processedImage.Values[i] + scalar;
+            }
+
+            return outputImage;
         }
 
         public static ProcessedImage operator +(ProcessedImage processedImage, double scalar)
@@ -41,8 +50,14 @@ namespace Ulysses.Core.Models
                 throw new ImageModelMismatchException();
             }
 
-            var imagePixels = image.ImagePixels.Zip(processedImage.Values, (pixel, processedPixel) => pixel + processedPixel);
-            return new ProcessedImage(imagePixels, image.ImageModel);
+            var outputImage = new ProcessedImage(processedImage.ImageModel);
+
+            for (var i = 0; i < outputImage.Values.Length; i++)
+            {
+                outputImage.Values[i] = processedImage.Values[i] + image.ImagePixels[i];
+            }
+
+            return outputImage;
         }
 
         public static ProcessedImage operator +(ProcessedImage firstProcessedImage, ProcessedImage secondProcessedImage)
@@ -52,14 +67,26 @@ namespace Ulysses.Core.Models
                 throw new ImageModelMismatchException();
             }
 
-            var processedPixels = firstProcessedImage.Values.Zip(secondProcessedImage.Values, (pixel, processedPixel) => pixel + processedPixel);
-            return new ProcessedImage(processedPixels, firstProcessedImage.ImageModel);
+            var outputImage = new ProcessedImage(firstProcessedImage.ImageModel);
+
+            for (var i = 0; i < outputImage.Values.Length; i++)
+            {
+                outputImage.Values[i] = firstProcessedImage.Values[i] + secondProcessedImage.Values[i];
+            }
+
+            return outputImage;
         }
 
         public static ProcessedImage operator -(ProcessedImage processedImage)
         {
-            var imagePixels = processedImage.Values.Select(i => -i);
-            return new ProcessedImage(imagePixels, processedImage.ImageModel);
+            var outputImage = new ProcessedImage(processedImage.ImageModel);
+
+            for (var i = 0; i < outputImage.Values.Length; i++)
+            {
+                outputImage.Values[i] = -processedImage.Values[i];
+            }
+
+            return outputImage;
         }
 
         public static ProcessedImage operator -(Image image, ProcessedImage processedImage)
@@ -69,8 +96,14 @@ namespace Ulysses.Core.Models
                 throw new ImageModelMismatchException();
             }
 
-            var imagePixels = image.ImagePixels.Zip(processedImage.Values, (pixel, processedPixel) => (pixel - processedPixel));
-            return new ProcessedImage(imagePixels, image.ImageModel);
+            var outputImage = new ProcessedImage(processedImage.ImageModel);
+
+            for (var i = 0; i < outputImage.Values.Length; i++)
+            {
+                outputImage.Values[i] = image.ImagePixels[i] - processedImage.Values[i];
+            }
+
+            return outputImage;
         }
 
         public static ProcessedImage operator -(ProcessedImage processedImage, Image image)
@@ -80,8 +113,14 @@ namespace Ulysses.Core.Models
                 throw new ImageModelMismatchException();
             }
 
-            var imagePixels = processedImage.Values.Zip(image.ImagePixels, (processedPixel, pixel) => (processedPixel - pixel));
-            return new ProcessedImage(imagePixels, image.ImageModel);
+            var outputImage = new ProcessedImage(processedImage.ImageModel);
+
+            for (var i = 0; i < outputImage.Values.Length; i++)
+            {
+                outputImage.Values[i] = processedImage.Values[i] - image.ImagePixels[i];
+            }
+
+            return outputImage;
         }
 
         public static ProcessedImage operator *(Image image, ProcessedImage processedImage)
@@ -91,19 +130,19 @@ namespace Ulysses.Core.Models
                 throw new ImageModelMismatchException();
             }
 
-            var imagePixels = image.ImagePixels.Zip(processedImage.Values, (processedPixel, pixel) => (processedPixel * pixel));
-            return new ProcessedImage(imagePixels, image.ImageModel);
+            var outputImage = new ProcessedImage(processedImage.ImageModel);
+
+            for (var i = 0; i < outputImage.Values.Length; i++)
+            {
+                outputImage.Values[i] = processedImage.Values[i] * image.ImagePixels[i];
+            }
+
+            return outputImage;
         }
 
         public static ProcessedImage operator *(ProcessedImage processedImage, Image image)
         {
-            if (image.ImageModel != processedImage.ImageModel)
-            {
-                throw new ImageModelMismatchException();
-            }
-
-            var imagePixels = processedImage.Values.Zip(image.ImagePixels, (processedPixel, pixel) => (processedPixel * pixel));
-            return new ProcessedImage(imagePixels, image.ImageModel);
+            return image * processedImage;
         }
 
         public static ProcessedImage operator *(ProcessedImage first, ProcessedImage second)
@@ -113,20 +152,38 @@ namespace Ulysses.Core.Models
                 throw new ImageModelMismatchException();
             }
 
-            var imagePixels = first.Values.Zip(second.Values, (f, s) => (f * s));
-            return new ProcessedImage(imagePixels, first.ImageModel);
+            var outputImage = new ProcessedImage(first.ImageModel);
+
+            for (var i = 0; i < outputImage.Values.Length; i++)
+            {
+                outputImage.Values[i] = first.Values[i] * second.Values[i];
+            }
+
+            return outputImage;
         }
 
         public static ProcessedImage operator *(double scalar, ProcessedImage processedImage)
         {
-            var imagePixels = processedImage.Values.Select(c => scalar * c);
-            return new ProcessedImage(imagePixels, processedImage.ImageModel);
+            var outputImage = new ProcessedImage(processedImage.ImageModel);
+
+            for (var i = 0; i < outputImage.Values.Length; i++)
+            {
+                outputImage.Values[i] = processedImage.Values[i] * scalar;
+            }
+
+            return outputImage;
         }
 
         public static ProcessedImage operator /(ProcessedImage processedImage, double scalar)
         {
-            var imagePixels = processedImage.Values.Select(c => c / scalar);
-            return new ProcessedImage(imagePixels, processedImage.ImageModel);
+            var outputImage = new ProcessedImage(processedImage.ImageModel);
+
+            for (var i = 0; i < outputImage.Values.Length; i++)
+            {
+                outputImage.Values[i] = processedImage.Values[i] / scalar;
+            }
+
+            return outputImage;
         }
 
         public static ProcessedImage operator /(ProcessedImage firstProcessedImage, ProcessedImage secondProcessedImage)
@@ -136,8 +193,14 @@ namespace Ulysses.Core.Models
                 throw new ImageModelMismatchException();
             }
 
-            var imagePixels = firstProcessedImage.Values.Zip(secondProcessedImage.Values, (first, second) => (first / second));
-            return new ProcessedImage(imagePixels, firstProcessedImage.ImageModel);
+            var outputImage = new ProcessedImage(firstProcessedImage.ImageModel);
+
+            for (var i = 0; i < outputImage.Values.Length; i++)
+            {
+                outputImage.Values[i] = firstProcessedImage.Values[i] / secondProcessedImage.Values[i];
+            }
+
+            return outputImage;
         }
     }
 }

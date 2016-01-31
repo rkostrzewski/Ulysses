@@ -40,13 +40,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Algorithms\NonUniformityCorrection\BaseNonUniformityCorrectionAlgorithm.cs" />
     <Compile Include="Algorithms\NonUniformityCorrection\ConstantRangeNonUniformityCorrectionAlgorithm.cs" />
     <Compile Include="Algorithms\NonUniformityCorrection\NonUniformityModels\INonUniformityModelProvider.cs" />
     <Compile Include="Algorithms\NonUniformityCorrection\NonUniformityModels\NonUniformityModelProvider.cs" />
     <Compile Include="Algorithms\NonUniformityCorrection\TwoPointNonUniformityCorrectionAlgorithm.cs" />
+    <Compile Include="Algorithms\PostProcessing\BilateralFilterAlgorithm.cs" />
+    <Compile Include="Algorithms\PostProcessing\HighDefinitionRangeDetailEnhancement.cs" />
+    <Compile Include="Algorithms\NonUniformityCorrection\MidwayInfraredEqualization.cs" />
+    <Compile Include="Templates\NonUniformityCorrection\MidwayInfraredEqualizationTemplate.cs" />
+    <Compile Include="Templates\PostProcessing\HighDefinitionRangeDetailEnhancementTemplate.cs" />
+    <Compile Include="ITransformsImageModel.cs" />
+    <Compile Include="Templates\BilateralFilterTemplate.cs" />
     <Compile Include="Algorithms\PostProcessing\BrightnessAdjustmentAlgorithm.cs" />
     <Compile Include="Algorithms\PostProcessing\ContrastAdjustmentAlgorithm.cs" />
+    <Compile Include="Algorithms\PostProcessing\DestripeAlgorithm.cs" />
     <Compile Include="Algorithms\PostProcessing\GammaAdjustmentAlgorithm.cs" />
     <Compile Include="Templates\PostProcessing\BaseAdjustmentTemplate.cs" />
     <Compile Include="Templates\PostProcessing\BrightnessAdjustmentTemplate.cs" />
@@ -71,6 +78,7 @@
     <Compile Include="Templates\NonUniformityCorrection\ConstantRangeNonUniformityCorrectionTemplate.cs" />
     <Compile Include="Templates\NonUniformityCorrection\TwoPointNonUniformityCorrectionTemplate.cs" />
     <Compile Include="Templates\PostProcessing\ContrastAdjustmentTemplate.cs" />
+    <Compile Include="Templates\PostProcessing\DestripeTemplate.cs" />
     <Compile Include="Templates\PostProcessing\GammaAdjustmentTemplate.cs" />
   </ItemGroup>
   <ItemGroup>

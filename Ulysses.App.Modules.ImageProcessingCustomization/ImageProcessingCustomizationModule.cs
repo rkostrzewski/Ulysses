@@ -86,20 +86,24 @@ namespace Ulysses.App.Modules.ImageProcessingCustomization
             container.RegisterType<IImageProviderCustomizationViewModel, ImageProviderCustomizationViewModel>();
             RegisterNonUniformityCorrectionViewModels(container);
             RegisterPostProcessingViewModels(container);
-            container.RegisterType<ISleeperCustomizationViewModel, SleeperCustomizationViewModel>();
         }
 
         private static void RegisterPostProcessingViewModels(IUnityContainer container)
         {
+            container.RegisterType<ISleeperCustomizationViewModel, SleeperCustomizationViewModel>();
             container.RegisterType<IBrightnessAdjustmentCustomizationViewModel, BrightnessAdjustmentCustomizationViewModel>();
             container.RegisterType<IContrastAdjustmentCustomizationViewModel, ContrastAdjustmentCustomizationViewModel>();
             container.RegisterType<IGammaAdjustmentCustomizationViewModel, GammaAdjustmentCustomizationViewModel>();
+            container.RegisterType<IDestripeCustomizationViewModel, DestripeCustomizationViewModel>();
+            container.RegisterType<IBilateralFilterCustomizationViewModel, BilateralFilterCustomizationViewModel>();
+            container.RegisterType<IHighDefinitionRangeDetailEnhancementCustomizationViewModel, HighDefinitionRangeDetailEnhancementCustomizationViewModel>();
         }
 
         private static void RegisterNonUniformityCorrectionViewModels(IUnityContainer container)
         {
             container.RegisterType<ITwoPointNonUniformityCorrectionCustomizationViewModel, TwoPointNonUniformityCorrectionCustomizationViewModel>();
             container.RegisterType<IConstantRangeNonUniformityCorrectionCustomizationViewModel, ConstantRangeNonUniformityCorrectionCustomizationViewModel>();
+            container.RegisterType<IMidwayInfraredEqualizationCustomizationViewModel, MidwayInfraredEqualizationCustomizationViewModel>();
         }
 
         private void RegisterViewsWithRegions()
@@ -119,7 +123,13 @@ namespace Ulysses.App.Modules.ImageProcessingCustomization
             _regionViewRegistry.RegisterViewWithRegion(ImageProcessingCustomizationViewRegions.ImageProcessingChainElementCustomizationRegion.ToString(),
                                                        typeof (ContrastAdjustmentCustomizationView));
             _regionViewRegistry.RegisterViewWithRegion(ImageProcessingCustomizationViewRegions.ImageProcessingChainElementCustomizationRegion.ToString(),
-                                                       typeof (GammaAdjustmentCustomizationView));
+                                                       typeof(GammaAdjustmentCustomizationView));
+            _regionViewRegistry.RegisterViewWithRegion(ImageProcessingCustomizationViewRegions.ImageProcessingChainElementCustomizationRegion.ToString(),
+                                                       typeof (DestripeCustomizationView));
+            _regionViewRegistry.RegisterViewWithRegion(ImageProcessingCustomizationViewRegions.ImageProcessingChainElementCustomizationRegion.ToString(),
+                                                       typeof(BilateralFilterCustomizationView));
+            _regionViewRegistry.RegisterViewWithRegion(ImageProcessingCustomizationViewRegions.ImageProcessingChainElementCustomizationRegion.ToString(),
+                                                      typeof(HighDefinitionRangeDetailEnhancementCustomizationView));
         }
 
         private void RegisterNonUniformityCorrectionViews()
@@ -128,6 +138,8 @@ namespace Ulysses.App.Modules.ImageProcessingCustomization
                                                        typeof (TwoPointNonUniformityCorrectionCustomizationView));
             _regionViewRegistry.RegisterViewWithRegion(ImageProcessingCustomizationViewRegions.ImageProcessingChainElementCustomizationRegion.ToString(),
                                                        typeof (ConstantRangeNonUniformityCorrectionCustomizationView));
+            _regionViewRegistry.RegisterViewWithRegion(ImageProcessingCustomizationViewRegions.ImageProcessingChainElementCustomizationRegion.ToString(),
+                                                       typeof(MidwayInfraredEqualizationCustomizationView));
         }
     }
 }

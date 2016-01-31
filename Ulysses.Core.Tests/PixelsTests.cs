@@ -15,7 +15,7 @@ namespace Ulysses.Core.Tests
             // Given
             IEnumerable<Pixel> source = new Pixel[] { 1, 1, 1, 1 };
             var imageModel = new ImageModel(2, 2, ImageBitDepth.Bpp8);
-            var image = new Image(source, imageModel);
+            var image = new Image(source.ToArray(), imageModel);
 
             // When
             var pixelsCount = image.ImagePixels.Count();

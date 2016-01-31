@@ -47,6 +47,7 @@
     <Compile Include="Camera\CameraStream\CameraStreamConfiguration.cs" />
     <Compile Include="Camera\CameraStream\CameraStreamToImageConverter.cs" />
     <Compile Include="Camera\Udp\UdpClient.cs" />
+    <Compile Include="Exceptions\CannotReadImageException.cs" />
     <Compile Include="Exceptions\NotSupportedImageSizeForCameraProviderException.cs" />
     <Compile Include="Factories\IImageProviderFactory.cs" />
     <Compile Include="Factories\ImageProviderFactory.cs" />

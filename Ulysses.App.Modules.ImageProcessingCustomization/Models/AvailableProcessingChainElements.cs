@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using Ulysses.Core.Templates;
+using Ulysses.ProcessingAlgorithms.Templates;
 using Ulysses.ProcessingAlgorithms.Templates.DummyAlgorithms;
 using Ulysses.ProcessingAlgorithms.Templates.NonUniformityCorrection;
 using Ulysses.ProcessingAlgorithms.Templates.PostProcessing;
@@ -13,6 +14,10 @@ namespace Ulysses.App.Modules.ImageProcessingCustomization.Models
         {
             new TwoPointNonUniformityCorrectionTemplate(),
             new ConstantRangeNonUniformityCorrectionTemplate(),
+            new MidwayInfraredEqualizationTemplate(),
+            new DestripeTemplate(),
+            new BilateralFilterTemplate(),
+            new HighDefinitionRangeDetailEnhancementTemplate(),
             new BrightnessAdjustmentTemplate(),
             new ContrastAdjustmentTemplate(),
             new GammaAdjustmentTemplate(),

@@ -1,15 +1,9 @@
-using System;
-using Ulysses.Core.Models;
-using Ulysses.Core.Templates;
-
 namespace Ulysses.ProcessingAlgorithms.Templates.PostProcessing
 {
-    public abstract class BaseAdjustmentTemplate : BaseProcessingChainElementTemplate, IImageProcessingAlgorithmTemplate
+    public abstract class BaseAdjustmentTemplate : BaseImageProcessingAlgorithmTemplate
     {
-        public ImageModel ImageModel { get; set; }
-        public abstract Type AlgorithmType { get; }
-        public ImageProcessingAlgorithmGroup Group { get; }
         public double AdjustmentValue { get; set; }
-        public override string ElementName => AlgorithmType.Name;
+
+        public override ImageProcessingAlgorithmGroup Group { get; }
     }
 }

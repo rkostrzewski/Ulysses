@@ -23,8 +23,14 @@ namespace Ulysses.App.ExceptionHandling.Handlers
 
             if (exception.GetType() == typeof (NotSupportedImageSizeForCameraProviderException))
             {
-                const string notSupportedImageSizeForCameraProviderException = "Provided image size is not support for Camera Provider.";
+                const string notSupportedImageSizeForCameraProviderException = "Provided image size is not supported for Camera Provider.";
                 return new ExceptionHandlingResolution(true, notSupportedImageSizeForCameraProviderException);
+            }
+
+            if (exception.GetType() == typeof (CannotReadImageException))
+            {
+                const string cannotReadImageExceptionMessage = "One of Images provided could not be loaded.";
+                return new ExceptionHandlingResolution(true, cannotReadImageExceptionMessage);
             }
 
             return new ExceptionHandlingResolution(false, string.Empty);

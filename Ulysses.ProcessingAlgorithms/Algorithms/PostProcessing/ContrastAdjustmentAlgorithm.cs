@@ -1,5 +1,6 @@
 using System;
 using System.Linq;
+using Ulysses.Core.Exceptions;
 using Ulysses.Core.Models;
 using Ulysses.ProcessingAlgorithms.Templates.PostProcessing;
 
@@ -8,12 +9,14 @@ namespace Ulysses.ProcessingAlgorithms.Algorithms.PostProcessing
     public class ContrastAdjustmentAlgorithm : IImageProcessingAlgorithm
     {
         private readonly Pixel[] _lookupTable;
+        private readonly ImageModel _imageModel;
 
         public ContrastAdjustmentAlgorithm(ContrastAdjustmentTemplate template)
         {
+            _imageModel = template.ImageModel;
             int imageDynamicRange;
 
-            switch (template.ImageModel.ImageBitDepth)
+            switch (_imageModel.ImageBitDepth)
             {
                 case ImageBitDepth.Bpp8:
                     imageDynamicRange = byte.MaxValue;
@@ -30,8 +33,20 @@ namespace Ulysses.ProcessingAlgorithms.Algorithms.PostProcessing
 
         public Image ProcessImage(Image inputImage)
         {
-            var adjustedPixels = inputImage.ImagePixels.Select(p => _lookupTable[p]);
-            return new Image(adjustedPixels, inputImage.ImageModel);
+            if (inputImage.ImageModel != _imageModel)
+            {
+                throw new ImageModelMismatchException(GetType());
+            }
+
+            var outputImage = new Image(inputImage.ImageModel);
+
+            for (var i = 0; i < inputImage.ImagePixels.Length; i++)
+            {
+                var inputPixel = inputImage.ImagePixels[i];
+                outputImage.ImagePixels[i] = _lookupTable[inputPixel];
+            }
+
+            return outputImage;
         }
     }
 }

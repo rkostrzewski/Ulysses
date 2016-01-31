@@ -1,10 +1,13 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Imaging;
+using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
 using Ulysses.Core.Exceptions;
 using Ulysses.Core.Models;
+using Ulysses.ImageProviders.Exceptions;
 using Image = Ulysses.Core.Models.Image;
 
 namespace Ulysses.ImageProviders.FileSystem.ImageReaders
@@ -20,7 +23,16 @@ namespace Ulysses.ImageProviders.FileSystem.ImageReaders
 
         public Image Read(string filePath)
         {
-            var inputImage = new Bitmap(System.Drawing.Image.FromFile(filePath));
+            Bitmap inputImage;
+            try
+            {
+                inputImage = new Bitmap(System.Drawing.Image.FromFile(filePath));
+            }
+            catch(Exception)
+            {
+                throw new CannotReadImageException();
+            }
+
             if (inputImage.Width != _imageModel.Width || inputImage.Height != _imageModel.Height)
             {
                 throw new ImageModelMismatchException(typeof (BitmapImageReader));
@@ -52,13 +64,13 @@ namespace Ulysses.ImageProviders.FileSystem.ImageReaders
             return pixels;
         }
 
-        private static IEnumerable<byte> ConvertRgbaPixelsToGrayscale(IReadOnlyList<byte> rgbaPixels)
+        private static byte[] ConvertRgbaPixelsToGrayscale(IReadOnlyList<byte> rgbaPixels)
         {
             var pixelCount = rgbaPixels.Count / 4;
 
             return
                 Enumerable.Range(0, pixelCount)
-                          .Select(i => ConvertRgbaPixelToGrayscale(rgbaPixels[i * 4], rgbaPixels[i * 4 + 1], rgbaPixels[i * 4 + 2], rgbaPixels[i * 4 + 3]));
+                          .Select(i => ConvertRgbaPixelToGrayscale(rgbaPixels[i * 4], rgbaPixels[i * 4 + 1], rgbaPixels[i * 4 + 2], rgbaPixels[i * 4 + 3])).ToArray();
         }
 
         private static byte ConvertRgbaPixelToGrayscale(byte red, byte green, byte blue, byte alpha)

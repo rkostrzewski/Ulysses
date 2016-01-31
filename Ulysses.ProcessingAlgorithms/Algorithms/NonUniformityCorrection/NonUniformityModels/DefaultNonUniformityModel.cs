@@ -7,8 +7,8 @@ namespace Ulysses.ProcessingAlgorithms.Algorithms.NonUniformityCorrection.NonUni
     {
         public DefaultNonUniformityModel(ImageModel imageModel)
             : base(
-                Enumerable.Range(0, imageModel.Width * imageModel.Height).Select(i => 1.0d),
-                Enumerable.Range(0, imageModel.Width * imageModel.Height).Select(i => 0.0d),
+                Enumerable.Range(0, imageModel.Width * imageModel.Height).Select(i => 1.0d).ToArray(),
+                Enumerable.Range(0, imageModel.Width * imageModel.Height).Select(i => 0.0d).ToArray(),
                 imageModel)
         {
         }

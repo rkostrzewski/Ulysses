@@ -13,7 +13,7 @@ namespace Ulysses.ImageAcquisition.Tests.Camera.TestData
 
         public static Image GetExpectedDummyImage(ImageModel imageModel)
         {
-            var imagePixels = Enumerable.Range(0, imageModel.Height * imageModel.Width).Select(pixel => (Pixel)PixelValue);
+            var imagePixels = Enumerable.Range(0, imageModel.Height * imageModel.Width).Select(pixel => (Pixel)PixelValue).ToArray();
             var image = new Image(imagePixels, imageModel);
 
             return image;

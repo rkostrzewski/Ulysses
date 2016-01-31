@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using Ulysses.Core.Exceptions;
 
@@ -7,24 +6,24 @@ namespace Ulysses.Core.Models
 {
     public class Image : ImageContainer, IEquatable<Image>
     {
-        public Image(IEnumerable<byte> imagePixels, ImageModel imageModel) : base(imageModel)
+        public Image(byte[] imagePixels, ImageModel imageModel) : base(imageModel)
         {
             ImagePixels = new Pixels(imagePixels, imageModel);
         }
 
-        public Image(IEnumerable<ushort> imagePixels, ImageModel imageModel) : base(imageModel)
+        public Image(ushort[] imagePixels, ImageModel imageModel) : base(imageModel)
         {
             ImagePixels = new Pixels(imagePixels, imageModel);
         }
 
-        public Image(IEnumerable<Pixel> imagePixels, ImageModel imageModel) : base(imageModel)
+        public Image(Pixel[] imagePixels, ImageModel imageModel) : base(imageModel)
         {
             ImagePixels = new Pixels(imagePixels, imageModel);
         }
 
         public Image(ImageModel imageModel) : base(imageModel)
         {
-            ImagePixels = new Pixels(imageModel.Width, imageModel.Height);
+            ImagePixels = new Pixels(imageModel);
         }
 
         public Pixels ImagePixels { get; }
@@ -73,7 +72,14 @@ namespace Ulysses.Core.Models
                 throw new ImageModelMismatchException();
             }
 
-            return new Image(first.ImagePixels.Zip(second.ImagePixels, (f, s) => f + s), first.ImageModel);
+            var outputImage = new Image(first.ImageModel);
+
+            for (var i = 0; i < outputImage.ImagePixels.Length; i++)
+            {
+                outputImage.ImagePixels[i] = first.ImagePixels[i] + second.ImagePixels[i];
+            }
+
+            return outputImage;
         }
 
         public static Image operator -(Image first, Image second)
@@ -83,7 +89,14 @@ namespace Ulysses.Core.Models
                 throw new ImageModelMismatchException();
             }
 
-            return new Image(first.ImagePixels.Zip(second.ImagePixels, (f, s) => f - s), first.ImageModel);
+            var outputImage = new Image(first.ImageModel);
+
+            for (var i = 0; i < outputImage.ImagePixels.Length; i++)
+            {
+                outputImage.ImagePixels[i] = first.ImagePixels[i] - second.ImagePixels[i];
+            }
+
+            return outputImage;
         }
 
         public static bool operator ==(Image left, Image right)

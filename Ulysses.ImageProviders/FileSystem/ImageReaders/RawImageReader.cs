@@ -11,6 +11,11 @@ namespace Ulysses.ImageProviders.FileSystem.ImageReaders
         public RawImageReader(ImageModel imageModel)
         {
             _imageModel = imageModel;
+
+            if (_imageModel.ImageBitDepth != ImageBitDepth.Bpp12)
+            {
+                throw new ImageModelMismatchException(GetType());
+            }
         }
 
         public Image Read(string filePath)
