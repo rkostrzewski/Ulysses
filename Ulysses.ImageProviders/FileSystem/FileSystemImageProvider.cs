@@ -52,5 +52,9 @@ namespace Ulysses.ImageProviders.FileSystem
 
             return true;
         }
+
+        public void Dispose()
+        {
+        }
     }
 }

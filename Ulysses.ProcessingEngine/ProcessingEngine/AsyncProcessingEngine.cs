@@ -123,5 +123,10 @@ namespace Ulysses.ProcessingEngine.ProcessingEngine
                 mediator.SetImageProcessingStatus(ImageProcessingStatus.NoImageProcessed);
             }
         }
+
+        public void Dispose()
+        {
+            _imageProvider.Dispose();
+        }
     }
 }

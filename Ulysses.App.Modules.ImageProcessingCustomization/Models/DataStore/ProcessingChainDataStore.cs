@@ -9,6 +9,7 @@ namespace Ulysses.App.Modules.ImageProcessingCustomization.Models.DataStore
         public ProcessingChainDataStore()
         {
             ProcessingChainTemplate = new ProcessingChainTemplate { new ImageProviderTemplate(), new ImageDisplayTemplateTemplate() };
+            ProcessingStrategy = ProcessingStrategy.Sync;
         }
 
         public ProcessingChainTemplate ProcessingChainTemplate { get; set; }

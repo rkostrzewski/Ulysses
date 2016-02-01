@@ -70,5 +70,10 @@ namespace Ulysses.ProcessingEngine.ProcessingEngine
                 _imageOutputNotifier.Execute(image);
             }
         }
+
+        public void Dispose()
+        {
+            _imageProvider.Dispose();
+        }
     }
 }

@@ -32,9 +32,14 @@ namespace Ulysses.ImageProviders.Camera.CameraStream
                 throw new ImageModelMismatchException(typeof (CameraAcquisitionBuffer));
             }
 
-            var packetId = packet[0] * 100 + packet[1];
+            var packetId = packet[0] * 256 + packet[1];
 
-            Array.Copy(packet, 2, _receivedPixelPackets[packetId], 0, _cameraStreamConfiguration.SizeOfPixelsInPacket);
+            if (packetId < 0 || packetId >= _cameraStreamConfiguration.PacketAmount)
+            {
+                return;
+            }
+
+            Array.Copy(packet, 2, _receivedPixelPackets[packetId - 1], 0, _cameraStreamConfiguration.SizeOfPixelsInPacket);
         }
 
         public Image GetImage()

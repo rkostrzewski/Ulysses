@@ -17,6 +17,7 @@ namespace Ulysses.App.Modules.ImageDisplay.Models
 
         public void UpdateProcessingEngine(ProcessingEngineTemplate template)
         {
+            ProcessingEngine?.Dispose();
             ProcessingEngine = _processingEngineFactory.CreateInstance(template);
         }
     }

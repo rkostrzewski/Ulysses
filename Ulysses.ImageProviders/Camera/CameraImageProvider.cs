@@ -41,6 +41,11 @@ namespace Ulysses.ImageProviders.Camera
             _udpClient.Close();
         }
 
+        public void Dispose()
+        {
+            _udpClient.Close();
+        }
+
         private Image ObtainImage()
         {
             var buffer = new CameraAcquisitionBuffer(_imageModel);
